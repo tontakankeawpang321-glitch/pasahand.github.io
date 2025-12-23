@@ -1,0 +1,4813 @@
+[
+  {
+    "id": "c1",
+    "word": "ก (ไก่)",
+    "category": "consonant",
+    "description": "กำมือ ชูนิ้วชี้และนิ้วโป้งเหยียดตรง แล้วงอนิ้วชี้ลงมาแตะที่นิ้วโป้ง (ทำมือเป็นรูปหัวไก่)",
+    "tip": "จินตนาการว่าเป็นปากไก่",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1MGVw4iRZcbrijNjTYQKeUIRrNIGUf5kW",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Ko Kai (ก) – Chicken",
+    "description_en": "Make a fist and extend the index finger and thumb straight, then bend the index finger down to touch the thumb, forming the beak of a chicken."
+  },
+  {
+    "id": "c2",
+    "word": "ข (ไข่)",
+    "category": "consonant",
+    "description": "กำมือ ชูนิ้วชี้และนิ้วกลางขึ้นเป็นรูปตัว V แล้วใช้นิ้วโป้งแตะที่โคนนิ้วชี้ (ให้ดูเหมือนมี “ไข่” อยู่ในมือ)",
+    "tip": "ทำมือเหมือนคีบไข่ 1 ฟอง",
+    "imageUrl": "https://lh3.googleusercontent.com/d/11hNsaeNpdRaWfe-gVA1zPZvGqHZ4Osg2",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Kho Khai (ข) – Egg",
+    "description_en": "Make a fist, raise the index and middle fingers into a V shape, and touch the base of the index finger with the thumb, as if holding an egg."
+  },
+  {
+    "id": "c3",
+    "word": "ฃ (ขวด)",
+    "category": "consonant",
+    "description": "กำมือ แล้วชูนิ้วก้อยขึ้น จากนั้นเหยียดนิ้วโป้งออกด้านข้าง (ให้มือดูเหมือนจับคอขวด)",
+    "tip": "นึกถึงการจับคอขวดด้วยมือ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/10Js0R0griZLK43K8oGD1N8cotOZqZ5xk",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Kho Khuat (ฃ) – Bottle",
+    "description_en": "Make a fist, raise the little finger, and extend the thumb to the side, resembling a hand holding the neck of a bottle."
+  },
+  {
+    "id": "c4",
+    "word": "ค (ควาย)",
+    "category": "consonant",
+    "description": "กำมือ ชูนิ้วชี้และนิ้วก้อยขึ้นพร้อมกัน แล้วกางนิ้วโป้งออกด้านข้าง (ทำเป็นเขาควาย)",
+    "tip": "จินตนาการว่าเป็นเขาควาย 2 ข้าง",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1QE942AcscPT8GE6aYyPQqeTd8d-LZs6l",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Kho Khwai (ค) – Buffalo",
+    "description_en": "Make a fist, raise the index and little fingers, and extend the thumb outward to form buffalo horns."
+  },
+  {
+    "id": "c5",
+    "word": "ฅ (คน)",
+    "category": "consonant",
+    "description": "กำมือ ชูนิ้วชี้ขึ้น แล้วใช้นิ้วโป้งแตะที่ปลายนิ้วชี้ให้เป็นวงเล็ก ๆ (แทนหัวคน)",
+    "tip": "นึกถึงหัวคนเป็นวงกลมเล็ก ๆ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/FILE_ID_c5",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Kho Khon (ฅ) – Person",
+    "description_en": "Make a fist, raise the index finger, and touch the tip of the index finger with the thumb to form a small circle, symbolizing a person’s head."
+  },
+  {
+    "id": "c6",
+    "word": "ฆ (ระฆัง)",
+    "category": "consonant",
+    "description": "กำมือ แล้วชูนิ้วกลางขึ้น 1 นิ้ว จากนั้นใช้นิ้วโป้งแตะที่โคนนิ้วกลาง (ทำเป็นรูปห้อยระฆัง)",
+    "tip": "นึกถึงระฆังที่ห้อยอยู่ใต้มือ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1QE942AcscPT8GE6aYyPQqeTd8d-LZs6l",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Kho Rakhang (ฆ) – Bell",
+    "description_en": "Make a fist, raise the middle finger, and place the thumb at the base of the middle finger, resembling a hanging bell."
+  },
+
+  {
+    "id": "c7",
+    "word": "ง (งู)",
+    "category": "consonant",
+    "description": "กำมือ แล้วเหยียดนิ้วชี้ลงด้านล่างเล็กน้อย พร้อมงอนิ้วชี้ให้เป็นตะขอ (เหมือนงูชูคอ)",
+    "tip": "นึกถึงงูที่โค้งงอเป็นตะขอ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1H7uUxDeNai-fUTrzee9xJd6XnSP9aBT-",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Ngo Ngu (ง) – Snake",
+    "description_en": "Make a fist and extend the index finger downward slightly, bending it into a hook shape like a snake’s curved neck."
+  },
+  {
+    "id": "c8",
+    "word": "จ (จาน)",
+    "category": "consonant",
+    "description": "แบมือหงาย แล้วใช้นิ้วชี้วาดเป็นวงกลมเล็ก ๆ บนฝ่ามือ (แทนจาน)",
+    "tip": "ฝ่ามือคือจาน วาดวงเป็นขอบจาน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1Lu8O4rgdx1XXjCKNzyZbnxauS8Yy-kpO",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Cho Chan (จ) – Plate",
+    "description_en": "Open your hand palm-up and trace a small circle on your palm with the index finger, representing a plate."
+  },
+  {
+    "id": "c9",
+    "word": "ฉ (ฉิ่ง)",
+    "category": "consonant",
+    "description": "แบมือ แล้วใช้นิ้วโป้งกับนิ้วชี้ประกบกันเหมือนหนีบฉิ่ง 2 แผ่น จากนั้นแตะเบา ๆ ให้เหมือนเสียงฉิ่ง",
+    "tip": "ทำมือเหมือนกำลังตีฉิ่งเบา ๆ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1Y0slA18JlkWr1Tqh9kF-T_jlm-AkM077",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Cho Ching (ฉ) – Cymbals",
+    "description_en": "Use the thumb and index finger to pinch together like holding two small cymbals, then tap lightly as if making a cymbal sound."
+  },
+  {
+    "id": "c10",
+    "word": "ช (ช้าง)",
+    "category": "consonant",
+    "description": "กำมือ แล้วเหยียดนิ้วชี้ลง พร้อมใช้นิ้วโป้งกางออกเล็กน้อย (ทำเป็นงวงช้าง)",
+    "tip": "นึกถึงงวงช้างที่ย้อยลง",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1-W0u0RVnR-wlSuCyGio8_BQL_6VvDRuq",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Cho Chang (ช) – Elephant",
+    "description_en": "Make a fist and extend the index finger downward with the thumb slightly out, forming an elephant’s trunk."
+  },
+  {
+    "id": "c11",
+    "word": "ซ (โซ่)",
+    "category": "consonant",
+    "description": "ชูนิ้วชี้และนิ้วกลางขึ้น แล้วเกี่ยวปลายนิ้วทั้งสองเข้าหากันเล็กน้อย (เหมือนห่วงโซ่คล้องกัน)",
+    "tip": "ทำปลายนิ้วเหมือนห่วงโซ่ที่เกี่ยวกัน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1AvFrj3A67EJ-QL_oYXOn7DU6Ta1J7B1w",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "So So (ซ) – Chain",
+    "description_en": "Raise the index and middle fingers and curve their tips toward each other slightly, like interlinked chain loops."
+  },
+  {
+    "id": "c12",
+    "word": "ฌ (เฌอ)",
+    "category": "consonant",
+    "description": "ยกมือขึ้นแล้วกางนิ้วทั้งหมดเหมือนกิ่งก้าน จากนั้นส่ายเบา ๆ (แทนต้นไม้/เฌอ)",
+    "tip": "กางนิ้วเหมือนกิ่งไม้แผ่กิ่ง",
+    "imageUrl": "https://lh3.googleusercontent.com/d/17Yi0zPC00vJOLiWU3nOAN0v0tipkTnyB",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Cho Cher (ฌ) – Tree",
+    "description_en": "Spread all fingers like branches of a tree and gently wiggle them to represent a tree."
+  },
+  {
+    "id": "c13",
+    "word": "ญ (หญิง)",
+    "category": "consonant",
+    "description": "ชูนิ้วก้อยขึ้น แล้วใช้นิ้วโป้งแตะปลายนิ้วก้อย (ทำเป็นรูปเล็ก ๆ คล้ายกิริยาหญิง)",
+    "tip": "ทำท่านุ่มนวล ให้สื่อถึง “หญิง”",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1bdI8frUwzWkaPgXaLj-Y_NayCeb_bEqd",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Yo Ying (ญ) – Woman",
+    "description_en": "Raise the little finger and touch its tip with the thumb, forming a small delicate shape to represent “woman.”"
+  },
+
+  {
+    "id": "c14",
+    "word": "ฎ (ชฎา)",
+    "category": "consonant",
+    "description": "ชูมือขึ้นเหนือศีรษะเล็กน้อย แล้วใช้นิ้วชี้แตะยอดศีรษะ (สื่อถึงชฎาที่สวมบนหัว)",
+    "tip": "แตะบนหัวเหมือนสวมเครื่องสูง",
+    "imageUrl": "https://lh3.googleusercontent.com/d/12gOHj3JIFtTl9mKUelIyVHtHuHaltYJS",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Do Chada (ฎ) – Headdress",
+    "description_en": "Raise the hand near the top of the head and touch the crown with the index finger, suggesting a traditional headdress (chada)."
+  },
+  {
+    "id": "c15",
+    "word": "ฏ (ปฏัก)",
+    "category": "consonant",
+    "description": "กำมือแล้วชูนิ้วชี้ขึ้น จากนั้นงอนิ้วชี้ให้เป็นตะขอเล็ก ๆ (เหมือนปลายปฏัก)",
+    "tip": "ทำปลายนิ้วชี้เหมือนตะขอ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1fNFOTXWQKkseQAflvjWOyiMhydY2YFD7",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "To Patak (ฏ) – Goad",
+    "description_en": "Make a fist, raise the index finger, and bend its tip like a small hook, resembling the end of a goad."
+  },
+  {
+    "id": "c16",
+    "word": "ฐ (ฐาน)",
+    "category": "consonant",
+    "description": "แบมือหงาย แล้วใช้นิ้วชี้ของอีกมือแตะเป็นเส้นตรงบนฝ่ามือ (สื่อถึงฐาน/พื้นรอง)",
+    "tip": "ฝ่ามือเป็นฐาน นิ้วชี้คือแนวฐาน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1pkYim-1PwFerRAytvSewem_hB7WO081k",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Tho Than (ฐ) – Base",
+    "description_en": "Open the palm and use the index finger of the other hand to touch a straight line on the palm, representing a base or foundation."
+  },
+  {
+    "id": "c17",
+    "word": "ฑ (มณโฑ)",
+    "category": "consonant",
+    "description": "ชูนิ้วชี้ขึ้น แล้วใช้นิ้วโป้งแตะที่ข้อนิ้วชี้ให้เป็นวงเล็ก ๆ (สื่อถึงตัวนางมณโฑ/เครื่องประดับ)",
+    "tip": "ทำวงเล็ก ๆ ที่นิ้วชี้ให้ดูเหมือนเครื่องประดับ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1KDCBHb0TE8pP0FJCuUzmcXTdYD6_wWyg",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Tho Montho (ฑ) – Montho",
+    "description_en": "Raise the index finger and touch near its joint with the thumb to form a small ring-like shape, symbolizing Montho/ornament."
+  },
+  {
+    "id": "c18",
+    "word": "ฒ (ผู้เฒ่า)",
+    "category": "consonant",
+    "description": "ทำมือเหมือนถือไม้เท้า: กำมือแล้วให้ปลายนิ้วชี้งอเล็กน้อย พร้อมยกมือขึ้นเล็กน้อย (สื่อถึงผู้เฒ่าพยุงเดิน)",
+    "tip": "จินตนาการว่าใช้มือแทนไม้เท้า",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1FVFRw6yGZYiK1ECl4iIniGWUsSES5K9Q",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Tho Phuthao (ฒ) – Elder",
+    "description_en": "Form a handshape like holding a cane: make a fist and slightly bend the index tip, suggesting an elder using a walking stick."
+  },
+  {
+    "id": "c19",
+    "word": "ณ (เณร)",
+    "category": "consonant",
+    "description": "ยกมือใกล้ศีรษะแล้วใช้นิ้วชี้แตะข้างศีรษะเบา ๆ (สื่อถึงเณร/การบวช)",
+    "tip": "แตะใกล้ศีรษะให้นึกถึงการบวชเป็นเณร",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1gPYpr2IxQWPfSnOZosqxKvhGPp9TuY7U",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "No Nen (ณ) – Novice monk",
+    "description_en": "Raise the hand near the head and lightly touch the side of the head with the index finger to represent a novice monk."
+  },
+
+  {
+    "id": "c20",
+    "word": "ด (เด็ก)",
+    "category": "consonant",
+    "description": "ชูนิ้วชี้ขึ้น แล้วแตะปลายนิ้วชี้ลงบนฝ่ามืออีกข้างเบา ๆ (สื่อถึงเด็กตัวเล็ก ๆ)",
+    "tip": "แตะเบา ๆ ให้ดูเป็นเด็กตัวเล็ก",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1b7cJDrI91vzUwZDVZj08jcK1F5q8ASot",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Do Dek (ด) – Child",
+    "description_en": "Raise the index finger and tap it lightly onto the other palm, symbolizing a small child."
+  },
+  {
+    "id": "c21",
+    "word": "ต (เต่า)",
+    "category": "consonant",
+    "description": "กำมือแล้วให้นิ้วโป้งยื่นออกมา จากนั้นค่อย ๆ ขยับนิ้วโป้งเข้าออกเล็กน้อย (เหมือนหัวเต่ายื่นจากกระดอง)",
+    "tip": "นิ้วโป้งคือหัวเต่า",
+    "imageUrl": "https://lh3.googleusercontent.com/d/109E_HqQElZomzqUCkj2LpX1UKZRw6yRv",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "To Tao (ต) – Turtle",
+    "description_en": "Make a fist with the thumb extended, then gently move the thumb in and out like a turtle’s head coming out of its shell."
+  },
+  {
+    "id": "c22",
+    "word": "ถ (ถุง)",
+    "category": "consonant",
+    "description": "ทำมือเหมือนถือหูถุง: ใช้นิ้วโป้งกับนิ้วชี้ทำเป็นวง แล้วดึงขึ้นเล็กน้อย (สื่อถึงหูถุง)",
+    "tip": "ทำวงแล้วดึงเหมือนยกถุง",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1NcG3SqnqpQ_Cr5Qv4XEGVSkj2-tMDzqg",
+    "youtubeUrl":"https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Tho Thung (ถ) – Bag",
+    "description_en": "Form a loop with the thumb and index finger and lift slightly, as if holding a bag handle."
+  },
+  {
+    "id": "c23",
+    "word": "ท (ทหาร)",
+    "category": "consonant",
+    "description": "ชูมือทำท่าวันทยหัตถ์: ยกนิ้วชี้แตะบริเวณขมับ/หน้าผากเล็กน้อย แล้วกลับมาวางมือ (สื่อถึงทหาร)",
+    "tip": "ทำท่าคล้ายเคารพแบบทหาร",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1XeRdogP3ylmP48RvD_1btooz4d5NUIJ1",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Tho Thahan (ท) – Soldier",
+    "description_en": "Make a salute-like motion by bringing the index finger near the temple/forehead briefly, representing a soldier."
+  },
+  {
+    "id": "c24",
+    "word": "ธ (ธง)",
+    "category": "consonant",
+    "description": "ทำมือเหมือนจับเสาธง: กำมือเป็นเสา แล้วใช้มืออีกข้างกางนิ้วเหมือนผืนธงพริ้วด้านข้าง",
+    "tip": "มือหนึ่งเป็นเสา อีกมือเป็นผืนธง",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1d1vutbfpEXCTYUPRFRTRjzwFSbRf9guN",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Tho Thong (ธ) – Flag",
+    "description_en": "Hold one hand like a flagpole and spread the other hand like a flag cloth waving to the side."
+  },
+  {
+    "id": "c25",
+    "word": "น (หนู)",
+    "category": "consonant",
+    "description": "กำมือแล้วชูนิ้วชี้และนิ้วกลางงอเล็กน้อยให้เป็น “หูหนู” 2 ข้าง",
+    "tip": "นึกถึงหูหนูคู่เล็ก ๆ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1vYYa9HpTEtc4KUjirccXLkdmAKdjvvgl",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "No Nu (น) – Mouse",
+    "description_en": "Make a fist and slightly bend the index and middle fingers to resemble two small mouse ears."
+  },
+
+  {
+    "id": "c26",
+    "word": "บ (ใบไม้)",
+    "category": "consonant",
+    "description": "แบมือแล้วกางนิ้วให้แผ่เหมือนใบไม้ จากนั้นสั่นเบา ๆ ให้เหมือนใบไม้ไหว",
+    "tip": "กางนิ้วเหมือนใบไม้พัดลม",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1Ng5UC6q_h8D1DAnlg69d9MVJug0Rzexf",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Bo Baimai (บ) – Leaf",
+    "description_en": "Open the hand and spread the fingers like a leaf, then gently wiggle to show a leaf moving."
+  },
+  {
+    "id": "c27",
+    "word": "ป (ปลา)",
+    "category": "consonant",
+    "description": "กำมือแล้วประกบนิ้วโป้งกับนิ้วชี้ให้เหมือนปากปลา จากนั้นเปิด-ปิดเบา ๆ (เหมือนปลางับ)",
+    "tip": "ทำปากปลางับ 1–2 ครั้ง",
+    "imageUrl": "https://lh3.googleusercontent.com/d/13Q9o7UWVSxKiA6Ak6bfCvhcp3IVCud4l",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Po Pla (ป) – Fish",
+    "description_en": "Form a fish mouth with the thumb and index finger and open-close it gently like a fish nibbling."
+  },
+  {
+    "id": "c28",
+    "word": "ผ (ผึ้ง)",
+    "category": "consonant",
+    "description": "ชูนิ้วชี้กับนิ้วกลางแล้วส่ายไปมาเล็กน้อยใกล้แก้ม/ไหล่ (สื่อถึงผึ้งบินและปีกกระพือ)",
+    "tip": "ส่ายเบา ๆ เหมือนผึ้งบิน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1i5j9zsobfKqb3Y-nkMI0fR9UqkRfHqtC",
+    "youtubeUrl":"https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Pho Phueng (ผ) – Bee",
+    "description_en": "Raise the index and middle fingers and move them lightly like fluttering wings, suggesting a bee flying."
+  },
+  {
+    "id": "c29",
+    "word": "ฝ (ฝา)",
+    "category": "consonant",
+    "description": "แบมือหงายเป็นภาชนะ แล้วใช้มืออีกข้างวางปิดทับลงบนฝ่ามือ (ทำท่า “ปิดฝา”)",
+    "tip": "ทำท่าปิดฝาให้สนิท",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1-HxNOGLJm3h9IZSbZaJU4idAkKuj24xx",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Fo Fa (ฝ) – Lid",
+    "description_en": "Open one hand palm-up like a container, then place the other hand on top to show ‘closing a lid.’"
+  },
+  {
+    "id": "c30",
+    "word": "พ (พาน)",
+    "category": "consonant",
+    "description": "แบมือทั้งสองข้างหงายขึ้น แล้ววางซ้อนกันให้ดูเหมือนถือพานรองของอยู่ด้านหน้าอก",
+    "tip": "ทำมือเหมือนประคองพาน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1g5XfIpl-QZjFCdZDW3R3wVh1Np7YtNrZ",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Pho Phan (พ) – Tray",
+    "description_en": "Hold both hands palm-up and slightly cupped as if presenting a ceremonial tray."
+  },
+  {
+    "id": "c31",
+    "word": "ฟ (ฟัน)",
+    "category": "consonant",
+    "description": "ใช้นิ้วชี้แตะที่ฟันหน้าเบา ๆ 1 ครั้ง แล้วกลับมาวางมือ (สื่อถึงฟัน)",
+    "tip": "แตะที่ฟันหน้าให้ผู้เรียนเห็นชัด",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1Oa-73XQYJwwQQovRJyl0Ope5lJpAGMLI",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Fo Fan (ฟ) – Teeth",
+    "description_en": "Touch the front teeth lightly with the index finger once to represent ‘teeth.’"
+  },
+  {
+    "id": "c32",
+    "word": "ภ (สำเภา)",
+    "category": "consonant",
+    "description": "ทำมือเหมือนเรือ: แบมือ 2 ข้างทำเป็นรูปท้องเรือ แล้วขยับไปข้างหน้าเล็กน้อย (สื่อถึงเรือสำเภา)",
+    "tip": "ทำให้ดูเหมือนเรือแล่น",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1YggGPET62Apgl53AqJXCoshSOgHUcKjS",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Pho Samphao (ภ) – Junk boat",
+    "description_en": "Form a boat shape with both hands and move it slightly forward, representing a junk boat."
+  },
+  {
+    "id": "c33",
+    "word": "ม (ม้า)",
+    "category": "consonant",
+    "description": "กำมือแล้วชูนิ้วชี้กับนิ้วกลางขึ้น แล้วงอปลายนิ้วเล็กน้อยให้เหมือนหูม้า 2 ข้าง",
+    "tip": "ปลายนิ้วทำเหมือนหูม้าตั้ง",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1p8j1EBzUl5JZmfW8HqJlRCpLvKD1x5vP",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Mo Ma (ม) – Horse",
+    "description_en": "Make a fist and raise the index and middle fingers, slightly bending the tips like two horse ears."
+  },
+
+  {
+    "id": "c34",
+    "word": "ย (ยักษ์)",
+    "category": "consonant",
+    "description": "ยกมือขึ้นระดับหน้าแล้วกางนิ้วให้ดูใหญ่ขึ้น จากนั้นทำท่าขู่เบา ๆ (สื่อถึงยักษ์ตัวใหญ่)",
+    "tip": "ทำท่าให้ดู “ใหญ่และน่าเกรงขาม”",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1qTvsFZDPJlcyZm6egLRXyeHXTpuQKZ5R",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Yo Yak (ย) – Giant",
+    "description_en": "Raise the hand near the face and spread the fingers to appear bigger, giving a slight fierce pose to represent a giant."
+  },
+  {
+    "id": "c35",
+    "word": "ร (เรือ)",
+    "category": "consonant",
+    "description": "แบมือทำเป็นรูปเรือเล็ก ๆ แล้วไหวมือไปข้างหน้าเล็กน้อย (สื่อถึงเรือ)",
+    "tip": "ขยับมือเหมือนเรือแล่น",
+    "imageUrl": "https://lh3.googleusercontent.com/d/13R7VufokpkJIdOH0u0xl17HP0jicKCYV",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Ro Ruea (ร) – Boat",
+    "description_en": "Form a small boat shape with the hand and move it slightly forward, representing a boat."
+  },
+  {
+    "id": "c36",
+    "word": "ล (ลิง)",
+    "category": "consonant",
+    "description": "ใช้นิ้วชี้ขีดที่มุมปากเล็กน้อยแล้วดึงขึ้น (สื่อถึงปากลิง/ท่าลิงซน)",
+    "tip": "ทำให้ดูซน ๆ เหมือนลิง",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1gjPxG0qC7dUaXswhX4MCF91knBYXYH0-",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Lo Ling (ล) – Monkey",
+    "description_en": "Lightly touch near the corner of the mouth with the index finger and pull upward slightly, suggesting a playful monkey expression."
+  },
+  {
+    "id": "c37",
+    "word": "ว (แหวน)",
+    "category": "consonant",
+    "description": "ใช้นิ้วโป้งกับนิ้วชี้ทำเป็นวงกลม แล้วสวมลงที่นิ้วนาง (ทำท่าใส่แหวน)",
+    "tip": "ทำวงกลมชัด ๆ แล้วสวมที่นิ้ว",
+    "imageUrl": "https://lh3.googleusercontent.com/d/156GwyMCTn4SFjw5I4IF8_cxcjOCsjflC",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Wo Waen (ว) – Ring",
+    "description_en": "Make a circle with the thumb and index finger and place it onto the ring finger, as if putting on a ring."
+  },
+
+  {
+    "id": "c38",
+    "word": "ศ (ศาลา)",
+    "category": "consonant",
+    "description": "ยกมือทำเป็นรูปหลังคา: ประกบปลายนิ้วทั้งสองมือเป็นสามเหลี่ยมเล็ก ๆ (สื่อถึงศาลา/หลังคา)",
+    "tip": "ทำสามเหลี่ยมเหมือนหลังคา",
+    "imageUrl": "https://lh3.googleusercontent.com/d/131okl_-ayi27xVUrJqlNatJva02yT4iU",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "So Sala (ศ) – Pavilion",
+    "description_en": "Bring both hands together to form a small triangular roof shape with fingertips, representing a pavilion."
+  },
+  {
+    "id": "c39",
+    "word": "ษ (ฤๅษี)",
+    "category": "consonant",
+    "description": "ทำมือแตะที่คางแล้วลากลงเบา ๆ (สื่อถึงเคราฤๅษี)",
+    "tip": "นึกถึงฤๅษีมีเครายาว",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1Fc9Dlq_rhqSQoYzSXGcqnZS6dWBJcdsN",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "So Ruesi (ษ) – Hermit",
+    "description_en": "Touch the chin and lightly stroke downward, representing a hermit’s beard."
+  },
+  {
+    "id": "c40",
+    "word": "ส (เสือ)",
+    "category": "consonant",
+    "description": "ยกมือขึ้นแล้วทำท่าข่วนเบา ๆ จากหน้าอกออกไป (สื่อถึงกรงเล็บเสือ)",
+    "tip": "ทำท่ากรงเล็บให้ดูดุเล็กน้อย",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1OZyfogZR8i9wXjWI-mszax6s5UFWPlce",
+    "youtubeUrl":"https://youtu.be/JzcnsQAYdIc",
+    "word_en": "So Suea (ส) – Tiger",
+    "description_en": "Raise the hand and make a light clawing motion outward from the chest, representing a tiger’s claws."
+  },
+
+  {
+    "id": "c41",
+    "word": "ห (หีบ)",
+    "category": "consonant",
+    "description": "แบมือสองข้างทำเป็นรูปกล่อง แล้วทำท่าเปิดฝาขึ้น-ปิดลง 1 ครั้ง (สื่อถึงหีบ)",
+    "tip": "ทำให้เห็น “ฝาเปิด-ปิด” ชัดเจน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1WFwpicjEAYFK95wnbXNMe25VF71YeAPA",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Ho Hip (ห) – Chest/Box",
+    "description_en": "Form a box shape with both hands and open-close an imaginary lid once to represent a chest/box."
+  },
+  {
+    "id": "c42",
+    "word": "ฬ (จุฬา)",
+    "category": "consonant",
+    "description": "กำมือแล้วชูนิ้วก้อยขึ้น จากนั้นแตะนิ้วก้อยกับนิ้วโป้งให้เป็นวงเล็ก ๆ (สื่อถึง ฬ ในชุดสะกดนิ้วมือ)",
+    "tip": "ทำวงเล็ก ๆ ให้ชัดด้วยนิ้วก้อย",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1ETcVQIXJpRWhwnf1iA_qYxtDMzb0WDbZ",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Lo Chula (ฬ)",
+    "description_en": "Make a fist, raise the little finger, and touch it with the thumb to form a small circle, representing the “ฬ” fingerspelling shape."
+  },
+  {
+    "id": "c43",
+    "word": "อ (อ่าง)",
+    "category": "consonant",
+    "description": "แบมือหงายทำเป็นอ่าง แล้วใช้นิ้วชี้ของอีกมือวาดขอบอ่างเป็นวงบนฝ่ามือ",
+    "tip": "ฝ่ามือคืออ่าง วาดขอบเป็นวงกลม",
+    "imageUrl": "https://lh3.googleusercontent.com/d/14rkKr_GXDfCqrNDK4BtijwxVBmw8Iyac",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "O Ang (อ) – Basin",
+    "description_en": "Hold one hand palm-up like a basin and trace a circular rim on the palm with the index finger of the other hand."
+  },
+  {
+    "id": "c44",
+    "word": "ฮ (นกฮูก)",
+    "category": "consonant",
+    "description": "ทำวงกลมด้วยนิ้วโป้งและนิ้วชี้ แล้วนำไปแตะรอบดวงตา 1 ข้าง (สื่อถึงตากลม ๆ ของนกฮูก)",
+    "tip": "ทำวงกลมเหมือนตานกฮูก",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1-mR0lpFX5yFrdbYUNLAc65lSBp3nXjA9",
+    "youtubeUrl": "https://youtu.be/JzcnsQAYdIc",
+    "word_en": "Ho Nokhuk (ฮ) – Owl",
+    "description_en": "Make a circle with the thumb and index finger and place it around one eye, representing an owl’s round eye."
+  },
+  {
+    "id": "n1",
+    "word": "1 (หนึ่ง)",
+    "category": "number",
+    "description": "ชูนิ้วชี้ 1 นิ้ว",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+1",
+    "word_en": "Number 1",
+    "description_en": "Raise only the index finger to show the number one."
+  },
+  {
+    "id": "n2",
+    "word": "2 (สอง)",
+    "category": "number",
+    "description": "ชูนิ้วชี้และนิ้วกลาง (สู้ๆ)",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+2",
+    "word_en": "Number 2",
+    "description_en": "Raise the index and middle fingers, similar to a V sign."
+  },
+  {
+    "id": "n3",
+    "word": "3 (สาม)",
+    "category": "number",
+    "description": "ชู 3 นิ้ว",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+3",
+    "word_en": "Number 3",
+    "description_en": "Raise three fingers to show the number three."
+  },
+  {
+    "id": "n4",
+    "word": "4 (สี่)",
+    "category": "number",
+    "description": "ชู 4 นิ้ว",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+4",
+    "word_en": "Number 4",
+    "description_en": "Raise four fingers leaving the thumb folded."
+  },
+  {
+    "id": "n5",
+    "word": "5 (ห้า)",
+    "category": "number",
+    "description": "ชู 5 นิ้ว",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+5",
+    "word_en": "Number 5",
+    "description_en": "Open the hand and extend all five fingers."
+  },
+  {
+    "id": "n6",
+    "word": "6 (หก)",
+    "category": "number",
+    "description": "ชูนิ้วโป้งแนบแก้ม",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+6",
+    "word_en": "Number 6",
+    "description_en": "Touch the cheek with the thumb while the other fingers are relaxed."
+  },
+  {
+    "id": "n7",
+    "word": "7 (เจ็ด)",
+    "category": "number",
+    "description": "ชูนิ้วโป้ง+ชี้",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+7",
+    "word_en": "Number 7",
+    "description_en": "Extend thumb and index finger together to represent seven."
+  },
+  {
+    "id": "n8",
+    "word": "8 (แปด)",
+    "category": "number",
+    "description": "ชูนิ้วโป้ง+ชี้+กลาง",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+8",
+    "word_en": "Number 8",
+    "description_en": "Extend thumb, index, and middle fingers."
+  },
+  {
+    "id": "n9",
+    "word": "9 (เก้า)",
+    "category": "number",
+    "description": "ชูนิ้วโป้ง+ชี้+กลาง+นาง",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+9",
+    "word_en": "Number 9",
+    "description_en": "Extend thumb, index, middle, and ring fingers."
+  },
+  {
+    "id": "n10",
+    "word": "10 (สิบ)",
+    "category": "number",
+    "description": "กำมือกระดกโป้งขึ้น",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+10",
+    "word_en": "Number 10",
+    "description_en": "Make a fist and flick the thumb upward to show ten."
+  },
+  {
+    "id": "d1",
+    "word": "สวัสดี",
+    "category": "daily",
+    "description": "พนมมือไหว้",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=สวัสดี",
+    "word_en": "Hello",
+    "description_en": "Place both palms together in front of the chest and bow slightly as in the Thai greeting 'wai'."
+  },
+  {
+    "id": "d2",
+    "word": "ขอบคุณ",
+    "category": "daily",
+    "description": "หลังมือแตะคางแล้วเคลื่อนลง",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=ขอบคุณ",
+    "word_en": "Thank you",
+    "description_en": "Place the back of the fingertips near the chin or mouth and then move the hand downward, expressing thanks."
+  },
+  {
+    "id": "d3",
+    "word": "ขอโทษ",
+    "category": "daily",
+    "description": "ถูหน้าอกวนๆ",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=ขอโทษ",
+    "word_en": "Sorry",
+    "description_en": "Rub the chest in small circles with a flat hand to show apology."
+  },
+  {
+    "id": "d4",
+    "word": "รัก (Love)",
+    "category": "daily",
+    "description": "มือ I Love You",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=รัก+(ILY)",
+    "word_en": "Love (ILY handshape)",
+    "description_en": "Use the I Love You handshape: extend the thumb, index finger, and little finger while the middle and ring fingers are folded."
+  },
+  {
+    "id": "d5",
+    "word": "พ่อ",
+    "category": "daily",
+    "description": "นิ้วโป้งแตะจมูก",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=พ่อ",
+    "word_en": "Father",
+    "description_en": "Touch the nose lightly with the thumb to indicate 'father' in Thai sign language."
+  },
+  {
+    "id": "d6",
+    "word": "แม่",
+    "category": "daily",
+    "description": "นิ้วโป้งแตะแก้ม",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=แม่",
+    "word_en": "Mother",
+    "description_en": "Touch the cheek lightly with the thumb to indicate 'mother' in Thai sign language."
+  },
+  {
+    "id": "d7",
+    "word": "กิน",
+    "category": "daily",
+    "description": "จีบมือเข้าหาปาก",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=กิน",
+    "word_en": "Eat",
+    "description_en": "Pinch the fingers together and move them toward the mouth as if taking food to eat."
+  },
+  {
+    "id": "d8",
+    "word": "หิว",
+    "category": "daily",
+    "description": "ลูบท้อง",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=หิว",
+    "word_en": "Hungry",
+    "description_en": "Rub or pat the stomach gently to show hunger."
+  },
+  {
+    "id": "d9",
+    "word": "ใช่",
+    "category": "daily",
+    "description": "จีบนิ้วกดลง (เหมือน OK)",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=ใช่",
+    "word_en": "Yes",
+    "description_en": "Use a pinched handshape and press downward, similar to nodding or an OK motion."
+  },
+  {
+    "id": "d10",
+    "word": "ไม่",
+    "category": "daily",
+    "description": "โบกมือปฏิเสธ",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=ไม่",
+    "word_en": "No",
+    "description_en": "Wave the hand side to side as a gesture of refusal or denial."
+  },
+  {
+    "id": "life1",
+    "word": "ตื่นนอน",
+    "word_en": "Wake up",
+    "category": "daily_life",
+    "description": "ลืมตาและลุกขึ้นจากที่นอน แสดงการเริ่มต้นวันใหม่",
+    "description_en": "Open your eyes and rise from bed, showing the start of a new day.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam1",
+    "word": "ครอบครัว",
+    "word_en": "Family",
+    "category": "family",
+    "description": "กางแขนโค้งเข้าหากันด้านหน้าเหมือนโอบกอดทุกคนในบ้าน",
+    "description_en": "Curve both arms in front as if embracing the whole family.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo1",
+    "word": "ดีใจ",
+    "word_en": "Happy",
+    "category": "emotion",
+    "description": "ยิ้มพร้อมยกมือสองข้างขึ้นเล็กน้อย",
+    "description_en": "Smile and raise both hands slightly to show happiness.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place1",
+    "word": "บ้าน",
+    "word_en": "Home",
+    "category": "place",
+    "description": "ใช้สองมือทำรูปหลังคาเหนือศีรษะ",
+    "description_en": "Form a roof shape above the head with both hands.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object1",
+    "word": "โทรศัพท์",
+    "word_en": "Phone",
+    "category": "object",
+    "description": "ทำมือเป็นรูปโทรศัพท์แนบหูหรือมองหน้าจอในมือ",
+    "description_en": "Form a phone shape at the ear or look at an imaginary screen.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food1",
+    "word": "ข้าว",
+    "word_en": "Rice",
+    "category": "food",
+    "description": "ทำท่าตักข้าวเข้าปากด้วยช้อนหรือส้อม",
+    "description_en": "Mimic scooping rice into the mouth with a spoon.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act1",
+    "word": "เดิน",
+    "word_en": "Walk",
+    "category": "action",
+    "description": "ใช้มือสองข้างทำท่าเท้าเดินสลับกัน",
+    "description_en": "Use two hands to imitate alternating steps.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv1",
+    "word": "คุณสบายดีไหม",
+    "word_en": "How are you?",
+    "category": "conversation",
+    "description": "ท่าทางแสดงการถามสารทุกข์สุกดิบ ใช้น้ำเสียงและสีหน้าที่อ่อนโยน",
+    "description_en": "A gentle questioning expression asking about someone's well‑being.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life2",
+    "word": "ล้างหน้า",
+    "word_en": "Wash face",
+    "category": "daily_life",
+    "description": "ใช้มือทั้งสองถูหน้าเบา ๆ เหมือนกำลังล้างหน้า",
+    "description_en": "Use both hands to gently rub the face as if washing it.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam2",
+    "word": "พ่อ",
+    "word_en": "Father",
+    "category": "family",
+    "description": "ใช้นิ้วโป้งแตะที่จมูก แสดงถึงคำว่าพ่อ",
+    "description_en": "Touch the nose gently with the thumb to indicate father.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo2",
+    "word": "เสียใจ",
+    "word_en": "Sad",
+    "category": "emotion",
+    "description": "ก้มหน้าเล็กน้อยและใช้มือเช็ดน้ำตา",
+    "description_en": "Lower the head a bit and wipe imaginary tears.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place2",
+    "word": "โรงเรียน",
+    "word_en": "School",
+    "category": "place",
+    "description": "ทำสัญลักษณ์เหมือนหลังคาแล้วทำท่าเขียนหนังสือ",
+    "description_en": "Make a roof shape then mimic writing in a notebook.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object2",
+    "word": "กระเป๋า",
+    "word_en": "Bag",
+    "category": "object",
+    "description": "ทำท่าถือสายกระเป๋าที่ไหล่หรือมือ",
+    "description_en": "Mimic holding a bag strap on the shoulder or in the hand.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food2",
+    "word": "น้ำ",
+    "word_en": "Water",
+    "category": "food",
+    "description": "ทำท่าถือแก้วและดื่มน้ำ",
+    "description_en": "Pretend to hold a glass and drink water.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act2",
+    "word": "วิ่ง",
+    "word_en": "Run",
+    "category": "action",
+    "description": "ทำท่าแขนแกว่งเร็วเหมือนกำลังวิ่ง",
+    "description_en": "Swing the arms quickly as if running.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv2",
+    "word": "คุณชื่ออะไร",
+    "word_en": "What is your name?",
+    "category": "conversation",
+    "description": "ทำท่าชี้ไปที่อีกฝ่ายแล้วทำท่าเขียนชื่อในอากาศ",
+    "description_en": "Point to the other person and mimic writing a name in the air.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life3",
+    "word": "แปรงฟัน",
+    "word_en": "Brush teeth",
+    "category": "daily_life",
+    "description": "ทำท่าถือแปรงแล้วขยับที่ปากไปมาเหมือนกำลังแปรงฟัน",
+    "description_en": "Mimic holding a toothbrush and move it across the mouth.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam3",
+    "word": "แม่",
+    "word_en": "Mother",
+    "category": "family",
+    "description": "ใช้นิ้วโป้งแตะที่แก้ม แสดงถึงคำว่าแม่",
+    "description_en": "Touch the cheek lightly with the thumb to indicate mother.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo3",
+    "word": "โกรธ",
+    "word_en": "Angry",
+    "category": "emotion",
+    "description": "ขมวดคิ้ว กำมือแน่น และเกร็งแขนเล็กน้อย",
+    "description_en": "Frown, clench fists, and tense the arms slightly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place3",
+    "word": "โรงพยาบาล",
+    "word_en": "Hospital",
+    "category": "place",
+    "description": "วาดกากบาทอยู่เหนือด้านหน้าอก แสดงถึงสัญลักษณ์โรงพยาบาล",
+    "description_en": "Draw a cross sign in front of the chest to indicate hospital.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object3",
+    "word": "หนังสือ",
+    "word_en": "Book",
+    "category": "object",
+    "description": "ประกบมือแล้วกางออกเหมือนเปิดหนังสือ",
+    "description_en": "Put hands together then open them like a book.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food3",
+    "word": "กาแฟ",
+    "word_en": "Coffee",
+    "category": "food",
+    "description": "ถือแก้วเล็กและจิบเบา ๆ เหมือนดื่มกาแฟ",
+    "description_en": "Hold a small cup and sip gently like drinking coffee.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act3",
+    "word": "นั่ง",
+    "word_en": "Sit",
+    "category": "action",
+    "description": "ทำท่านั่งลงอย่างชัดเจน",
+    "description_en": "Clearly mime the action of sitting down.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv3",
+    "word": "ฉันชื่อ...",
+    "word_en": "My name is ...",
+    "category": "conversation",
+    "description": "ชี้ที่ตัวเองแล้วทำท่าเขียนชื่อ",
+    "description_en": "Point to yourself and mime writing your name.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life4",
+    "word": "อาบน้ำ",
+    "word_en": "Take a shower",
+    "category": "daily_life",
+    "description": "ใช้มือถูแขนและลำตัวเหมือนน้ำไหลผ่านขณะอาบน้ำ",
+    "description_en": "Rub arms and body as if water is running over you in the shower.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam4",
+    "word": "ลูกชาย",
+    "word_en": "Son",
+    "category": "family",
+    "description": "ชี้ลงต่ำเล็กน้อยและทำท่าทางแข็งแรงเหมือนเด็กผู้ชาย",
+    "description_en": "Point slightly downward and show a strong posture like a boy.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo4",
+    "word": "กลัว",
+    "word_en": "Afraid",
+    "category": "emotion",
+    "description": "ถอยตัวเล็กน้อยและกอดแขนตัวเองเหมือนกลัว",
+    "description_en": "Pull the body back a little and hug the arms as if scared.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place4",
+    "word": "ตลาด",
+    "word_en": "Market",
+    "category": "place",
+    "description": "ทำท่าหยิบของหลายครั้งเหมือนเลือกซื้อของ",
+    "description_en": "Mimic picking up items repeatedly as if shopping.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object4",
+    "word": "ปากกา",
+    "word_en": "Pen",
+    "category": "object",
+    "description": "ทำท่าจับปากกาแล้วเขียนบนโต๊ะหรือกระดาษ",
+    "description_en": "Hold an imaginary pen and write on a surface.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food4",
+    "word": "ชา",
+    "word_en": "Tea",
+    "category": "food",
+    "description": "ถือถ้วยและเป่าลมเบา ๆ บนผิวเครื่องดื่มร้อน",
+    "description_en": "Hold a cup and blow lightly over a hot drink.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act4",
+    "word": "ยืน",
+    "word_en": "Stand",
+    "category": "action",
+    "description": "ยืดตัวตรงและชี้ลงไปที่เท้า",
+    "description_en": "Stand tall and point down at the feet.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv4",
+    "word": "คุณมาจากไหน",
+    "word_en": "Where are you from?",
+    "category": "conversation",
+    "description": "ทำท่าชี้ไปที่พื้น แล้วชี้ออกไปไกล ๆ เหมือนถามถิ่นกำเนิด",
+    "description_en": "Point to the ground, then outward as if asking about origin.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life5",
+    "word": "แต่งตัว",
+    "word_en": "Get dressed",
+    "category": "daily_life",
+    "description": "ทำท่าดึงเสื้อใส่และจัดคอเสื้อให้เรียบร้อย",
+    "description_en": "Mimic putting on clothes and adjusting the collar neatly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam5",
+    "word": "ลูกสาว",
+    "word_en": "Daughter",
+    "category": "family",
+    "description": "ชี้ลงต่ำเล็กน้อยและทำท่าทางอ่อนโยนเหมือนเด็กผู้หญิง",
+    "description_en": "Point slightly downward and show a gentle gesture like a girl.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo5",
+    "word": "งง",
+    "word_en": "Confused",
+    "category": "emotion",
+    "description": "เอียงศีรษะและขมวดคิ้ว พร้อมกางมือออกข้างตัว",
+    "description_en": "Tilt the head, frown slightly, and open palms to the sides.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place5",
+    "word": "วัด",
+    "word_en": "Temple",
+    "category": "place",
+    "description": "พนมมือและก้มศีรษะเล็กน้อย แสดงถึงสถานที่ศาสนา",
+    "description_en": "Put palms together and bow slightly to indicate a temple.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object5",
+    "word": "คอมพิวเตอร์",
+    "word_en": "Computer",
+    "category": "object",
+    "description": "ทำท่าพิมพ์แป้นพิมพ์และจ้องหน้าจอ",
+    "description_en": "Mimic typing on a keyboard while looking at a screen.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food5",
+    "word": "ผลไม้",
+    "word_en": "Fruit",
+    "category": "food",
+    "description": "ทำท่าปอกผลไม้และหยิบใส่ปาก",
+    "description_en": "Mimic peeling fruit and eating it.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act5",
+    "word": "อ่านหนังสือ",
+    "word_en": "Read a book",
+    "category": "action",
+    "description": "ถือหนังสือและกวาดสายตาไปตามหน้า",
+    "description_en": "Hold a book and move the eyes along the page.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv5",
+    "word": "คุณทำงานที่ไหน",
+    "word_en": "Where do you work?",
+    "category": "conversation",
+    "description": "ทำท่าพิมพ์งานแล้วกวาดมือไปรอบ ๆ เหมือนถามสถานที่ทำงาน",
+    "description_en": "Mime typing then gesture around to ask about workplace.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life6",
+    "word": "ไปทำงาน",
+    "word_en": "Go to work",
+    "category": "daily_life",
+    "description": "ชี้ไปที่นาฬิกาแล้วชี้ทางเดินข้างหน้า แสดงการออกไปทำงาน",
+    "description_en": "Point at an imaginary watch then forward to show leaving for work.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam6",
+    "word": "พี่ชาย",
+    "word_en": "Older brother",
+    "category": "family",
+    "description": "ชี้ไปที่ชายหนุ่มด้านบนเล็กน้อย แสดงว่าเป็นพี่ชาย",
+    "description_en": "Gesture toward a man slightly above to indicate older brother.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo6",
+    "word": "เหนื่อย",
+    "word_en": "Tired",
+    "category": "emotion",
+    "description": "ก้มไหล่และหายใจแรง ใช้มือลูบหน้าผาก",
+    "description_en": "Drop the shoulders, breathe heavily, and wipe the forehead.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place6",
+    "word": "สวนสาธารณะ",
+    "word_en": "Park",
+    "category": "place",
+    "description": "กางแขนกว้างเหมือนพื้นที่โล่ง และทำท่ามองต้นไม้",
+    "description_en": "Spread arms wide like an open area and look around at trees.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object6",
+    "word": "แว่นตา",
+    "word_en": "Glasses",
+    "category": "object",
+    "description": "ใช้นิ้วจับกรอบแว่นบริเวณดั้งจมูก",
+    "description_en": "Pinch fingers at the bridge of the nose as if adjusting glasses.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food6",
+    "word": "ขนม",
+    "word_en": "Snack",
+    "category": "food",
+    "description": "หยิบของชิ้นเล็ก ๆ เข้าปากทีละคำ",
+    "description_en": "Pick up small pieces of food and eat them.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act6",
+    "word": "เขียน",
+    "word_en": "Write",
+    "category": "action",
+    "description": "ทำท่าจับปากกาเขียนบนกระดาษ",
+    "description_en": "Hold an imaginary pen and write on paper.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv6",
+    "word": "คุณอายุเท่าไร",
+    "word_en": "How old are you?",
+    "category": "conversation",
+    "description": "ชี้ที่ตัวอีกฝ่ายแล้วทำท่านับอายุด้วยนิ้ว",
+    "description_en": "Point at the person and count with the fingers.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life7",
+    "word": "พักผ่อน",
+    "word_en": "Rest",
+    "category": "daily_life",
+    "description": "ประสานมือไว้ที่หลังศีรษะหรือเอนตัวเหมือนกำลังพักผ่อน",
+    "description_en": "Place hands behind the head or lean back to show resting.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam7",
+    "word": "น้องชาย",
+    "word_en": "Younger brother",
+    "category": "family",
+    "description": "ชี้ลงต่ำเล็กน้อยไปยังผู้ชาย แสดงว่าน้องชาย",
+    "description_en": "Point slightly downward to a male to show younger brother.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo7",
+    "word": "ภูมิใจ",
+    "word_en": "Proud",
+    "category": "emotion",
+    "description": "เชิดหน้าเล็กน้อยและแตะหน้าอกด้วยมือหนึ่ง",
+    "description_en": "Lift the chin slightly and touch the chest with one hand.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place7",
+    "word": "ร้านอาหาร",
+    "word_en": "Restaurant",
+    "category": "place",
+    "description": "ทำท่าตักอาหารเข้าปากแล้วชี้รอบ ๆ แสดงสถานที่กินข้าว",
+    "description_en": "Mimic eating then gesture around to show a place to eat.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object7",
+    "word": "กุญแจ",
+    "word_en": "Key",
+    "category": "object",
+    "description": "ทำท่าไขกุญแจในแม่กุญแจหรือประตู",
+    "description_en": "Turn an imaginary key in a lock or door.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food7",
+    "word": "ผัก",
+    "word_en": "Vegetables",
+    "category": "food",
+    "description": "ทำท่าหยิบผักจากจานและกินอย่างเบา ๆ",
+    "description_en": "Pick vegetables from a plate and eat gently.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act7",
+    "word": "ฟังเพลง",
+    "word_en": "Listen to music",
+    "category": "action",
+    "description": "แตะหูและโยกศีรษะตามจังหวะ",
+    "description_en": "Touch the ear and nod to an imagined rhythm.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv7",
+    "word": "วันนี้เป็นอย่างไรบ้าง",
+    "word_en": "How is your day?",
+    "category": "conversation",
+    "description": "ทำท่ากวาดมือไปตามท้องฟ้าแล้วชี้ที่อีกฝ่าย",
+    "description_en": "Sweep a hand across the sky then point to the person.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life8",
+    "word": "เล่นโทรศัพท์",
+    "word_en": "Use phone",
+    "category": "daily_life",
+    "description": "ทำมือเป็นรูปโทรศัพท์แนบหูหรือมองหน้าจอในมือ",
+    "description_en": "Make a phone shape at the ear or look at a phone in your hand.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam8",
+    "word": "พี่สาว",
+    "word_en": "Older sister",
+    "category": "family",
+    "description": "ชี้ไปที่ผู้หญิงด้านบนเล็กน้อย แสดงว่าเป็นพี่สาว",
+    "description_en": "Gesture toward a woman slightly above to indicate older sister.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo8",
+    "word": "อาย",
+    "word_en": "Shy",
+    "category": "emotion",
+    "description": "ใช้มือปิดแก้มเล็กน้อยและยิ้มเขิน",
+    "description_en": "Cover the cheek slightly and smile shyly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place8",
+    "word": "ธนาคาร",
+    "word_en": "Bank",
+    "category": "place",
+    "description": "ทำท่าหยิบเงินจากกระเป๋าและเก็บใส่ที่ปลอดภัย",
+    "description_en": "Pretend to take money from a wallet and store it safely.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object8",
+    "word": "รองเท้า",
+    "word_en": "Shoes",
+    "category": "object",
+    "description": "ชี้ไปที่เท้าและทำท่าใส่รองเท้า",
+    "description_en": "Point to the feet and mimic putting on shoes.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food8",
+    "word": "เนื้อสัตว์",
+    "word_en": "Meat",
+    "category": "food",
+    "description": "ทำท่าตัดเนื้อด้วยมีดและส้อม",
+    "description_en": "Cut imaginary meat with a knife and fork.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act8",
+    "word": "ดูหนัง",
+    "word_en": "Watch a movie",
+    "category": "action",
+    "description": "จ้องมองไปข้างหน้าเหมือนดูจอใหญ่",
+    "description_en": "Stare forward as if watching a big screen.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv8",
+    "word": "คุณกำลังทำอะไรอยู่",
+    "word_en": "What are you doing?",
+    "category": "conversation",
+    "description": "ชี้ที่อีกฝ่ายแล้วทำท่ามองดูมือของเขา",
+    "description_en": "Point at the person and look at their hands as if observing.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life9",
+    "word": "ดูทีวี",
+    "word_en": "Watch TV",
+    "category": "daily_life",
+    "description": "ชี้ไปข้างหน้าเหมือนมีจอทีวี และจ้องมองอย่างตั้งใจ",
+    "description_en": "Point forward as if there is a TV and stare attentively.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam9",
+    "word": "น้องสาว",
+    "word_en": "Younger sister",
+    "category": "family",
+    "description": "ชี้ลงต่ำเล็กน้อยไปยังผู้หญิง แสดงว่าน้องสาว",
+    "description_en": "Point slightly downward to a female to show younger sister.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo9",
+    "word": "เครียด",
+    "word_en": "Stressed",
+    "category": "emotion",
+    "description": "บีบขมับทั้งสองข้างเหมือนคิดมาก",
+    "description_en": "Press both temples as if overthinking.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place9",
+    "word": "สำนักงาน",
+    "word_en": "Office",
+    "category": "place",
+    "description": "ทำท่าพิมพ์แป้นพิมพ์และนั่งตัวตรงบนเก้าอี้",
+    "description_en": "Mimic typing on a keyboard while sitting upright.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object9",
+    "word": "นาฬิกา",
+    "word_en": "Watch",
+    "category": "object",
+    "description": "แตะข้อมือด้านในเหมือนมีนาฬิกาข้อมือ",
+    "description_en": "Tap the inside of the wrist as if wearing a watch.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food9",
+    "word": "ข้าวเช้า",
+    "word_en": "Breakfast",
+    "category": "food",
+    "description": "ชี้ไปที่นาฬิกาตอนเช้าและทำท่ากินอาหาร",
+    "description_en": "Point to morning time and mimic eating.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act9",
+    "word": "ทำงาน",
+    "word_en": "Work",
+    "category": "action",
+    "description": "ทำท่าพิมพ์งานหรือเขียนเอกสารอย่างจริงจัง",
+    "description_en": "Mime typing or writing documents seriously.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv9",
+    "word": "คุณช่วยฉันได้ไหม",
+    "word_en": "Can you help me?",
+    "category": "conversation",
+    "description": "ใช้มือข้างหนึ่งยื่นไปข้างหน้าเหมือนขอความช่วยเหลือ",
+    "description_en": "Extend one hand forward as if asking for help.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life10",
+    "word": "ทำความสะอาดบ้าน",
+    "word_en": "Clean the house",
+    "category": "daily_life",
+    "description": "ทำท่ากวาดพื้นหรือเช็ดโต๊ะไปมา",
+    "description_en": "Mimic sweeping the floor or wiping a table.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam10",
+    "word": "ปู่",
+    "word_en": "Grandfather (paternal)",
+    "category": "family",
+    "description": "ทำท่าผู้สูงอายุและชี้ไปด้านพ่อ แสดงว่าปู่",
+    "description_en": "Show an elderly posture and gesture toward father’s side.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo10",
+    "word": "ตกใจ",
+    "word_en": "Surprised",
+    "category": "emotion",
+    "description": "เบิกตาโตและยกมือขึ้นเล็กน้อยเหมือนตกใจ",
+    "description_en": "Open the eyes wide and raise hands slightly in surprise.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place10",
+    "word": "สถานีรถไฟ",
+    "word_en": "Train station",
+    "category": "place",
+    "description": "ทำท่ารถไฟวิ่งและชี้ไปที่พื้นเหมือนชานชาลา",
+    "description_en": "Mimic a train moving and point to the ground like a platform.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object10",
+    "word": "โต๊ะ",
+    "word_en": "Table",
+    "category": "object",
+    "description": "วางมือราบระดับเอวเพื่อแสดงผิวโต๊ะ",
+    "description_en": "Hold a flat hand at waist level to show a tabletop.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food10",
+    "word": "ข้าวเที่ยง",
+    "word_en": "Lunch",
+    "category": "food",
+    "description": "ชี้ไปที่ท้องฟ้าตอนกลางวันและทำท่ากินอาหาร",
+    "description_en": "Point to midday and mimic eating.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act10",
+    "word": "พักผ่อน",
+    "word_en": "Relax",
+    "category": "action",
+    "description": "เอนตัวและหายใจลึก ๆ อย่างสบาย",
+    "description_en": "Lean back and take a deep, relaxed breath.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv10",
+    "word": "ขอบคุณมาก",
+    "word_en": "Thank you very much.",
+    "category": "conversation",
+    "description": "ทำท่าขอบคุณจากคางลงมาพร้อมโค้งศีรษะเล็กน้อย",
+    "description_en": "Move the fingertips from chin downward and nod slightly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life11",
+    "word": "ซักผ้า",
+    "word_en": "Do the laundry",
+    "category": "daily_life",
+    "description": "ถูมือสองข้างเข้าหากันเหมือนกำลังซักผ้า",
+    "description_en": "Rub both hands together as if washing clothes.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam11",
+    "word": "ย่า",
+    "word_en": "Grandmother (paternal)",
+    "category": "family",
+    "description": "ทำท่าผู้หญิงสูงอายุแล้วชี้ไปด้านพ่อ แสดงว่าย่า",
+    "description_en": "Show an elderly woman and gesture toward father’s side.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo11",
+    "word": "เบื่อ",
+    "word_en": "Bored",
+    "category": "emotion",
+    "description": "เท้าคางและทำหน้าเบื่อหน่าย",
+    "description_en": "Rest the chin on the hand and look uninterested.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place11",
+    "word": "สนามบิน",
+    "word_en": "Airport",
+    "category": "place",
+    "description": "กางแขนเหมือนปีกเครื่องบินและโบกไปมา",
+    "description_en": "Extend arms like airplane wings and sway gently.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object11",
+    "word": "เก้าอี้",
+    "word_en": "Chair",
+    "category": "object",
+    "description": "ทำท่านั่งลงบนเก้าอี้อย่างระมัดระวัง",
+    "description_en": "Pretend to sit down carefully on a chair.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food11",
+    "word": "ข้าวเย็น",
+    "word_en": "Dinner",
+    "category": "food",
+    "description": "ชี้ไปที่ท้องฟ้าเวลาเย็นและทำท่ากินอาหาร",
+    "description_en": "Point to the evening sky and mimic eating.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act11",
+    "word": "เล่นกีฬา",
+    "word_en": "Play sports",
+    "category": "action",
+    "description": "ทำท่าขว้างหรือเตะบอล",
+    "description_en": "Mimic throwing or kicking a ball.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv11",
+    "word": "ขอโทษนะ",
+    "word_en": "I am sorry.",
+    "category": "conversation",
+    "description": "ถูหน้าอกเป็นวงกลมเบา ๆ เพื่อแสดงการขอโทษ",
+    "description_en": "Rub the chest in a small circle to show apology.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life12",
+    "word": "รีดผ้า",
+    "word_en": "Iron clothes",
+    "category": "daily_life",
+    "description": "ใช้มือข้างหนึ่งกดลงบนอีกมือเหมือนรีดผ้าบนโต๊ะ",
+    "description_en": "Press one hand on top of the other to imitate ironing clothes.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam12",
+    "word": "ตา",
+    "word_en": "Grandfather (maternal)",
+    "category": "family",
+    "description": "ทำท่าผู้สูงอายุและชี้ไปด้านแม่ แสดงว่าตา",
+    "description_en": "Show an elderly posture and gesture toward mother’s side.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo12",
+    "word": "สงสัย",
+    "word_en": "Wondering",
+    "category": "emotion",
+    "description": "ชี้นิ้วที่ขมับและมองขึ้นไปข้างบน",
+    "description_en": "Point to the temple and look upward in thought.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place12",
+    "word": "ห้างสรรพสินค้า",
+    "word_en": "Shopping mall",
+    "category": "place",
+    "description": "ชี้ขึ้นไปด้านบนหลายชั้นและทำท่าถือถุงของ",
+    "description_en": "Point upward for many floors and mimic holding shopping bags.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object12",
+    "word": "โทรทัศน์",
+    "word_en": "Television",
+    "category": "object",
+    "description": "วาดสี่เหลี่ยมผืนผ้าด้านหน้าเหมือนจอทีวี",
+    "description_en": "Draw a rectangle in the air to show a TV screen.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food12",
+    "word": "ขนมปัง",
+    "word_en": "Bread",
+    "category": "food",
+    "description": "ถือชิ้นขนมปังและกัดหนึ่งคำ",
+    "description_en": "Hold a piece of bread and take a bite.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act12",
+    "word": "ช่วยเหลือ",
+    "word_en": "Help",
+    "category": "action",
+    "description": "ยื่นมือไปจับมืออีกคนและดึงขึ้น",
+    "description_en": "Reach out to grab another hand and pull up.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv12",
+    "word": "ไม่เป็นไร",
+    "word_en": "It is okay.",
+    "category": "conversation",
+    "description": "โบกมือเบา ๆ และยิ้มเพื่อบอกว่าไม่เป็นไร",
+    "description_en": "Wave the hand gently and smile to say it is fine.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life13",
+    "word": "เข้านอน",
+    "word_en": "Go to bed",
+    "category": "daily_life",
+    "description": "พนมมือที่ข้างแก้มและเอียงศีรษะเหมือนเอนนอน",
+    "description_en": "Place hands together at the cheek and tilt the head like lying down.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam13",
+    "word": "ยาย",
+    "word_en": "Grandmother (maternal)",
+    "category": "family",
+    "description": "ทำท่าผู้หญิงสูงอายุแล้วชี้ไปด้านแม่ แสดงว่ายาย",
+    "description_en": "Show an elderly woman and gesture toward mother’s side.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo13",
+    "word": "รัก",
+    "word_en": "Love",
+    "category": "emotion",
+    "description": "กอดตัวเองหรือทำท่าหัวใจด้วยมือ",
+    "description_en": "Hug yourself or make a heart shape with the hands.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place13",
+    "word": "ห้องสมุด",
+    "word_en": "Library",
+    "category": "place",
+    "description": "ทำท่าหยิบหนังสือจากชั้นแล้วเปิดอ่าน",
+    "description_en": "Pretend to take a book from a shelf and open it.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object13",
+    "word": "กระดาษ",
+    "word_en": "Paper",
+    "category": "object",
+    "description": "ทำท่าถือแผ่นบาง ๆ และเขียนลงไป",
+    "description_en": "Hold a thin sheet and pretend to write on it.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food13",
+    "word": "น้ำผลไม้",
+    "word_en": "Juice",
+    "category": "food",
+    "description": "ถือแก้วและดื่มพร้อมยิ้มสดชื่น",
+    "description_en": "Hold a glass and drink with a refreshed smile.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act13",
+    "word": "ถาม",
+    "word_en": "Ask",
+    "category": "action",
+    "description": "ชี้ขึ้นเล็กน้อยพร้อมยกคิ้วเหมือนตั้งคำถาม",
+    "description_en": "Point upward slightly and raise eyebrows as if asking.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv13",
+    "word": "ตอนนี้กี่โมงแล้ว",
+    "word_en": "What time is it now?",
+    "category": "conversation",
+    "description": "แตะข้อมือเหมือนดูนาฬิกาและเลิกคิ้วถาม",
+    "description_en": "Tap the wrist as if checking a watch and raise eyebrows.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life14",
+    "word": "ไปโรงเรียน",
+    "word_en": "Go to school",
+    "category": "daily_life",
+    "description": "ชี้เด็กแล้วชี้ทางไปด้านหน้า แสดงการไปโรงเรียน",
+    "description_en": "Point to a child then forward to show going to school.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam14",
+    "word": "ญาติ",
+    "word_en": "Relative",
+    "category": "family",
+    "description": "กางมือสองข้างและโค้งเข้าหากันเหมือนเชื่อมคนหลายคน",
+    "description_en": "Open both hands and curve inward as if connecting many people.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo14",
+    "word": "คิดถึง",
+    "word_en": "Miss (someone)",
+    "category": "emotion",
+    "description": "แตะหน้าอกแล้วเอื้อมมือไปข้างหน้าอย่างอ่อนโยน",
+    "description_en": "Touch the chest then reach one hand forward gently.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place14",
+    "word": "สนามกีฬา",
+    "word_en": "Stadium",
+    "category": "place",
+    "description": "ทำท่ากางแขนวงกว้างและชี้ไปยังลานกว้าง",
+    "description_en": "Spread arms in a circle and point to a wide field.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object14",
+    "word": "กระเป๋าตังค์",
+    "word_en": "Wallet",
+    "category": "object",
+    "description": "เปิดและปิดมือเหมือนเปิดกระเป๋าสตางค์",
+    "description_en": "Open and close the hand as if opening a wallet.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food14",
+    "word": "นม",
+    "word_en": "Milk",
+    "category": "food",
+    "description": "ถือแก้วแล้วดื่มเหมือนดื่มนม",
+    "description_en": "Hold a glass and drink as if it is milk.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act14",
+    "word": "ตอบ",
+    "word_en": "Answer",
+    "category": "action",
+    "description": "ชี้จากปากออกไปด้านหน้าเหมือนส่งคำตอบ",
+    "description_en": "Point outward from the mouth as if sending an answer.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv14",
+    "word": "คุณเข้าใจไหม",
+    "word_en": "Do you understand?",
+    "category": "conversation",
+    "description": "ชี้ไปที่ศีรษะอีกฝ่ายแล้วทำท่าพยักหน้าเบา ๆ",
+    "description_en": "Point to the other person’s head then nod slightly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life15",
+    "word": "ทำการบ้าน",
+    "word_en": "Do homework",
+    "category": "daily_life",
+    "description": "ทำท่าเขียนลงบนสมุดอย่างตั้งใจ",
+    "description_en": "Mimic writing carefully in a notebook.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam15",
+    "word": "เพื่อน",
+    "word_en": "Friend",
+    "category": "family",
+    "description": "เกี่ยวนิ้วชี้ของสองมือเข้าด้วยกันแสดงถึงความผูกพัน",
+    "description_en": "Hook both index fingers together to show friendship.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo15",
+    "word": "กังวล",
+    "word_en": "Worried",
+    "category": "emotion",
+    "description": "ขมวดคิ้วและสอดมือประสานกันแน่น",
+    "description_en": "Frown and clasp hands together tightly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place15",
+    "word": "ป้ายรถเมล์",
+    "word_en": "Bus stop",
+    "category": "place",
+    "description": "ชี้ลงที่จุดหนึ่งและทำท่ารอรถพร้อมมองไปรอบ ๆ",
+    "description_en": "Point to a spot on the ground and stand as if waiting for a bus.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object15",
+    "word": "หูฟัง",
+    "word_en": "Headphones",
+    "category": "object",
+    "description": "ใช้สองมือจับหูทั้งสองข้างเหมือนใส่หูฟัง",
+    "description_en": "Place both hands near the ears as if wearing headphones.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food15",
+    "word": "ข้าวกล่อง",
+    "word_en": "Lunch box",
+    "category": "food",
+    "description": "เปิดกล่องอาหารและตักกินจากด้านใน",
+    "description_en": "Open a lunch box and scoop food from inside.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act15",
+    "word": "รอ",
+    "word_en": "Wait",
+    "category": "action",
+    "description": "ยกฝ่ามือขึ้นด้านหน้าและทำท่ารอคอย",
+    "description_en": "Hold a palm forward as if signaling to wait.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv15",
+    "word": "ฉันไม่เข้าใจ",
+    "word_en": "I do not understand.",
+    "category": "conversation",
+    "description": "ส่ายหัวช้า ๆ และกางมือออกด้านข้าง",
+    "description_en": "Shake the head slowly and open palms to the sides.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life16",
+    "word": "ตื่นนอน",
+    "word_en": "Wake up",
+    "category": "daily_life",
+    "description": "ลืมตาและลุกขึ้นจากที่นอน แสดงการเริ่มต้นวันใหม่",
+    "description_en": "Open your eyes and rise from bed, showing the start of a new day.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam16",
+    "word": "ครอบครัว",
+    "word_en": "Family",
+    "category": "family",
+    "description": "กางแขนโค้งเข้าหากันด้านหน้าเหมือนโอบกอดทุกคนในบ้าน",
+    "description_en": "Curve both arms in front as if embracing the whole family.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo16",
+    "word": "ดีใจ",
+    "word_en": "Happy",
+    "category": "emotion",
+    "description": "ยิ้มพร้อมยกมือสองข้างขึ้นเล็กน้อย",
+    "description_en": "Smile and raise both hands slightly to show happiness.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place16",
+    "word": "บ้าน",
+    "word_en": "Home",
+    "category": "place",
+    "description": "ใช้สองมือทำรูปหลังคาเหนือศีรษะ",
+    "description_en": "Form a roof shape above the head with both hands.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object16",
+    "word": "โทรศัพท์",
+    "word_en": "Phone",
+    "category": "object",
+    "description": "ทำมือเป็นรูปโทรศัพท์แนบหูหรือมองหน้าจอในมือ",
+    "description_en": "Form a phone shape at the ear or look at an imaginary screen.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food16",
+    "word": "ข้าว",
+    "word_en": "Rice",
+    "category": "food",
+    "description": "ทำท่าตักข้าวเข้าปากด้วยช้อนหรือส้อม",
+    "description_en": "Mimic scooping rice into the mouth with a spoon.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act16",
+    "word": "เดิน",
+    "word_en": "Walk",
+    "category": "action",
+    "description": "ใช้มือสองข้างทำท่าเท้าเดินสลับกัน",
+    "description_en": "Use two hands to imitate alternating steps.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv16",
+    "word": "ช่วยอธิบายอีกครั้งได้ไหม",
+    "word_en": "Could you explain again?",
+    "category": "conversation",
+    "description": "ชี้ไปที่หูแล้วหมุนมือเป็นวงกลมเหมือนขอให้พูดซ้ำ",
+    "description_en": "Point to the ear and circle the hand requesting repetition.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life17",
+    "word": "ล้างหน้า",
+    "word_en": "Wash face",
+    "category": "daily_life",
+    "description": "ใช้มือทั้งสองถูหน้าเบา ๆ เหมือนกำลังล้างหน้า",
+    "description_en": "Use both hands to gently rub the face as if washing it.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam17",
+    "word": "พ่อ",
+    "word_en": "Father",
+    "category": "family",
+    "description": "ใช้นิ้วโป้งแตะที่จมูก แสดงถึงคำว่าพ่อ",
+    "description_en": "Touch the nose gently with the thumb to indicate father.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo17",
+    "word": "เสียใจ",
+    "word_en": "Sad",
+    "category": "emotion",
+    "description": "ก้มหน้าเล็กน้อยและใช้มือเช็ดน้ำตา",
+    "description_en": "Lower the head a bit and wipe imaginary tears.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place17",
+    "word": "โรงเรียน",
+    "word_en": "School",
+    "category": "place",
+    "description": "ทำสัญลักษณ์เหมือนหลังคาแล้วทำท่าเขียนหนังสือ",
+    "description_en": "Make a roof shape then mimic writing in a notebook.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object17",
+    "word": "กระเป๋า",
+    "word_en": "Bag",
+    "category": "object",
+    "description": "ทำท่าถือสายกระเป๋าที่ไหล่หรือมือ",
+    "description_en": "Mimic holding a bag strap on the shoulder or in the hand.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food17",
+    "word": "น้ำ",
+    "word_en": "Water",
+    "category": "food",
+    "description": "ทำท่าถือแก้วและดื่มน้ำ",
+    "description_en": "Pretend to hold a glass and drink water.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act17",
+    "word": "วิ่ง",
+    "word_en": "Run",
+    "category": "action",
+    "description": "ทำท่าแขนแกว่งเร็วเหมือนกำลังวิ่ง",
+    "description_en": "Swing the arms quickly as if running.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv17",
+    "word": "คุณจะไปไหน",
+    "word_en": "Where are you going?",
+    "category": "conversation",
+    "description": "ชี้ที่อีกฝ่ายแล้วชี้ไปทางหนึ่งข้างหน้า",
+    "description_en": "Point at the person then outward in a direction.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life18",
+    "word": "แปรงฟัน",
+    "word_en": "Brush teeth",
+    "category": "daily_life",
+    "description": "ทำท่าถือแปรงแล้วขยับที่ปากไปมาเหมือนกำลังแปรงฟัน",
+    "description_en": "Mimic holding a toothbrush and move it across the mouth.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam18",
+    "word": "แม่",
+    "word_en": "Mother",
+    "category": "family",
+    "description": "ใช้นิ้วโป้งแตะที่แก้ม แสดงถึงคำว่าแม่",
+    "description_en": "Touch the cheek lightly with the thumb to indicate mother.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo18",
+    "word": "โกรธ",
+    "word_en": "Angry",
+    "category": "emotion",
+    "description": "ขมวดคิ้ว กำมือแน่น และเกร็งแขนเล็กน้อย",
+    "description_en": "Frown, clench fists, and tense the arms slightly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place18",
+    "word": "โรงพยาบาล",
+    "word_en": "Hospital",
+    "category": "place",
+    "description": "วาดกากบาทอยู่เหนือด้านหน้าอก แสดงถึงสัญลักษณ์โรงพยาบาล",
+    "description_en": "Draw a cross sign in front of the chest to indicate hospital.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object18",
+    "word": "หนังสือ",
+    "word_en": "Book",
+    "category": "object",
+    "description": "ประกบมือแล้วกางออกเหมือนเปิดหนังสือ",
+    "description_en": "Put hands together then open them like a book.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food18",
+    "word": "กาแฟ",
+    "word_en": "Coffee",
+    "category": "food",
+    "description": "ถือแก้วเล็กและจิบเบา ๆ เหมือนดื่มกาแฟ",
+    "description_en": "Hold a small cup and sip gently like drinking coffee.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act18",
+    "word": "นั่ง",
+    "word_en": "Sit",
+    "category": "action",
+    "description": "ทำท่านั่งลงอย่างชัดเจน",
+    "description_en": "Clearly mime the action of sitting down.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv18",
+    "word": "คุณว่างไหมพรุ่งนี้",
+    "word_en": "Are you free tomorrow?",
+    "category": "conversation",
+    "description": "ชี้ไปที่นาฬิกา จากนั้นชี้ไปยังอีกฝ่ายพร้อมยกคิ้วถาม",
+    "description_en": "Indicate time, then the person, with a questioning look.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life19",
+    "word": "อาบน้ำ",
+    "word_en": "Take a shower",
+    "category": "daily_life",
+    "description": "ใช้มือถูแขนและลำตัวเหมือนน้ำไหลผ่านขณะอาบน้ำ",
+    "description_en": "Rub arms and body as if water is running over you in the shower.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam19",
+    "word": "ลูกชาย",
+    "word_en": "Son",
+    "category": "family",
+    "description": "ชี้ลงต่ำเล็กน้อยและทำท่าทางแข็งแรงเหมือนเด็กผู้ชาย",
+    "description_en": "Point slightly downward and show a strong posture like a boy.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo19",
+    "word": "กลัว",
+    "word_en": "Afraid",
+    "category": "emotion",
+    "description": "ถอยตัวเล็กน้อยและกอดแขนตัวเองเหมือนกลัว",
+    "description_en": "Pull the body back a little and hug the arms as if scared.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place19",
+    "word": "ตลาด",
+    "word_en": "Market",
+    "category": "place",
+    "description": "ทำท่าหยิบของหลายครั้งเหมือนเลือกซื้อของ",
+    "description_en": "Mimic picking up items repeatedly as if shopping.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object19",
+    "word": "ปากกา",
+    "word_en": "Pen",
+    "category": "object",
+    "description": "ทำท่าจับปากกาแล้วเขียนบนโต๊ะหรือกระดาษ",
+    "description_en": "Hold an imaginary pen and write on a surface.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food19",
+    "word": "ชา",
+    "word_en": "Tea",
+    "category": "food",
+    "description": "ถือถ้วยและเป่าลมเบา ๆ บนผิวเครื่องดื่มร้อน",
+    "description_en": "Hold a cup and blow lightly over a hot drink.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act19",
+    "word": "ยืน",
+    "word_en": "Stand",
+    "category": "action",
+    "description": "ยืดตัวตรงและชี้ลงไปที่เท้า",
+    "description_en": "Stand tall and point down at the feet.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv19",
+    "word": "เรามาเจอกันได้ไหม",
+    "word_en": "Can we meet?",
+    "category": "conversation",
+    "description": "ชี้จากตัวเองไปอีกฝ่ายแล้วนำมือมาชนกันตรงกลาง",
+    "description_en": "Point from yourself and the other then bring hands together.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life20",
+    "word": "แต่งตัว",
+    "word_en": "Get dressed",
+    "category": "daily_life",
+    "description": "ทำท่าดึงเสื้อใส่และจัดคอเสื้อให้เรียบร้อย",
+    "description_en": "Mimic putting on clothes and adjusting the collar neatly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam20",
+    "word": "ลูกสาว",
+    "word_en": "Daughter",
+    "category": "family",
+    "description": "ชี้ลงต่ำเล็กน้อยและทำท่าทางอ่อนโยนเหมือนเด็กผู้หญิง",
+    "description_en": "Point slightly downward and show a gentle gesture like a girl.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo20",
+    "word": "งง",
+    "word_en": "Confused",
+    "category": "emotion",
+    "description": "เอียงศีรษะและขมวดคิ้ว พร้อมกางมือออกข้างตัว",
+    "description_en": "Tilt the head, frown slightly, and open palms to the sides.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place20",
+    "word": "วัด",
+    "word_en": "Temple",
+    "category": "place",
+    "description": "พนมมือและก้มศีรษะเล็กน้อย แสดงถึงสถานที่ศาสนา",
+    "description_en": "Put palms together and bow slightly to indicate a temple.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object20",
+    "word": "คอมพิวเตอร์",
+    "word_en": "Computer",
+    "category": "object",
+    "description": "ทำท่าพิมพ์แป้นพิมพ์และจ้องหน้าจอ",
+    "description_en": "Mimic typing on a keyboard while looking at a screen.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food20",
+    "word": "ผลไม้",
+    "word_en": "Fruit",
+    "category": "food",
+    "description": "ทำท่าปอกผลไม้และหยิบใส่ปาก",
+    "description_en": "Mimic peeling fruit and eating it.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act20",
+    "word": "อ่านหนังสือ",
+    "word_en": "Read a book",
+    "category": "action",
+    "description": "ถือหนังสือและกวาดสายตาไปตามหน้า",
+    "description_en": "Hold a book and move the eyes along the page.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv20",
+    "word": "เดี๋ยวเจอกันใหม่",
+    "word_en": "See you later.",
+    "category": "conversation",
+    "description": "ชี้ไปที่อีกฝ่ายแล้วยกมือโบกเบา ๆ",
+    "description_en": "Point at the person and wave lightly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life21",
+    "word": "ไปทำงาน",
+    "word_en": "Go to work",
+    "category": "daily_life",
+    "description": "ชี้ไปที่นาฬิกาแล้วชี้ทางเดินข้างหน้า แสดงการออกไปทำงาน",
+    "description_en": "Point at an imaginary watch then forward to show leaving for work.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam21",
+    "word": "พี่ชาย",
+    "word_en": "Older brother",
+    "category": "family",
+    "description": "ชี้ไปที่ชายหนุ่มด้านบนเล็กน้อย แสดงว่าเป็นพี่ชาย",
+    "description_en": "Gesture toward a man slightly above to indicate older brother.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo21",
+    "word": "เหนื่อย",
+    "word_en": "Tired",
+    "category": "emotion",
+    "description": "ก้มไหล่และหายใจแรง ใช้มือลูบหน้าผาก",
+    "description_en": "Drop the shoulders, breathe heavily, and wipe the forehead.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place21",
+    "word": "สวนสาธารณะ",
+    "word_en": "Park",
+    "category": "place",
+    "description": "กางแขนกว้างเหมือนพื้นที่โล่ง และทำท่ามองต้นไม้",
+    "description_en": "Spread arms wide like an open area and look around at trees.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object21",
+    "word": "แว่นตา",
+    "word_en": "Glasses",
+    "category": "object",
+    "description": "ใช้นิ้วจับกรอบแว่นบริเวณดั้งจมูก",
+    "description_en": "Pinch fingers at the bridge of the nose as if adjusting glasses.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food21",
+    "word": "ขนม",
+    "word_en": "Snack",
+    "category": "food",
+    "description": "หยิบของชิ้นเล็ก ๆ เข้าปากทีละคำ",
+    "description_en": "Pick up small pieces of food and eat them.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act21",
+    "word": "เขียน",
+    "word_en": "Write",
+    "category": "action",
+    "description": "ทำท่าจับปากกาเขียนบนกระดาษ",
+    "description_en": "Hold an imaginary pen and write on paper.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv21",
+    "word": "ลาก่อน",
+    "word_en": "Goodbye.",
+    "category": "conversation",
+    "description": "โบกมือลาอย่างชัดเจนพร้อมรอยยิ้ม",
+    "description_en": "Wave the hand clearly with a smile.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life22",
+    "word": "พักผ่อน",
+    "word_en": "Rest",
+    "category": "daily_life",
+    "description": "ประสานมือไว้ที่หลังศีรษะหรือเอนตัวเหมือนกำลังพักผ่อน",
+    "description_en": "Place hands behind the head or lean back to show resting.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam22",
+    "word": "น้องชาย",
+    "word_en": "Younger brother",
+    "category": "family",
+    "description": "ชี้ลงต่ำเล็กน้อยไปยังผู้ชาย แสดงว่าน้องชาย",
+    "description_en": "Point slightly downward to a male to show younger brother.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo22",
+    "word": "ภูมิใจ",
+    "word_en": "Proud",
+    "category": "emotion",
+    "description": "เชิดหน้าเล็กน้อยและแตะหน้าอกด้วยมือหนึ่ง",
+    "description_en": "Lift the chin slightly and touch the chest with one hand.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place22",
+    "word": "ร้านอาหาร",
+    "word_en": "Restaurant",
+    "category": "place",
+    "description": "ทำท่าตักอาหารเข้าปากแล้วชี้รอบ ๆ แสดงสถานที่กินข้าว",
+    "description_en": "Mimic eating then gesture around to show a place to eat.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object22",
+    "word": "กุญแจ",
+    "word_en": "Key",
+    "category": "object",
+    "description": "ทำท่าไขกุญแจในแม่กุญแจหรือประตู",
+    "description_en": "Turn an imaginary key in a lock or door.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food22",
+    "word": "ผัก",
+    "word_en": "Vegetables",
+    "category": "food",
+    "description": "ทำท่าหยิบผักจากจานและกินอย่างเบา ๆ",
+    "description_en": "Pick vegetables from a plate and eat gently.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act22",
+    "word": "ฟังเพลง",
+    "word_en": "Listen to music",
+    "category": "action",
+    "description": "แตะหูและโยกศีรษะตามจังหวะ",
+    "description_en": "Touch the ear and nod to an imagined rhythm.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv22",
+    "word": "ยินดีที่ได้รู้จัก",
+    "word_en": "Nice to meet you.",
+    "category": "conversation",
+    "description": "ชี้สลับระหว่างตัวเองกับอีกฝ่าย แล้วจับมือในอากาศ",
+    "description_en": "Point between yourself and the other, then mimic a handshake.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life23",
+    "word": "เล่นโทรศัพท์",
+    "word_en": "Use phone",
+    "category": "daily_life",
+    "description": "ทำมือเป็นรูปโทรศัพท์แนบหูหรือมองหน้าจอในมือ",
+    "description_en": "Make a phone shape at the ear or look at a phone in your hand.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam23",
+    "word": "พี่สาว",
+    "word_en": "Older sister",
+    "category": "family",
+    "description": "ชี้ไปที่ผู้หญิงด้านบนเล็กน้อย แสดงว่าเป็นพี่สาว",
+    "description_en": "Gesture toward a woman slightly above to indicate older sister.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo23",
+    "word": "อาย",
+    "word_en": "Shy",
+    "category": "emotion",
+    "description": "ใช้มือปิดแก้มเล็กน้อยและยิ้มเขิน",
+    "description_en": "Cover the cheek slightly and smile shyly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place23",
+    "word": "ธนาคาร",
+    "word_en": "Bank",
+    "category": "place",
+    "description": "ทำท่าหยิบเงินจากกระเป๋าและเก็บใส่ที่ปลอดภัย",
+    "description_en": "Pretend to take money from a wallet and store it safely.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object23",
+    "word": "รองเท้า",
+    "word_en": "Shoes",
+    "category": "object",
+    "description": "ชี้ไปที่เท้าและทำท่าใส่รองเท้า",
+    "description_en": "Point to the feet and mimic putting on shoes.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food23",
+    "word": "เนื้อสัตว์",
+    "word_en": "Meat",
+    "category": "food",
+    "description": "ทำท่าตัดเนื้อด้วยมีดและส้อม",
+    "description_en": "Cut imaginary meat with a knife and fork.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act23",
+    "word": "ดูหนัง",
+    "word_en": "Watch a movie",
+    "category": "action",
+    "description": "จ้องมองไปข้างหน้าเหมือนดูจอใหญ่",
+    "description_en": "Stare forward as if watching a big screen.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv23",
+    "word": "คุณพูดช้าหน่อยได้ไหม",
+    "word_en": "Could you speak more slowly?",
+    "category": "conversation",
+    "description": "แตะริมฝีปากแล้วลากมือออกช้า ๆ",
+    "description_en": "Touch the lips then move the hand slowly outward.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life24",
+    "word": "ดูทีวี",
+    "word_en": "Watch TV",
+    "category": "daily_life",
+    "description": "ชี้ไปข้างหน้าเหมือนมีจอทีวี และจ้องมองอย่างตั้งใจ",
+    "description_en": "Point forward as if there is a TV and stare attentively.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam24",
+    "word": "น้องสาว",
+    "word_en": "Younger sister",
+    "category": "family",
+    "description": "ชี้ลงต่ำเล็กน้อยไปยังผู้หญิง แสดงว่าน้องสาว",
+    "description_en": "Point slightly downward to a female to show younger sister.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo24",
+    "word": "เครียด",
+    "word_en": "Stressed",
+    "category": "emotion",
+    "description": "บีบขมับทั้งสองข้างเหมือนคิดมาก",
+    "description_en": "Press both temples as if overthinking.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place24",
+    "word": "สำนักงาน",
+    "word_en": "Office",
+    "category": "place",
+    "description": "ทำท่าพิมพ์แป้นพิมพ์และนั่งตัวตรงบนเก้าอี้",
+    "description_en": "Mimic typing on a keyboard while sitting upright.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object24",
+    "word": "นาฬิกา",
+    "word_en": "Watch",
+    "category": "object",
+    "description": "แตะข้อมือด้านในเหมือนมีนาฬิกาข้อมือ",
+    "description_en": "Tap the inside of the wrist as if wearing a watch.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food24",
+    "word": "ข้าวเช้า",
+    "word_en": "Breakfast",
+    "category": "food",
+    "description": "ชี้ไปที่นาฬิกาตอนเช้าและทำท่ากินอาหาร",
+    "description_en": "Point to morning time and mimic eating.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act24",
+    "word": "ทำงาน",
+    "word_en": "Work",
+    "category": "action",
+    "description": "ทำท่าพิมพ์งานหรือเขียนเอกสารอย่างจริงจัง",
+    "description_en": "Mime typing or writing documents seriously.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv24",
+    "word": "คุณเขียนให้ฉันดูได้ไหม",
+    "word_en": "Can you write it for me?",
+    "category": "conversation",
+    "description": "ทำท่าถือปากกาแล้วชี้ไปที่กระดาษสมมติ",
+    "description_en": "Mimic holding a pen and point to an imaginary paper.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life25",
+    "word": "ทำความสะอาดบ้าน",
+    "word_en": "Clean the house",
+    "category": "daily_life",
+    "description": "ทำท่ากวาดพื้นหรือเช็ดโต๊ะไปมา",
+    "description_en": "Mimic sweeping the floor or wiping a table.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam25",
+    "word": "ปู่",
+    "word_en": "Grandfather (paternal)",
+    "category": "family",
+    "description": "ทำท่าผู้สูงอายุและชี้ไปด้านพ่อ แสดงว่าปู่",
+    "description_en": "Show an elderly posture and gesture toward father’s side.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo25",
+    "word": "ตกใจ",
+    "word_en": "Surprised",
+    "category": "emotion",
+    "description": "เบิกตาโตและยกมือขึ้นเล็กน้อยเหมือนตกใจ",
+    "description_en": "Open the eyes wide and raise hands slightly in surprise.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place25",
+    "word": "สถานีรถไฟ",
+    "word_en": "Train station",
+    "category": "place",
+    "description": "ทำท่ารถไฟวิ่งและชี้ไปที่พื้นเหมือนชานชาลา",
+    "description_en": "Mimic a train moving and point to the ground like a platform.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object25",
+    "word": "โต๊ะ",
+    "word_en": "Table",
+    "category": "object",
+    "description": "วางมือราบระดับเอวเพื่อแสดงผิวโต๊ะ",
+    "description_en": "Hold a flat hand at waist level to show a tabletop.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food25",
+    "word": "ข้าวเที่ยง",
+    "word_en": "Lunch",
+    "category": "food",
+    "description": "ชี้ไปที่ท้องฟ้าตอนกลางวันและทำท่ากินอาหาร",
+    "description_en": "Point to midday and mimic eating.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act25",
+    "word": "พักผ่อน",
+    "word_en": "Relax",
+    "category": "action",
+    "description": "เอนตัวและหายใจลึก ๆ อย่างสบาย",
+    "description_en": "Lean back and take a deep, relaxed breath.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv25",
+    "word": "ห้องน้ำอยู่ที่ไหน",
+    "word_en": "Where is the restroom?",
+    "category": "conversation",
+    "description": "ทำท่าขออนุญาตแล้วชี้ไปรอบ ๆ เหมือนถามทิศทาง",
+    "description_en": "Make a polite gesture then motion around for directions.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life26",
+    "word": "ซักผ้า",
+    "word_en": "Do the laundry",
+    "category": "daily_life",
+    "description": "ถูมือสองข้างเข้าหากันเหมือนกำลังซักผ้า",
+    "description_en": "Rub both hands together as if washing clothes.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam26",
+    "word": "ย่า",
+    "word_en": "Grandmother (paternal)",
+    "category": "family",
+    "description": "ทำท่าผู้หญิงสูงอายุแล้วชี้ไปด้านพ่อ แสดงว่าย่า",
+    "description_en": "Show an elderly woman and gesture toward father’s side.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo26",
+    "word": "เบื่อ",
+    "word_en": "Bored",
+    "category": "emotion",
+    "description": "เท้าคางและทำหน้าเบื่อหน่าย",
+    "description_en": "Rest the chin on the hand and look uninterested.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place26",
+    "word": "สนามบิน",
+    "word_en": "Airport",
+    "category": "place",
+    "description": "กางแขนเหมือนปีกเครื่องบินและโบกไปมา",
+    "description_en": "Extend arms like airplane wings and sway gently.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object26",
+    "word": "เก้าอี้",
+    "word_en": "Chair",
+    "category": "object",
+    "description": "ทำท่านั่งลงบนเก้าอี้อย่างระมัดระวัง",
+    "description_en": "Pretend to sit down carefully on a chair.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food26",
+    "word": "ข้าวเย็น",
+    "word_en": "Dinner",
+    "category": "food",
+    "description": "ชี้ไปที่ท้องฟ้าเวลาเย็นและทำท่ากินอาหาร",
+    "description_en": "Point to the evening sky and mimic eating.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act26",
+    "word": "เล่นกีฬา",
+    "word_en": "Play sports",
+    "category": "action",
+    "description": "ทำท่าขว้างหรือเตะบอล",
+    "description_en": "Mimic throwing or kicking a ball.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv26",
+    "word": "ราคาเท่าไร",
+    "word_en": "How much is it?",
+    "category": "conversation",
+    "description": "ชี้ไปที่ของชิ้นหนึ่งแล้วทำท่าถือเงินจ่าย",
+    "description_en": "Point to an item then mimic paying with money.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life27",
+    "word": "รีดผ้า",
+    "word_en": "Iron clothes",
+    "category": "daily_life",
+    "description": "ใช้มือข้างหนึ่งกดลงบนอีกมือเหมือนรีดผ้าบนโต๊ะ",
+    "description_en": "Press one hand on top of the other to imitate ironing clothes.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam27",
+    "word": "ตา",
+    "word_en": "Grandfather (maternal)",
+    "category": "family",
+    "description": "ทำท่าผู้สูงอายุและชี้ไปด้านแม่ แสดงว่าตา",
+    "description_en": "Show an elderly posture and gesture toward mother’s side.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo27",
+    "word": "สงสัย",
+    "word_en": "Wondering",
+    "category": "emotion",
+    "description": "ชี้นิ้วที่ขมับและมองขึ้นไปข้างบน",
+    "description_en": "Point to the temple and look upward in thought.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place27",
+    "word": "ห้างสรรพสินค้า",
+    "word_en": "Shopping mall",
+    "category": "place",
+    "description": "ชี้ขึ้นไปด้านบนหลายชั้นและทำท่าถือถุงของ",
+    "description_en": "Point upward for many floors and mimic holding shopping bags.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object27",
+    "word": "โทรทัศน์",
+    "word_en": "Television",
+    "category": "object",
+    "description": "วาดสี่เหลี่ยมผืนผ้าด้านหน้าเหมือนจอทีวี",
+    "description_en": "Draw a rectangle in the air to show a TV screen.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food27",
+    "word": "ขนมปัง",
+    "word_en": "Bread",
+    "category": "food",
+    "description": "ถือชิ้นขนมปังและกัดหนึ่งคำ",
+    "description_en": "Hold a piece of bread and take a bite.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act27",
+    "word": "ช่วยเหลือ",
+    "word_en": "Help",
+    "category": "action",
+    "description": "ยื่นมือไปจับมืออีกคนและดึงขึ้น",
+    "description_en": "Reach out to grab another hand and pull up.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv27",
+    "word": "ลดราคาได้ไหม",
+    "word_en": "Can you give a discount?",
+    "category": "conversation",
+    "description": "ทำท่าดึงมือจากบนลงล่างเหมือนลดลง",
+    "description_en": "Pull the hand downward as if lowering a price.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life28",
+    "word": "เข้านอน",
+    "word_en": "Go to bed",
+    "category": "daily_life",
+    "description": "พนมมือที่ข้างแก้มและเอียงศีรษะเหมือนเอนนอน",
+    "description_en": "Place hands together at the cheek and tilt the head like lying down.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam28",
+    "word": "ยาย",
+    "word_en": "Grandmother (maternal)",
+    "category": "family",
+    "description": "ทำท่าผู้หญิงสูงอายุแล้วชี้ไปด้านแม่ แสดงว่ายาย",
+    "description_en": "Show an elderly woman and gesture toward mother’s side.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo28",
+    "word": "รัก",
+    "word_en": "Love",
+    "category": "emotion",
+    "description": "กอดตัวเองหรือทำท่าหัวใจด้วยมือ",
+    "description_en": "Hug yourself or make a heart shape with the hands.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place28",
+    "word": "ห้องสมุด",
+    "word_en": "Library",
+    "category": "place",
+    "description": "ทำท่าหยิบหนังสือจากชั้นแล้วเปิดอ่าน",
+    "description_en": "Pretend to take a book from a shelf and open it.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object28",
+    "word": "กระดาษ",
+    "word_en": "Paper",
+    "category": "object",
+    "description": "ทำท่าถือแผ่นบาง ๆ และเขียนลงไป",
+    "description_en": "Hold a thin sheet and pretend to write on it.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food28",
+    "word": "น้ำผลไม้",
+    "word_en": "Juice",
+    "category": "food",
+    "description": "ถือแก้วและดื่มพร้อมยิ้มสดชื่น",
+    "description_en": "Hold a glass and drink with a refreshed smile.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act28",
+    "word": "ถาม",
+    "word_en": "Ask",
+    "category": "action",
+    "description": "ชี้ขึ้นเล็กน้อยพร้อมยกคิ้วเหมือนตั้งคำถาม",
+    "description_en": "Point upward slightly and raise eyebrows as if asking.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv28",
+    "word": "ช่วยพูดอีกที",
+    "word_en": "Please say it again.",
+    "category": "conversation",
+    "description": "แตะหูแล้วชี้ไปที่ปากของอีกฝ่าย",
+    "description_en": "Touch the ear then point to the other’s mouth.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life29",
+    "word": "ไปโรงเรียน",
+    "word_en": "Go to school",
+    "category": "daily_life",
+    "description": "ชี้เด็กแล้วชี้ทางไปด้านหน้า แสดงการไปโรงเรียน",
+    "description_en": "Point to a child then forward to show going to school.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam29",
+    "word": "ญาติ",
+    "word_en": "Relative",
+    "category": "family",
+    "description": "กางมือสองข้างและโค้งเข้าหากันเหมือนเชื่อมคนหลายคน",
+    "description_en": "Open both hands and curve inward as if connecting many people.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo29",
+    "word": "คิดถึง",
+    "word_en": "Miss (someone)",
+    "category": "emotion",
+    "description": "แตะหน้าอกแล้วเอื้อมมือไปข้างหน้าอย่างอ่อนโยน",
+    "description_en": "Touch the chest then reach one hand forward gently.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place29",
+    "word": "สนามกีฬา",
+    "word_en": "Stadium",
+    "category": "place",
+    "description": "ทำท่ากางแขนวงกว้างและชี้ไปยังลานกว้าง",
+    "description_en": "Spread arms in a circle and point to a wide field.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object29",
+    "word": "กระเป๋าตังค์",
+    "word_en": "Wallet",
+    "category": "object",
+    "description": "เปิดและปิดมือเหมือนเปิดกระเป๋าสตางค์",
+    "description_en": "Open and close the hand as if opening a wallet.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food29",
+    "word": "นม",
+    "word_en": "Milk",
+    "category": "food",
+    "description": "ถือแก้วแล้วดื่มเหมือนดื่มนม",
+    "description_en": "Hold a glass and drink as if it is milk.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act29",
+    "word": "ตอบ",
+    "word_en": "Answer",
+    "category": "action",
+    "description": "ชี้จากปากออกไปด้านหน้าเหมือนส่งคำตอบ",
+    "description_en": "Point outward from the mouth as if sending an answer.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv29",
+    "word": "คุณมาคนเดียวหรือเปล่า",
+    "word_en": "Did you come alone?",
+    "category": "conversation",
+    "description": "ชี้ที่อีกฝ่ายแล้วใช้มือวาดวงเล็ก ๆ รอบตัวเขา",
+    "description_en": "Point at the person and circle a hand around them.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life30",
+    "word": "ทำการบ้าน",
+    "word_en": "Do homework",
+    "category": "daily_life",
+    "description": "ทำท่าเขียนลงบนสมุดอย่างตั้งใจ",
+    "description_en": "Mimic writing carefully in a notebook.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam30",
+    "word": "เพื่อน",
+    "word_en": "Friend",
+    "category": "family",
+    "description": "เกี่ยวนิ้วชี้ของสองมือเข้าด้วยกันแสดงถึงความผูกพัน",
+    "description_en": "Hook both index fingers together to show friendship.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo30",
+    "word": "กังวล",
+    "word_en": "Worried",
+    "category": "emotion",
+    "description": "ขมวดคิ้วและสอดมือประสานกันแน่น",
+    "description_en": "Frown and clasp hands together tightly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place30",
+    "word": "ป้ายรถเมล์",
+    "word_en": "Bus stop",
+    "category": "place",
+    "description": "ชี้ลงที่จุดหนึ่งและทำท่ารอรถพร้อมมองไปรอบ ๆ",
+    "description_en": "Point to a spot on the ground and stand as if waiting for a bus.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object30",
+    "word": "หูฟัง",
+    "word_en": "Headphones",
+    "category": "object",
+    "description": "ใช้สองมือจับหูทั้งสองข้างเหมือนใส่หูฟัง",
+    "description_en": "Place both hands near the ears as if wearing headphones.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food30",
+    "word": "ข้าวกล่อง",
+    "word_en": "Lunch box",
+    "category": "food",
+    "description": "เปิดกล่องอาหารและตักกินจากด้านใน",
+    "description_en": "Open a lunch box and scoop food from inside.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act30",
+    "word": "รอ",
+    "word_en": "Wait",
+    "category": "action",
+    "description": "ยกฝ่ามือขึ้นด้านหน้าและทำท่ารอคอย",
+    "description_en": "Hold a palm forward as if signaling to wait.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv30",
+    "word": "คุณชอบดูหนังไหม",
+    "word_en": "Do you like watching movies?",
+    "category": "conversation",
+    "description": "ทำท่าดูจอใหญ่แล้วชี้ไปที่หัวใจของอีกฝ่าย",
+    "description_en": "Mime watching a big screen then point to the person’s heart.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life31",
+    "word": "ตื่นนอน",
+    "word_en": "Wake up",
+    "category": "daily_life",
+    "description": "ลืมตาและลุกขึ้นจากที่นอน แสดงการเริ่มต้นวันใหม่",
+    "description_en": "Open your eyes and rise from bed, showing the start of a new day.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam31",
+    "word": "ครอบครัว",
+    "word_en": "Family",
+    "category": "family",
+    "description": "กางแขนโค้งเข้าหากันด้านหน้าเหมือนโอบกอดทุกคนในบ้าน",
+    "description_en": "Curve both arms in front as if embracing the whole family.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo31",
+    "word": "ดีใจ",
+    "word_en": "Happy",
+    "category": "emotion",
+    "description": "ยิ้มพร้อมยกมือสองข้างขึ้นเล็กน้อย",
+    "description_en": "Smile and raise both hands slightly to show happiness.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place31",
+    "word": "บ้าน",
+    "word_en": "Home",
+    "category": "place",
+    "description": "ใช้สองมือทำรูปหลังคาเหนือศีรษะ",
+    "description_en": "Form a roof shape above the head with both hands.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object31",
+    "word": "โทรศัพท์",
+    "word_en": "Phone",
+    "category": "object",
+    "description": "ทำมือเป็นรูปโทรศัพท์แนบหูหรือมองหน้าจอในมือ",
+    "description_en": "Form a phone shape at the ear or look at an imaginary screen.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food31",
+    "word": "ข้าว",
+    "word_en": "Rice",
+    "category": "food",
+    "description": "ทำท่าตักข้าวเข้าปากด้วยช้อนหรือส้อม",
+    "description_en": "Mimic scooping rice into the mouth with a spoon.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act31",
+    "word": "เดิน",
+    "word_en": "Walk",
+    "category": "action",
+    "description": "ใช้มือสองข้างทำท่าเท้าเดินสลับกัน",
+    "description_en": "Use two hands to imitate alternating steps.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv31",
+    "word": "คุณชอบฟังเพลงไหม",
+    "word_en": "Do you like listening to music?",
+    "category": "conversation",
+    "description": "แตะหูและชี้ไปที่หัวใจถามความชอบ",
+    "description_en": "Touch the ear and point to the heart asking about preference.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life32",
+    "word": "ล้างหน้า",
+    "word_en": "Wash face",
+    "category": "daily_life",
+    "description": "ใช้มือทั้งสองถูหน้าเบา ๆ เหมือนกำลังล้างหน้า",
+    "description_en": "Use both hands to gently rub the face as if washing it.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam32",
+    "word": "พ่อ",
+    "word_en": "Father",
+    "category": "family",
+    "description": "ใช้นิ้วโป้งแตะที่จมูก แสดงถึงคำว่าพ่อ",
+    "description_en": "Touch the nose gently with the thumb to indicate father.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo32",
+    "word": "เสียใจ",
+    "word_en": "Sad",
+    "category": "emotion",
+    "description": "ก้มหน้าเล็กน้อยและใช้มือเช็ดน้ำตา",
+    "description_en": "Lower the head a bit and wipe imaginary tears.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place32",
+    "word": "โรงเรียน",
+    "word_en": "School",
+    "category": "place",
+    "description": "ทำสัญลักษณ์เหมือนหลังคาแล้วทำท่าเขียนหนังสือ",
+    "description_en": "Make a roof shape then mimic writing in a notebook.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object32",
+    "word": "กระเป๋า",
+    "word_en": "Bag",
+    "category": "object",
+    "description": "ทำท่าถือสายกระเป๋าที่ไหล่หรือมือ",
+    "description_en": "Mimic holding a bag strap on the shoulder or in the hand.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food32",
+    "word": "น้ำ",
+    "word_en": "Water",
+    "category": "food",
+    "description": "ทำท่าถือแก้วและดื่มน้ำ",
+    "description_en": "Pretend to hold a glass and drink water.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act32",
+    "word": "วิ่ง",
+    "word_en": "Run",
+    "category": "action",
+    "description": "ทำท่าแขนแกว่งเร็วเหมือนกำลังวิ่ง",
+    "description_en": "Swing the arms quickly as if running.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv32",
+    "word": "วันนี้คุณยุ่งไหม",
+    "word_en": "Are you busy today?",
+    "category": "conversation",
+    "description": "ทำท่าทำงานหลายอย่างพร้อมกันแล้วชี้ไปที่อีกฝ่าย",
+    "description_en": "Mime doing many tasks at once then point to the person.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life33",
+    "word": "แปรงฟัน",
+    "word_en": "Brush teeth",
+    "category": "daily_life",
+    "description": "ทำท่าถือแปรงแล้วขยับที่ปากไปมาเหมือนกำลังแปรงฟัน",
+    "description_en": "Mimic holding a toothbrush and move it across the mouth.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam33",
+    "word": "แม่",
+    "word_en": "Mother",
+    "category": "family",
+    "description": "ใช้นิ้วโป้งแตะที่แก้ม แสดงถึงคำว่าแม่",
+    "description_en": "Touch the cheek lightly with the thumb to indicate mother.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo33",
+    "word": "โกรธ",
+    "word_en": "Angry",
+    "category": "emotion",
+    "description": "ขมวดคิ้ว กำมือแน่น และเกร็งแขนเล็กน้อย",
+    "description_en": "Frown, clench fists, and tense the arms slightly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place33",
+    "word": "โรงพยาบาล",
+    "word_en": "Hospital",
+    "category": "place",
+    "description": "วาดกากบาทอยู่เหนือด้านหน้าอก แสดงถึงสัญลักษณ์โรงพยาบาล",
+    "description_en": "Draw a cross sign in front of the chest to indicate hospital.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object33",
+    "word": "หนังสือ",
+    "word_en": "Book",
+    "category": "object",
+    "description": "ประกบมือแล้วกางออกเหมือนเปิดหนังสือ",
+    "description_en": "Put hands together then open them like a book.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food33",
+    "word": "กาแฟ",
+    "word_en": "Coffee",
+    "category": "food",
+    "description": "ถือแก้วเล็กและจิบเบา ๆ เหมือนดื่มกาแฟ",
+    "description_en": "Hold a small cup and sip gently like drinking coffee.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act33",
+    "word": "นั่ง",
+    "word_en": "Sit",
+    "category": "action",
+    "description": "ทำท่านั่งลงอย่างชัดเจน",
+    "description_en": "Clearly mime the action of sitting down.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv33",
+    "word": "ขอเบอร์โทรศัพท์หน่อย",
+    "word_en": "May I have your phone number?",
+    "category": "conversation",
+    "description": "ทำท่าโทรศัพท์แล้วชี้ไปมาระหว่างกัน",
+    "description_en": "Use a phone handshape and point between you.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life34",
+    "word": "อาบน้ำ",
+    "word_en": "Take a shower",
+    "category": "daily_life",
+    "description": "ใช้มือถูแขนและลำตัวเหมือนน้ำไหลผ่านขณะอาบน้ำ",
+    "description_en": "Rub arms and body as if water is running over you in the shower.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam34",
+    "word": "ลูกชาย",
+    "word_en": "Son",
+    "category": "family",
+    "description": "ชี้ลงต่ำเล็กน้อยและทำท่าทางแข็งแรงเหมือนเด็กผู้ชาย",
+    "description_en": "Point slightly downward and show a strong posture like a boy.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo34",
+    "word": "กลัว",
+    "word_en": "Afraid",
+    "category": "emotion",
+    "description": "ถอยตัวเล็กน้อยและกอดแขนตัวเองเหมือนกลัว",
+    "description_en": "Pull the body back a little and hug the arms as if scared.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place34",
+    "word": "ตลาด",
+    "word_en": "Market",
+    "category": "place",
+    "description": "ทำท่าหยิบของหลายครั้งเหมือนเลือกซื้อของ",
+    "description_en": "Mimic picking up items repeatedly as if shopping.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object34",
+    "word": "ปากกา",
+    "word_en": "Pen",
+    "category": "object",
+    "description": "ทำท่าจับปากกาแล้วเขียนบนโต๊ะหรือกระดาษ",
+    "description_en": "Hold an imaginary pen and write on a surface.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food34",
+    "word": "ชา",
+    "word_en": "Tea",
+    "category": "food",
+    "description": "ถือถ้วยและเป่าลมเบา ๆ บนผิวเครื่องดื่มร้อน",
+    "description_en": "Hold a cup and blow lightly over a hot drink.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act34",
+    "word": "ยืน",
+    "word_en": "Stand",
+    "category": "action",
+    "description": "ยืดตัวตรงและชี้ลงไปที่เท้า",
+    "description_en": "Stand tall and point down at the feet.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv34",
+    "word": "ส่งข้อความให้ฉันได้ไหม",
+    "word_en": "Can you send me a message?",
+    "category": "conversation",
+    "description": "ทำท่าพิมพ์บนโทรศัพท์แล้วชี้ไปที่ตัวเอง",
+    "description_en": "Mime typing on a phone then point to yourself.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life35",
+    "word": "แต่งตัว",
+    "word_en": "Get dressed",
+    "category": "daily_life",
+    "description": "ทำท่าดึงเสื้อใส่และจัดคอเสื้อให้เรียบร้อย",
+    "description_en": "Mimic putting on clothes and adjusting the collar neatly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam35",
+    "word": "ลูกสาว",
+    "word_en": "Daughter",
+    "category": "family",
+    "description": "ชี้ลงต่ำเล็กน้อยและทำท่าทางอ่อนโยนเหมือนเด็กผู้หญิง",
+    "description_en": "Point slightly downward and show a gentle gesture like a girl.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo35",
+    "word": "งง",
+    "word_en": "Confused",
+    "category": "emotion",
+    "description": "เอียงศีรษะและขมวดคิ้ว พร้อมกางมือออกข้างตัว",
+    "description_en": "Tilt the head, frown slightly, and open palms to the sides.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place35",
+    "word": "วัด",
+    "word_en": "Temple",
+    "category": "place",
+    "description": "พนมมือและก้มศีรษะเล็กน้อย แสดงถึงสถานที่ศาสนา",
+    "description_en": "Put palms together and bow slightly to indicate a temple.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object35",
+    "word": "คอมพิวเตอร์",
+    "word_en": "Computer",
+    "category": "object",
+    "description": "ทำท่าพิมพ์แป้นพิมพ์และจ้องหน้าจอ",
+    "description_en": "Mimic typing on a keyboard while looking at a screen.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food35",
+    "word": "ผลไม้",
+    "word_en": "Fruit",
+    "category": "food",
+    "description": "ทำท่าปอกผลไม้และหยิบใส่ปาก",
+    "description_en": "Mimic peeling fruit and eating it.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act35",
+    "word": "อ่านหนังสือ",
+    "word_en": "Read a book",
+    "category": "action",
+    "description": "ถือหนังสือและกวาดสายตาไปตามหน้า",
+    "description_en": "Hold a book and move the eyes along the page.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv35",
+    "word": "คุณพร้อมหรือยัง",
+    "word_en": "Are you ready?",
+    "category": "conversation",
+    "description": "ชี้ไปที่หัวใจของอีกฝ่ายแล้วทำท่ากำมืออย่างมั่นใจ",
+    "description_en": "Point to the person’s chest then clench a fist confidently.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life36",
+    "word": "ไปทำงาน",
+    "word_en": "Go to work",
+    "category": "daily_life",
+    "description": "ชี้ไปที่นาฬิกาแล้วชี้ทางเดินข้างหน้า แสดงการออกไปทำงาน",
+    "description_en": "Point at an imaginary watch then forward to show leaving for work.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam36",
+    "word": "พี่ชาย",
+    "word_en": "Older brother",
+    "category": "family",
+    "description": "ชี้ไปที่ชายหนุ่มด้านบนเล็กน้อย แสดงว่าเป็นพี่ชาย",
+    "description_en": "Gesture toward a man slightly above to indicate older brother.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo36",
+    "word": "เหนื่อย",
+    "word_en": "Tired",
+    "category": "emotion",
+    "description": "ก้มไหล่และหายใจแรง ใช้มือลูบหน้าผาก",
+    "description_en": "Drop the shoulders, breathe heavily, and wipe the forehead.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place36",
+    "word": "สวนสาธารณะ",
+    "word_en": "Park",
+    "category": "place",
+    "description": "กางแขนกว้างเหมือนพื้นที่โล่ง และทำท่ามองต้นไม้",
+    "description_en": "Spread arms wide like an open area and look around at trees.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object36",
+    "word": "แว่นตา",
+    "word_en": "Glasses",
+    "category": "object",
+    "description": "ใช้นิ้วจับกรอบแว่นบริเวณดั้งจมูก",
+    "description_en": "Pinch fingers at the bridge of the nose as if adjusting glasses.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food36",
+    "word": "ขนม",
+    "word_en": "Snack",
+    "category": "food",
+    "description": "หยิบของชิ้นเล็ก ๆ เข้าปากทีละคำ",
+    "description_en": "Pick up small pieces of food and eat them.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act36",
+    "word": "เขียน",
+    "word_en": "Write",
+    "category": "action",
+    "description": "ทำท่าจับปากกาเขียนบนกระดาษ",
+    "description_en": "Hold an imaginary pen and write on paper.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv36",
+    "word": "ฉันรอคุณอยู่",
+    "word_en": "I am waiting for you.",
+    "category": "conversation",
+    "description": "ชี้ไปที่ตัวเองแล้วทำท่าดูเวลาและยืนรอ",
+    "description_en": "Point to yourself, check time, and stand as if waiting.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life37",
+    "word": "พักผ่อน",
+    "word_en": "Rest",
+    "category": "daily_life",
+    "description": "ประสานมือไว้ที่หลังศีรษะหรือเอนตัวเหมือนกำลังพักผ่อน",
+    "description_en": "Place hands behind the head or lean back to show resting.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam37",
+    "word": "น้องชาย",
+    "word_en": "Younger brother",
+    "category": "family",
+    "description": "ชี้ลงต่ำเล็กน้อยไปยังผู้ชาย แสดงว่าน้องชาย",
+    "description_en": "Point slightly downward to a male to show younger brother.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo37",
+    "word": "ภูมิใจ",
+    "word_en": "Proud",
+    "category": "emotion",
+    "description": "เชิดหน้าเล็กน้อยและแตะหน้าอกด้วยมือหนึ่ง",
+    "description_en": "Lift the chin slightly and touch the chest with one hand.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place37",
+    "word": "ร้านอาหาร",
+    "word_en": "Restaurant",
+    "category": "place",
+    "description": "ทำท่าตักอาหารเข้าปากแล้วชี้รอบ ๆ แสดงสถานที่กินข้าว",
+    "description_en": "Mimic eating then gesture around to show a place to eat.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object37",
+    "word": "กุญแจ",
+    "word_en": "Key",
+    "category": "object",
+    "description": "ทำท่าไขกุญแจในแม่กุญแจหรือประตู",
+    "description_en": "Turn an imaginary key in a lock or door.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food37",
+    "word": "ผัก",
+    "word_en": "Vegetables",
+    "category": "food",
+    "description": "ทำท่าหยิบผักจากจานและกินอย่างเบา ๆ",
+    "description_en": "Pick vegetables from a plate and eat gently.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act37",
+    "word": "ฟังเพลง",
+    "word_en": "Listen to music",
+    "category": "action",
+    "description": "แตะหูและโยกศีรษะตามจังหวะ",
+    "description_en": "Touch the ear and nod to an imagined rhythm.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv37",
+    "word": "เจอกันพรุ่งนี้",
+    "word_en": "See you tomorrow.",
+    "category": "conversation",
+    "description": "โบกมือเบา ๆ แล้วชี้ไปข้างหน้าพร้อมยิ้ม",
+    "description_en": "Wave gently and point forward with a smile.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life38",
+    "word": "เล่นโทรศัพท์",
+    "word_en": "Use phone",
+    "category": "daily_life",
+    "description": "ทำมือเป็นรูปโทรศัพท์แนบหูหรือมองหน้าจอในมือ",
+    "description_en": "Make a phone shape at the ear or look at a phone in your hand.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam38",
+    "word": "พี่สาว",
+    "word_en": "Older sister",
+    "category": "family",
+    "description": "ชี้ไปที่ผู้หญิงด้านบนเล็กน้อย แสดงว่าเป็นพี่สาว",
+    "description_en": "Gesture toward a woman slightly above to indicate older sister.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo38",
+    "word": "อาย",
+    "word_en": "Shy",
+    "category": "emotion",
+    "description": "ใช้มือปิดแก้มเล็กน้อยและยิ้มเขิน",
+    "description_en": "Cover the cheek slightly and smile shyly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place38",
+    "word": "ธนาคาร",
+    "word_en": "Bank",
+    "category": "place",
+    "description": "ทำท่าหยิบเงินจากกระเป๋าและเก็บใส่ที่ปลอดภัย",
+    "description_en": "Pretend to take money from a wallet and store it safely.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object38",
+    "word": "รองเท้า",
+    "word_en": "Shoes",
+    "category": "object",
+    "description": "ชี้ไปที่เท้าและทำท่าใส่รองเท้า",
+    "description_en": "Point to the feet and mimic putting on shoes.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food38",
+    "word": "เนื้อสัตว์",
+    "word_en": "Meat",
+    "category": "food",
+    "description": "ทำท่าตัดเนื้อด้วยมีดและส้อม",
+    "description_en": "Cut imaginary meat with a knife and fork.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act38",
+    "word": "ดูหนัง",
+    "word_en": "Watch a movie",
+    "category": "action",
+    "description": "จ้องมองไปข้างหน้าเหมือนดูจอใหญ่",
+    "description_en": "Stare forward as if watching a big screen.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv38",
+    "word": "คุณมีคำถามไหม",
+    "word_en": "Do you have any questions?",
+    "category": "conversation",
+    "description": "กางมือออกด้านข้างและเลิกคิ้วถาม",
+    "description_en": "Open palms to the sides and raise eyebrows.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life39",
+    "word": "ดูทีวี",
+    "word_en": "Watch TV",
+    "category": "daily_life",
+    "description": "ชี้ไปข้างหน้าเหมือนมีจอทีวี และจ้องมองอย่างตั้งใจ",
+    "description_en": "Point forward as if there is a TV and stare attentively.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam39",
+    "word": "น้องสาว",
+    "word_en": "Younger sister",
+    "category": "family",
+    "description": "ชี้ลงต่ำเล็กน้อยไปยังผู้หญิง แสดงว่าน้องสาว",
+    "description_en": "Point slightly downward to a female to show younger sister.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo39",
+    "word": "เครียด",
+    "word_en": "Stressed",
+    "category": "emotion",
+    "description": "บีบขมับทั้งสองข้างเหมือนคิดมาก",
+    "description_en": "Press both temples as if overthinking.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place39",
+    "word": "สำนักงาน",
+    "word_en": "Office",
+    "category": "place",
+    "description": "ทำท่าพิมพ์แป้นพิมพ์และนั่งตัวตรงบนเก้าอี้",
+    "description_en": "Mimic typing on a keyboard while sitting upright.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object39",
+    "word": "นาฬิกา",
+    "word_en": "Watch",
+    "category": "object",
+    "description": "แตะข้อมือด้านในเหมือนมีนาฬิกาข้อมือ",
+    "description_en": "Tap the inside of the wrist as if wearing a watch.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food39",
+    "word": "ข้าวเช้า",
+    "word_en": "Breakfast",
+    "category": "food",
+    "description": "ชี้ไปที่นาฬิกาตอนเช้าและทำท่ากินอาหาร",
+    "description_en": "Point to morning time and mimic eating.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act39",
+    "word": "ทำงาน",
+    "word_en": "Work",
+    "category": "action",
+    "description": "ทำท่าพิมพ์งานหรือเขียนเอกสารอย่างจริงจัง",
+    "description_en": "Mime typing or writing documents seriously.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv39",
+    "word": "ฉันดีใจที่ได้เจอคุณ",
+    "word_en": "I am happy to see you.",
+    "category": "conversation",
+    "description": "แตะหน้าอกตัวเองแล้วชี้ไปที่อีกฝ่ายด้วยรอยยิ้ม",
+    "description_en": "Touch your chest then point to the person with a smile.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life40",
+    "word": "ทำความสะอาดบ้าน",
+    "word_en": "Clean the house",
+    "category": "daily_life",
+    "description": "ทำท่ากวาดพื้นหรือเช็ดโต๊ะไปมา",
+    "description_en": "Mimic sweeping the floor or wiping a table.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam40",
+    "word": "ปู่",
+    "word_en": "Grandfather (paternal)",
+    "category": "family",
+    "description": "ทำท่าผู้สูงอายุและชี้ไปด้านพ่อ แสดงว่าปู่",
+    "description_en": "Show an elderly posture and gesture toward father’s side.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo40",
+    "word": "ตกใจ",
+    "word_en": "Surprised",
+    "category": "emotion",
+    "description": "เบิกตาโตและยกมือขึ้นเล็กน้อยเหมือนตกใจ",
+    "description_en": "Open the eyes wide and raise hands slightly in surprise.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place40",
+    "word": "สถานีรถไฟ",
+    "word_en": "Train station",
+    "category": "place",
+    "description": "ทำท่ารถไฟวิ่งและชี้ไปที่พื้นเหมือนชานชาลา",
+    "description_en": "Mimic a train moving and point to the ground like a platform.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object40",
+    "word": "โต๊ะ",
+    "word_en": "Table",
+    "category": "object",
+    "description": "วางมือราบระดับเอวเพื่อแสดงผิวโต๊ะ",
+    "description_en": "Hold a flat hand at waist level to show a tabletop.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food40",
+    "word": "ข้าวเที่ยง",
+    "word_en": "Lunch",
+    "category": "food",
+    "description": "ชี้ไปที่ท้องฟ้าตอนกลางวันและทำท่ากินอาหาร",
+    "description_en": "Point to midday and mimic eating.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act40",
+    "word": "พักผ่อน",
+    "word_en": "Relax",
+    "category": "action",
+    "description": "เอนตัวและหายใจลึก ๆ อย่างสบาย",
+    "description_en": "Lean back and take a deep, relaxed breath.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv40",
+    "word": "คุณสบายดีไหม",
+    "word_en": "How are you?",
+    "category": "conversation",
+    "description": "ท่าทางแสดงการถามสารทุกข์สุกดิบ ใช้น้ำเสียงและสีหน้าที่อ่อนโยน",
+    "description_en": "A gentle questioning expression asking about someone's well‑being.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life41",
+    "word": "ซักผ้า",
+    "word_en": "Do the laundry",
+    "category": "daily_life",
+    "description": "ถูมือสองข้างเข้าหากันเหมือนกำลังซักผ้า",
+    "description_en": "Rub both hands together as if washing clothes.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam41",
+    "word": "ย่า",
+    "word_en": "Grandmother (paternal)",
+    "category": "family",
+    "description": "ทำท่าผู้หญิงสูงอายุแล้วชี้ไปด้านพ่อ แสดงว่าย่า",
+    "description_en": "Show an elderly woman and gesture toward father’s side.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo41",
+    "word": "เบื่อ",
+    "word_en": "Bored",
+    "category": "emotion",
+    "description": "เท้าคางและทำหน้าเบื่อหน่าย",
+    "description_en": "Rest the chin on the hand and look uninterested.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place41",
+    "word": "สนามบิน",
+    "word_en": "Airport",
+    "category": "place",
+    "description": "กางแขนเหมือนปีกเครื่องบินและโบกไปมา",
+    "description_en": "Extend arms like airplane wings and sway gently.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object41",
+    "word": "เก้าอี้",
+    "word_en": "Chair",
+    "category": "object",
+    "description": "ทำท่านั่งลงบนเก้าอี้อย่างระมัดระวัง",
+    "description_en": "Pretend to sit down carefully on a chair.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food41",
+    "word": "ข้าวเย็น",
+    "word_en": "Dinner",
+    "category": "food",
+    "description": "ชี้ไปที่ท้องฟ้าเวลาเย็นและทำท่ากินอาหาร",
+    "description_en": "Point to the evening sky and mimic eating.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act41",
+    "word": "เล่นกีฬา",
+    "word_en": "Play sports",
+    "category": "action",
+    "description": "ทำท่าขว้างหรือเตะบอล",
+    "description_en": "Mimic throwing or kicking a ball.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv41",
+    "word": "คุณชื่ออะไร",
+    "word_en": "What is your name?",
+    "category": "conversation",
+    "description": "ทำท่าชี้ไปที่อีกฝ่ายแล้วทำท่าเขียนชื่อในอากาศ",
+    "description_en": "Point to the other person and mimic writing a name in the air.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life42",
+    "word": "รีดผ้า",
+    "word_en": "Iron clothes",
+    "category": "daily_life",
+    "description": "ใช้มือข้างหนึ่งกดลงบนอีกมือเหมือนรีดผ้าบนโต๊ะ",
+    "description_en": "Press one hand on top of the other to imitate ironing clothes.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam42",
+    "word": "ตา",
+    "word_en": "Grandfather (maternal)",
+    "category": "family",
+    "description": "ทำท่าผู้สูงอายุและชี้ไปด้านแม่ แสดงว่าตา",
+    "description_en": "Show an elderly posture and gesture toward mother’s side.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo42",
+    "word": "สงสัย",
+    "word_en": "Wondering",
+    "category": "emotion",
+    "description": "ชี้นิ้วที่ขมับและมองขึ้นไปข้างบน",
+    "description_en": "Point to the temple and look upward in thought.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place42",
+    "word": "ห้างสรรพสินค้า",
+    "word_en": "Shopping mall",
+    "category": "place",
+    "description": "ชี้ขึ้นไปด้านบนหลายชั้นและทำท่าถือถุงของ",
+    "description_en": "Point upward for many floors and mimic holding shopping bags.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object42",
+    "word": "โทรทัศน์",
+    "word_en": "Television",
+    "category": "object",
+    "description": "วาดสี่เหลี่ยมผืนผ้าด้านหน้าเหมือนจอทีวี",
+    "description_en": "Draw a rectangle in the air to show a TV screen.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food42",
+    "word": "ขนมปัง",
+    "word_en": "Bread",
+    "category": "food",
+    "description": "ถือชิ้นขนมปังและกัดหนึ่งคำ",
+    "description_en": "Hold a piece of bread and take a bite.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act42",
+    "word": "ช่วยเหลือ",
+    "word_en": "Help",
+    "category": "action",
+    "description": "ยื่นมือไปจับมืออีกคนและดึงขึ้น",
+    "description_en": "Reach out to grab another hand and pull up.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv42",
+    "word": "ฉันชื่อ...",
+    "word_en": "My name is ...",
+    "category": "conversation",
+    "description": "ชี้ที่ตัวเองแล้วทำท่าเขียนชื่อ",
+    "description_en": "Point to yourself and mime writing your name.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life43",
+    "word": "เข้านอน",
+    "word_en": "Go to bed",
+    "category": "daily_life",
+    "description": "พนมมือที่ข้างแก้มและเอียงศีรษะเหมือนเอนนอน",
+    "description_en": "Place hands together at the cheek and tilt the head like lying down.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam43",
+    "word": "ยาย",
+    "word_en": "Grandmother (maternal)",
+    "category": "family",
+    "description": "ทำท่าผู้หญิงสูงอายุแล้วชี้ไปด้านแม่ แสดงว่ายาย",
+    "description_en": "Show an elderly woman and gesture toward mother’s side.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo43",
+    "word": "รัก",
+    "word_en": "Love",
+    "category": "emotion",
+    "description": "กอดตัวเองหรือทำท่าหัวใจด้วยมือ",
+    "description_en": "Hug yourself or make a heart shape with the hands.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place43",
+    "word": "ห้องสมุด",
+    "word_en": "Library",
+    "category": "place",
+    "description": "ทำท่าหยิบหนังสือจากชั้นแล้วเปิดอ่าน",
+    "description_en": "Pretend to take a book from a shelf and open it.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object43",
+    "word": "กระดาษ",
+    "word_en": "Paper",
+    "category": "object",
+    "description": "ทำท่าถือแผ่นบาง ๆ และเขียนลงไป",
+    "description_en": "Hold a thin sheet and pretend to write on it.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food43",
+    "word": "น้ำผลไม้",
+    "word_en": "Juice",
+    "category": "food",
+    "description": "ถือแก้วและดื่มพร้อมยิ้มสดชื่น",
+    "description_en": "Hold a glass and drink with a refreshed smile.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act43",
+    "word": "ถาม",
+    "word_en": "Ask",
+    "category": "action",
+    "description": "ชี้ขึ้นเล็กน้อยพร้อมยกคิ้วเหมือนตั้งคำถาม",
+    "description_en": "Point upward slightly and raise eyebrows as if asking.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv43",
+    "word": "คุณมาจากไหน",
+    "word_en": "Where are you from?",
+    "category": "conversation",
+    "description": "ทำท่าชี้ไปที่พื้น แล้วชี้ออกไปไกล ๆ เหมือนถามถิ่นกำเนิด",
+    "description_en": "Point to the ground, then outward as if asking about origin.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life44",
+    "word": "ไปโรงเรียน",
+    "word_en": "Go to school",
+    "category": "daily_life",
+    "description": "ชี้เด็กแล้วชี้ทางไปด้านหน้า แสดงการไปโรงเรียน",
+    "description_en": "Point to a child then forward to show going to school.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam44",
+    "word": "ญาติ",
+    "word_en": "Relative",
+    "category": "family",
+    "description": "กางมือสองข้างและโค้งเข้าหากันเหมือนเชื่อมคนหลายคน",
+    "description_en": "Open both hands and curve inward as if connecting many people.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo44",
+    "word": "คิดถึง",
+    "word_en": "Miss (someone)",
+    "category": "emotion",
+    "description": "แตะหน้าอกแล้วเอื้อมมือไปข้างหน้าอย่างอ่อนโยน",
+    "description_en": "Touch the chest then reach one hand forward gently.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place44",
+    "word": "สนามกีฬา",
+    "word_en": "Stadium",
+    "category": "place",
+    "description": "ทำท่ากางแขนวงกว้างและชี้ไปยังลานกว้าง",
+    "description_en": "Spread arms in a circle and point to a wide field.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object44",
+    "word": "กระเป๋าตังค์",
+    "word_en": "Wallet",
+    "category": "object",
+    "description": "เปิดและปิดมือเหมือนเปิดกระเป๋าสตางค์",
+    "description_en": "Open and close the hand as if opening a wallet.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food44",
+    "word": "นม",
+    "word_en": "Milk",
+    "category": "food",
+    "description": "ถือแก้วแล้วดื่มเหมือนดื่มนม",
+    "description_en": "Hold a glass and drink as if it is milk.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act44",
+    "word": "ตอบ",
+    "word_en": "Answer",
+    "category": "action",
+    "description": "ชี้จากปากออกไปด้านหน้าเหมือนส่งคำตอบ",
+    "description_en": "Point outward from the mouth as if sending an answer.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv44",
+    "word": "คุณทำงานที่ไหน",
+    "word_en": "Where do you work?",
+    "category": "conversation",
+    "description": "ทำท่าพิมพ์งานแล้วกวาดมือไปรอบ ๆ เหมือนถามสถานที่ทำงาน",
+    "description_en": "Mime typing then gesture around to ask about workplace.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life45",
+    "word": "ทำการบ้าน",
+    "word_en": "Do homework",
+    "category": "daily_life",
+    "description": "ทำท่าเขียนลงบนสมุดอย่างตั้งใจ",
+    "description_en": "Mimic writing carefully in a notebook.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam45",
+    "word": "เพื่อน",
+    "word_en": "Friend",
+    "category": "family",
+    "description": "เกี่ยวนิ้วชี้ของสองมือเข้าด้วยกันแสดงถึงความผูกพัน",
+    "description_en": "Hook both index fingers together to show friendship.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo45",
+    "word": "กังวล",
+    "word_en": "Worried",
+    "category": "emotion",
+    "description": "ขมวดคิ้วและสอดมือประสานกันแน่น",
+    "description_en": "Frown and clasp hands together tightly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place45",
+    "word": "ป้ายรถเมล์",
+    "word_en": "Bus stop",
+    "category": "place",
+    "description": "ชี้ลงที่จุดหนึ่งและทำท่ารอรถพร้อมมองไปรอบ ๆ",
+    "description_en": "Point to a spot on the ground and stand as if waiting for a bus.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object45",
+    "word": "หูฟัง",
+    "word_en": "Headphones",
+    "category": "object",
+    "description": "ใช้สองมือจับหูทั้งสองข้างเหมือนใส่หูฟัง",
+    "description_en": "Place both hands near the ears as if wearing headphones.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food45",
+    "word": "ข้าวกล่อง",
+    "word_en": "Lunch box",
+    "category": "food",
+    "description": "เปิดกล่องอาหารและตักกินจากด้านใน",
+    "description_en": "Open a lunch box and scoop food from inside.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act45",
+    "word": "รอ",
+    "word_en": "Wait",
+    "category": "action",
+    "description": "ยกฝ่ามือขึ้นด้านหน้าและทำท่ารอคอย",
+    "description_en": "Hold a palm forward as if signaling to wait.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv45",
+    "word": "คุณอายุเท่าไร",
+    "word_en": "How old are you?",
+    "category": "conversation",
+    "description": "ชี้ที่ตัวอีกฝ่ายแล้วทำท่านับอายุด้วยนิ้ว",
+    "description_en": "Point at the person and count with the fingers.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life46",
+    "word": "ตื่นนอน",
+    "word_en": "Wake up",
+    "category": "daily_life",
+    "description": "ลืมตาและลุกขึ้นจากที่นอน แสดงการเริ่มต้นวันใหม่",
+    "description_en": "Open your eyes and rise from bed, showing the start of a new day.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam46",
+    "word": "ครอบครัว",
+    "word_en": "Family",
+    "category": "family",
+    "description": "กางแขนโค้งเข้าหากันด้านหน้าเหมือนโอบกอดทุกคนในบ้าน",
+    "description_en": "Curve both arms in front as if embracing the whole family.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo46",
+    "word": "ดีใจ",
+    "word_en": "Happy",
+    "category": "emotion",
+    "description": "ยิ้มพร้อมยกมือสองข้างขึ้นเล็กน้อย",
+    "description_en": "Smile and raise both hands slightly to show happiness.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place46",
+    "word": "บ้าน",
+    "word_en": "Home",
+    "category": "place",
+    "description": "ใช้สองมือทำรูปหลังคาเหนือศีรษะ",
+    "description_en": "Form a roof shape above the head with both hands.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object46",
+    "word": "โทรศัพท์",
+    "word_en": "Phone",
+    "category": "object",
+    "description": "ทำมือเป็นรูปโทรศัพท์แนบหูหรือมองหน้าจอในมือ",
+    "description_en": "Form a phone shape at the ear or look at an imaginary screen.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food46",
+    "word": "ข้าว",
+    "word_en": "Rice",
+    "category": "food",
+    "description": "ทำท่าตักข้าวเข้าปากด้วยช้อนหรือส้อม",
+    "description_en": "Mimic scooping rice into the mouth with a spoon.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act46",
+    "word": "เดิน",
+    "word_en": "Walk",
+    "category": "action",
+    "description": "ใช้มือสองข้างทำท่าเท้าเดินสลับกัน",
+    "description_en": "Use two hands to imitate alternating steps.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv46",
+    "word": "วันนี้เป็นอย่างไรบ้าง",
+    "word_en": "How is your day?",
+    "category": "conversation",
+    "description": "ทำท่ากวาดมือไปตามท้องฟ้าแล้วชี้ที่อีกฝ่าย",
+    "description_en": "Sweep a hand across the sky then point to the person.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life47",
+    "word": "ล้างหน้า",
+    "word_en": "Wash face",
+    "category": "daily_life",
+    "description": "ใช้มือทั้งสองถูหน้าเบา ๆ เหมือนกำลังล้างหน้า",
+    "description_en": "Use both hands to gently rub the face as if washing it.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam47",
+    "word": "พ่อ",
+    "word_en": "Father",
+    "category": "family",
+    "description": "ใช้นิ้วโป้งแตะที่จมูก แสดงถึงคำว่าพ่อ",
+    "description_en": "Touch the nose gently with the thumb to indicate father.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo47",
+    "word": "เสียใจ",
+    "word_en": "Sad",
+    "category": "emotion",
+    "description": "ก้มหน้าเล็กน้อยและใช้มือเช็ดน้ำตา",
+    "description_en": "Lower the head a bit and wipe imaginary tears.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place47",
+    "word": "โรงเรียน",
+    "word_en": "School",
+    "category": "place",
+    "description": "ทำสัญลักษณ์เหมือนหลังคาแล้วทำท่าเขียนหนังสือ",
+    "description_en": "Make a roof shape then mimic writing in a notebook.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object47",
+    "word": "กระเป๋า",
+    "word_en": "Bag",
+    "category": "object",
+    "description": "ทำท่าถือสายกระเป๋าที่ไหล่หรือมือ",
+    "description_en": "Mimic holding a bag strap on the shoulder or in the hand.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food47",
+    "word": "น้ำ",
+    "word_en": "Water",
+    "category": "food",
+    "description": "ทำท่าถือแก้วและดื่มน้ำ",
+    "description_en": "Pretend to hold a glass and drink water.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act47",
+    "word": "วิ่ง",
+    "word_en": "Run",
+    "category": "action",
+    "description": "ทำท่าแขนแกว่งเร็วเหมือนกำลังวิ่ง",
+    "description_en": "Swing the arms quickly as if running.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv47",
+    "word": "คุณกำลังทำอะไรอยู่",
+    "word_en": "What are you doing?",
+    "category": "conversation",
+    "description": "ชี้ที่อีกฝ่ายแล้วทำท่ามองดูมือของเขา",
+    "description_en": "Point at the person and look at their hands as if observing.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life48",
+    "word": "แปรงฟัน",
+    "word_en": "Brush teeth",
+    "category": "daily_life",
+    "description": "ทำท่าถือแปรงแล้วขยับที่ปากไปมาเหมือนกำลังแปรงฟัน",
+    "description_en": "Mimic holding a toothbrush and move it across the mouth.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam48",
+    "word": "แม่",
+    "word_en": "Mother",
+    "category": "family",
+    "description": "ใช้นิ้วโป้งแตะที่แก้ม แสดงถึงคำว่าแม่",
+    "description_en": "Touch the cheek lightly with the thumb to indicate mother.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo48",
+    "word": "โกรธ",
+    "word_en": "Angry",
+    "category": "emotion",
+    "description": "ขมวดคิ้ว กำมือแน่น และเกร็งแขนเล็กน้อย",
+    "description_en": "Frown, clench fists, and tense the arms slightly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place48",
+    "word": "โรงพยาบาล",
+    "word_en": "Hospital",
+    "category": "place",
+    "description": "วาดกากบาทอยู่เหนือด้านหน้าอก แสดงถึงสัญลักษณ์โรงพยาบาล",
+    "description_en": "Draw a cross sign in front of the chest to indicate hospital.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object48",
+    "word": "หนังสือ",
+    "word_en": "Book",
+    "category": "object",
+    "description": "ประกบมือแล้วกางออกเหมือนเปิดหนังสือ",
+    "description_en": "Put hands together then open them like a book.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food48",
+    "word": "กาแฟ",
+    "word_en": "Coffee",
+    "category": "food",
+    "description": "ถือแก้วเล็กและจิบเบา ๆ เหมือนดื่มกาแฟ",
+    "description_en": "Hold a small cup and sip gently like drinking coffee.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act48",
+    "word": "นั่ง",
+    "word_en": "Sit",
+    "category": "action",
+    "description": "ทำท่านั่งลงอย่างชัดเจน",
+    "description_en": "Clearly mime the action of sitting down.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv48",
+    "word": "คุณช่วยฉันได้ไหม",
+    "word_en": "Can you help me?",
+    "category": "conversation",
+    "description": "ใช้มือข้างหนึ่งยื่นไปข้างหน้าเหมือนขอความช่วยเหลือ",
+    "description_en": "Extend one hand forward as if asking for help.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life49",
+    "word": "อาบน้ำ",
+    "word_en": "Take a shower",
+    "category": "daily_life",
+    "description": "ใช้มือถูแขนและลำตัวเหมือนน้ำไหลผ่านขณะอาบน้ำ",
+    "description_en": "Rub arms and body as if water is running over you in the shower.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam49",
+    "word": "ลูกชาย",
+    "word_en": "Son",
+    "category": "family",
+    "description": "ชี้ลงต่ำเล็กน้อยและทำท่าทางแข็งแรงเหมือนเด็กผู้ชาย",
+    "description_en": "Point slightly downward and show a strong posture like a boy.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo49",
+    "word": "กลัว",
+    "word_en": "Afraid",
+    "category": "emotion",
+    "description": "ถอยตัวเล็กน้อยและกอดแขนตัวเองเหมือนกลัว",
+    "description_en": "Pull the body back a little and hug the arms as if scared.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place49",
+    "word": "ตลาด",
+    "word_en": "Market",
+    "category": "place",
+    "description": "ทำท่าหยิบของหลายครั้งเหมือนเลือกซื้อของ",
+    "description_en": "Mimic picking up items repeatedly as if shopping.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object49",
+    "word": "ปากกา",
+    "word_en": "Pen",
+    "category": "object",
+    "description": "ทำท่าจับปากกาแล้วเขียนบนโต๊ะหรือกระดาษ",
+    "description_en": "Hold an imaginary pen and write on a surface.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food49",
+    "word": "ชา",
+    "word_en": "Tea",
+    "category": "food",
+    "description": "ถือถ้วยและเป่าลมเบา ๆ บนผิวเครื่องดื่มร้อน",
+    "description_en": "Hold a cup and blow lightly over a hot drink.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act49",
+    "word": "ยืน",
+    "word_en": "Stand",
+    "category": "action",
+    "description": "ยืดตัวตรงและชี้ลงไปที่เท้า",
+    "description_en": "Stand tall and point down at the feet.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv49",
+    "word": "ขอบคุณมาก",
+    "word_en": "Thank you very much.",
+    "category": "conversation",
+    "description": "ทำท่าขอบคุณจากคางลงมาพร้อมโค้งศีรษะเล็กน้อย",
+    "description_en": "Move the fingertips from chin downward and nod slightly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life50",
+    "word": "แต่งตัว",
+    "word_en": "Get dressed",
+    "category": "daily_life",
+    "description": "ทำท่าดึงเสื้อใส่และจัดคอเสื้อให้เรียบร้อย",
+    "description_en": "Mimic putting on clothes and adjusting the collar neatly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam50",
+    "word": "ลูกสาว",
+    "word_en": "Daughter",
+    "category": "family",
+    "description": "ชี้ลงต่ำเล็กน้อยและทำท่าทางอ่อนโยนเหมือนเด็กผู้หญิง",
+    "description_en": "Point slightly downward and show a gentle gesture like a girl.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo50",
+    "word": "งง",
+    "word_en": "Confused",
+    "category": "emotion",
+    "description": "เอียงศีรษะและขมวดคิ้ว พร้อมกางมือออกข้างตัว",
+    "description_en": "Tilt the head, frown slightly, and open palms to the sides.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place50",
+    "word": "วัด",
+    "word_en": "Temple",
+    "category": "place",
+    "description": "พนมมือและก้มศีรษะเล็กน้อย แสดงถึงสถานที่ศาสนา",
+    "description_en": "Put palms together and bow slightly to indicate a temple.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object50",
+    "word": "คอมพิวเตอร์",
+    "word_en": "Computer",
+    "category": "object",
+    "description": "ทำท่าพิมพ์แป้นพิมพ์และจ้องหน้าจอ",
+    "description_en": "Mimic typing on a keyboard while looking at a screen.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food50",
+    "word": "ผลไม้",
+    "word_en": "Fruit",
+    "category": "food",
+    "description": "ทำท่าปอกผลไม้และหยิบใส่ปาก",
+    "description_en": "Mimic peeling fruit and eating it.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act50",
+    "word": "อ่านหนังสือ",
+    "word_en": "Read a book",
+    "category": "action",
+    "description": "ถือหนังสือและกวาดสายตาไปตามหน้า",
+    "description_en": "Hold a book and move the eyes along the page.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv50",
+    "word": "ขอโทษนะ",
+    "word_en": "I am sorry.",
+    "category": "conversation",
+    "description": "ถูหน้าอกเป็นวงกลมเบา ๆ เพื่อแสดงการขอโทษ",
+    "description_en": "Rub the chest in a small circle to show apology.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life51",
+    "word": "ไปทำงาน",
+    "word_en": "Go to work",
+    "category": "daily_life",
+    "description": "ชี้ไปที่นาฬิกาแล้วชี้ทางเดินข้างหน้า แสดงการออกไปทำงาน",
+    "description_en": "Point at an imaginary watch then forward to show leaving for work.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam51",
+    "word": "พี่ชาย",
+    "word_en": "Older brother",
+    "category": "family",
+    "description": "ชี้ไปที่ชายหนุ่มด้านบนเล็กน้อย แสดงว่าเป็นพี่ชาย",
+    "description_en": "Gesture toward a man slightly above to indicate older brother.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo51",
+    "word": "เหนื่อย",
+    "word_en": "Tired",
+    "category": "emotion",
+    "description": "ก้มไหล่และหายใจแรง ใช้มือลูบหน้าผาก",
+    "description_en": "Drop the shoulders, breathe heavily, and wipe the forehead.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place51",
+    "word": "สวนสาธารณะ",
+    "word_en": "Park",
+    "category": "place",
+    "description": "กางแขนกว้างเหมือนพื้นที่โล่ง และทำท่ามองต้นไม้",
+    "description_en": "Spread arms wide like an open area and look around at trees.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object51",
+    "word": "แว่นตา",
+    "word_en": "Glasses",
+    "category": "object",
+    "description": "ใช้นิ้วจับกรอบแว่นบริเวณดั้งจมูก",
+    "description_en": "Pinch fingers at the bridge of the nose as if adjusting glasses.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food51",
+    "word": "ขนม",
+    "word_en": "Snack",
+    "category": "food",
+    "description": "หยิบของชิ้นเล็ก ๆ เข้าปากทีละคำ",
+    "description_en": "Pick up small pieces of food and eat them.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act51",
+    "word": "เขียน",
+    "word_en": "Write",
+    "category": "action",
+    "description": "ทำท่าจับปากกาเขียนบนกระดาษ",
+    "description_en": "Hold an imaginary pen and write on paper.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv51",
+    "word": "ไม่เป็นไร",
+    "word_en": "It is okay.",
+    "category": "conversation",
+    "description": "โบกมือเบา ๆ และยิ้มเพื่อบอกว่าไม่เป็นไร",
+    "description_en": "Wave the hand gently and smile to say it is fine.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life52",
+    "word": "พักผ่อน",
+    "word_en": "Rest",
+    "category": "daily_life",
+    "description": "ประสานมือไว้ที่หลังศีรษะหรือเอนตัวเหมือนกำลังพักผ่อน",
+    "description_en": "Place hands behind the head or lean back to show resting.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam52",
+    "word": "น้องชาย",
+    "word_en": "Younger brother",
+    "category": "family",
+    "description": "ชี้ลงต่ำเล็กน้อยไปยังผู้ชาย แสดงว่าน้องชาย",
+    "description_en": "Point slightly downward to a male to show younger brother.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo52",
+    "word": "ภูมิใจ",
+    "word_en": "Proud",
+    "category": "emotion",
+    "description": "เชิดหน้าเล็กน้อยและแตะหน้าอกด้วยมือหนึ่ง",
+    "description_en": "Lift the chin slightly and touch the chest with one hand.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place52",
+    "word": "ร้านอาหาร",
+    "word_en": "Restaurant",
+    "category": "place",
+    "description": "ทำท่าตักอาหารเข้าปากแล้วชี้รอบ ๆ แสดงสถานที่กินข้าว",
+    "description_en": "Mimic eating then gesture around to show a place to eat.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object52",
+    "word": "กุญแจ",
+    "word_en": "Key",
+    "category": "object",
+    "description": "ทำท่าไขกุญแจในแม่กุญแจหรือประตู",
+    "description_en": "Turn an imaginary key in a lock or door.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food52",
+    "word": "ผัก",
+    "word_en": "Vegetables",
+    "category": "food",
+    "description": "ทำท่าหยิบผักจากจานและกินอย่างเบา ๆ",
+    "description_en": "Pick vegetables from a plate and eat gently.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act52",
+    "word": "ฟังเพลง",
+    "word_en": "Listen to music",
+    "category": "action",
+    "description": "แตะหูและโยกศีรษะตามจังหวะ",
+    "description_en": "Touch the ear and nod to an imagined rhythm.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv52",
+    "word": "ตอนนี้กี่โมงแล้ว",
+    "word_en": "What time is it now?",
+    "category": "conversation",
+    "description": "แตะข้อมือเหมือนดูนาฬิกาและเลิกคิ้วถาม",
+    "description_en": "Tap the wrist as if checking a watch and raise eyebrows.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life53",
+    "word": "เล่นโทรศัพท์",
+    "word_en": "Use phone",
+    "category": "daily_life",
+    "description": "ทำมือเป็นรูปโทรศัพท์แนบหูหรือมองหน้าจอในมือ",
+    "description_en": "Make a phone shape at the ear or look at a phone in your hand.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam53",
+    "word": "พี่สาว",
+    "word_en": "Older sister",
+    "category": "family",
+    "description": "ชี้ไปที่ผู้หญิงด้านบนเล็กน้อย แสดงว่าเป็นพี่สาว",
+    "description_en": "Gesture toward a woman slightly above to indicate older sister.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo53",
+    "word": "อาย",
+    "word_en": "Shy",
+    "category": "emotion",
+    "description": "ใช้มือปิดแก้มเล็กน้อยและยิ้มเขิน",
+    "description_en": "Cover the cheek slightly and smile shyly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place53",
+    "word": "ธนาคาร",
+    "word_en": "Bank",
+    "category": "place",
+    "description": "ทำท่าหยิบเงินจากกระเป๋าและเก็บใส่ที่ปลอดภัย",
+    "description_en": "Pretend to take money from a wallet and store it safely.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object53",
+    "word": "รองเท้า",
+    "word_en": "Shoes",
+    "category": "object",
+    "description": "ชี้ไปที่เท้าและทำท่าใส่รองเท้า",
+    "description_en": "Point to the feet and mimic putting on shoes.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food53",
+    "word": "เนื้อสัตว์",
+    "word_en": "Meat",
+    "category": "food",
+    "description": "ทำท่าตัดเนื้อด้วยมีดและส้อม",
+    "description_en": "Cut imaginary meat with a knife and fork.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act53",
+    "word": "ดูหนัง",
+    "word_en": "Watch a movie",
+    "category": "action",
+    "description": "จ้องมองไปข้างหน้าเหมือนดูจอใหญ่",
+    "description_en": "Stare forward as if watching a big screen.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv53",
+    "word": "คุณเข้าใจไหม",
+    "word_en": "Do you understand?",
+    "category": "conversation",
+    "description": "ชี้ไปที่ศีรษะอีกฝ่ายแล้วทำท่าพยักหน้าเบา ๆ",
+    "description_en": "Point to the other person’s head then nod slightly.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life54",
+    "word": "ดูทีวี",
+    "word_en": "Watch TV",
+    "category": "daily_life",
+    "description": "ชี้ไปข้างหน้าเหมือนมีจอทีวี และจ้องมองอย่างตั้งใจ",
+    "description_en": "Point forward as if there is a TV and stare attentively.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam54",
+    "word": "น้องสาว",
+    "word_en": "Younger sister",
+    "category": "family",
+    "description": "ชี้ลงต่ำเล็กน้อยไปยังผู้หญิง แสดงว่าน้องสาว",
+    "description_en": "Point slightly downward to a female to show younger sister.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo54",
+    "word": "เครียด",
+    "word_en": "Stressed",
+    "category": "emotion",
+    "description": "บีบขมับทั้งสองข้างเหมือนคิดมาก",
+    "description_en": "Press both temples as if overthinking.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place54",
+    "word": "สำนักงาน",
+    "word_en": "Office",
+    "category": "place",
+    "description": "ทำท่าพิมพ์แป้นพิมพ์และนั่งตัวตรงบนเก้าอี้",
+    "description_en": "Mimic typing on a keyboard while sitting upright.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object54",
+    "word": "นาฬิกา",
+    "word_en": "Watch",
+    "category": "object",
+    "description": "แตะข้อมือด้านในเหมือนมีนาฬิกาข้อมือ",
+    "description_en": "Tap the inside of the wrist as if wearing a watch.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food54",
+    "word": "ข้าวเช้า",
+    "word_en": "Breakfast",
+    "category": "food",
+    "description": "ชี้ไปที่นาฬิกาตอนเช้าและทำท่ากินอาหาร",
+    "description_en": "Point to morning time and mimic eating.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act54",
+    "word": "ทำงาน",
+    "word_en": "Work",
+    "category": "action",
+    "description": "ทำท่าพิมพ์งานหรือเขียนเอกสารอย่างจริงจัง",
+    "description_en": "Mime typing or writing documents seriously.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv54",
+    "word": "ฉันไม่เข้าใจ",
+    "word_en": "I do not understand.",
+    "category": "conversation",
+    "description": "ส่ายหัวช้า ๆ และกางมือออกด้านข้าง",
+    "description_en": "Shake the head slowly and open palms to the sides.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life55",
+    "word": "ทำความสะอาดบ้าน",
+    "word_en": "Clean the house",
+    "category": "daily_life",
+    "description": "ทำท่ากวาดพื้นหรือเช็ดโต๊ะไปมา",
+    "description_en": "Mimic sweeping the floor or wiping a table.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam55",
+    "word": "ปู่",
+    "word_en": "Grandfather (paternal)",
+    "category": "family",
+    "description": "ทำท่าผู้สูงอายุและชี้ไปด้านพ่อ แสดงว่าปู่",
+    "description_en": "Show an elderly posture and gesture toward father’s side.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo55",
+    "word": "ตกใจ",
+    "word_en": "Surprised",
+    "category": "emotion",
+    "description": "เบิกตาโตและยกมือขึ้นเล็กน้อยเหมือนตกใจ",
+    "description_en": "Open the eyes wide and raise hands slightly in surprise.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place55",
+    "word": "สถานีรถไฟ",
+    "word_en": "Train station",
+    "category": "place",
+    "description": "ทำท่ารถไฟวิ่งและชี้ไปที่พื้นเหมือนชานชาลา",
+    "description_en": "Mimic a train moving and point to the ground like a platform.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object55",
+    "word": "โต๊ะ",
+    "word_en": "Table",
+    "category": "object",
+    "description": "วางมือราบระดับเอวเพื่อแสดงผิวโต๊ะ",
+    "description_en": "Hold a flat hand at waist level to show a tabletop.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food55",
+    "word": "ข้าวเที่ยง",
+    "word_en": "Lunch",
+    "category": "food",
+    "description": "ชี้ไปที่ท้องฟ้าตอนกลางวันและทำท่ากินอาหาร",
+    "description_en": "Point to midday and mimic eating.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act55",
+    "word": "พักผ่อน",
+    "word_en": "Relax",
+    "category": "action",
+    "description": "เอนตัวและหายใจลึก ๆ อย่างสบาย",
+    "description_en": "Lean back and take a deep, relaxed breath.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv55",
+    "word": "ช่วยอธิบายอีกครั้งได้ไหม",
+    "word_en": "Could you explain again?",
+    "category": "conversation",
+    "description": "ชี้ไปที่หูแล้วหมุนมือเป็นวงกลมเหมือนขอให้พูดซ้ำ",
+    "description_en": "Point to the ear and circle the hand requesting repetition.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life56",
+    "word": "ซักผ้า",
+    "word_en": "Do the laundry",
+    "category": "daily_life",
+    "description": "ถูมือสองข้างเข้าหากันเหมือนกำลังซักผ้า",
+    "description_en": "Rub both hands together as if washing clothes.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam56",
+    "word": "ย่า",
+    "word_en": "Grandmother (paternal)",
+    "category": "family",
+    "description": "ทำท่าผู้หญิงสูงอายุแล้วชี้ไปด้านพ่อ แสดงว่าย่า",
+    "description_en": "Show an elderly woman and gesture toward father’s side.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo56",
+    "word": "เบื่อ",
+    "word_en": "Bored",
+    "category": "emotion",
+    "description": "เท้าคางและทำหน้าเบื่อหน่าย",
+    "description_en": "Rest the chin on the hand and look uninterested.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place56",
+    "word": "สนามบิน",
+    "word_en": "Airport",
+    "category": "place",
+    "description": "กางแขนเหมือนปีกเครื่องบินและโบกไปมา",
+    "description_en": "Extend arms like airplane wings and sway gently.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object56",
+    "word": "เก้าอี้",
+    "word_en": "Chair",
+    "category": "object",
+    "description": "ทำท่านั่งลงบนเก้าอี้อย่างระมัดระวัง",
+    "description_en": "Pretend to sit down carefully on a chair.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food56",
+    "word": "ข้าวเย็น",
+    "word_en": "Dinner",
+    "category": "food",
+    "description": "ชี้ไปที่ท้องฟ้าเวลาเย็นและทำท่ากินอาหาร",
+    "description_en": "Point to the evening sky and mimic eating.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act56",
+    "word": "เล่นกีฬา",
+    "word_en": "Play sports",
+    "category": "action",
+    "description": "ทำท่าขว้างหรือเตะบอล",
+    "description_en": "Mimic throwing or kicking a ball.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv56",
+    "word": "คุณจะไปไหน",
+    "word_en": "Where are you going?",
+    "category": "conversation",
+    "description": "ชี้ที่อีกฝ่ายแล้วชี้ไปทางหนึ่งข้างหน้า",
+    "description_en": "Point at the person then outward in a direction.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life57",
+    "word": "รีดผ้า",
+    "word_en": "Iron clothes",
+    "category": "daily_life",
+    "description": "ใช้มือข้างหนึ่งกดลงบนอีกมือเหมือนรีดผ้าบนโต๊ะ",
+    "description_en": "Press one hand on top of the other to imitate ironing clothes.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam57",
+    "word": "ตา",
+    "word_en": "Grandfather (maternal)",
+    "category": "family",
+    "description": "ทำท่าผู้สูงอายุและชี้ไปด้านแม่ แสดงว่าตา",
+    "description_en": "Show an elderly posture and gesture toward mother’s side.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo57",
+    "word": "สงสัย",
+    "word_en": "Wondering",
+    "category": "emotion",
+    "description": "ชี้นิ้วที่ขมับและมองขึ้นไปข้างบน",
+    "description_en": "Point to the temple and look upward in thought.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place57",
+    "word": "ห้างสรรพสินค้า",
+    "word_en": "Shopping mall",
+    "category": "place",
+    "description": "ชี้ขึ้นไปด้านบนหลายชั้นและทำท่าถือถุงของ",
+    "description_en": "Point upward for many floors and mimic holding shopping bags.",
+    "imageUrl": ""
+  },
+  {
+    "id": "object57",
+    "word": "โทรทัศน์",
+    "word_en": "Television",
+    "category": "object",
+    "description": "วาดสี่เหลี่ยมผืนผ้าด้านหน้าเหมือนจอทีวี",
+    "description_en": "Draw a rectangle in the air to show a TV screen.",
+    "imageUrl": ""
+  },
+  {
+    "id": "food57",
+    "word": "ขนมปัง",
+    "word_en": "Bread",
+    "category": "food",
+    "description": "ถือชิ้นขนมปังและกัดหนึ่งคำ",
+    "description_en": "Hold a piece of bread and take a bite.",
+    "imageUrl": ""
+  },
+  {
+    "id": "act57",
+    "word": "ช่วยเหลือ",
+    "word_en": "Help",
+    "category": "action",
+    "description": "ยื่นมือไปจับมืออีกคนและดึงขึ้น",
+    "description_en": "Reach out to grab another hand and pull up.",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv57",
+    "word": "คุณว่างไหมพรุ่งนี้",
+    "word_en": "Are you free tomorrow?",
+    "category": "conversation",
+    "description": "ชี้ไปที่นาฬิกา จากนั้นชี้ไปยังอีกฝ่ายพร้อมยกคิ้วถาม",
+    "description_en": "Indicate time, then the person, with a questioning look.",
+    "imageUrl": ""
+  },
+  {
+    "id": "life58",
+    "word": "เข้านอน",
+    "word_en": "Go to bed",
+    "category": "daily_life",
+    "description": "พนมมือที่ข้างแก้มและเอียงศีรษะเหมือนเอนนอน",
+    "description_en": "Place hands together at the cheek and tilt the head like lying down.",
+    "imageUrl": ""
+  },
+  {
+    "id": "fam58",
+    "word": "ยาย",
+    "word_en": "Grandmother (maternal)",
+    "category": "family",
+    "description": "ทำท่าผู้หญิงสูงอายุแล้วชี้ไปด้านแม่ แสดงว่ายาย",
+    "description_en": "Show an elderly woman and gesture toward mother’s side.",
+    "imageUrl": ""
+  },
+  {
+    "id": "emo58",
+    "word": "รัก",
+    "word_en": "Love",
+    "category": "emotion",
+    "description": "กอดตัวเองหรือทำท่าหัวใจด้วยมือ",
+    "description_en": "Hug yourself or make a heart shape with the hands.",
+    "imageUrl": ""
+  },
+  {
+    "id": "place58",
+    "word": "ห้องสมุด",
+    "word_en": "Library",
+    "category": "place",
+    "description": "ทำท่าหยิบหนังสือจากชั้นแล้วเปิดอ่าน",
+    "description_en": "Pretend to take a book from a shelf and open it.",
+    "imageUrl": ""
+  }
+]

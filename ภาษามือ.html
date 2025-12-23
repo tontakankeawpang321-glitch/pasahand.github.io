@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เรียนรู้ภาษามือ - ฉบับน่ารัก</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Mali (ลายมือน่ารัก) & Prompt -->
+    <link href="https://fonts.googleapis.com/css2?family=Mali:wght@300;500;700&family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #fff7ed; /* ส้มอ่อนๆ ครีมๆ */
+            background-image: radial-gradient(#fed7aa 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        h1, h2, h3, .cute-font {
+            font-family: 'Mali', cursive;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px; /* For horizontal scroll */
+        }
+        ::-webkit-scrollbar-track {
+            background: #fff7ed; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #fdba74; 
+            border-radius: 10px;
+        }
+
+        /* Animations */
+        @keyframes popIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .modal-content {
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.15);
+        }
+        /* Loading Spinner */
+        .loader {
+            border: 4px solid #fff7ed;
+            border-top: 4px solid #f97316;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Hide scrollbar for category menu on mobile but keep functionality */
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="text-gray-700 min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-40 shadow-sm border-b border-orange-100 h-[72px]">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-3 h-full">
+            <div class="flex items-center gap-2 md:gap-3 w-full md:w-auto justify-center md:justify-start">
+                <div class="bg-orange-100 p-2 rounded-full text-orange-500">
+                    <i data-lucide="hand" class="w-6 h-6 md:w-8 md:h-8"></i>
+                </div>
+                <h1 class="text-xl md:text-3xl font-bold text-orange-600 cute-font whitespace-nowrap">ภาษามือหรรษา</h1>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="relative w-full md:w-96 hidden md:block">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i data-lucide="search" class="w-5 h-5 text-orange-300"></i>
+                </div>
+                <input type="text" id="searchInputDesktop" 
+                    class="block w-full pl-10 pr-3 py-2 border-2 border-orange-100 rounded-full leading-5 bg-white placeholder-orange-200 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-200 transition-all duration-300 cute-font" 
+                    placeholder="ค้นหาคำศัพท์... (เช่น ก ไก่)">
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Search Bar (Separate from header to allow sticky category) -->
+    <div class="md:hidden px-4 py-3 bg-white/50 backdrop-blur-sm border-b border-orange-50">
+        <div class="relative w-full">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i data-lucide="search" class="w-5 h-5 text-orange-300"></i>
+            </div>
+            <input type="text" id="searchInputMobile" 
+                class="block w-full pl-10 pr-3 py-2 border-2 border-orange-100 rounded-full leading-5 bg-white placeholder-orange-200 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-200 transition-all duration-300 cute-font text-sm" 
+                placeholder="ค้นหาคำศัพท์...">
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-4 md:py-6 max-w-6xl relative">
+        
+        <div class="flex flex-col md:flex-row gap-6">
+            
+            <!-- Sidebar / Category Menu -->
+            <!-- Mobile: Sticky Top (below header), Desktop: Sticky Sidebar -->
+            <aside class="w-full md:w-64 flex-shrink-0 sticky top-0 md:top-24 z-30 bg-transparent pointer-events-none md:pointer-events-auto">
+                <div class="pointer-events-auto">
+                    <!-- Title (Desktop Only) -->
+                    <h3 class="text-lg font-bold text-orange-800 cute-font mb-3 hidden md:block px-2">
+                        <i data-lucide="list-filter" class="inline w-4 h-4 mr-1"></i> หมวดหมู่
+                    </h3>
+                    
+                    <!-- Menu Container -->
+                    <!-- Mobile: Added background/blur/shadow to make it stand out when sticky -->
+                    <div id="categoryMenu" class="flex overflow-x-auto md:flex-col gap-2 pb-2 md:pb-0 hide-scroll snap-x py-2 md:py-0 -mx-4 px-4 md:mx-0 md:px-0 bg-white/90 backdrop-blur-md md:bg-transparent shadow-sm md:shadow-none border-b md:border-none border-orange-100 md:rounded-none">
+                        <!-- Categories will be injected here -->
+                        <div class="animate-pulse bg-white h-10 w-24 rounded-full md:w-full md:rounded-xl"></div>
+                        <div class="animate-pulse bg-white h-10 w-24 rounded-full md:w-full md:rounded-xl"></div>
+                        <div class="animate-pulse bg-white h-10 w-24 rounded-full md:w-full md:rounded-xl"></div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Content Area -->
+            <div class="flex-grow min-w-0 pt-2 md:pt-0">
+                
+                <!-- Welcome Message (Desktop Only) -->
+                <div class="hidden md:block text-center mb-6 bg-white/50 p-4 rounded-2xl border border-orange-50">
+                    <h2 class="text-xl text-orange-800 cute-font mb-1">ยินดีต้อนรับสู่โลกของการเรียนรู้</h2>
+                    <p class="text-gray-500 text-sm">เลือกหมวดหมู่หรือค้นหา แล้วคลิกที่การ์ดเพื่อดูรายละเอียด</p>
+                </div>
+
+                <!-- Loading State -->
+                <div id="loadingState" class="text-center py-12 hidden">
+                    <div class="loader mb-4"></div>
+                    <p class="cute-font text-orange-400">กำลังโหลดข้อมูลคำศัพท์จ้า...</p>
+                </div>
+
+                <!-- Cards Grid -->
+                <div id="cardGrid" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
+                    <!-- Content will be injected here by JS -->
+                </div>
+
+                <!-- No Results State -->
+                <div id="noResults" class="hidden text-center py-12">
+                    <div class="bg-white p-6 rounded-3xl inline-block shadow-sm">
+                        <i data-lucide="frown" class="w-12 h-12 mx-auto text-orange-300 mb-2"></i>
+                        <p class="cute-font text-lg text-gray-500">ไม่พบคำที่ค้นหาจ้า</p>
+                    </div>
+                </div>
+
+                <!-- Error State -->
+                <div id="errorState" class="hidden text-center py-12">
+                    <div class="bg-red-50 p-6 rounded-3xl inline-block shadow-sm border border-red-100">
+                        <i data-lucide="alert-circle" class="w-12 h-12 mx-auto text-red-400 mb-2"></i>
+                        <p class="cute-font text-lg text-red-500">โหลดข้อมูลไม่สำเร็จ</p>
+                        <p class="text-sm text-red-400 mt-1">กรุณาตรวจสอบไฟล์ signs500.json</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-orange-300 text-sm cute-font">
+        <p>สร้างสรรค์ด้วยความรัก 🧡 เพื่อการเรียนรู้</p>
+    </footer>
+
+    <!-- Modal / Dialog -->
+    <div id="detailModal" class="relative z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div class="fixed inset-0 bg-orange-900/30 backdrop-blur-sm transition-opacity"></div>
+
+        <!-- Scroll/Click Container -->
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0" onclick="closeModal()">
+                
+                <!-- Modal Panel -->
+                <div class="relative transform overflow-hidden rounded-3xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg modal-content border-4 border-orange-100" onclick="event.stopPropagation()">
+                    
+                    <!-- Close Button -->
+                    <button onclick="closeModal()" class="absolute top-4 right-4 bg-orange-100 hover:bg-orange-200 text-orange-500 rounded-full p-1 transition-colors z-20 shadow-md">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+
+                    <!-- Content -->
+                    <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                        <div class="flex flex-col items-center">
+                            
+                            <!-- Image Header (Updated for 'contain' fit) -->
+                            <!-- Changed h-48 to h-64 for better visibility, added bg-orange-50, used object-contain -->
+                            <div class="w-full h-64 bg-orange-50 rounded-2xl overflow-hidden mb-4 relative group shrink-0 flex items-center justify-center border border-orange-100">
+                                <img id="modalImage" src="" alt="Sign Language" class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105">
+                                <div class="absolute bottom-2 right-2 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-orange-500 shadow-sm border border-orange-100" id="modalCategory">
+                                    Category
+                                </div>
+                            </div>
+
+                            <!-- Title -->
+                            <h3 id="modalTitle" class="text-3xl font-bold text-orange-600 cute-font mb-1 text-center"></h3>
+                            <p id="modalWordEn" class="text-sm text-gray-400 font-medium mb-4 text-center"></p>
+
+                            <!-- Description Box -->
+                            <div class="w-full bg-orange-50/50 rounded-xl p-4 mb-3 border border-orange-100">
+                                <h4 class="text-sm font-bold text-orange-400 mb-1 cute-font flex items-center gap-1">
+                                    <i data-lucide="book-open" class="w-4 h-4"></i> วิธีทำ
+                                </h4>
+                                <p id="modalDesc" class="text-gray-600 text-sm leading-relaxed"></p>
+                                <p id="modalDescEn" class="text-gray-400 text-xs mt-2 italic border-t border-orange-100 pt-2"></p>
+                            </div>
+
+                            <!-- Tip Box -->
+                            <div class="w-full bg-yellow-50 rounded-xl p-3 mb-4 border border-yellow-100 flex gap-3 items-start">
+                                <div class="bg-yellow-100 p-1.5 rounded-full text-yellow-500 mt-0.5 shrink-0">
+                                    <i data-lucide="lightbulb" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs font-bold text-yellow-600 block mb-0.5">เคล็ดลับการจำ</span>
+                                    <p id="modalTip" class="text-yellow-800 text-sm"></p>
+                                </div>
+                            </div>
+
+                            <!-- YouTube Embed Container -->
+                            <div id="videoContainer" class="w-full rounded-xl overflow-hidden shadow-sm bg-black relative aspect-video hidden">
+                                <iframe id="modalYoutube" class="w-full h-full absolute inset-0 z-10" src="" 
+                                    title="YouTube video player" frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            
+                            <a id="modalYoutubeLink" href="#" target="_blank" class="mt-3 flex items-center gap-2 text-xs text-orange-400 hover:text-orange-600 transition-colors hidden">
+                                <i data-lucide="external-link" class="w-3 h-3"></i> เปิดใน YouTube
+                            </a>
+
+                        </div>
+                    </div>
+                    
+                    <!-- Footer Actions -->
+                    <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                        <button type="button" onclick="closeModal()" class="inline-flex w-full justify-center rounded-full bg-orange-500 px-6 py-2 text-sm font-semibold text-white shadow-sm hover:bg-orange-600 sm:ml-3 sm:w-auto transition-all hover:shadow-lg hover:-translate-y-0.5">
+                            เข้าใจแล้วจ้า
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Data Setup & Global Variables
+        let vocabData = []; 
+        let categories = ['ทั้งหมด'];
+        let activeCategory = 'ทั้งหมด';
+        
+        // Element References
+        const cardGrid = document.getElementById('cardGrid');
+        const categoryMenu = document.getElementById('categoryMenu');
+        const searchInputDesktop = document.getElementById('searchInputDesktop');
+        const searchInputMobile = document.getElementById('searchInputMobile');
+        const noResults = document.getElementById('noResults');
+        const loadingState = document.getElementById('loadingState');
+        const errorState = document.getElementById('errorState');
+        const modal = document.getElementById('detailModal');
+        const videoContainer = document.getElementById('videoContainer');
+        const modalYoutubeLink = document.getElementById('modalYoutubeLink');
+
+        // 2. Fetch Data Function
+        async function loadData() {
+            loadingState.classList.remove('hidden');
+            cardGrid.innerHTML = '';
+            categoryMenu.innerHTML = ''; 
+            
+            try {
+                const response = await fetch('signs500.json');
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                
+                const rawData = await response.json();
+                
+                // Dictionary for Category Mapping
+                const categoryMap = {
+                    'consonant': 'พยัญชนะ', 'vowel': 'สระ', 'tone': 'วรรณยุกต์',
+                    'number': 'ตัวเลข', 'family': 'ครอบครัว', 'food': 'อาหาร',
+                    'animal': 'สัตว์', 'colors': 'สี', 'color': 'สี',
+                    'place': 'สถานที่', 'vehicle': 'ยานพาหนะ', 'action': 'กริยา/ท่าทาง',
+                    'verb': 'คำกริยา', 'feeling': 'ความรู้สึก', 'emotion': 'อารมณ์',
+                    'body': 'ร่างกาย', 'clothes': 'เสื้อผ้า', 'fruit': 'ผลไม้',
+                    'vegetable': 'ผัก', 'sport': 'กีฬา', 'occupation': 'อาชีพ',
+                    'job': 'อาชีพ', 'day': 'วัน/เดือน/ปี', 'time': 'เวลา',
+                    'province': 'จังหวัด', 'country': 'ประเทศ', 'school': 'โรงเรียน',
+                    'house': 'บ้าน', 'nature': 'ธรรมชาติ', 'adjective': 'คำคุณศัพท์',
+                    'miscellaneous': 'เบ็ดเตล็ด', 'general': 'ทั่วไป', 'other': 'อื่นๆ'
+                };
+
+                vocabData = rawData.map(item => {
+                    const originalCat = (item.category || 'ทั่วไป').toLowerCase().trim();
+                    const mappedCat = categoryMap[originalCat] || item.category || 'ทั่วไป';
+                    return { ...item, category: mappedCat };
+                });
+                
+                const uniqueCats = [...new Set(vocabData.map(item => item.category))].sort();
+                categories = ['ทั้งหมด', ...uniqueCats];
+                
+                loadingState.classList.add('hidden');
+                
+                renderCategories();
+                filterAndRender(); 
+                
+            } catch (error) {
+                console.error("Error loading JSON:", error);
+                loadingState.classList.add('hidden');
+                errorState.classList.remove('hidden');
+            }
+        }
+
+        // 3. Render Categories
+        function renderCategories() {
+            categoryMenu.innerHTML = categories.map(cat => {
+                const isActive = activeCategory === cat;
+                const activeClasses = 'bg-orange-500 text-white shadow-md ring-2 ring-orange-200';
+                const inactiveClasses = 'bg-white text-gray-600 hover:bg-orange-50 border border-orange-100';
+                
+                return `
+                    <button onclick="setCategory('${cat}')" 
+                        class="${isActive ? activeClasses : inactiveClasses} 
+                               shrink-0 snap-start
+                               md:w-full text-left px-4 py-2 md:py-3 rounded-full md:rounded-xl 
+                               transition-all duration-200 font-medium cute-font text-sm md:text-base 
+                               flex items-center justify-between group whitespace-nowrap">
+                        <span>${cat}</span>
+                        ${isActive ? '<i data-lucide="check" class="hidden md:block w-4 h-4 ml-2"></i>' : ''}
+                    </button>
+                `;
+            }).join('');
+            lucide.createIcons();
+        }
+
+        // 4. Set Category Function
+        window.setCategory = (cat) => {
+            activeCategory = cat;
+            renderCategories(); 
+            filterAndRender();
+        };
+
+        // 5. Main Filter & Render Logic
+        function filterAndRender() {
+            const termDesktop = searchInputDesktop ? searchInputDesktop.value.toLowerCase() : '';
+            const termMobile = searchInputMobile ? searchInputMobile.value.toLowerCase() : '';
+            const searchTerm = termDesktop || termMobile; 
+            
+            const filteredData = vocabData.filter(item => {
+                const matchCategory = activeCategory === 'ทั้งหมด' || (item.category || 'ทั่วไป') === activeCategory;
+                const matchSearch = (item.word && item.word.toLowerCase().includes(searchTerm)) || 
+                                    (item.word_en && item.word_en.toLowerCase().includes(searchTerm)) ||
+                                    (item.description && item.description.includes(searchTerm));
+                return matchCategory && matchSearch;
+            });
+
+            renderCards(filteredData);
+        }
+
+        // 6. Render Cards
+        function renderCards(items) {
+            cardGrid.innerHTML = '';
+            
+            if (items.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-2xl md:rounded-3xl shadow-sm border border-orange-100 overflow-hidden cursor-pointer card-hover transition-all duration-300 flex flex-col h-full';
+                card.onclick = () => openModal(item);
+
+                const imgUrl = item.imageUrl || 'https://placehold.co/600x400/fff7ed/ea580c?text=ไม่มีรูป';
+
+                card.innerHTML = `
+                    <div class="h-32 md:h-48 overflow-hidden bg-orange-50 relative shrink-0">
+                        <img src="${imgUrl}" alt="${item.word}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/f3f4f6/9ca3af?text=รูปเสีย'">
+                        <div class="absolute top-2 right-2 md:top-3 md:right-3 bg-white/90 backdrop-blur-sm px-1.5 py-0.5 md:px-2 md:py-1 rounded-md text-[10px] md:text-xs font-bold text-orange-400 shadow-sm truncate max-w-[80px] md:max-w-none">
+                            ${item.category || 'ทั่วไป'}
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-5 flex flex-col flex-grow">
+                        <h3 class="text-base md:text-2xl font-bold text-gray-800 cute-font mb-0.5 md:mb-1 truncate leading-tight">${item.word}</h3>
+                        <p class="text-[10px] md:text-xs text-orange-400 font-medium mb-1 md:mb-3 uppercase tracking-wide truncate">${item.word_en ? item.word_en.split('–')[0] : ''}</p>
+                        <p class="text-gray-500 text-xs md:text-sm line-clamp-2 leading-relaxed flex-grow">${item.description}</p>
+                        
+                        <div class="mt-2 md:mt-4 flex items-center justify-between pt-2 border-t border-orange-50">
+                            <span class="text-[10px] md:text-xs text-orange-400 font-medium hidden md:inline">
+                                คลิกดู
+                            </span>
+                             <span class="text-[10px] md:text-xs text-orange-400 font-medium md:hidden">
+                                ดูวิธีทำ
+                            </span>
+                            <div class="bg-orange-100 md:bg-orange-500 rounded-full p-1 md:p-1.5 text-orange-500 md:text-white">
+                                <i data-lucide="play" class="w-3 h-3 md:w-4 md:h-4 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                cardGrid.appendChild(card);
+            });
+            
+            lucide.createIcons();
+        }
+
+        // 7. Search Listeners
+        if(searchInputDesktop) searchInputDesktop.addEventListener('input', filterAndRender);
+        if(searchInputMobile) searchInputMobile.addEventListener('input', filterAndRender);
+
+        // 8. Modal Logic
+        function openModal(item) {
+            document.getElementById('modalTitle').innerText = item.word || '';
+            document.getElementById('modalWordEn').innerText = item.word_en || '';
+            document.getElementById('modalCategory').innerText = item.category || 'ทั่วไป';
+            document.getElementById('modalDesc').innerText = item.description || '';
+            document.getElementById('modalDescEn').innerText = item.description_en || '';
+            document.getElementById('modalTip').innerText = item.tip || '-';
+            
+            const modalImg = document.getElementById('modalImage');
+            modalImg.src = item.imageUrl || 'https://placehold.co/600x400/fff7ed/ea580c?text=ไม่มีรูป';
+            modalImg.onerror = function() { this.src = 'https://placehold.co/600x400/f3f4f6/9ca3af?text=รูปเสีย'; };
+            
+            modalYoutubeLink.href = item.youtubeUrl || '#';
+
+            let embedUrl = "";
+            let hasVideo = false;
+
+            if (item.youtubeUrl) {
+                // Robust YouTube ID Extraction (Handles watch?v=, shorts/, youtu.be/, embed/)
+                const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+                const match = item.youtubeUrl.match(regExp);
+
+                if (match && match[2].length === 11) {
+                    // Added playsinline=1, fs=1, rel=0
+                    embedUrl = `https://www.youtube.com/embed/${match[2]}?rel=0&controls=1&fs=1&playsinline=1`;
+                    hasVideo = true;
+                }
+            }
+
+            if (hasVideo) {
+                document.getElementById('modalYoutube').src = embedUrl;
+                videoContainer.classList.remove('hidden');
+                modalYoutubeLink.classList.remove('hidden');
+            } else {
+                document.getElementById('modalYoutube').src = "";
+                videoContainer.classList.add('hidden');
+                modalYoutubeLink.classList.add('hidden');
+            }
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.getElementById('modalYoutube').src = ""; 
+            document.body.style.overflow = 'auto'; 
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        loadData();
+        lucide.createIcons();
+    </script>
+</body>
+</html>

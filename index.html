@@ -11,7 +11,7 @@
     <style>
         body {
             font-family: 'Prompt', sans-serif;
-            background-color: #fff7ed;
+            background-color: #fff7ed; /* ส้มอ่อนๆ ครีมๆ */
             background-image: radial-gradient(#fed7aa 1px, transparent 1px);
             background-size: 20px 20px;
         }
@@ -20,44 +20,73 @@
         }
         
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: #fff7ed; }
-        ::-webkit-scrollbar-thumb { background: #fdba74; border-radius: 10px; }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px; /* For horizontal scroll */
+        }
+        ::-webkit-scrollbar-track {
+            background: #fff7ed; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #fdba74; 
+            border-radius: 10px;
+        }
 
         /* Animations */
-        @keyframes popIn { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-        .modal-content { animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.15); }
-        
-        .loader {
-            border: 4px solid #fff7ed; border-top: 4px solid #f97316;
-            border-radius: 50%; width: 40px; height: 40px;
-            animation: spin 1s linear infinite; margin: 0 auto;
+        @keyframes popIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .modal-content {
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.15);
+        }
+        /* Loading Spinner */
+        .loader {
+            border: 4px solid #fff7ed;
+            border-top: 4px solid #f97316;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
         
-        .hide-scroll::-webkit-scrollbar { display: none; }
-        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+        /* Hide scrollbar for category menu on mobile but keep functionality */
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
 
         /* --- Chatbot Styles --- */
         #chatbot-window {
             z-index: 100;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateY(20px);
+            transform: translateY(20px) scale(0.95);
             opacity: 0;
             pointer-events: none;
         }
         #chatbot-window.active {
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
             opacity: 1;
             pointer-events: auto;
         }
         .chat-bubble-ai::before {
-            content: ''; position: absolute; bottom: 0; left: -8px; width: 20px; height: 20px;
+            content: ''; position: absolute; bottom: 0; left: -8px; width: 15px; height: 15px;
             background: white; clip-path: polygon(100% 0, 100% 100%, 0 100%);
         }
         .chat-bubble-user::before {
-            content: ''; position: absolute; bottom: 0; right: -8px; width: 20px; height: 20px;
+            content: ''; position: absolute; bottom: 0; right: -8px; width: 15px; height: 15px;
             background: #f97316; clip-path: polygon(0 0, 0% 100%, 100% 100%);
         }
         .thinking-dot { animation: thinking 1.4s infinite ease-in-out; }
@@ -98,14 +127,20 @@
     </div>
 
     <main class="flex-grow container mx-auto px-4 py-4 md:py-6 max-w-6xl relative">
+        
         <div class="flex flex-col md:flex-row gap-6">
+            
             <aside class="w-full md:w-64 flex-shrink-0 sticky top-0 md:top-24 z-30 bg-transparent pointer-events-none md:pointer-events-auto">
                 <div class="pointer-events-auto">
                     <h3 class="text-lg font-bold text-orange-800 cute-font mb-3 hidden md:block px-2">
                         <i data-lucide="list-filter" class="inline w-4 h-4 mr-1"></i> หมวดหมู่
                     </h3>
+                    
                     <div id="categoryMenu" class="flex overflow-x-auto md:flex-col gap-2 pb-2 md:pb-0 hide-scroll snap-x py-2 md:py-0 -mx-4 px-4 md:mx-0 md:px-0 bg-white/90 backdrop-blur-md md:bg-transparent shadow-sm md:shadow-none border-b md:border-none border-orange-100 md:rounded-none">
-                        </div>
+                        <div class="animate-pulse bg-white h-10 w-24 rounded-full md:w-full md:rounded-xl"></div>
+                        <div class="animate-pulse bg-white h-10 w-24 rounded-full md:w-full md:rounded-xl"></div>
+                        <div class="animate-pulse bg-white h-10 w-24 rounded-full md:w-full md:rounded-xl"></div>
+                    </div>
                 </div>
             </aside>
 
@@ -114,11 +149,20 @@
                     <div class="loader mb-4"></div>
                     <p class="cute-font text-orange-400">กำลังโหลดข้อมูลคำศัพท์จ้า...</p>
                 </div>
+
                 <div id="cardGrid" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6"></div>
+
                 <div id="noResults" class="hidden text-center py-12">
                     <div class="bg-white p-6 rounded-3xl inline-block shadow-sm">
                         <i data-lucide="frown" class="w-12 h-12 mx-auto text-orange-300 mb-2"></i>
                         <p class="cute-font text-lg text-gray-500">ไม่พบคำที่ค้นหาจ้า</p>
+                    </div>
+                </div>
+
+                <div id="errorState" class="hidden text-center py-12">
+                    <div class="bg-red-50 p-6 rounded-3xl inline-block shadow-sm border border-red-100">
+                        <i data-lucide="alert-circle" class="w-12 h-12 mx-auto text-red-400 mb-2"></i>
+                        <p class="cute-font text-lg text-red-500">โหลดข้อมูลไม่สำเร็จ</p>
                     </div>
                 </div>
             </div>
@@ -130,7 +174,7 @@
             <div class="bg-orange-500 p-4 flex justify-between items-center text-white">
                 <div class="flex items-center gap-2">
                     <i data-lucide="bot" class="w-6 h-6"></i>
-                    <span class="cute-font font-bold">น้องภาษามือ AI</span>
+                    <span class="cute-font font-bold">พี่ AI สอนภาษามือ</span>
                 </div>
                 <button onclick="toggleChat()" class="hover:bg-orange-600 rounded-full p-1"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
@@ -138,7 +182,7 @@
             <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4 bg-orange-50/30">
                 <div class="flex flex-col items-start">
                     <div class="bg-white p-3 rounded-2xl rounded-bl-none shadow-sm text-sm chat-bubble-ai relative max-w-[85%]">
-                        สวัสดีจ้า! มีอะไรสงสัยเกี่ยวกับภาษามือ ถามน้อง AI ได้เลยนะ 🧡
+                        สวัสดีจ้า! มีคำไหนในภาษามือที่อยากรู้ หรืออยากให้ช่วยอธิบายท่าทางไหน ถามพี่ AI ได้เลยนะ 🧡
                     </div>
                 </div>
             </div>
@@ -152,7 +196,7 @@
             </div>
 
             <div class="p-4 border-t border-orange-100 flex gap-2 bg-white">
-                <input type="text" id="chat-input" class="flex-1 bg-orange-50 border-none rounded-2xl px-4 py-2 text-sm focus:ring-2 focus:ring-orange-300 outline-none" placeholder="พิมพ์ข้อความ...">
+                <input type="text" id="chat-input" class="flex-1 bg-orange-50 border-none rounded-2xl px-4 py-2 text-sm focus:ring-2 focus:ring-orange-300 outline-none" placeholder="ถามพี่ AI ได้เลย...">
                 <button id="send-chat" class="bg-orange-500 text-white p-2 rounded-xl hover:bg-orange-600 transition-colors">
                     <i data-lucide="send" class="w-5 h-5"></i>
                 </button>
@@ -168,26 +212,36 @@
         <p>สร้างสรรค์ด้วยความรัก 🧡 เพื่อการเรียนรู้</p>
     </footer>
 
-    <div id="detailModal" class="relative z-50 hidden">
-        <div class="fixed inset-0 bg-orange-900/30 backdrop-blur-sm"></div>
+    <div id="detailModal" class="relative z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-orange-900/30 backdrop-blur-sm transition-opacity"></div>
         <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div class="flex min-h-full items-center justify-center p-4" onclick="closeModal()">
-                <div class="relative transform overflow-hidden rounded-3xl bg-white text-left shadow-2xl transition-all sm:w-full sm:max-w-lg modal-content border-4 border-orange-100" onclick="event.stopPropagation()">
-                    <button onclick="closeModal()" class="absolute top-4 right-4 bg-orange-100 text-orange-500 rounded-full p-1 z-20"><i data-lucide="x" class="w-6 h-6"></i></button>
-                    <div class="p-5">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0" onclick="closeModal()">
+                <div class="relative transform overflow-hidden rounded-3xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg modal-content border-4 border-orange-100" onclick="event.stopPropagation()">
+                    <button onclick="closeModal()" class="absolute top-4 right-4 bg-orange-100 hover:bg-orange-200 text-orange-500 rounded-full p-1 transition-colors z-20 shadow-md">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                    <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                         <div class="flex flex-col items-center">
-                            <div class="w-full h-64 bg-orange-50 rounded-2xl overflow-hidden mb-4 flex items-center justify-center border border-orange-100">
-                                <img id="modalImage" src="" alt="" class="max-w-full max-h-full object-contain">
-                                <div class="absolute bottom-2 right-2 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-orange-500 border border-orange-100" id="modalCategory"></div>
+                            <div class="w-full h-64 bg-orange-50 rounded-2xl overflow-hidden mb-4 relative flex items-center justify-center border border-orange-100">
+                                <img id="modalImage" src="" alt="Sign Language" class="max-w-full max-h-full object-contain">
+                                <div class="absolute bottom-2 right-2 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-orange-500 shadow-sm border border-orange-100" id="modalCategory"></div>
                             </div>
-                            <h3 id="modalTitle" class="text-3xl font-bold text-orange-600 cute-font mb-1"></h3>
-                            <p id="modalWordEn" class="text-sm text-gray-400 mb-4"></p>
+                            <h3 id="modalTitle" class="text-3xl font-bold text-orange-600 cute-font mb-1 text-center"></h3>
+                            <p id="modalWordEn" class="text-sm text-gray-400 font-medium mb-4 text-center"></p>
                             <div class="w-full bg-orange-50/50 rounded-xl p-4 mb-3 border border-orange-100">
-                                <h4 class="text-sm font-bold text-orange-400 mb-1 cute-font">วิธีทำ</h4>
-                                <p id="modalDesc" class="text-gray-600 text-sm"></p>
+                                <h4 class="text-sm font-bold text-orange-400 mb-1 cute-font flex items-center gap-1"><i data-lucide="book-open" class="w-4 h-4"></i> วิธีทำ</h4>
+                                <p id="modalDesc" class="text-gray-600 text-sm leading-relaxed"></p>
+                                <p id="modalDescEn" class="text-gray-400 text-xs mt-2 italic border-t border-orange-100 pt-2"></p>
                             </div>
-                            <div id="videoContainer" class="w-full rounded-xl overflow-hidden bg-black aspect-video hidden">
-                                <iframe id="modalYoutube" class="w-full h-full" src="" frameborder="0" allowfullscreen></iframe>
+                            <div class="w-full bg-yellow-50 rounded-xl p-3 mb-4 border border-yellow-100 flex gap-3 items-start">
+                                <div class="bg-yellow-100 p-1.5 rounded-full text-yellow-500 mt-0.5 shrink-0"><i data-lucide="lightbulb" class="w-4 h-4"></i></div>
+                                <div>
+                                    <span class="text-xs font-bold text-yellow-600 block mb-0.5">เคล็ดลับการจำ</span>
+                                    <p id="modalTip" class="text-yellow-800 text-sm"></p>
+                                </div>
+                            </div>
+                            <div id="videoContainer" class="w-full rounded-xl overflow-hidden shadow-sm bg-black relative aspect-video hidden">
+                                <iframe id="modalYoutube" class="w-full h-full absolute inset-0 z-10" src="" frameborder="0" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
@@ -197,67 +251,59 @@
     </div>
 
     <script>
-        // --- 1. Data & Search Logic ---
-        let vocabData = [];
+        // --- 1. Data Setup & Navigation ---
+        let vocabData = []; 
         let categories = ['ทั้งหมด'];
         let activeCategory = 'ทั้งหมด';
         
-        const BACKEND_URL = 'https://kodmai2025-github-io.vercel.app/api/chat';
+        const cardGrid = document.getElementById('cardGrid');
+        const categoryMenu = document.getElementById('categoryMenu');
+        const searchInputDesktop = document.getElementById('searchInputDesktop');
+        const searchInputMobile = document.getElementById('searchInputMobile');
+        const loadingState = document.getElementById('loadingState');
+        const modal = document.getElementById('detailModal');
 
         async function loadData() {
-            const grid = document.getElementById('cardGrid');
-            const loader = document.getElementById('loadingState');
-            loader.classList.remove('hidden');
-            
+            loadingState.classList.remove('hidden');
             try {
                 const response = await fetch('signs500.json');
-                const data = await response.json();
-                vocabData = data.map(i => ({ ...i, category: i.category || 'ทั่วไป' }));
-                
-                const uniqueCats = [...new Set(vocabData.map(i => i.category))].sort();
+                const rawData = await response.json();
+                vocabData = rawData.map(item => ({ ...item, category: item.category || 'ทั่วไป' }));
+                const uniqueCats = [...new Set(vocabData.map(item => item.category))].sort();
                 categories = ['ทั้งหมด', ...uniqueCats];
-                
+                loadingState.classList.add('hidden');
                 renderCategories();
                 filterAndRender();
-            } catch (err) {
-                console.error(err);
-            } finally {
-                loader.classList.add('hidden');
+            } catch (error) {
+                document.getElementById('errorState').classList.remove('hidden');
+                loadingState.classList.add('hidden');
             }
         }
 
         function renderCategories() {
-            const menu = document.getElementById('categoryMenu');
-            menu.innerHTML = categories.map(cat => `
-                <button onclick="setCategory('${cat}')" 
-                    class="${activeCategory === cat ? 'bg-orange-500 text-white' : 'bg-white text-gray-600'} 
-                    shrink-0 snap-start px-4 py-2 rounded-full border border-orange-100 transition-all cute-font text-sm whitespace-nowrap">
+            categoryMenu.innerHTML = categories.map(cat => `
+                <button onclick="setCategory('${cat}')" class="${activeCategory === cat ? 'bg-orange-500 text-white shadow-md' : 'bg-white text-gray-600 border border-orange-100'} shrink-0 snap-start px-4 py-2 rounded-full md:rounded-xl transition-all cute-font text-sm md:w-full md:text-left whitespace-nowrap">
                     ${cat}
                 </button>
             `).join('');
             lucide.createIcons();
         }
 
-        window.setCategory = (cat) => {
-            activeCategory = cat;
-            renderCategories();
-            filterAndRender();
-        };
+        window.setCategory = (cat) => { activeCategory = cat; renderCategories(); filterAndRender(); };
 
         function filterAndRender() {
-            const term = (document.getElementById('searchInputDesktop').value || document.getElementById('searchInputMobile').value || '').toLowerCase();
-            const filtered = vocabData.filter(i => {
-                const matchCat = activeCategory === 'ทั้งหมด' || i.category === activeCategory;
-                const matchText = i.word?.toLowerCase().includes(term) || i.word_en?.toLowerCase().includes(term);
-                return matchCat && matchText;
+            const searchTerm = (searchInputDesktop.value || searchInputMobile.value || '').toLowerCase();
+            const filtered = vocabData.filter(item => {
+                const matchCat = activeCategory === 'ทั้งหมด' || item.category === activeCategory;
+                const matchSearch = item.word?.toLowerCase().includes(searchTerm) || item.word_en?.toLowerCase().includes(searchTerm);
+                return matchCat && matchSearch;
             });
             renderCards(filtered);
         }
 
         function renderCards(items) {
-            const grid = document.getElementById('cardGrid');
-            grid.innerHTML = items.map(item => `
-                <div onclick='openModal(${JSON.stringify(item).replace(/'/g, "&apos;")})' class="bg-white rounded-2xl shadow-sm border border-orange-100 overflow-hidden cursor-pointer card-hover flex flex-col h-full">
+            cardGrid.innerHTML = items.map(item => `
+                <div onclick='openModal(${JSON.stringify(item).replace(/'/g, "&apos;")})' class="bg-white rounded-2xl shadow-sm border border-orange-100 overflow-hidden cursor-pointer card-hover transition-all flex flex-col h-full">
                     <div class="h-32 md:h-40 overflow-hidden bg-orange-50"><img src="${item.imageUrl}" class="w-full h-full object-cover"></div>
                     <div class="p-3"><h3 class="font-bold cute-font truncate">${item.word}</h3><p class="text-xs text-orange-400 truncate">${item.word_en || ''}</p></div>
                 </div>
@@ -266,13 +312,13 @@
             lucide.createIcons();
         }
 
-        // --- 2. Modal Logic ---
         function openModal(item) {
             document.getElementById('modalTitle').innerText = item.word;
             document.getElementById('modalWordEn').innerText = item.word_en || '';
             document.getElementById('modalCategory').innerText = item.category;
             document.getElementById('modalDesc').innerText = item.description;
             document.getElementById('modalImage').src = item.imageUrl;
+            document.getElementById('modalTip').innerText = item.tip || '-';
             
             const ytFrame = document.getElementById('modalYoutube');
             if (item.youtubeUrl) {
@@ -282,20 +328,17 @@
             } else {
                 document.getElementById('videoContainer').classList.add('hidden');
             }
-            document.getElementById('detailModal').classList.remove('hidden');
+            modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() {
-            document.getElementById('detailModal').classList.add('hidden');
-            document.getElementById('modalYoutube').src = "";
-            document.body.style.overflow = 'auto';
-        }
+        function closeModal() { modal.classList.add('hidden'); document.getElementById('modalYoutube').src = ""; document.body.style.overflow = 'auto'; }
 
-        // --- 3. Chatbot Logic ---
+        // --- 2. Chatbot Logic & Backend ---
+        const BACKEND_URL = 'https://kodmai2025-github-io.vercel.app/api/chat'; 
         let chatHistory = [
-            { role: "user", parts: [{ text: "System Instruction: คุณคือ 'น้องภาษามือ AI' ผู้ช่วยสอนที่น่ารัก ใจดี ตอบเป็นกันเองด้วยหางเสียง 'จ้า' 'นะคะ' ตอบคำถามเฉพาะเรื่องภาษามือไทยเท่านั้น" }] },
-            { role: "model", parts: [{ text: "รับทราบจ้า! น้อง AI พร้อมช่วยแล้วจ้า 🧡" }] }
+            { role: "user", parts: [{ text: "System Instruction: คุณคือ 'พี่ AI สอนภาษามือ' ผู้ช่วยสอนที่ใจดี ตอบด้วยภาษาที่เป็นกันเองและอบอุ่น มีหางเสียง 'จ้า' หรือ 'นะจ๊ะ' ตอบคำถามเฉพาะเรื่องภาษามือไทยเท่านั้น หากถามเรื่องอื่นให้บอกว่าช่วยได้เฉพาะเรื่องภาษามือนะ" }] },
+            { role: "model", parts: [{ text: "รับทราบจ้า! พี่ AI พร้อมช่วยน้องๆ เรียนรู้ภาษามือแล้วนะจ๊ะ 🧡" }] }
         ];
 
         function toggleChat() {
@@ -324,12 +367,12 @@
                     body: JSON.stringify({ history: chatHistory })
                 });
                 const data = await res.json();
-                const reply = data.reply || "ขออภัยจ้า ลองถามใหม่อีกทีนะ";
+                const reply = data.reply || "พี่ AI งงนิดหน่อยจ้า ลองถามใหม่นะ";
                 
                 appendBubble(reply, 'ai');
                 chatHistory.push({ role: "model", parts: [{ text: reply }] });
             } catch (err) {
-                appendBubble("ขอโทษทีจ้า ระบบขัดข้องนิดหน่อย", 'ai');
+                appendBubble("ขอโทษทีจ้า พี่ AI เชื่อมต่อไม่ได้ชั่วคราว", 'ai');
             } finally {
                 document.getElementById('chat-thinking').classList.add('hidden');
             }
@@ -350,13 +393,11 @@
             msgDiv.scrollTop = msgDiv.scrollHeight;
         }
 
-        // Listeners
         document.getElementById('send-chat').onclick = sendMessage;
         document.getElementById('chat-input').onkeypress = (e) => { if(e.key === 'Enter') sendMessage(); };
-        document.getElementById('searchInputDesktop').oninput = filterAndRender;
-        document.getElementById('searchInputMobile').oninput = filterAndRender;
+        searchInputDesktop.oninput = filterAndRender;
+        searchInputMobile.oninput = filterAndRender;
 
-        // Init
         loadData();
         lucide.createIcons();
     </script>

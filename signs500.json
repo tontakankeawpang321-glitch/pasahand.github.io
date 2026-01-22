@@ -1,551 +1,3523 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AI Sign Language Center</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <style>
-        :root {
-            --primary: #0ea5e9;
-            --secondary: #06b6d4;
-            --bg-color: #f8fafc;
-        }
-
-        body {
-            font-family: 'Prompt', sans-serif;
-            background-color: var(--bg-color);
-            /* Simplified Background for Performance */
-            background-image: linear-gradient(to bottom right, #f0f9ff, #e0f2fe);
-            color: #1e293b;
-            -webkit-tap-highlight-color: transparent;
-            overflow-x: hidden;
-        }
-
-        /* Fast Glass - No Blur, High Opacity */
-        .fast-glass {
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Scrollbar Hiding */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        /* Custom Scrollbar */
-        .custom-scroll::-webkit-scrollbar { width: 4px; }
-        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
-        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-
-        .card-hover { 
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-            will-change: transform; /* Hint for browser optimization */
-        }
-        .card-hover:active { 
-            transform: scale(0.98); 
-        }
-
-        /* Optimized Modal Transitions */
-        .modal-backdrop {
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s ease-out;
-            background: rgba(0, 0, 0, 0.5); /* Simple dark overlay */
-        }
-        .modal-backdrop.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-content {
-            transform: translateY(100%);
-            transition: transform 0.25s cubic-bezier(0.2, 0, 0.2, 1);
-            will-change: transform;
-        }
-        
-        /* Desktop: Center Modal */
-        @media (min-width: 768px) {
-            .modal-content {
-                transform: scale(0.95);
-                opacity: 0;
-                transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-            }
-            .modal-backdrop.active .modal-content {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        /* Mobile: Bottom Sheet */
-        @media (max-width: 767px) {
-            .modal-backdrop.active .modal-content {
-                transform: translateY(0);
-            }
-        }
-
-        /* Simple Skeleton */
-        .skeleton {
-            background-color: #e2e8f0;
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: .7; }
-        }
-    </style>
-</head>
-<body class="h-screen flex flex-col overflow-hidden">
-
-    <!-- Header -->
-    <header class="fast-glass z-30 flex-none border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-            <div class="flex items-center gap-3">
-                <div class="bg-sky-500 p-2 rounded-lg text-white shadow-sm">
-                    <i data-lucide="scan-face" class="w-6 h-6"></i>
-                </div>
-                <div>
-                    <h1 class="text-lg md:text-xl font-bold text-slate-800 leading-tight">AI Sign Lab</h1>
-                    <p class="text-[10px] text-slate-500 font-medium tracking-wider">LITE VERSION</p>
-                </div>
-            </div>
-
-            <!-- Desktop Search -->
-            <div class="hidden md:block flex-1 max-w-md relative group">
-                <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-slate-400">
-                    <i data-lucide="search" class="w-4 h-4"></i>
-                </div>
-                <input type="text" id="searchInputDesktop" 
-                    class="w-full pl-10 pr-4 py-2 bg-slate-100 border-none rounded-lg focus:ring-2 focus:ring-sky-500 focus:bg-white transition-colors text-sm placeholder-slate-400"
-                    placeholder="ค้นหาคำศัพท์... (เช่น ก ไก่)">
-            </div>
-
-            <!-- Mobile Search Toggle -->
-            <button onclick="document.getElementById('mobileSearchPanel').classList.toggle('hidden')" class="md:hidden p-2 text-slate-600 bg-slate-100 rounded-lg active:bg-slate-200">
-                <i data-lucide="search" class="w-5 h-5"></i>
-            </button>
-        </div>
-        
-        <!-- Mobile Search Panel -->
-        <div id="mobileSearchPanel" class="hidden px-4 pb-3 md:hidden">
-            <div class="relative">
-                <input type="text" id="searchInputMobile" 
-                    class="w-full pl-10 pr-4 py-2.5 bg-slate-100 border-none rounded-lg focus:ring-2 focus:ring-sky-500 text-sm"
-                    placeholder="ค้นหาคำศัพท์...">
-                <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-slate-400">
-                    <i data-lucide="search" class="w-4 h-4"></i>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content Area -->
-    <main class="flex-1 overflow-hidden relative flex flex-col md:flex-row max-w-7xl mx-auto w-full">
-        
-        <!-- Category Sidebar -->
-        <aside class="w-full md:w-64 md:h-full flex-none bg-white md:bg-transparent border-b md:border-b-0 md:border-r border-slate-200 z-20">
-            <div class="p-3 md:p-4 h-full flex md:flex-col overflow-x-auto md:overflow-y-auto no-scrollbar gap-2 md:gap-1 snap-x">
-                <div class="md:px-2 md:py-3 text-xs font-bold text-slate-400 uppercase tracking-widest hidden md:block">Categories</div>
-                <div id="categoryContainer" class="flex md:flex-col gap-2">
-                    <!-- Skeletons -->
-                    <div class="h-9 w-24 md:w-full rounded-lg skeleton shrink-0"></div>
-                    <div class="h-9 w-24 md:w-full rounded-lg skeleton shrink-0"></div>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Grid Content -->
-        <div class="flex-1 overflow-y-auto custom-scroll p-4 md:p-6" id="mainScroll">
-            <!-- Banner -->
-            <div class="mb-6 p-5 rounded-xl bg-sky-600 text-white shadow-md hidden md:block">
-                <h2 class="text-xl font-bold mb-1">ยินดีต้อนรับ</h2>
-                <p class="text-sky-100 text-sm">ระบบเรียนรู้ภาษามือแบบรวดเร็ว</p>
-            </div>
-
-            <!-- Content Grid -->
-            <div id="contentGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4 pb-24">
-                <!-- Skeletons injected by JS -->
-            </div>
-
-            <!-- Empty State -->
-            <div id="emptyState" class="hidden flex flex-col items-center justify-center py-20 text-center">
-                <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-4">
-                    <i data-lucide="search-x" class="w-8 h-8 text-slate-400"></i>
-                </div>
-                <h3 class="text-base font-bold text-slate-600">ไม่พบข้อมูล</h3>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- Chatbot Button -->
-    <div class="fixed bottom-6 right-6 z-50">
-        <button onclick="toggleChat()" class="bg-sky-600 text-white p-4 rounded-full shadow-lg hover:bg-sky-700 active:scale-95 transition-transform">
-            <i data-lucide="bot" class="w-6 h-6"></i>
-        </button>
-    </div>
-
-    <!-- Chatbot Window (Simplified) -->
-    <div id="chatbotWindow" class="fixed bottom-24 right-4 md:right-6 w-[92vw] md:w-80 h-[50vh] md:h-[450px] bg-white border border-slate-200 rounded-xl shadow-xl flex flex-col translate-y-10 opacity-0 pointer-events-none transition-all duration-200 z-40 origin-bottom-right">
-        <div class="p-3 border-b border-slate-100 bg-slate-50 flex justify-between items-center rounded-t-xl">
-            <div class="flex items-center gap-2">
-                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span class="font-bold text-slate-700 text-sm">AI Tutor</span>
-            </div>
-            <button onclick="toggleChat()" class="text-slate-400 hover:text-slate-600">
-                <i data-lucide="x" class="w-4 h-4"></i>
-            </button>
-        </div>
-
-        <div id="chatMessages" class="flex-1 overflow-y-auto p-3 space-y-3 text-sm custom-scroll bg-white">
-            <div class="flex gap-2">
-                <div class="bg-slate-100 p-2.5 rounded-xl rounded-tl-none border border-slate-200 max-w-[90%] text-slate-700">
-                    สวัสดีครับ สงสัยคำไหนถามได้เลยครับ 🤖
-                </div>
-            </div>
-        </div>
-
-        <div class="p-2 border-t border-slate-100">
-            <div class="flex gap-2">
-                <input type="text" id="chatInput" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-sky-500 text-sm" placeholder="พิมพ์ข้อความ...">
-                <button onclick="sendChat()" class="px-3 bg-sky-600 text-white rounded-lg flex items-center justify-center">
-                    <i data-lucide="send" class="w-4 h-4"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- OPTIMIZED DIALOG / MODAL -->
-    <div id="detailModal" class="fixed inset-0 z-[100] modal-backdrop flex items-end md:items-center justify-center">
-        <!-- Overlay -->
-        <div class="absolute inset-0" onclick="closeModal()"></div>
-        
-        <!-- Content -->
-        <div class="modal-content relative w-full md:w-[500px] bg-white md:rounded-xl rounded-t-2xl shadow-2xl flex flex-col max-h-[85vh] overflow-hidden">
-            
-            <!-- Mobile Drag Handle -->
-            <div class="md:hidden w-full flex justify-center pt-3 pb-1" onclick="closeModal()">
-                <div class="w-10 h-1 bg-slate-300 rounded-full"></div>
-            </div>
-
-            <!-- Header -->
-            <div class="px-5 py-3 border-b border-slate-100 flex justify-between items-center bg-white z-10 sticky top-0">
-                <div>
-                    <span id="mCategory" class="text-[10px] font-bold text-sky-600 bg-sky-50 px-2 py-0.5 rounded uppercase tracking-wider">Category</span>
-                    <div class="flex items-baseline gap-2 mt-1">
-                        <h2 id="mWord" class="text-xl font-bold text-slate-800">Word</h2>
-                        <span id="mWordEn" class="text-sm text-slate-400 font-medium">En</span>
-                    </div>
-                </div>
-                <button onclick="closeModal()" class="p-2 bg-slate-100 rounded-full text-slate-500 hover:bg-slate-200">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
-            </div>
-
-            <!-- Scroll Area -->
-            <div class="overflow-y-auto custom-scroll p-0 pb-6 bg-white">
-                
-                <!-- Media -->
-                <div class="relative w-full aspect-video bg-slate-100">
-                    <img id="mImage" src="" class="w-full h-full object-contain transition-opacity duration-200">
-                    
-                    <div id="mVideoContainer" class="absolute inset-0 hidden bg-black">
-                        <iframe id="mYoutube" class="w-full h-full" src="" frameborder="0" allowfullscreen></iframe>
-                    </div>
-
-                    <button id="viewToggleBtn" onclick="toggleMediaView()" class="absolute bottom-3 right-3 bg-white text-slate-800 px-3 py-1.5 rounded-md shadow-md text-xs font-bold flex items-center gap-2 border border-slate-200">
-                        <i data-lucide="play-circle" class="w-4 h-4 text-red-500"></i>
-                        <span>ดูวิดีโอ</span>
-                    </button>
-                </div>
-
-                <!-- Info -->
-                <div class="p-5 space-y-4">
-                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                        <div class="flex items-center gap-2 mb-2 text-sky-600">
-                            <i data-lucide="info" class="w-4 h-4"></i>
-                            <span class="text-xs font-bold uppercase">วิธีทำ</span>
-                        </div>
-                        <p id="mDesc" class="text-slate-700 leading-relaxed text-sm">Description...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const DATA_URL = './signs500.json'; 
-        const BACKEND_URL = 'https://quiet-scene-f18b.tontakankeawpang321.workers.dev';
-        
-        let state = {
-            data: [],
-            filtered: [],
-            categories: ['ทั้งหมด'],
-            activeCategory: 'ทั้งหมด',
-            searchTerm: '',
-            isVideoMode: false,
-            currentVideoId: null
-        };
-
-        const MOCK_DATA = [
-            { word: 'ก ไก่', word_en: 'Ko Kai', category: 'หมวด ก-ฮ', description: 'กำมือขวาชูขึ้น ระดับไหล่ หันฝ่ามือไปทางซ้าย ขยับนิ้วชี้และนิ้วกลางลงมาชนนิ้วโป้ง 2 ครั้ง (เลียนแบบปากไก่)', imageUrl: 'https://placehold.co/600x400/f1f5f9/0ea5e9?text=ก+ไก่', youtubeUrl: 'https://www.youtube.com/watch?v=VIDEO_ID' },
-            { word: 'ข ไข่', word_en: 'Kho Khai', category: 'หมวด ก-ฮ', description: 'กำมือขวา วาดเป็นวงกลมในอากาศ เหมือนรูปไข่', imageUrl: 'https://placehold.co/600x400/f1f5f9/0ea5e9?text=ข+ไข่', youtubeUrl: '' }
-        ];
-
-        document.addEventListener('DOMContentLoaded', async () => {
-            renderSkeletons();
-            await loadData();
-            initSearch();
-            lucide.createIcons();
-        });
-
-        async function loadData() {
-            try {
-                const response = await fetch(DATA_URL).catch(() => null);
-                if (response && response.ok) {
-                    state.data = await response.json();
-                } else {
-                    state.data = MOCK_DATA;
-                }
-            } catch (e) {
-                state.data = MOCK_DATA;
-            }
-
-            const rawCats = [...new Set(state.data.map(d => d.category || 'ทั่วไป'))];
-            state.categories = ['ทั้งหมด', ...rawCats.sort()];
-
-            renderCategories();
-            filterData();
-        }
-
-        function filterData() {
-            const term = state.searchTerm.toLowerCase();
-            state.filtered = state.data.filter(item => {
-                const matchCat = state.activeCategory === 'ทั้งหมด' || (item.category || 'ทั่วไป') === state.activeCategory;
-                const matchSearch = (item.word?.toLowerCase().includes(term)) || (item.word_en?.toLowerCase().includes(term));
-                return matchCat && matchSearch;
-            });
-            renderGrid();
-        }
-
-        function renderSkeletons() {
-            const grid = document.getElementById('contentGrid');
-            grid.innerHTML = Array(10).fill(0).map(() => `
-                <div class="bg-white rounded-lg overflow-hidden border border-slate-200 h-48 flex flex-col">
-                    <div class="h-32 skeleton w-full"></div>
-                    <div class="p-3 space-y-2 flex-1">
-                        <div class="h-4 w-3/4 skeleton rounded"></div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function renderCategories() {
-            const container = document.getElementById('categoryContainer');
-            container.innerHTML = state.categories.map(cat => `
-                <button onclick="selectCategory('${cat}')" 
-                    class="${state.activeCategory === cat 
-                        ? 'bg-sky-600 text-white shadow-sm' 
-                        : 'bg-white text-slate-600 border border-slate-200'} 
-                    flex-shrink-0 px-4 py-2 rounded-lg text-xs font-semibold transition-colors md:w-full md:text-left whitespace-nowrap">
-                    ${cat}
-                </button>
-            `).join('');
-        }
-
-        function renderGrid() {
-            const grid = document.getElementById('contentGrid');
-            const empty = document.getElementById('emptyState');
-            
-            if (state.filtered.length === 0) {
-                grid.innerHTML = '';
-                empty.classList.remove('hidden');
-                return;
-            }
-            empty.classList.add('hidden');
-
-            grid.innerHTML = state.filtered.map((item, index) => `
-                <div onclick="openDetail(${index})" class="group bg-white rounded-xl overflow-hidden cursor-pointer card-hover border border-slate-200 shadow-sm relative">
-                    <div class="h-32 md:h-40 overflow-hidden bg-slate-100 relative">
-                        <img src="${item.imageUrl}" 
-                             alt="${item.word}" 
-                             loading="lazy"
-                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                             onerror="this.src='https://placehold.co/400x300/f1f5f9/cbd5e1?text=No+Image'">
-                        
-                        <div class="absolute bottom-2 left-2 bg-white/95 px-2 py-0.5 rounded text-[10px] font-bold text-sky-600 shadow-sm border border-slate-100 uppercase tracking-wide">
-                            ${item.category || 'ทั่วไป'}
-                        </div>
-                    </div>
-                    
-                    <div class="p-3 bg-white h-full border-t border-slate-100">
-                        <h3 class="font-bold text-slate-800 text-sm md:text-base leading-tight mb-0.5 truncate">${item.word}</h3>
-                        <p class="text-[10px] text-slate-400 uppercase tracking-wide truncate">${item.word_en || ''}</p>
-                    </div>
-                </div>
-            `).join('');
-            
-            lucide.createIcons();
-        }
-
-        window.selectCategory = (cat) => {
-            state.activeCategory = cat;
-            renderCategories();
-            filterData();
-            if(window.innerWidth < 768) {
-                document.getElementById('contentGrid').scrollIntoView({behavior: 'smooth', block: 'start'});
-            }
-        };
-
-        function initSearch() {
-            const handleSearch = (e) => {
-                state.searchTerm = e.target.value;
-                filterData();
-            };
-            let timeout;
-            const debouncedSearch = (e) => {
-                clearTimeout(timeout);
-                timeout = setTimeout(() => handleSearch(e), 300);
-            };
-
-            document.getElementById('searchInputDesktop').addEventListener('input', debouncedSearch);
-            document.getElementById('searchInputMobile').addEventListener('input', debouncedSearch);
-        }
-
-        // --- Simplified Modal Logic ---
-        window.openDetail = (index) => {
-            const item = state.filtered[index];
-            const modal = document.getElementById('detailModal');
-            
-            document.getElementById('mCategory').innerText = item.category || 'General';
-            document.getElementById('mWord').innerText = item.word;
-            document.getElementById('mWordEn').innerText = item.word_en || '-';
-            document.getElementById('mDesc').innerText = item.description || 'ไม่มีคำอธิบาย';
-            document.getElementById('mImage').src = item.imageUrl;
-            
-            state.currentVideoId = null;
-            if (item.youtubeUrl) {
-                const match = item.youtubeUrl.match(/(?:v=|\/embed\/|youtu\.be\/)([^&?#]+)/);
-                if (match) state.currentVideoId = match[1];
-            }
-
-            const toggleBtn = document.getElementById('viewToggleBtn');
-            toggleBtn.style.display = state.currentVideoId ? 'flex' : 'none';
-
-            resetMediaView();
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; 
-        };
-
-        window.closeModal = () => {
-            const modal = document.getElementById('detailModal');
-            modal.classList.remove('active');
-            document.getElementById('mYoutube').src = "";
-            document.body.style.overflow = '';
-        };
-
-        window.toggleMediaView = () => {
-            const img = document.getElementById('mImage');
-            const vidContainer = document.getElementById('mVideoContainer');
-            const iframe = document.getElementById('mYoutube');
-            const btnText = document.querySelector('#viewToggleBtn span');
-
-            state.isVideoMode = !state.isVideoMode;
-
-            if (state.isVideoMode) {
-                img.classList.add('opacity-0');
-                vidContainer.classList.remove('hidden');
-                iframe.src = `https://www.youtube.com/embed/${state.currentVideoId}?autoplay=1&rel=0`;
-                btnText.innerText = 'ดูรูปภาพ';
-            } else {
-                img.classList.remove('opacity-0');
-                vidContainer.classList.add('hidden');
-                iframe.src = ""; 
-                btnText.innerText = 'ดูวิดีโอ';
-            }
-        };
-
-        function resetMediaView() {
-            state.isVideoMode = false;
-            document.getElementById('mImage').classList.remove('opacity-0');
-            document.getElementById('mVideoContainer').classList.add('hidden');
-            document.getElementById('mYoutube').src = "";
-            const btn = document.querySelector('#viewToggleBtn span');
-            if(btn) btn.innerText = 'ดูวิดีโอ';
-        }
-
-        // --- Chatbot Logic ---
-        let chatHistory = [];
-        
-        window.toggleChat = () => {
-            const win = document.getElementById('chatbotWindow');
-            const isOpen = win.classList.contains('opacity-100');
-            
-            if (isOpen) {
-                win.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
-                win.classList.add('opacity-0', 'pointer-events-none', 'translate-y-10');
-            } else {
-                win.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
-                win.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-10');
-                setTimeout(() => document.getElementById('chatInput').focus(), 100);
-            }
-        };
-
-        window.sendChat = async () => {
-            const input = document.getElementById('chatInput');
-            const text = input.value.trim();
-            if (!text) return;
-
-            addChatBubble(text, 'user');
-            input.value = '';
-            
-            try {
-                const res = await fetch(BACKEND_URL, {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ history: [...chatHistory, {role: "user", parts: [{text: text}]}] })
-                });
-                
-                if (res.ok) {
-                    const data = await res.json();
-                    addChatBubble(data.reply, 'ai');
-                    chatHistory.push({role: "user", parts: [{text}]}, {role: "model", parts: [{text: data.reply}]});
-                } else {
-                    throw new Error("Backend failed");
-                }
-            } catch (err) {
-                setTimeout(() => {
-                    let reply = "ขออภัยครับ ระบบออฟไลน์ชั่วคราว";
-                    if(text.includes('สวัสดี')) reply = "สวัสดีครับ มีอะไรให้ช่วยไหมครับ?";
-                    addChatBubble(reply, 'ai');
-                }, 600);
-            }
-        };
-
-        document.getElementById('chatInput').addEventListener('keypress', (e) => {
-            if(e.key === 'Enter') sendChat();
-        });
-
-        function addChatBubble(text, type) {
-            const container = document.getElementById('chatMessages');
-            const div = document.createElement('div');
-            div.className = "flex gap-2 " + (type === 'user' ? "flex-row-reverse" : "");
-            
-            const bgClass = type === 'user' ? 'bg-sky-600 text-white' : 'bg-slate-100 text-slate-700 border border-slate-200';
-
-            div.innerHTML = `
-                <div class="${bgClass} px-3 py-2 rounded-xl max-w-[85%] text-sm shadow-sm">
-                    ${text}
-                </div>
-            `;
-            
-            container.appendChild(div);
-            container.scrollTop = container.scrollHeight;
-        }
-
-    </script>
-</body>
-</html>
+[
+  {
+    "id": "c1",
+    "word": "ก (ไก่)",
+    "category": "consonant",
+    "description": "กำมือ ชูนิ้วชี้และนิ้วโป้งเหยียดตรง แล้วงอนิ้วชี้ลงมาแตะที่นิ้วโป้ง (ทำมือเป็นรูปหัวไก่)",
+    "tip": "จินตนาการว่าเป็นปากไก่",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=ก+(ก.ไก่)",
+    "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  {
+    "id": "c2",
+    "word": "ข (ไข่)",
+    "category": "consonant",
+    "description": "กำมือ หันฝ่ามือออกด้านข้าง แล้วขยับข้อมือขึ้นลงเล็กน้อย (เหมือนเคาะไข่)",
+    "tip": "ท่าทางเหมือนกำลังเคาะไข่",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=ข+(ข.ไข่)"
+  },
+  {
+    "id": "c3",
+    "word": "ค (ควาย)",
+    "category": "consonant",
+    "description": "กำมือ ชูนิ้วโป้ง นิ้วชี้ และนิ้วกลาง กางออกเล็กน้อย (คล้ายหัวควาย)",
+    "tip": "เขาควาย 2 ข้าง",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=ค+(ค.ควาย)"
+  },
+  {
+    "id": "c4",
+    "word": "ง (งู)",
+    "category": "consonant",
+    "description": "กำมือ ชูนิ้วชี้งอลงมาเหมือนงาช้าง หรือใช้นิ้วชี้แตะที่จมูกแล้วชี้ออกมา",
+    "tip": "งวงช้าง หรือ งู",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=ง+(ง.งู)"
+  },
+  {
+    "id": "c5",
+    "word": "จ (จาน)",
+    "category": "consonant",
+    "description": "ใช้มือข้างหนึ่งจีบนิ้ว (นิ้วโป้งแตะนิ้วชี้) แล้วเคาะที่กลางฝ่ามืออีกข้าง (เหมือนจาน)",
+    "tip": "ลักษณะเหมือนจาน",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=จ+(จ.จาน)"
+  },
+  {
+    "id": "c6",
+    "word": "ช (ช้าง)",
+    "category": "consonant",
+    "description": "ทำมือเป็นรูปช้าง (กำมือ ชูนิ้วโป้งและนิ้วก้อย) แล้วขยับมือไปข้างหน้า",
+    "tip": "ช้าง",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=ช+(ช.ช้าง)"
+  },
+  {
+    "id": "c7",
+    "word": "ด (เด็ก)",
+    "category": "consonant",
+    "description": "กำมือ ชูนิ้วชี้ขึ้น แล้วงอนิ้วชี้ลงเล็กน้อย (เด็ก)",
+    "tip": "เด็ก",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=ด+(ด.เด็ก)"
+  },
+  {
+    "id": "c8",
+    "word": "ต (เต่า)",
+    "category": "consonant",
+    "description": "กำมือ ชูนิ้วโป้งและนิ้วก้อย (เต่า) แล้วขยับมือคล้ายเต่าเดิน",
+    "tip": "เต่า",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=ต+(ต.เต่า)"
+  },
+  {
+    "id": "c9",
+    "word": "ท (ทหาร)",
+    "category": "consonant",
+    "description": "ยืนตรง ทำท่าตะเบ๊ะ (ทหาร)",
+    "tip": "ทหาร",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=ท+(ท.ทหาร)"
+  },
+  {
+    "id": "c10",
+    "word": "น (หนู)",
+    "category": "consonant",
+    "description": "ใช้นิ้วชี้แตะที่หางตา (หนู) แล้วขยับข้อมือเล็กน้อย",
+    "tip": "หนู",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=น+(น.หนู)"
+  },
+  {
+    "id": "c11",
+    "word": "บ (ใบไม้)",
+    "category": "consonant",
+    "description": "แบมือประกบกันที่ระดับไหล่ (ใบไม้)",
+    "tip": "ใบไม้",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=บ+(บ.ใบไม้)"
+  },
+  {
+    "id": "c12",
+    "word": "ป (ปลา)",
+    "category": "consonant",
+    "description": "ทำท่าเหมือนปลาว่ายน้ำ (ฝ่ามือประกบแล้วส่ายไปมา)",
+    "tip": "ปลา",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=ป+(ป.ปลา)"
+  },
+  {
+    "id": "c13",
+    "word": "ย (ยักษ์)",
+    "category": "consonant",
+    "description": "แยกเขี้ยว (ใช้นิ้วชี้และนิ้วโป้งวางที่มุมปากทั้งสองข้าง)",
+    "tip": "ยักษ์",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=ย+(ย.ยักษ์)"
+  },
+  {
+    "id": "c14",
+    "word": "ร (เรือ)",
+    "category": "consonant",
+    "description": "ทำท่าเรือ (มือประกบกันเป็นรูปลำเรือแล้วเคลื่อนไปข้างหน้า)",
+    "tip": "เรือ",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=ร+(ร.เรือ)"
+  },
+  {
+    "id": "c15",
+    "word": "ล (ลิง)",
+    "category": "consonant",
+    "description": "ทำท่าลิง (เกาข้างลำตัว)",
+    "tip": "ลิง",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=ล+(ล.ลิง)"
+  },
+  {
+    "id": "c16",
+    "word": "ว (แหวน)",
+    "category": "consonant",
+    "description": "กำมือ ชูนิ้วโป้ง นิ้วชี้ และนิ้วก้อย (แหวน) แล้วขยับนิ้วนางเหมือนสวมแหวน",
+    "tip": "แหวน",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=ว+(ว.แหวน)"
+  },
+  {
+    "id": "c17",
+    "word": "ส (เสือ)",
+    "category": "consonant",
+    "description": "ทำท่าเสือ (กางนิ้วมือเกร็งเล็บ ข่วนอากาศ)",
+    "tip": "เสือ",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=ส+(ส.เสือ)"
+  },
+  {
+    "id": "c18",
+    "word": "ห (หีบ)",
+    "category": "consonant",
+    "description": "เปิดฝากล่อง (แบมือข้างหนึ่ง อีกมือหนึ่งทำท่าเปิดฝา)",
+    "tip": "หีบ",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=ห+(ห.หีบ)"
+  },
+  {
+    "id": "c19",
+    "word": "อ (อ่าง)",
+    "category": "consonant",
+    "description": "ชี้นิ้วไปที่อ่าง หรือทำมือเป็นวงกลม (อ่าง)",
+    "tip": "อ่าง",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=อ+(อ.อ่าง)"
+  },
+  {
+    "id": "c20",
+    "word": "ฮ (นกฮูก)",
+    "category": "consonant",
+    "description": "ทำท่าบินเหมือนนกฮูก (กางแขนขยับขึ้นลง) และทำตาโต",
+    "tip": "นกฮูก",
+    "imageUrl": "https://placehold.co/400x400/fff7ed/ea580c?text=ฮ+(ฮ.นกฮูก)"
+  },
+  {
+    "id": "n1",
+    "word": "1 (หนึ่ง)",
+    "category": "number",
+    "description": "ชูนิ้วชี้ 1 นิ้ว",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+1"
+  },
+  {
+    "id": "n2",
+    "word": "2 (สอง)",
+    "category": "number",
+    "description": "ชูนิ้วชี้และนิ้วกลาง (สู้ๆ)",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+2"
+  },
+  {
+    "id": "n3",
+    "word": "3 (สาม)",
+    "category": "number",
+    "description": "ชู 3 นิ้ว",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+3"
+  },
+  {
+    "id": "n4",
+    "word": "4 (สี่)",
+    "category": "number",
+    "description": "ชู 4 นิ้ว",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+4"
+  },
+  {
+    "id": "n5",
+    "word": "5 (ห้า)",
+    "category": "number",
+    "description": "ชู 5 นิ้ว",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+5"
+  },
+  {
+    "id": "n6",
+    "word": "6 (หก)",
+    "category": "number",
+    "description": "ชูนิ้วโป้งแนบแก้ม",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+6"
+  },
+  {
+    "id": "n7",
+    "word": "7 (เจ็ด)",
+    "category": "number",
+    "description": "ชูนิ้วโป้ง+ชี้",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+7"
+  },
+  {
+    "id": "n8",
+    "word": "8 (แปด)",
+    "category": "number",
+    "description": "ชูนิ้วโป้ง+ชี้+กลาง",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+8"
+  },
+  {
+    "id": "n9",
+    "word": "9 (เก้า)",
+    "category": "number",
+    "description": "ชูนิ้วโป้ง+ชี้+กลาง+นาง",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+9"
+  },
+  {
+    "id": "n10",
+    "word": "10 (สิบ)",
+    "category": "number",
+    "description": "กำมือกระดกโป้งขึ้น",
+    "imageUrl": "https://placehold.co/400x400/f0fdf4/16a34a?text=เลข+10"
+  },
+  {
+    "id": "d1",
+    "word": "สวัสดี",
+    "category": "daily",
+    "description": "พนมมือไหว้",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=สวัสดี"
+  },
+  {
+    "id": "d2",
+    "word": "ขอบคุณ",
+    "category": "daily",
+    "description": "หลังมือแตะคางแล้วเคลื่อนลง",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=ขอบคุณ"
+  },
+  {
+    "id": "d3",
+    "word": "ขอโทษ",
+    "category": "daily",
+    "description": "ถูหน้าอกวนๆ",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=ขอโทษ"
+  },
+  {
+    "id": "d4",
+    "word": "รัก (Love)",
+    "category": "daily",
+    "description": "มือ I Love You",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=รัก+(ILY)"
+  },
+  {
+    "id": "d5",
+    "word": "พ่อ",
+    "category": "daily",
+    "description": "นิ้วโป้งแตะจมูก",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=พ่อ"
+  },
+  {
+    "id": "d6",
+    "word": "แม่",
+    "category": "daily",
+    "description": "นิ้วโป้งแตะแก้ม",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=แม่"
+  },
+  {
+    "id": "d7",
+    "word": "กิน",
+    "category": "daily",
+    "description": "จีบมือเข้าหาปาก",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=กิน"
+  },
+  {
+    "id": "d8",
+    "word": "หิว",
+    "category": "daily",
+    "description": "ลูบท้อง",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=หิว"
+  },
+  {
+    "id": "d9",
+    "word": "ใช่",
+    "category": "daily",
+    "description": "จีบนิ้วกดลง (เหมือน OK)",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=ใช่"
+  },
+  {
+    "id": "d10",
+    "word": "ไม่",
+    "category": "daily",
+    "description": "โบกมือปฏิเสธ",
+    "imageUrl": "https://placehold.co/400x300/eff6ff/2563eb?text=ไม่"
+  },
+  {
+    "id": "life1",
+    "word": "ชีวิตประจำวัน 1",
+    "category": "color",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 1 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family1",
+    "word": "ครอบครัว 1",
+    "category": "animal",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 1 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion1",
+    "word": "อารมณ์ 1",
+    "category": "job",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 1 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place1",
+    "word": "สถานที่ 1",
+    "category": "school",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 1 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object1",
+    "word": "สิ่งของ 1",
+    "category": "time",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 1 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food1",
+    "word": "อาหาร 1",
+    "category": "question",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 1 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action1",
+    "word": "การกระทำ 1",
+    "category": "direction",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 1 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv1",
+    "word": "บทสนทนา 1",
+    "category": "transport",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 1 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life2",
+    "word": "ชีวิตประจำวัน 2",
+    "category": "body",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 2 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family2",
+    "word": "ครอบครัว 2",
+    "category": "weather",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 2 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion2",
+    "word": "อารมณ์ 2",
+    "category": "clothes",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 2 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place2",
+    "word": "สถานที่ 2",
+    "category": "hobby",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 2 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object2",
+    "word": "สิ่งของ 2",
+    "category": "sport",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 2 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food2",
+    "word": "อาหาร 2",
+    "category": "technology",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 2 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action2",
+    "word": "การกระทำ 2",
+    "category": "health",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 2 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv2",
+    "word": "บทสนทนา 2",
+    "category": "emergency",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 2 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life3",
+    "word": "ชีวิตประจำวัน 3",
+    "category": "education",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 3 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family3",
+    "word": "ครอบครัว 3",
+    "category": "office",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 3 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion3",
+    "word": "อารมณ์ 3",
+    "category": "market",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 3 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place3",
+    "word": "สถานที่ 3",
+    "category": "restaurant",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 3 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object3",
+    "word": "สิ่งของ 3",
+    "category": "travel",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 3 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food3",
+    "word": "อาหาร 3",
+    "category": "nature",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 3 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action3",
+    "word": "การกระทำ 3",
+    "category": "holiday",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 3 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv3",
+    "word": "บทสนทนา 3",
+    "category": "celebration",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 3 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life4",
+    "word": "ชีวิตประจำวัน 4",
+    "category": "pronoun",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 4 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family4",
+    "word": "ครอบครัว 4",
+    "category": "preposition",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 4 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion4",
+    "word": "อารมณ์ 4",
+    "category": "connector",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 4 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place4",
+    "word": "สถานที่ 4",
+    "category": "day",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 4 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object4",
+    "word": "สิ่งของ 4",
+    "category": "month",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 4 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food4",
+    "word": "อาหาร 4",
+    "category": "advanced_number",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 4 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action4",
+    "word": "การกระทำ 4",
+    "category": "classifier",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 4 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv4",
+    "word": "บทสนทนา 4",
+    "category": "slang",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 4 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life5",
+    "word": "ชีวิตประจำวัน 5",
+    "category": "internet",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 5 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family5",
+    "word": "ครอบครัว 5",
+    "category": "sign_grammar",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 5 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion5",
+    "word": "อารมณ์ 5",
+    "category": "kids",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 5 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place5",
+    "word": "สถานที่ 5",
+    "category": "adult",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 5 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object5",
+    "word": "สิ่งของ 5",
+    "category": "elder",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 5 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food5",
+    "word": "อาหาร 5",
+    "category": "formal",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 5 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action5",
+    "word": "การกระทำ 5",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 5 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv5",
+    "word": "บทสนทนา 5",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 5 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life6",
+    "word": "ชีวิตประจำวัน 6",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 6 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family6",
+    "word": "ครอบครัว 6",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 6 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion6",
+    "word": "อารมณ์ 6",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 6 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place6",
+    "word": "สถานที่ 6",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 6 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object6",
+    "word": "สิ่งของ 6",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 6 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food6",
+    "word": "อาหาร 6",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 6 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action6",
+    "word": "การกระทำ 6",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 6 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv6",
+    "word": "บทสนทนา 6",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 6 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life7",
+    "word": "ชีวิตประจำวัน 7",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 7 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family7",
+    "word": "ครอบครัว 7",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 7 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion7",
+    "word": "อารมณ์ 7",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 7 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place7",
+    "word": "สถานที่ 7",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 7 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object7",
+    "word": "สิ่งของ 7",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 7 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food7",
+    "word": "อาหาร 7",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 7 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action7",
+    "word": "การกระทำ 7",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 7 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv7",
+    "word": "บทสนทนา 7",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 7 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life8",
+    "word": "ชีวิตประจำวัน 8",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 8 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family8",
+    "word": "ครอบครัว 8",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 8 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion8",
+    "word": "อารมณ์ 8",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 8 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place8",
+    "word": "สถานที่ 8",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 8 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object8",
+    "word": "สิ่งของ 8",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 8 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food8",
+    "word": "อาหาร 8",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 8 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action8",
+    "word": "การกระทำ 8",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 8 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv8",
+    "word": "บทสนทนา 8",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 8 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life9",
+    "word": "ชีวิตประจำวัน 9",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 9 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family9",
+    "word": "ครอบครัว 9",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 9 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion9",
+    "word": "อารมณ์ 9",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 9 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place9",
+    "word": "สถานที่ 9",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 9 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object9",
+    "word": "สิ่งของ 9",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 9 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food9",
+    "word": "อาหาร 9",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 9 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action9",
+    "word": "การกระทำ 9",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 9 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv9",
+    "word": "บทสนทนา 9",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 9 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life10",
+    "word": "ชีวิตประจำวัน 10",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 10 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family10",
+    "word": "ครอบครัว 10",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 10 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion10",
+    "word": "อารมณ์ 10",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 10 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place10",
+    "word": "สถานที่ 10",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 10 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object10",
+    "word": "สิ่งของ 10",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 10 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food10",
+    "word": "อาหาร 10",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 10 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action10",
+    "word": "การกระทำ 10",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 10 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv10",
+    "word": "บทสนทนา 10",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 10 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life11",
+    "word": "ชีวิตประจำวัน 11",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 11 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family11",
+    "word": "ครอบครัว 11",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 11 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion11",
+    "word": "อารมณ์ 11",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 11 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place11",
+    "word": "สถานที่ 11",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 11 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object11",
+    "word": "สิ่งของ 11",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 11 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food11",
+    "word": "อาหาร 11",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 11 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action11",
+    "word": "การกระทำ 11",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 11 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv11",
+    "word": "บทสนทนา 11",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 11 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life12",
+    "word": "ชีวิตประจำวัน 12",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 12 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family12",
+    "word": "ครอบครัว 12",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 12 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion12",
+    "word": "อารมณ์ 12",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 12 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place12",
+    "word": "สถานที่ 12",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 12 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object12",
+    "word": "สิ่งของ 12",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 12 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food12",
+    "word": "อาหาร 12",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 12 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action12",
+    "word": "การกระทำ 12",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 12 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv12",
+    "word": "บทสนทนา 12",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 12 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life13",
+    "word": "ชีวิตประจำวัน 13",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 13 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family13",
+    "word": "ครอบครัว 13",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 13 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion13",
+    "word": "อารมณ์ 13",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 13 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place13",
+    "word": "สถานที่ 13",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 13 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object13",
+    "word": "สิ่งของ 13",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 13 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food13",
+    "word": "อาหาร 13",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 13 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action13",
+    "word": "การกระทำ 13",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 13 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv13",
+    "word": "บทสนทนา 13",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 13 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life14",
+    "word": "ชีวิตประจำวัน 14",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 14 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family14",
+    "word": "ครอบครัว 14",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 14 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion14",
+    "word": "อารมณ์ 14",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 14 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place14",
+    "word": "สถานที่ 14",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 14 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object14",
+    "word": "สิ่งของ 14",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 14 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food14",
+    "word": "อาหาร 14",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 14 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action14",
+    "word": "การกระทำ 14",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 14 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv14",
+    "word": "บทสนทนา 14",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 14 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life15",
+    "word": "ชีวิตประจำวัน 15",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 15 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family15",
+    "word": "ครอบครัว 15",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 15 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion15",
+    "word": "อารมณ์ 15",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 15 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place15",
+    "word": "สถานที่ 15",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 15 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object15",
+    "word": "สิ่งของ 15",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 15 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food15",
+    "word": "อาหาร 15",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 15 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action15",
+    "word": "การกระทำ 15",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 15 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv15",
+    "word": "บทสนทนา 15",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 15 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life16",
+    "word": "ชีวิตประจำวัน 16",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 16 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family16",
+    "word": "ครอบครัว 16",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 16 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion16",
+    "word": "อารมณ์ 16",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 16 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place16",
+    "word": "สถานที่ 16",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 16 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object16",
+    "word": "สิ่งของ 16",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 16 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food16",
+    "word": "อาหาร 16",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 16 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action16",
+    "word": "การกระทำ 16",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 16 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv16",
+    "word": "บทสนทนา 16",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 16 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life17",
+    "word": "ชีวิตประจำวัน 17",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 17 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family17",
+    "word": "ครอบครัว 17",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 17 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion17",
+    "word": "อารมณ์ 17",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 17 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place17",
+    "word": "สถานที่ 17",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 17 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object17",
+    "word": "สิ่งของ 17",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 17 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food17",
+    "word": "อาหาร 17",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 17 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action17",
+    "word": "การกระทำ 17",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 17 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv17",
+    "word": "บทสนทนา 17",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 17 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life18",
+    "word": "ชีวิตประจำวัน 18",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 18 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family18",
+    "word": "ครอบครัว 18",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 18 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion18",
+    "word": "อารมณ์ 18",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 18 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place18",
+    "word": "สถานที่ 18",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 18 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object18",
+    "word": "สิ่งของ 18",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 18 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food18",
+    "word": "อาหาร 18",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 18 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action18",
+    "word": "การกระทำ 18",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 18 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv18",
+    "word": "บทสนทนา 18",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 18 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life19",
+    "word": "ชีวิตประจำวัน 19",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 19 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family19",
+    "word": "ครอบครัว 19",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 19 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion19",
+    "word": "อารมณ์ 19",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 19 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place19",
+    "word": "สถานที่ 19",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 19 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object19",
+    "word": "สิ่งของ 19",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 19 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food19",
+    "word": "อาหาร 19",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 19 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action19",
+    "word": "การกระทำ 19",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 19 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv19",
+    "word": "บทสนทนา 19",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 19 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life20",
+    "word": "ชีวิตประจำวัน 20",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 20 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family20",
+    "word": "ครอบครัว 20",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 20 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion20",
+    "word": "อารมณ์ 20",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 20 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place20",
+    "word": "สถานที่ 20",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 20 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object20",
+    "word": "สิ่งของ 20",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 20 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food20",
+    "word": "อาหาร 20",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 20 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action20",
+    "word": "การกระทำ 20",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 20 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv20",
+    "word": "บทสนทนา 20",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 20 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life21",
+    "word": "ชีวิตประจำวัน 21",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 21 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family21",
+    "word": "ครอบครัว 21",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 21 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion21",
+    "word": "อารมณ์ 21",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 21 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place21",
+    "word": "สถานที่ 21",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 21 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object21",
+    "word": "สิ่งของ 21",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 21 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food21",
+    "word": "อาหาร 21",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 21 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action21",
+    "word": "การกระทำ 21",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 21 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv21",
+    "word": "บทสนทนา 21",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 21 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life22",
+    "word": "ชีวิตประจำวัน 22",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 22 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family22",
+    "word": "ครอบครัว 22",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 22 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion22",
+    "word": "อารมณ์ 22",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 22 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place22",
+    "word": "สถานที่ 22",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 22 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object22",
+    "word": "สิ่งของ 22",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 22 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food22",
+    "word": "อาหาร 22",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 22 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action22",
+    "word": "การกระทำ 22",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 22 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv22",
+    "word": "บทสนทนา 22",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 22 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life23",
+    "word": "ชีวิตประจำวัน 23",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 23 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family23",
+    "word": "ครอบครัว 23",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 23 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion23",
+    "word": "อารมณ์ 23",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 23 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place23",
+    "word": "สถานที่ 23",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 23 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object23",
+    "word": "สิ่งของ 23",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 23 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food23",
+    "word": "อาหาร 23",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 23 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action23",
+    "word": "การกระทำ 23",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 23 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv23",
+    "word": "บทสนทนา 23",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 23 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life24",
+    "word": "ชีวิตประจำวัน 24",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 24 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family24",
+    "word": "ครอบครัว 24",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 24 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion24",
+    "word": "อารมณ์ 24",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 24 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place24",
+    "word": "สถานที่ 24",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 24 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object24",
+    "word": "สิ่งของ 24",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 24 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food24",
+    "word": "อาหาร 24",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 24 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action24",
+    "word": "การกระทำ 24",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 24 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv24",
+    "word": "บทสนทนา 24",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 24 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life25",
+    "word": "ชีวิตประจำวัน 25",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 25 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family25",
+    "word": "ครอบครัว 25",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 25 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion25",
+    "word": "อารมณ์ 25",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 25 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place25",
+    "word": "สถานที่ 25",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 25 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object25",
+    "word": "สิ่งของ 25",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 25 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food25",
+    "word": "อาหาร 25",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 25 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action25",
+    "word": "การกระทำ 25",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 25 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv25",
+    "word": "บทสนทนา 25",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 25 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life26",
+    "word": "ชีวิตประจำวัน 26",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 26 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family26",
+    "word": "ครอบครัว 26",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 26 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion26",
+    "word": "อารมณ์ 26",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 26 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place26",
+    "word": "สถานที่ 26",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 26 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object26",
+    "word": "สิ่งของ 26",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 26 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food26",
+    "word": "อาหาร 26",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 26 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action26",
+    "word": "การกระทำ 26",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 26 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv26",
+    "word": "บทสนทนา 26",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 26 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life27",
+    "word": "ชีวิตประจำวัน 27",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 27 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family27",
+    "word": "ครอบครัว 27",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 27 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion27",
+    "word": "อารมณ์ 27",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 27 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place27",
+    "word": "สถานที่ 27",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 27 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object27",
+    "word": "สิ่งของ 27",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 27 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food27",
+    "word": "อาหาร 27",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 27 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action27",
+    "word": "การกระทำ 27",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 27 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv27",
+    "word": "บทสนทนา 27",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 27 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life28",
+    "word": "ชีวิตประจำวัน 28",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 28 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family28",
+    "word": "ครอบครัว 28",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 28 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion28",
+    "word": "อารมณ์ 28",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 28 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place28",
+    "word": "สถานที่ 28",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 28 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object28",
+    "word": "สิ่งของ 28",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 28 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food28",
+    "word": "อาหาร 28",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 28 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action28",
+    "word": "การกระทำ 28",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 28 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv28",
+    "word": "บทสนทนา 28",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 28 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life29",
+    "word": "ชีวิตประจำวัน 29",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 29 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family29",
+    "word": "ครอบครัว 29",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 29 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion29",
+    "word": "อารมณ์ 29",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 29 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place29",
+    "word": "สถานที่ 29",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 29 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object29",
+    "word": "สิ่งของ 29",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 29 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food29",
+    "word": "อาหาร 29",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 29 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action29",
+    "word": "การกระทำ 29",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 29 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv29",
+    "word": "บทสนทนา 29",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 29 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life30",
+    "word": "ชีวิตประจำวัน 30",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 30 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family30",
+    "word": "ครอบครัว 30",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 30 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion30",
+    "word": "อารมณ์ 30",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 30 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place30",
+    "word": "สถานที่ 30",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 30 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object30",
+    "word": "สิ่งของ 30",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 30 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food30",
+    "word": "อาหาร 30",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 30 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action30",
+    "word": "การกระทำ 30",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 30 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv30",
+    "word": "บทสนทนา 30",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 30 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life31",
+    "word": "ชีวิตประจำวัน 31",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 31 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family31",
+    "word": "ครอบครัว 31",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 31 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion31",
+    "word": "อารมณ์ 31",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 31 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place31",
+    "word": "สถานที่ 31",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 31 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object31",
+    "word": "สิ่งของ 31",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 31 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food31",
+    "word": "อาหาร 31",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 31 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action31",
+    "word": "การกระทำ 31",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 31 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv31",
+    "word": "บทสนทนา 31",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 31 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life32",
+    "word": "ชีวิตประจำวัน 32",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 32 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family32",
+    "word": "ครอบครัว 32",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 32 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion32",
+    "word": "อารมณ์ 32",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 32 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place32",
+    "word": "สถานที่ 32",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 32 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object32",
+    "word": "สิ่งของ 32",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 32 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food32",
+    "word": "อาหาร 32",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 32 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action32",
+    "word": "การกระทำ 32",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 32 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv32",
+    "word": "บทสนทนา 32",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 32 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life33",
+    "word": "ชีวิตประจำวัน 33",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 33 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family33",
+    "word": "ครอบครัว 33",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 33 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion33",
+    "word": "อารมณ์ 33",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 33 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place33",
+    "word": "สถานที่ 33",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 33 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object33",
+    "word": "สิ่งของ 33",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 33 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food33",
+    "word": "อาหาร 33",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 33 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action33",
+    "word": "การกระทำ 33",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 33 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv33",
+    "word": "บทสนทนา 33",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 33 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life34",
+    "word": "ชีวิตประจำวัน 34",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 34 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family34",
+    "word": "ครอบครัว 34",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 34 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion34",
+    "word": "อารมณ์ 34",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 34 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place34",
+    "word": "สถานที่ 34",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 34 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object34",
+    "word": "สิ่งของ 34",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 34 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food34",
+    "word": "อาหาร 34",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 34 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action34",
+    "word": "การกระทำ 34",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 34 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv34",
+    "word": "บทสนทนา 34",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 34 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life35",
+    "word": "ชีวิตประจำวัน 35",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 35 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family35",
+    "word": "ครอบครัว 35",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 35 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion35",
+    "word": "อารมณ์ 35",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 35 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place35",
+    "word": "สถานที่ 35",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 35 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object35",
+    "word": "สิ่งของ 35",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 35 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food35",
+    "word": "อาหาร 35",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 35 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action35",
+    "word": "การกระทำ 35",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 35 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv35",
+    "word": "บทสนทนา 35",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 35 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life36",
+    "word": "ชีวิตประจำวัน 36",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 36 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family36",
+    "word": "ครอบครัว 36",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 36 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion36",
+    "word": "อารมณ์ 36",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 36 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place36",
+    "word": "สถานที่ 36",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 36 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object36",
+    "word": "สิ่งของ 36",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 36 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food36",
+    "word": "อาหาร 36",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 36 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action36",
+    "word": "การกระทำ 36",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 36 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv36",
+    "word": "บทสนทนา 36",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 36 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life37",
+    "word": "ชีวิตประจำวัน 37",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 37 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family37",
+    "word": "ครอบครัว 37",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 37 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion37",
+    "word": "อารมณ์ 37",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 37 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place37",
+    "word": "สถานที่ 37",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 37 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object37",
+    "word": "สิ่งของ 37",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 37 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food37",
+    "word": "อาหาร 37",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 37 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action37",
+    "word": "การกระทำ 37",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 37 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv37",
+    "word": "บทสนทนา 37",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 37 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life38",
+    "word": "ชีวิตประจำวัน 38",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 38 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family38",
+    "word": "ครอบครัว 38",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 38 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion38",
+    "word": "อารมณ์ 38",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 38 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place38",
+    "word": "สถานที่ 38",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 38 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object38",
+    "word": "สิ่งของ 38",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 38 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food38",
+    "word": "อาหาร 38",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 38 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action38",
+    "word": "การกระทำ 38",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 38 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv38",
+    "word": "บทสนทนา 38",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 38 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life39",
+    "word": "ชีวิตประจำวัน 39",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 39 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family39",
+    "word": "ครอบครัว 39",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 39 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion39",
+    "word": "อารมณ์ 39",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 39 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place39",
+    "word": "สถานที่ 39",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 39 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object39",
+    "word": "สิ่งของ 39",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 39 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food39",
+    "word": "อาหาร 39",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 39 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action39",
+    "word": "การกระทำ 39",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 39 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv39",
+    "word": "บทสนทนา 39",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 39 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life40",
+    "word": "ชีวิตประจำวัน 40",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 40 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family40",
+    "word": "ครอบครัว 40",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 40 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion40",
+    "word": "อารมณ์ 40",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 40 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place40",
+    "word": "สถานที่ 40",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 40 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object40",
+    "word": "สิ่งของ 40",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 40 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food40",
+    "word": "อาหาร 40",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 40 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action40",
+    "word": "การกระทำ 40",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 40 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv40",
+    "word": "บทสนทนา 40",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 40 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life41",
+    "word": "ชีวิตประจำวัน 41",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 41 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family41",
+    "word": "ครอบครัว 41",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 41 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion41",
+    "word": "อารมณ์ 41",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 41 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place41",
+    "word": "สถานที่ 41",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 41 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object41",
+    "word": "สิ่งของ 41",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 41 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food41",
+    "word": "อาหาร 41",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 41 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action41",
+    "word": "การกระทำ 41",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 41 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv41",
+    "word": "บทสนทนา 41",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 41 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life42",
+    "word": "ชีวิตประจำวัน 42",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 42 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family42",
+    "word": "ครอบครัว 42",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 42 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion42",
+    "word": "อารมณ์ 42",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 42 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place42",
+    "word": "สถานที่ 42",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 42 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object42",
+    "word": "สิ่งของ 42",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 42 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food42",
+    "word": "อาหาร 42",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 42 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action42",
+    "word": "การกระทำ 42",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 42 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv42",
+    "word": "บทสนทนา 42",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 42 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life43",
+    "word": "ชีวิตประจำวัน 43",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 43 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family43",
+    "word": "ครอบครัว 43",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 43 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion43",
+    "word": "อารมณ์ 43",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 43 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place43",
+    "word": "สถานที่ 43",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 43 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object43",
+    "word": "สิ่งของ 43",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 43 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food43",
+    "word": "อาหาร 43",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 43 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action43",
+    "word": "การกระทำ 43",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 43 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv43",
+    "word": "บทสนทนา 43",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 43 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life44",
+    "word": "ชีวิตประจำวัน 44",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 44 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family44",
+    "word": "ครอบครัว 44",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 44 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion44",
+    "word": "อารมณ์ 44",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 44 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place44",
+    "word": "สถานที่ 44",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 44 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object44",
+    "word": "สิ่งของ 44",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 44 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food44",
+    "word": "อาหาร 44",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 44 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action44",
+    "word": "การกระทำ 44",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 44 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv44",
+    "word": "บทสนทนา 44",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 44 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life45",
+    "word": "ชีวิตประจำวัน 45",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 45 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family45",
+    "word": "ครอบครัว 45",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 45 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion45",
+    "word": "อารมณ์ 45",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 45 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place45",
+    "word": "สถานที่ 45",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 45 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object45",
+    "word": "สิ่งของ 45",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 45 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food45",
+    "word": "อาหาร 45",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 45 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action45",
+    "word": "การกระทำ 45",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 45 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv45",
+    "word": "บทสนทนา 45",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 45 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life46",
+    "word": "ชีวิตประจำวัน 46",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 46 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family46",
+    "word": "ครอบครัว 46",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 46 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion46",
+    "word": "อารมณ์ 46",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 46 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place46",
+    "word": "สถานที่ 46",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 46 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object46",
+    "word": "สิ่งของ 46",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 46 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food46",
+    "word": "อาหาร 46",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 46 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action46",
+    "word": "การกระทำ 46",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 46 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv46",
+    "word": "บทสนทนา 46",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 46 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life47",
+    "word": "ชีวิตประจำวัน 47",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 47 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family47",
+    "word": "ครอบครัว 47",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 47 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion47",
+    "word": "อารมณ์ 47",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 47 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place47",
+    "word": "สถานที่ 47",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 47 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object47",
+    "word": "สิ่งของ 47",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 47 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food47",
+    "word": "อาหาร 47",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 47 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action47",
+    "word": "การกระทำ 47",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 47 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv47",
+    "word": "บทสนทนา 47",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 47 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life48",
+    "word": "ชีวิตประจำวัน 48",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 48 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family48",
+    "word": "ครอบครัว 48",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 48 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion48",
+    "word": "อารมณ์ 48",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 48 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place48",
+    "word": "สถานที่ 48",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 48 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object48",
+    "word": "สิ่งของ 48",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 48 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food48",
+    "word": "อาหาร 48",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 48 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action48",
+    "word": "การกระทำ 48",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 48 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv48",
+    "word": "บทสนทนา 48",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 48 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life49",
+    "word": "ชีวิตประจำวัน 49",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 49 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family49",
+    "word": "ครอบครัว 49",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 49 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion49",
+    "word": "อารมณ์ 49",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 49 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place49",
+    "word": "สถานที่ 49",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 49 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object49",
+    "word": "สิ่งของ 49",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 49 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food49",
+    "word": "อาหาร 49",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 49 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action49",
+    "word": "การกระทำ 49",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 49 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv49",
+    "word": "บทสนทนา 49",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 49 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life50",
+    "word": "ชีวิตประจำวัน 50",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 50 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family50",
+    "word": "ครอบครัว 50",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 50 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion50",
+    "word": "อารมณ์ 50",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 50 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place50",
+    "word": "สถานที่ 50",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 50 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object50",
+    "word": "สิ่งของ 50",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 50 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food50",
+    "word": "อาหาร 50",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 50 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action50",
+    "word": "การกระทำ 50",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 50 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv50",
+    "word": "บทสนทนา 50",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 50 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life51",
+    "word": "ชีวิตประจำวัน 51",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 51 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family51",
+    "word": "ครอบครัว 51",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 51 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion51",
+    "word": "อารมณ์ 51",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 51 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place51",
+    "word": "สถานที่ 51",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 51 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object51",
+    "word": "สิ่งของ 51",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 51 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food51",
+    "word": "อาหาร 51",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 51 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action51",
+    "word": "การกระทำ 51",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 51 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv51",
+    "word": "บทสนทนา 51",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 51 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life52",
+    "word": "ชีวิตประจำวัน 52",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 52 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family52",
+    "word": "ครอบครัว 52",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 52 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion52",
+    "word": "อารมณ์ 52",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 52 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place52",
+    "word": "สถานที่ 52",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 52 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object52",
+    "word": "สิ่งของ 52",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 52 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food52",
+    "word": "อาหาร 52",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 52 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action52",
+    "word": "การกระทำ 52",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 52 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv52",
+    "word": "บทสนทนา 52",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 52 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life53",
+    "word": "ชีวิตประจำวัน 53",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 53 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family53",
+    "word": "ครอบครัว 53",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 53 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion53",
+    "word": "อารมณ์ 53",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 53 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place53",
+    "word": "สถานที่ 53",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 53 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object53",
+    "word": "สิ่งของ 53",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 53 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food53",
+    "word": "อาหาร 53",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 53 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action53",
+    "word": "การกระทำ 53",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 53 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv53",
+    "word": "บทสนทนา 53",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 53 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life54",
+    "word": "ชีวิตประจำวัน 54",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 54 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family54",
+    "word": "ครอบครัว 54",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 54 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "emotion54",
+    "word": "อารมณ์ 54",
+    "category": "emotion",
+    "description": "คำศัพท์หมวดอารมณ์ ลำดับที่ 54 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "place54",
+    "word": "สถานที่ 54",
+    "category": "place",
+    "description": "คำศัพท์หมวดสถานที่ ลำดับที่ 54 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "object54",
+    "word": "สิ่งของ 54",
+    "category": "object",
+    "description": "คำศัพท์หมวดสิ่งของ ลำดับที่ 54 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "food54",
+    "word": "อาหาร 54",
+    "category": "food",
+    "description": "คำศัพท์หมวดอาหาร ลำดับที่ 54 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "action54",
+    "word": "การกระทำ 54",
+    "category": "action",
+    "description": "คำศัพท์หมวดการกระทำ ลำดับที่ 54 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "conv54",
+    "word": "บทสนทนา 54",
+    "category": "conversation",
+    "description": "คำศัพท์หมวดบทสนทนา ลำดับที่ 54 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "life55",
+    "word": "ชีวิตประจำวัน 55",
+    "category": "daily_life",
+    "description": "คำศัพท์หมวดชีวิตประจำวัน ลำดับที่ 55 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "family55",
+    "word": "ครอบครัว 55",
+    "category": "family",
+    "description": "คำศัพท์หมวดครอบครัว ลำดับที่ 55 – เพิ่มคำอธิบายท่าภาษามือจริงในภายหลัง",
+    "imageUrl": ""
+  },
+  {
+    "id": "e1",
+    "word": "A (ตัว A อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร A ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e2",
+    "word": "B (ตัว B อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร B ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e3",
+    "word": "C (ตัว C อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร C ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e4",
+    "word": "D (ตัว D อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร D ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e5",
+    "word": "E (ตัว E อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร E ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e6",
+    "word": "F (ตัว F อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร F ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e7",
+    "word": "G (ตัว G อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร G ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e8",
+    "word": "H (ตัว H อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร H ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e9",
+    "word": "I (ตัว I อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร I ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e10",
+    "word": "J (ตัว J อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร J ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e11",
+    "word": "K (ตัว K อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร K ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e12",
+    "word": "L (ตัว L อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร L ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e13",
+    "word": "M (ตัว M อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร M ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e14",
+    "word": "N (ตัว N อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร N ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e15",
+    "word": "O (ตัว O อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร O ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e16",
+    "word": "P (ตัว P อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร P ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e17",
+    "word": "Q (ตัว Q อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร Q ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e18",
+    "word": "R (ตัว R อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร R ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e19",
+    "word": "S (ตัว S อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร S ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e20",
+    "word": "T (ตัว T อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร T ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e21",
+    "word": "U (ตัว U อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร U ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e22",
+    "word": "V (ตัว V อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร V ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e23",
+    "word": "W (ตัว W อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร W ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e24",
+    "word": "X (ตัว X อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร X ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e25",
+    "word": "Y (ตัว Y อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร Y ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  },
+  {
+    "id": "e26",
+    "word": "Z (ตัว Z อังกฤษ)",
+    "category": "consonant_en",
+    "description": "ท่าประกอบตัวอักษร Z ภาษาอังกฤษ (เพิ่มรายละเอียดท่าภาษามือในภายหลัง)",
+    "imageUrl": ""
+  }
+]

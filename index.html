@@ -25,9 +25,10 @@
                 radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
                 radial-gradient(circle at 10% 20%, rgba(34, 211, 238, 0.08) 0%, transparent 30%);
             color: #334155; 
+            -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
         }
 
-        /* Glassmorphism Effect - Light Version */
+        /* Glassmorphism Effect */
         .glass-panel {
             background: var(--glass);
             backdrop-filter: blur(12px);
@@ -60,10 +61,17 @@
         }
         .active-pulse { animation: pulse-cyan 2s infinite; }
 
-        .card-hover:hover {
-            border-color: var(--secondary);
-            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.2);
-            transform: translateY(-4px);
+        .card-hover:active {
+            transform: scale(0.98);
+            transition: transform 0.1s;
+        }
+        
+        @media (min-width: 768px) {
+            .card-hover:hover {
+                border-color: var(--secondary);
+                box-shadow: 0 10px 30px rgba(14, 165, 233, 0.2);
+                transform: translateY(-4px);
+            }
         }
 
         .hide-scroll::-webkit-scrollbar { display: none; }
@@ -169,7 +177,7 @@
                     <p class="text-sky-600 animate-pulse">กำลังเชื่อมต่อฐานข้อมูล...</p>
                 </div>
                 
-                <!-- Adjusted grid: 2 columns on mobile, 3 on md, 4 on lg -->
+                <!-- Grid: 2 columns on mobile (optimized for touch), 3 on md, 4 on lg -->
                 <div id="cardGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-6"></div>
 
                 <div id="noResults" class="hidden text-center py-20 glass-panel rounded-3xl border-dashed border-sky-200">
@@ -231,10 +239,10 @@
     <!-- REVISED BRUTALIST DETAIL MODAL -->
     <div id="detailModal" class="relative z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <!-- Backdrop -->
-        <div class="fixed inset-0 bg-black/50 transition-opacity backdrop-blur-sm"></div>
+        <div class="fixed inset-0 bg-black/50 transition-opacity backdrop-blur-sm" onclick="closeModal()"></div>
         
-        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0" onclick="closeModal()">
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto pointer-events-none">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0 pointer-events-auto">
                 
                 <!-- Modal Panel -->
                 <div class="relative transform bg-white text-left brutalist-shadow border-2 border-black sm:my-8 w-[95%] sm:w-full sm:max-w-lg flex flex-col" onclick="event.stopPropagation()">
@@ -315,18 +323,19 @@
 
     <script>
         let vocabData = []; 
+        let currentFilteredData = []; // Store filtered data for easy access by index
         let categories = ['ทั้งหมด'];
         let activeCategory = 'ทั้งหมด';
         let currentView = 'image';
         
         const BACKEND_URL = 'https://quiet-scene-f18b.tontakankeawpang321.workers.dev'; 
-
         const DATA_URL = './signs500.json'; 
 
         window.addEventListener('DOMContentLoaded', () => {
             const searchInputDesktop = document.getElementById('searchInputDesktop');
             const searchInputMobile = document.getElementById('searchInputMobile');
             const btnSwitch = document.getElementById('btnSwitchView');
+            const cardGrid = document.getElementById('cardGrid');
             
             if(searchInputDesktop) searchInputDesktop.oninput = filterAndRender;
             if(searchInputMobile) searchInputMobile.oninput = filterAndRender;
@@ -336,6 +345,19 @@
                     currentView = (currentView === 'image') ? 'video' : 'image';
                     updateModalView();
                 };
+            }
+
+            // Event Delegation for Card Clicks (Fixes mobile touch issues)
+            if(cardGrid) {
+                cardGrid.addEventListener('click', (e) => {
+                    const card = e.target.closest('.card-item');
+                    if (card) {
+                        const index = card.getAttribute('data-index');
+                        if (index !== null && currentFilteredData[index]) {
+                            openModal(currentFilteredData[index]);
+                        }
+                    }
+                });
             }
             
             loadData();
@@ -415,13 +437,13 @@
             const mobileInput = document.getElementById('searchInputMobile');
             const searchTerm = ((desktopInput ? desktopInput.value : '') || (mobileInput ? mobileInput.value : '') || '').toLowerCase();
             
-            const filtered = vocabData.filter(item => {
+            currentFilteredData = vocabData.filter(item => {
                 const matchCat = activeCategory === 'ทั้งหมด' || item.category === activeCategory;
                 const matchSearch = (item.word && item.word.toLowerCase().includes(searchTerm)) || 
                                    (item.word_en && item.word_en.toLowerCase().includes(searchTerm));
                 return matchCat && matchSearch;
             });
-            renderCards(filtered);
+            renderCards(currentFilteredData);
         }
 
         function renderCards(items) {
@@ -429,15 +451,16 @@
             const noResults = document.getElementById('noResults');
             if (!cardGrid) return;
 
-            cardGrid.innerHTML = items.map(item => `
-                <div onclick='openModal(${JSON.stringify(item).replace(/'/g, "&apos;")})' class="glass-panel rounded-xl overflow-hidden cursor-pointer card-hover transition-all flex flex-col h-full group bg-white">
-                    <div class="h-28 md:h-44 overflow-hidden bg-slate-50 relative">
+            // Generate HTML using data-index for event delegation (Lighter & Better for Mobile)
+            cardGrid.innerHTML = items.map((item, index) => `
+                <div class="card-item glass-panel rounded-xl overflow-hidden cursor-pointer card-hover transition-all flex flex-col h-full group bg-white" data-index="${index}">
+                    <div class="h-28 md:h-44 overflow-hidden bg-slate-50 relative pointer-events-none">
                         <img src="${item.imageUrl || 'https://placehold.co/400x300/f1f5f9/cbd5e1?text=ไม่มีรูป'}" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500" loading="lazy" onerror="this.src='https://placehold.co/400x300/f1f5f9/cbd5e1?text=ERROR'">
                         <div class="absolute bottom-1 left-1 md:bottom-2 md:left-2 bg-white/90 text-sky-600 px-1 py-0.5 rounded text-[8px] font-bold border border-sky-100 uppercase tracking-widest shadow-sm">
                             ${item.category}
                         </div>
                     </div>
-                    <div class="p-2 md:p-4 bg-white/50 flex flex-col grow">
+                    <div class="p-2 md:p-4 bg-white/50 flex flex-col grow pointer-events-none">
                         <h3 class="font-bold text-slate-800 truncate text-xs md:text-base tracking-tight">${item.word}</h3>
                         <p class="text-[8px] md:text-[10px] text-sky-500 uppercase tracking-tighter opacity-80 truncate">${item.word_en || ''}</p>
                     </div>
@@ -448,7 +471,7 @@
             lucide.createIcons();
         }
 
-        // --- Detail Modal Logic (Updated for Brutalist Style) ---
+        // --- Detail Modal Logic ---
         function openModal(item) {
             const modal = document.getElementById('detailModal');
             if (!modal) return;
@@ -465,7 +488,6 @@
             const idMatch = item.youtubeUrl ? item.youtubeUrl.match(/(?:v=|\/embed\/|youtu\.be\/)([^&?#]+)/) : null;
             const videoId = idMatch ? idMatch[1] : null;
             
-            // Handle Video Toggle Button
             const btn = document.getElementById('btnSwitchView');
             if (videoId) {
                 ytFrame.src = `https://www.youtube.com/embed/${videoId}?rel=0&autoplay=0`;

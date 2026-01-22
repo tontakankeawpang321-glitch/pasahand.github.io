@@ -11,7 +11,7 @@
     <style>
         body {
             font-family: 'Prompt', sans-serif;
-            background-color: #fff7ed; /* ส้มอ่อนๆ ครีมๆ */
+            background-color: #fff7ed;
             background-image: radial-gradient(#fed7aa 1px, transparent 1px);
             background-size: 20px 20px;
         }
@@ -20,17 +20,9 @@
         }
         
         /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px; /* For horizontal scroll */
-        }
-        ::-webkit-scrollbar-track {
-            background: #fff7ed; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #fdba74; 
-            border-radius: 10px;
-        }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #fff7ed; }
+        ::-webkit-scrollbar-thumb { background: #fdba74; border-radius: 10px; }
 
         /* Animations */
         @keyframes popIn {
@@ -44,7 +36,7 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.15);
         }
-        /* Loading Spinner */
+
         .loader {
             border: 4px solid #fff7ed;
             border-top: 4px solid #f97316;
@@ -59,16 +51,10 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Hide scrollbar for category menu on mobile but keep functionality */
-        .hide-scroll::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scroll {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* --- Chatbot Styles --- */
+        /* --- Chatbot Window Styles --- */
         #chatbot-window {
             z-index: 100;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -95,6 +81,7 @@
 </head>
 <body class="text-gray-700 min-h-screen flex flex-col">
 
+    <!-- Header -->
     <header class="bg-white/80 backdrop-blur-md sticky top-0 z-40 shadow-sm border-b border-orange-100 h-[72px]">
         <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-3 h-full">
             <div class="flex items-center gap-2 md:gap-3 w-full md:w-auto justify-center md:justify-start">
@@ -103,62 +90,54 @@
                 </div>
                 <h1 class="text-xl md:text-3xl font-bold text-orange-600 cute-font whitespace-nowrap">ภาษามือหรรษา</h1>
             </div>
-            
             <div class="relative w-full md:w-96 hidden md:block">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <i data-lucide="search" class="w-5 h-5 text-orange-300"></i>
                 </div>
-                <input type="text" id="searchInputDesktop" 
-                    class="block w-full pl-10 pr-3 py-2 border-2 border-orange-100 rounded-full leading-5 bg-white placeholder-orange-200 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-200 transition-all duration-300 cute-font" 
-                    placeholder="ค้นหาคำศัพท์... (เช่น ก ไก่)">
+                <input type="text" id="searchInputDesktop" class="block w-full pl-10 pr-3 py-2 border-2 border-orange-100 rounded-full leading-5 bg-white placeholder-orange-200 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-200 transition-all duration-300 cute-font" placeholder="ค้นหาคำศัพท์... (เช่น ก ไก่)">
             </div>
         </div>
     </header>
 
+    <!-- Mobile Search Bar -->
     <div class="md:hidden px-4 py-3 bg-white/50 backdrop-blur-sm border-b border-orange-50">
         <div class="relative w-full">
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <i data-lucide="search" class="w-5 h-5 text-orange-300"></i>
             </div>
-            <input type="text" id="searchInputMobile" 
-                class="block w-full pl-10 pr-3 py-2 border-2 border-orange-100 rounded-full leading-5 bg-white placeholder-orange-200 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-200 transition-all duration-300 cute-font text-sm" 
-                placeholder="ค้นหาคำศัพท์...">
+            <input type="text" id="searchInputMobile" class="block w-full pl-10 pr-3 py-2 border-2 border-orange-100 rounded-full leading-5 bg-white placeholder-orange-200 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-200 transition-all duration-300 cute-font text-sm" placeholder="ค้นหาคำศัพท์...">
         </div>
     </div>
 
+    <!-- Main Content -->
     <main class="flex-grow container mx-auto px-4 py-4 md:py-6 max-w-6xl relative">
-        
         <div class="flex flex-col md:flex-row gap-6">
-            
+            <!-- Sidebar -->
             <aside class="w-full md:w-64 flex-shrink-0 sticky top-0 md:top-24 z-30 bg-transparent pointer-events-none md:pointer-events-auto">
                 <div class="pointer-events-auto">
                     <h3 class="text-lg font-bold text-orange-800 cute-font mb-3 hidden md:block px-2">
                         <i data-lucide="list-filter" class="inline w-4 h-4 mr-1"></i> หมวดหมู่
                     </h3>
-                    
                     <div id="categoryMenu" class="flex overflow-x-auto md:flex-col gap-2 pb-2 md:pb-0 hide-scroll snap-x py-2 md:py-0 -mx-4 px-4 md:mx-0 md:px-0 bg-white/90 backdrop-blur-md md:bg-transparent shadow-sm md:shadow-none border-b md:border-none border-orange-100 md:rounded-none">
-                        <div class="animate-pulse bg-white h-10 w-24 rounded-full md:w-full md:rounded-xl"></div>
                         <div class="animate-pulse bg-white h-10 w-24 rounded-full md:w-full md:rounded-xl"></div>
                         <div class="animate-pulse bg-white h-10 w-24 rounded-full md:w-full md:rounded-xl"></div>
                     </div>
                 </div>
             </aside>
 
+            <!-- Cards -->
             <div class="flex-grow min-w-0 pt-2 md:pt-0">
                 <div id="loadingState" class="text-center py-12 hidden">
                     <div class="loader mb-4"></div>
                     <p class="cute-font text-orange-400">กำลังโหลดข้อมูลคำศัพท์จ้า...</p>
                 </div>
-
                 <div id="cardGrid" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6"></div>
-
                 <div id="noResults" class="hidden text-center py-12">
                     <div class="bg-white p-6 rounded-3xl inline-block shadow-sm">
                         <i data-lucide="frown" class="w-12 h-12 mx-auto text-orange-300 mb-2"></i>
                         <p class="cute-font text-lg text-gray-500">ไม่พบคำที่ค้นหาจ้า</p>
                     </div>
                 </div>
-
                 <div id="errorState" class="hidden text-center py-12">
                     <div class="bg-red-50 p-6 rounded-3xl inline-block shadow-sm border border-red-100">
                         <i data-lucide="alert-circle" class="w-12 h-12 mx-auto text-red-400 mb-2"></i>
@@ -169,7 +148,9 @@
         </div>
     </main>
 
+    <!-- Chatbot Floating Button & Window -->
     <div id="chatbot-container" class="fixed bottom-6 right-6 flex flex-col items-end z-[100]">
+        <!-- Chat Window -->
         <div id="chatbot-window" class="w-[90vw] md:w-[380px] h-[500px] bg-white rounded-3xl shadow-2xl border border-orange-100 flex flex-col overflow-hidden mb-4">
             <div class="bg-orange-500 p-4 flex justify-between items-center text-white">
                 <div class="flex items-center gap-2">
@@ -187,7 +168,7 @@
                 </div>
             </div>
 
-            <div id="chat-thinking" class="hidden px-4 py-2">
+            <div id="chat-thinking" class="hidden px-4 py-2 bg-orange-50/30">
                 <div class="flex gap-1">
                     <div class="w-2 h-2 bg-orange-300 rounded-full thinking-dot"></div>
                     <div class="w-2 h-2 bg-orange-300 rounded-full thinking-dot" style="animation-delay: 0.2s"></div>
@@ -203,15 +184,18 @@
             </div>
         </div>
 
+        <!-- Floating Action Button -->
         <button onclick="toggleChat()" class="bg-orange-500 hover:bg-orange-600 text-white p-4 rounded-full shadow-lg transition-transform hover:scale-110 active:scale-95 flex items-center justify-center">
             <i data-lucide="message-circle" class="w-8 h-8" id="chat-icon"></i>
         </button>
     </div>
 
+    <!-- Footer -->
     <footer class="text-center py-6 text-orange-300 text-sm cute-font">
         <p>สร้างสรรค์ด้วยความรัก 🧡 เพื่อการเรียนรู้</p>
     </footer>
 
+    <!-- Word Detail Modal -->
     <div id="detailModal" class="relative z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-orange-900/30 backdrop-blur-sm transition-opacity"></div>
         <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
@@ -251,36 +235,54 @@
     </div>
 
     <script>
-        // --- 1. Data Setup & Navigation ---
+        // Global variables
         let vocabData = []; 
         let categories = ['ทั้งหมด'];
         let activeCategory = 'ทั้งหมด';
-        
-        const cardGrid = document.getElementById('cardGrid');
-        const categoryMenu = document.getElementById('categoryMenu');
-        const searchInputDesktop = document.getElementById('searchInputDesktop');
-        const searchInputMobile = document.getElementById('searchInputMobile');
-        const loadingState = document.getElementById('loadingState');
-        const modal = document.getElementById('detailModal');
+        const BACKEND_URL = 'https://kodmai2025-github-io.vercel.app/api/chat'; 
+
+        // Wait for DOM to be fully loaded before accessing elements
+        window.addEventListener('DOMContentLoaded', () => {
+            const searchInputDesktop = document.getElementById('searchInputDesktop');
+            const searchInputMobile = document.getElementById('searchInputMobile');
+            
+            // Search Listeners
+            if(searchInputDesktop) searchInputDesktop.oninput = filterAndRender;
+            if(searchInputMobile) searchInputMobile.oninput = filterAndRender;
+            
+            // Init data
+            loadData();
+            lucide.createIcons();
+        });
 
         async function loadData() {
-            loadingState.classList.remove('hidden');
+            const loadingState = document.getElementById('loadingState');
+            const errorState = document.getElementById('errorState');
+            
+            if (loadingState) loadingState.classList.remove('hidden');
+            if (errorState) errorState.classList.add('hidden');
+
             try {
                 const response = await fetch('signs500.json');
                 const rawData = await response.json();
                 vocabData = rawData.map(item => ({ ...item, category: item.category || 'ทั่วไป' }));
                 const uniqueCats = [...new Set(vocabData.map(item => item.category))].sort();
                 categories = ['ทั้งหมด', ...uniqueCats];
-                loadingState.classList.add('hidden');
+                
+                if (loadingState) loadingState.classList.add('hidden');
                 renderCategories();
                 filterAndRender();
             } catch (error) {
-                document.getElementById('errorState').classList.remove('hidden');
-                loadingState.classList.add('hidden');
+                console.error("Error loading data:", error);
+                if (errorState) errorState.classList.remove('hidden');
+                if (loadingState) loadingState.classList.add('hidden');
             }
         }
 
         function renderCategories() {
+            const categoryMenu = document.getElementById('categoryMenu');
+            if (!categoryMenu) return;
+
             categoryMenu.innerHTML = categories.map(cat => `
                 <button onclick="setCategory('${cat}')" class="${activeCategory === cat ? 'bg-orange-500 text-white shadow-md' : 'bg-white text-gray-600 border border-orange-100'} shrink-0 snap-start px-4 py-2 rounded-full md:rounded-xl transition-all cute-font text-sm md:w-full md:text-left whitespace-nowrap">
                     ${cat}
@@ -289,74 +291,114 @@
             lucide.createIcons();
         }
 
-        window.setCategory = (cat) => { activeCategory = cat; renderCategories(); filterAndRender(); };
+        window.setCategory = (cat) => { 
+            activeCategory = cat; 
+            renderCategories(); 
+            filterAndRender(); 
+        };
 
         function filterAndRender() {
-            const searchTerm = (searchInputDesktop.value || searchInputMobile.value || '').toLowerCase();
+            const desktopInput = document.getElementById('searchInputDesktop');
+            const mobileInput = document.getElementById('searchInputMobile');
+            const searchTerm = ((desktopInput ? desktopInput.value : '') || (mobileInput ? mobileInput.value : '') || '').toLowerCase();
+            
             const filtered = vocabData.filter(item => {
                 const matchCat = activeCategory === 'ทั้งหมด' || item.category === activeCategory;
-                const matchSearch = item.word?.toLowerCase().includes(searchTerm) || item.word_en?.toLowerCase().includes(searchTerm);
+                const matchSearch = (item.word && item.word.toLowerCase().includes(searchTerm)) || 
+                                   (item.word_en && item.word_en.toLowerCase().includes(searchTerm));
                 return matchCat && matchSearch;
             });
             renderCards(filtered);
         }
 
         function renderCards(items) {
+            const cardGrid = document.getElementById('cardGrid');
+            const noResults = document.getElementById('noResults');
+            if (!cardGrid) return;
+
             cardGrid.innerHTML = items.map(item => `
                 <div onclick='openModal(${JSON.stringify(item).replace(/'/g, "&apos;")})' class="bg-white rounded-2xl shadow-sm border border-orange-100 overflow-hidden cursor-pointer card-hover transition-all flex flex-col h-full">
-                    <div class="h-32 md:h-40 overflow-hidden bg-orange-50"><img src="${item.imageUrl}" class="w-full h-full object-cover"></div>
-                    <div class="p-3"><h3 class="font-bold cute-font truncate">${item.word}</h3><p class="text-xs text-orange-400 truncate">${item.word_en || ''}</p></div>
+                    <div class="h-32 md:h-40 overflow-hidden bg-orange-50">
+                        <img src="${item.imageUrl || 'https://placehold.co/400x300?text=No+Image'}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold cute-font truncate text-gray-800">${item.word}</h3>
+                        <p class="text-xs text-orange-400 truncate">${item.word_en || ''}</p>
+                    </div>
                 </div>
             `).join('');
-            document.getElementById('noResults').classList.toggle('hidden', items.length > 0);
+            
+            if (noResults) noResults.classList.toggle('hidden', items.length > 0);
             lucide.createIcons();
         }
 
+        // --- Detail Modal Logic ---
         function openModal(item) {
-            document.getElementById('modalTitle').innerText = item.word;
+            const modal = document.getElementById('detailModal');
+            if (!modal) return;
+
+            document.getElementById('modalTitle').innerText = item.word || '';
             document.getElementById('modalWordEn').innerText = item.word_en || '';
-            document.getElementById('modalCategory').innerText = item.category;
-            document.getElementById('modalDesc').innerText = item.description;
-            document.getElementById('modalImage').src = item.imageUrl;
+            document.getElementById('modalCategory').innerText = item.category || 'ทั่วไป';
+            document.getElementById('modalDesc').innerText = item.description || '';
+            document.getElementById('modalDescEn').innerText = item.description_en || '';
+            document.getElementById('modalImage').src = item.imageUrl || 'https://placehold.co/400x300?text=No+Image';
             document.getElementById('modalTip').innerText = item.tip || '-';
             
             const ytFrame = document.getElementById('modalYoutube');
-            if (item.youtubeUrl) {
-                const id = item.youtubeUrl.match(/(?:v=|\/embed\/|youtu\.be\/)([^&?#]+)/)?.[1];
-                ytFrame.src = id ? `https://www.youtube.com/embed/${id}` : "";
-                document.getElementById('videoContainer').classList.toggle('hidden', !id);
-            } else {
-                document.getElementById('videoContainer').classList.add('hidden');
+            const videoContainer = document.getElementById('videoContainer');
+            
+            if (item.youtubeUrl && videoContainer && ytFrame) {
+                const idMatch = item.youtubeUrl.match(/(?:v=|\/embed\/|youtu\.be\/)([^&?#]+)/);
+                const id = idMatch ? idMatch[1] : null;
+                ytFrame.src = id ? `https://www.youtube.com/embed/${id}?rel=0` : "";
+                videoContainer.classList.toggle('hidden', !id);
+            } else if (videoContainer) {
+                videoContainer.classList.add('hidden');
+                if (ytFrame) ytFrame.src = "";
             }
+            
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() { modal.classList.add('hidden'); document.getElementById('modalYoutube').src = ""; document.body.style.overflow = 'auto'; }
+        function closeModal() {
+            const modal = document.getElementById('detailModal');
+            if (modal) modal.classList.add('hidden');
+            const ytFrame = document.getElementById('modalYoutube');
+            if (ytFrame) ytFrame.src = "";
+            document.body.style.overflow = 'auto';
+        }
 
-        // --- 2. Chatbot Logic & Backend ---
-        const BACKEND_URL = 'https://quiet-scene-f18b.tontakankeawpang321.workers.dev'; 
+        // --- Chatbot Logic ---
         let chatHistory = [
-            { role: "user", parts: [{ text: "System Instruction: คุณคือ 'พี่ AI สอนภาษามือ' ผู้ช่วยสอนที่ใจดี ตอบด้วยภาษาที่เป็นกันเองและอบอุ่น มีหางเสียง 'จ้า' หรือ 'นะจ๊ะ' ตอบคำถามเฉพาะเรื่องภาษามือไทยเท่านั้น หากถามเรื่องอื่นให้บอกว่าช่วยได้เฉพาะเรื่องภาษามือนะ" }] },
-            { role: "model", parts: [{ text: "รับทราบจ้า! พี่ AI พร้อมช่วยน้องๆ เรียนรู้ภาษามือแล้วนะจ๊ะ 🧡" }] }
+            { role: "user", parts: [{ text: "System Instruction: คุณคือ 'พี่ AI สอนภาษามือ' ผู้ช่วยสอนที่ใจดี อบอุ่น และเป็นกันเอง ตอบด้วยคำสุภาพมีหางเสียง 'จ้า' หรือ 'นะจ๊ะ' คุณจะตอบคำถามเกี่ยวกับภาษามือไทยเป็นหลัก ถ้าผู้ใช้ถามเรื่องอื่นให้แจ้งว่าคุณช่วยได้เฉพาะเรื่องภาษามือจ้า" }] },
+            { role: "model", parts: [{ text: "รับทราบจ้า! พี่ AI พร้อมช่วยน้องๆ เรียนรู้ภาษามือไทยแล้วนะจ๊ะ มีคำไหนอยากถามพี่ไหมเอ่ย? 🧡" }] }
         ];
 
         function toggleChat() {
             const win = document.getElementById('chatbot-window');
             const icon = document.getElementById('chat-icon');
+            if (!win) return;
+
             const isActive = win.classList.toggle('active');
-            icon.setAttribute('data-lucide', isActive ? 'x' : 'message-circle');
-            lucide.createIcons();
+            if (icon) {
+                icon.setAttribute('data-lucide', isActive ? 'x' : 'message-circle');
+                lucide.createIcons();
+            }
         }
 
         async function sendMessage() {
             const input = document.getElementById('chat-input');
+            const thinking = document.getElementById('chat-thinking');
+            if (!input) return;
+
             const text = input.value.trim();
             if (!text) return;
 
             appendBubble(text, 'user');
             input.value = '';
-            document.getElementById('chat-thinking').classList.remove('hidden');
+            if (thinking) thinking.classList.remove('hidden');
 
             chatHistory.push({ role: "user", parts: [{ text: text }] });
 
@@ -367,21 +409,25 @@
                     body: JSON.stringify({ history: chatHistory })
                 });
                 const data = await res.json();
-                const reply = data.reply || "พี่ AI งงนิดหน่อยจ้า ลองถามใหม่นะ";
+                const reply = data.reply || "พี่ AI งงนิดหน่อยจ้า ลองถามใหม่นะจ๊ะ";
                 
                 appendBubble(reply, 'ai');
                 chatHistory.push({ role: "model", parts: [{ text: reply }] });
             } catch (err) {
-                appendBubble("ขอโทษทีจ้า พี่ AI เชื่อมต่อไม่ได้ชั่วคราว", 'ai');
+                console.error("Chat error:", err);
+                appendBubble("ขอโทษทีจ้า พี่ AI เชื่อมต่อไม่ได้ชั่วคราว ลองใหม่นะนะ", 'ai');
             } finally {
-                document.getElementById('chat-thinking').classList.add('hidden');
+                if (thinking) thinking.classList.add('hidden');
             }
         }
 
         function appendBubble(text, side) {
             const msgDiv = document.getElementById('chat-messages');
+            if (!msgDiv) return;
+
             const div = document.createElement('div');
             div.className = `flex flex-col ${side === 'user' ? 'items-end' : 'items-start'}`;
+            
             const formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
             
             div.innerHTML = `
@@ -393,15 +439,17 @@
             msgDiv.scrollTop = msgDiv.scrollHeight;
         }
 
-        document.getElementById('send-chat').onclick = sendMessage;
-        document.getElementById('chat-input').onkeypress = (e) => { if(e.key === 'Enter') sendMessage(); };
-        searchInputDesktop.oninput = filterAndRender;
-        searchInputMobile.oninput = filterAndRender;
-
-        loadData();
-        lucide.createIcons();
+        // Handle enter key for chat
+        window.addEventListener('load', () => {
+            const chatInput = document.getElementById('chat-input');
+            const sendBtn = document.getElementById('send-chat');
+            if (chatInput) {
+                chatInput.addEventListener('keypress', (e) => {
+                    if(e.key === 'Enter') sendMessage();
+                });
+            }
+            if (sendBtn) sendBtn.onclick = sendMessage;
+        });
     </script>
 </body>
 </html>
-
-

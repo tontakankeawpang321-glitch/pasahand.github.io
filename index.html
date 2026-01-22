@@ -169,7 +169,8 @@
                     <p class="text-sky-600 animate-pulse">กำลังเชื่อมต่อฐานข้อมูล...</p>
                 </div>
                 
-                <div id="cardGrid" class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-6"></div>
+                <!-- Adjusted grid: 2 columns on mobile, 3 on md, 4 on lg -->
+                <div id="cardGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-6"></div>
 
                 <div id="noResults" class="hidden text-center py-20 glass-panel rounded-3xl border-dashed border-sky-200">
                     <i data-lucide="database-zap" class="w-12 h-12 mx-auto text-slate-400 mb-2"></i>
@@ -236,7 +237,7 @@
             <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0" onclick="closeModal()">
                 
                 <!-- Modal Panel -->
-                <div class="relative transform bg-white text-left brutalist-shadow border-2 border-black sm:my-8 sm:w-full sm:max-w-lg flex flex-col w-full" onclick="event.stopPropagation()">
+                <div class="relative transform bg-white text-left brutalist-shadow border-2 border-black sm:my-8 w-[95%] sm:w-full sm:max-w-lg flex flex-col" onclick="event.stopPropagation()">
                     
                     <!-- Retro Header -->
                     <div class="bg-blue-700 text-white p-2 flex justify-between items-center border-b-2 border-black flex-shrink-0">
@@ -261,7 +262,7 @@
                         <div class="mb-4 border-2 border-black bg-black relative shadow-inner">
                             <!-- Image View -->
                             <div id="modalImageView" class="w-full h-64 bg-gray-100 flex items-center justify-center">
-                                <img id="modalImage" src="" alt="Sign" class="max-w-full max-h-full object-contain">
+                                <img id="modalImage" src="" alt="Sign" class="max-w-full max-h-full object-contain" loading="lazy">
                             </div>
                             <!-- Video View -->
                             <div id="modalVideoView" class="w-full h-64 hidden">
@@ -348,14 +349,18 @@
             if (loadingState) loadingState.classList.remove('hidden');
             if (errorState) errorState.classList.add('hidden');
 
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 seconds timeout
+
             try {
-                const response = await fetch(DATA_URL).catch(() => null);
+                const response = await fetch(DATA_URL, { signal: controller.signal }).catch(() => null);
+                clearTimeout(timeoutId);
                 
                 if (response && response.ok) {
                     const rawData = await response.json();
                     vocabData = rawData.map(item => ({ ...item, category: item.category || 'ทั่วไป' }));
                 } else {
-                    console.warn("External data link failed. Switching to offline cache.");
+                    console.warn("External data link failed or timed out. Switching to offline cache.");
                     loadMockData();
                     return;
                 }
@@ -427,7 +432,7 @@
             cardGrid.innerHTML = items.map(item => `
                 <div onclick='openModal(${JSON.stringify(item).replace(/'/g, "&apos;")})' class="glass-panel rounded-xl overflow-hidden cursor-pointer card-hover transition-all flex flex-col h-full group bg-white">
                     <div class="h-28 md:h-44 overflow-hidden bg-slate-50 relative">
-                        <img src="${item.imageUrl || 'https://placehold.co/400x300/f1f5f9/cbd5e1?text=ไม่มีรูป'}" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500" onerror="this.src='https://placehold.co/400x300/f1f5f9/cbd5e1?text=ERROR'">
+                        <img src="${item.imageUrl || 'https://placehold.co/400x300/f1f5f9/cbd5e1?text=ไม่มีรูป'}" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500" loading="lazy" onerror="this.src='https://placehold.co/400x300/f1f5f9/cbd5e1?text=ERROR'">
                         <div class="absolute bottom-1 left-1 md:bottom-2 md:left-2 bg-white/90 text-sky-600 px-1 py-0.5 rounded text-[8px] font-bold border border-sky-100 uppercase tracking-widest shadow-sm">
                             ${item.category}
                         </div>

@@ -3,58 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AI Sign Language Center</title>
+    <title>AI Sign Language Lab</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
         :root {
-            --primary: #0ea5e9;
-            --secondary: #06b6d4;
-            --bg-color: #f8fafc;
+            --primary: #2563eb;
+            --bg-color: #ffffff;
+            --grid-color: #f1f5f9;
         }
 
         body {
             font-family: 'Prompt', sans-serif;
             background-color: var(--bg-color);
-            /* Simplified Background for Performance */
-            background-image: linear-gradient(to bottom right, #f0f9ff, #e0f2fe);
-            color: #1e293b;
+            /* Tech Grid Pattern: เบาเครื่องมาก แต่ดู Tech */
+            background-image: radial-gradient(var(--grid-color) 1.5px, transparent 1.5px);
+            background-size: 20px 20px;
+            color: #0f172a;
             -webkit-tap-highlight-color: transparent;
             overflow-x: hidden;
         }
 
-        /* Fast Glass - No Blur, High Opacity */
-        .fast-glass {
+        /* Clean Interface Utilities */
+        .glass-panel {
             background: rgba(255, 255, 255, 0.95);
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid #e2e8f0;
         }
 
-        /* Scrollbar Hiding */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Custom Scrollbar */
         .custom-scroll::-webkit-scrollbar { width: 4px; }
         .custom-scroll::-webkit-scrollbar-track { background: transparent; }
         .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
 
-        .card-hover { 
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-            will-change: transform; /* Hint for browser optimization */
+        /* Card Interaction: เน้นความไว และเส้นขอบ */
+        .tech-card { 
+            transition: transform 0.1s ease, border-color 0.1s ease, box-shadow 0.1s ease;
+            will-change: transform;
+            border: 1px solid #e2e8f0;
         }
-        .card-hover:active { 
-            transform: scale(0.98); 
+        .tech-card:active { 
+            transform: scale(0.98);
+            border-color: #2563eb;
+        }
+        /* Desktop Hover */
+        @media (min-width: 768px) {
+            .tech-card:hover {
+                transform: translateY(-2px);
+                border-color: #94a3b8;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            }
         }
 
-        /* Optimized Modal Transitions */
+        /* Modal Transitions */
         .modal-backdrop {
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.2s ease-out;
-            background: rgba(0, 0, 0, 0.5); /* Simple dark overlay */
+            background: rgba(15, 23, 42, 0.6); /* Darker, more serious overlay */
         }
         .modal-backdrop.active {
             opacity: 1;
@@ -63,77 +72,74 @@
 
         .modal-content {
             transform: translateY(100%);
-            transition: transform 0.25s cubic-bezier(0.2, 0, 0.2, 1);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform;
         }
         
-        /* Desktop: Center Modal */
         @media (min-width: 768px) {
             .modal-content {
-                transform: scale(0.95);
+                transform: scale(0.98) translateY(10px);
                 opacity: 0;
-                transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+                transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
             }
             .modal-backdrop.active .modal-content {
-                transform: scale(1);
+                transform: scale(1) translateY(0);
                 opacity: 1;
             }
         }
 
-        /* Mobile: Bottom Sheet */
         @media (max-width: 767px) {
             .modal-backdrop.active .modal-content {
                 transform: translateY(0);
             }
         }
 
-        /* Simple Skeleton */
         .skeleton {
-            background-color: #e2e8f0;
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            background-color: #f1f5f9;
+            animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
         @keyframes pulse {
             0%, 100% { opacity: 1; }
-            50% { opacity: .7; }
+            50% { opacity: .6; }
         }
     </style>
 </head>
-<body class="h-screen flex flex-col overflow-hidden">
+<body class="h-screen flex flex-col overflow-hidden text-slate-800">
 
-    <!-- Header -->
-    <header class="fast-glass z-30 flex-none border-b border-slate-200">
+    <!-- Header: Clean & Professional -->
+    <header class="glass-panel z-30 flex-none bg-white">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
             <div class="flex items-center gap-3">
-                <div class="bg-sky-500 p-2 rounded-lg text-white shadow-sm">
-                    <i data-lucide="scan-face" class="w-6 h-6"></i>
+                <div class="bg-slate-900 p-2 rounded text-white shadow-sm">
+                    <i data-lucide="cpu" class="w-5 h-5"></i>
                 </div>
-                <div>
-                    <h1 class="text-lg md:text-xl font-bold text-slate-800 leading-tight">AI Sign Lab</h1>
-                    <p class="text-[10px] text-slate-500 font-medium tracking-wider">LITE VERSION</p>
+                <div class="leading-none">
+                    <h1 class="text-lg font-bold text-slate-900 tracking-tight">AI SIGN LAB</h1>
+                    <p class="text-[9px] text-slate-500 font-medium tracking-[0.2em] uppercase mt-0.5">Education Platform</p>
                 </div>
             </div>
 
             <!-- Desktop Search -->
-            <div class="hidden md:block flex-1 max-w-md relative group">
+            <div class="hidden md:block flex-1 max-w-sm relative group">
                 <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-slate-400">
                     <i data-lucide="search" class="w-4 h-4"></i>
                 </div>
                 <input type="text" id="searchInputDesktop" 
-                    class="w-full pl-10 pr-4 py-2 bg-slate-100 border-none rounded-lg focus:ring-2 focus:ring-sky-500 focus:bg-white transition-colors text-sm placeholder-slate-400"
-                    placeholder="ค้นหาคำศัพท์... (เช่น ก ไก่)">
+                    class="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-md focus:ring-1 focus:ring-slate-900 focus:border-slate-900 focus:bg-white transition-all text-sm placeholder-slate-400"
+                    placeholder="Search vocabulary...">
             </div>
 
             <!-- Mobile Search Toggle -->
-            <button onclick="document.getElementById('mobileSearchPanel').classList.toggle('hidden')" class="md:hidden p-2 text-slate-600 bg-slate-100 rounded-lg active:bg-slate-200">
+            <button onclick="document.getElementById('mobileSearchPanel').classList.toggle('hidden')" class="md:hidden p-2 text-slate-600 active:bg-slate-100 rounded">
                 <i data-lucide="search" class="w-5 h-5"></i>
             </button>
         </div>
         
         <!-- Mobile Search Panel -->
-        <div id="mobileSearchPanel" class="hidden px-4 pb-3 md:hidden">
-            <div class="relative">
+        <div id="mobileSearchPanel" class="hidden px-4 pb-3 md:hidden border-t border-slate-100 bg-white">
+            <div class="relative mt-2">
                 <input type="text" id="searchInputMobile" 
-                    class="w-full pl-10 pr-4 py-2.5 bg-slate-100 border-none rounded-lg focus:ring-2 focus:ring-sky-500 text-sm"
+                    class="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-md focus:ring-1 focus:ring-slate-900 text-sm"
                     placeholder="ค้นหาคำศัพท์...">
                 <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-slate-400">
                     <i data-lucide="search" class="w-4 h-4"></i>
@@ -145,24 +151,29 @@
     <!-- Main Content Area -->
     <main class="flex-1 overflow-hidden relative flex flex-col md:flex-row max-w-7xl mx-auto w-full">
         
-        <!-- Category Sidebar -->
-        <aside class="w-full md:w-64 md:h-full flex-none bg-white md:bg-transparent border-b md:border-b-0 md:border-r border-slate-200 z-20">
-            <div class="p-3 md:p-4 h-full flex md:flex-col overflow-x-auto md:overflow-y-auto no-scrollbar gap-2 md:gap-1 snap-x">
-                <div class="md:px-2 md:py-3 text-xs font-bold text-slate-400 uppercase tracking-widest hidden md:block">Categories</div>
-                <div id="categoryContainer" class="flex md:flex-col gap-2">
+        <!-- Category Sidebar: Clean List -->
+        <aside class="w-full md:w-60 md:h-full flex-none bg-white md:bg-transparent border-b md:border-b-0 md:border-r border-slate-200 z-20">
+            <div class="p-3 md:p-6 h-full flex md:flex-col overflow-x-auto md:overflow-y-auto no-scrollbar gap-2 md:gap-1 snap-x">
+                <div class="md:px-2 md:pb-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest hidden md:block">Filter Data</div>
+                <div id="categoryContainer" class="flex md:flex-col gap-1.5">
                     <!-- Skeletons -->
-                    <div class="h-9 w-24 md:w-full rounded-lg skeleton shrink-0"></div>
-                    <div class="h-9 w-24 md:w-full rounded-lg skeleton shrink-0"></div>
+                    <div class="h-8 w-24 md:w-full rounded bg-slate-100 animate-pulse shrink-0"></div>
+                    <div class="h-8 w-24 md:w-full rounded bg-slate-100 animate-pulse shrink-0"></div>
                 </div>
             </div>
         </aside>
 
         <!-- Grid Content -->
         <div class="flex-1 overflow-y-auto custom-scroll p-4 md:p-6" id="mainScroll">
-            <!-- Banner -->
-            <div class="mb-6 p-5 rounded-xl bg-sky-600 text-white shadow-md hidden md:block">
-                <h2 class="text-xl font-bold mb-1">ยินดีต้อนรับ</h2>
-                <p class="text-sky-100 text-sm">ระบบเรียนรู้ภาษามือแบบรวดเร็ว</p>
+            <!-- Banner: Tech Style -->
+            <div class="mb-6 p-6 rounded-lg bg-slate-900 text-white shadow-sm hidden md:flex justify-between items-center border border-slate-800">
+                <div>
+                    <h2 class="text-xl font-bold mb-1 tracking-tight">System Ready</h2>
+                    <p class="text-slate-400 text-xs font-mono">Database synced. Start learning now.</p>
+                </div>
+                <div class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center">
+                    <i data-lucide="activity" class="w-4 h-4 text-emerald-400"></i>
+                </div>
             </div>
 
             <!-- Content Grid -->
@@ -171,76 +182,73 @@
             </div>
 
             <!-- Empty State -->
-            <div id="emptyState" class="hidden flex flex-col items-center justify-center py-20 text-center">
-                <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-4">
-                    <i data-lucide="search-x" class="w-8 h-8 text-slate-400"></i>
-                </div>
-                <h3 class="text-base font-bold text-slate-600">ไม่พบข้อมูล</h3>
+            <div id="emptyState" class="hidden flex flex-col items-center justify-center py-20 text-center opacity-60">
+                <i data-lucide="folder-search" class="w-12 h-12 text-slate-300 mb-2"></i>
+                <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wide">No Results Found</h3>
             </div>
         </div>
 
     </main>
 
-    <!-- Chatbot Button -->
+    <!-- Chatbot Button: Sleek Circle -->
     <div class="fixed bottom-6 right-6 z-50">
-        <button onclick="toggleChat()" class="bg-sky-600 text-white p-4 rounded-full shadow-lg hover:bg-sky-700 active:scale-95 transition-transform">
-            <i data-lucide="bot" class="w-6 h-6"></i>
+        <button onclick="toggleChat()" class="bg-slate-900 text-white w-14 h-14 rounded-full shadow-lg hover:bg-slate-800 hover:scale-105 active:scale-95 transition-all flex items-center justify-center border border-slate-700">
+            <i data-lucide="message-square" class="w-6 h-6"></i>
         </button>
     </div>
 
-    <!-- Chatbot Window (Simplified) -->
-    <div id="chatbotWindow" class="fixed bottom-24 right-4 md:right-6 w-[92vw] md:w-80 h-[50vh] md:h-[450px] bg-white border border-slate-200 rounded-xl shadow-xl flex flex-col translate-y-10 opacity-0 pointer-events-none transition-all duration-200 z-40 origin-bottom-right">
-        <div class="p-3 border-b border-slate-100 bg-slate-50 flex justify-between items-center rounded-t-xl">
+    <!-- Chatbot Window: Clean & Boxy -->
+    <div id="chatbotWindow" class="fixed bottom-24 right-4 md:right-6 w-[92vw] md:w-80 h-[50vh] md:h-[450px] bg-white border border-slate-200 rounded-lg shadow-xl flex flex-col translate-y-4 opacity-0 pointer-events-none transition-all duration-200 z-40 origin-bottom-right">
+        <div class="p-3 border-b border-slate-100 flex justify-between items-center bg-white rounded-t-lg">
             <div class="flex items-center gap-2">
-                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span class="font-bold text-slate-700 text-sm">AI Tutor</span>
+                <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
+                <span class="font-bold text-slate-800 text-xs uppercase tracking-wide">AI Assistant</span>
             </div>
             <button onclick="toggleChat()" class="text-slate-400 hover:text-slate-600">
-                <i data-lucide="x" class="w-4 h-4"></i>
+                <i data-lucide="minus" class="w-4 h-4"></i>
             </button>
         </div>
 
-        <div id="chatMessages" class="flex-1 overflow-y-auto p-3 space-y-3 text-sm custom-scroll bg-white">
+        <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-3 text-sm custom-scroll bg-slate-50/50">
             <div class="flex gap-2">
-                <div class="bg-slate-100 p-2.5 rounded-xl rounded-tl-none border border-slate-200 max-w-[90%] text-slate-700">
-                    สวัสดีครับ สงสัยคำไหนถามได้เลยครับ 🤖
+                <div class="bg-white p-3 rounded-lg rounded-tl-none border border-slate-200 shadow-sm max-w-[90%] text-slate-700">
+                    <p class="font-medium text-xs text-slate-400 mb-1">SYSTEM</p>
+                    ระบบพร้อมให้ข้อมูลภาษามือครับ 🟢
                 </div>
             </div>
         </div>
 
-        <div class="p-2 border-t border-slate-100">
+        <div class="p-2 border-t border-slate-100 bg-white rounded-b-lg">
             <div class="flex gap-2">
-                <input type="text" id="chatInput" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-sky-500 text-sm" placeholder="พิมพ์ข้อความ...">
-                <button onclick="sendChat()" class="px-3 bg-sky-600 text-white rounded-lg flex items-center justify-center">
-                    <i data-lucide="send" class="w-4 h-4"></i>
+                <input type="text" id="chatInput" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded focus:outline-none focus:border-slate-400 text-sm font-medium text-slate-700" placeholder="Type a message...">
+                <button onclick="sendChat()" class="px-3 bg-slate-900 text-white rounded hover:bg-slate-800 transition-colors flex items-center justify-center">
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- OPTIMIZED DIALOG / MODAL -->
+    <!-- MODERN DIALOG: Clean Sheet -->
     <div id="detailModal" class="fixed inset-0 z-[100] modal-backdrop flex items-end md:items-center justify-center">
         <!-- Overlay -->
         <div class="absolute inset-0" onclick="closeModal()"></div>
         
         <!-- Content -->
-        <div class="modal-content relative w-full md:w-[500px] bg-white md:rounded-xl rounded-t-2xl shadow-2xl flex flex-col max-h-[85vh] overflow-hidden">
+        <div class="modal-content relative w-full md:w-[550px] bg-white md:rounded-lg rounded-t-xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
             
             <!-- Mobile Drag Handle -->
-            <div class="md:hidden w-full flex justify-center pt-3 pb-1" onclick="closeModal()">
-                <div class="w-10 h-1 bg-slate-300 rounded-full"></div>
+            <div class="md:hidden w-full flex justify-center pt-3 pb-1 bg-white border-b border-slate-50" onclick="closeModal()">
+                <div class="w-12 h-1 bg-slate-200 rounded-full"></div>
             </div>
 
             <!-- Header -->
-            <div class="px-5 py-3 border-b border-slate-100 flex justify-between items-center bg-white z-10 sticky top-0">
+            <div class="px-5 py-4 border-b border-slate-100 flex justify-between items-start bg-white z-10 sticky top-0">
                 <div>
-                    <span id="mCategory" class="text-[10px] font-bold text-sky-600 bg-sky-50 px-2 py-0.5 rounded uppercase tracking-wider">Category</span>
-                    <div class="flex items-baseline gap-2 mt-1">
-                        <h2 id="mWord" class="text-xl font-bold text-slate-800">Word</h2>
-                        <span id="mWordEn" class="text-sm text-slate-400 font-medium">En</span>
-                    </div>
+                    <span id="mCategory" class="text-[9px] font-bold text-slate-500 border border-slate-200 px-1.5 py-0.5 rounded uppercase tracking-wider bg-slate-50">Category</span>
+                    <h2 id="mWord" class="text-2xl font-bold text-slate-900 mt-2 leading-none">Word</h2>
+                    <p id="mWordEn" class="text-sm text-slate-400 font-mono mt-0.5">English Translation</p>
                 </div>
-                <button onclick="closeModal()" class="p-2 bg-slate-100 rounded-full text-slate-500 hover:bg-slate-200">
+                <button onclick="closeModal()" class="p-2 hover:bg-slate-50 rounded text-slate-400 hover:text-red-500 transition-colors">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
@@ -248,28 +256,33 @@
             <!-- Scroll Area -->
             <div class="overflow-y-auto custom-scroll p-0 pb-6 bg-white">
                 
-                <!-- Media -->
-                <div class="relative w-full aspect-video bg-slate-100">
-                    <img id="mImage" src="" class="w-full h-full object-contain transition-opacity duration-200">
+                <!-- Media Display -->
+                <div class="relative w-full aspect-video bg-slate-50 border-b border-slate-100 group">
+                    <img id="mImage" src="" class="w-full h-full object-contain p-4 transition-opacity duration-200">
                     
                     <div id="mVideoContainer" class="absolute inset-0 hidden bg-black">
                         <iframe id="mYoutube" class="w-full h-full" src="" frameborder="0" allowfullscreen></iframe>
                     </div>
 
-                    <button id="viewToggleBtn" onclick="toggleMediaView()" class="absolute bottom-3 right-3 bg-white text-slate-800 px-3 py-1.5 rounded-md shadow-md text-xs font-bold flex items-center gap-2 border border-slate-200">
-                        <i data-lucide="play-circle" class="w-4 h-4 text-red-500"></i>
-                        <span>ดูวิดีโอ</span>
+                    <!-- Modern Toggle Button -->
+                    <button id="viewToggleBtn" onclick="toggleMediaView()" class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 px-3 py-1.5 rounded border border-slate-200 shadow-sm text-xs font-bold flex items-center gap-2 hover:bg-white hover:shadow transition-all">
+                        <i data-lucide="play" class="w-3 h-3 fill-current"></i>
+                        <span>WATCH VIDEO</span>
                     </button>
                 </div>
 
-                <!-- Info -->
-                <div class="p-5 space-y-4">
-                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                        <div class="flex items-center gap-2 mb-2 text-sky-600">
-                            <i data-lucide="info" class="w-4 h-4"></i>
-                            <span class="text-xs font-bold uppercase">วิธีทำ</span>
+                <!-- Info Section -->
+                <div class="p-6">
+                    <div class="flex items-start gap-3">
+                        <div class="mt-1">
+                            <div class="w-8 h-8 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400">
+                                <i data-lucide="book-open" class="w-4 h-4"></i>
+                            </div>
                         </div>
-                        <p id="mDesc" class="text-slate-700 leading-relaxed text-sm">Description...</p>
+                        <div>
+                            <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wide mb-1">Instruction</h3>
+                            <p id="mDesc" class="text-slate-600 leading-relaxed text-sm">Description text will appear here.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -291,8 +304,8 @@
         };
 
         const MOCK_DATA = [
-            { word: 'ก ไก่', word_en: 'Ko Kai', category: 'หมวด ก-ฮ', description: 'กำมือขวาชูขึ้น ระดับไหล่ หันฝ่ามือไปทางซ้าย ขยับนิ้วชี้และนิ้วกลางลงมาชนนิ้วโป้ง 2 ครั้ง (เลียนแบบปากไก่)', imageUrl: 'https://placehold.co/600x400/f1f5f9/0ea5e9?text=ก+ไก่', youtubeUrl: 'https://www.youtube.com/watch?v=VIDEO_ID' },
-            { word: 'ข ไข่', word_en: 'Kho Khai', category: 'หมวด ก-ฮ', description: 'กำมือขวา วาดเป็นวงกลมในอากาศ เหมือนรูปไข่', imageUrl: 'https://placehold.co/600x400/f1f5f9/0ea5e9?text=ข+ไข่', youtubeUrl: '' }
+            { word: 'ก ไก่', word_en: 'Ko Kai', category: 'หมวด ก-ฮ', description: 'กำมือขวาชูขึ้น ระดับไหล่ หันฝ่ามือไปทางซ้าย ขยับนิ้วชี้และนิ้วกลางลงมาชนนิ้วโป้ง 2 ครั้ง (เลียนแบบปากไก่)', imageUrl: 'https://placehold.co/600x400/f8fafc/334155?text=ก+ไก่', youtubeUrl: 'https://www.youtube.com/watch?v=VIDEO_ID' },
+            { word: 'ข ไข่', word_en: 'Kho Khai', category: 'หมวด ก-ฮ', description: 'กำมือขวา วาดเป็นวงกลมในอากาศ เหมือนรูปไข่', imageUrl: 'https://placehold.co/600x400/f8fafc/334155?text=ข+ไข่', youtubeUrl: '' }
         ];
 
         document.addEventListener('DOMContentLoaded', async () => {
@@ -334,10 +347,10 @@
         function renderSkeletons() {
             const grid = document.getElementById('contentGrid');
             grid.innerHTML = Array(10).fill(0).map(() => `
-                <div class="bg-white rounded-lg overflow-hidden border border-slate-200 h-48 flex flex-col">
-                    <div class="h-32 skeleton w-full"></div>
+                <div class="bg-white rounded overflow-hidden border border-slate-200 h-48 flex flex-col">
+                    <div class="h-32 skeleton w-full bg-slate-100"></div>
                     <div class="p-3 space-y-2 flex-1">
-                        <div class="h-4 w-3/4 skeleton rounded"></div>
+                        <div class="h-4 w-3/4 skeleton rounded bg-slate-100"></div>
                     </div>
                 </div>
             `).join('');
@@ -348,9 +361,9 @@
             container.innerHTML = state.categories.map(cat => `
                 <button onclick="selectCategory('${cat}')" 
                     class="${state.activeCategory === cat 
-                        ? 'bg-sky-600 text-white shadow-sm' 
-                        : 'bg-white text-slate-600 border border-slate-200'} 
-                    flex-shrink-0 px-4 py-2 rounded-lg text-xs font-semibold transition-colors md:w-full md:text-left whitespace-nowrap">
+                        ? 'bg-slate-900 text-white border-slate-900' 
+                        : 'bg-white text-slate-500 border-slate-200 hover:border-slate-300 hover:text-slate-800'} 
+                    flex-shrink-0 px-3 py-1.5 rounded border text-[11px] font-semibold transition-all md:w-full md:text-left whitespace-nowrap uppercase tracking-wide">
                     ${cat}
                 </button>
             `).join('');
@@ -368,22 +381,22 @@
             empty.classList.add('hidden');
 
             grid.innerHTML = state.filtered.map((item, index) => `
-                <div onclick="openDetail(${index})" class="group bg-white rounded-xl overflow-hidden cursor-pointer card-hover border border-slate-200 shadow-sm relative">
-                    <div class="h-32 md:h-40 overflow-hidden bg-slate-100 relative">
+                <div onclick="openDetail(${index})" class="group tech-card bg-white rounded overflow-hidden cursor-pointer relative">
+                    <div class="h-32 md:h-40 overflow-hidden bg-slate-50 relative border-b border-slate-100">
                         <img src="${item.imageUrl}" 
                              alt="${item.word}" 
                              loading="lazy"
-                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                             onerror="this.src='https://placehold.co/400x300/f1f5f9/cbd5e1?text=No+Image'">
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                             onerror="this.src='https://placehold.co/400x300/f8fafc/cbd5e1?text=No+Image'">
                         
-                        <div class="absolute bottom-2 left-2 bg-white/95 px-2 py-0.5 rounded text-[10px] font-bold text-sky-600 shadow-sm border border-slate-100 uppercase tracking-wide">
-                            ${item.category || 'ทั่วไป'}
+                        <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-[2px] px-1.5 py-0.5 rounded text-[9px] font-bold text-slate-500 border border-slate-200 uppercase tracking-wide">
+                            ${item.category || 'GEN'}
                         </div>
                     </div>
                     
-                    <div class="p-3 bg-white h-full border-t border-slate-100">
-                        <h3 class="font-bold text-slate-800 text-sm md:text-base leading-tight mb-0.5 truncate">${item.word}</h3>
-                        <p class="text-[10px] text-slate-400 uppercase tracking-wide truncate">${item.word_en || ''}</p>
+                    <div class="p-3 bg-white h-full">
+                        <h3 class="font-bold text-slate-800 text-sm md:text-base leading-tight mb-0.5 truncate group-hover:text-blue-600 transition-colors">${item.word}</h3>
+                        <p class="text-[10px] text-slate-400 font-mono truncate">${item.word_en || 'NO DATA'}</p>
                     </div>
                 </div>
             `).join('');
@@ -420,10 +433,10 @@
             const item = state.filtered[index];
             const modal = document.getElementById('detailModal');
             
-            document.getElementById('mCategory').innerText = item.category || 'General';
+            document.getElementById('mCategory').innerText = item.category || 'GENERAL';
             document.getElementById('mWord').innerText = item.word;
-            document.getElementById('mWordEn').innerText = item.word_en || '-';
-            document.getElementById('mDesc').innerText = item.description || 'ไม่มีคำอธิบาย';
+            document.getElementById('mWordEn').innerText = item.word_en || '';
+            document.getElementById('mDesc').innerText = item.description || 'No instruction available.';
             document.getElementById('mImage').src = item.imageUrl;
             
             state.currentVideoId = null;
@@ -433,7 +446,14 @@
             }
 
             const toggleBtn = document.getElementById('viewToggleBtn');
-            toggleBtn.style.display = state.currentVideoId ? 'flex' : 'none';
+            const btnSpan = toggleBtn.querySelector('span');
+            if(state.currentVideoId) {
+                toggleBtn.classList.remove('hidden');
+                toggleBtn.classList.add('flex');
+            } else {
+                toggleBtn.classList.add('hidden');
+                toggleBtn.classList.remove('flex');
+            }
 
             resetMediaView();
             modal.classList.add('active');
@@ -451,7 +471,8 @@
             const img = document.getElementById('mImage');
             const vidContainer = document.getElementById('mVideoContainer');
             const iframe = document.getElementById('mYoutube');
-            const btnText = document.querySelector('#viewToggleBtn span');
+            const btnSpan = document.querySelector('#viewToggleBtn span');
+            const btnIcon = document.querySelector('#viewToggleBtn svg');
 
             state.isVideoMode = !state.isVideoMode;
 
@@ -459,12 +480,13 @@
                 img.classList.add('opacity-0');
                 vidContainer.classList.remove('hidden');
                 iframe.src = `https://www.youtube.com/embed/${state.currentVideoId}?autoplay=1&rel=0`;
-                btnText.innerText = 'ดูรูปภาพ';
+                btnSpan.innerText = 'SHOW IMAGE';
+                // Note: Keeping icon logic simple for performance
             } else {
                 img.classList.remove('opacity-0');
                 vidContainer.classList.add('hidden');
                 iframe.src = ""; 
-                btnText.innerText = 'ดูวิดีโอ';
+                btnSpan.innerText = 'WATCH VIDEO';
             }
         };
 
@@ -474,7 +496,7 @@
             document.getElementById('mVideoContainer').classList.add('hidden');
             document.getElementById('mYoutube').src = "";
             const btn = document.querySelector('#viewToggleBtn span');
-            if(btn) btn.innerText = 'ดูวิดีโอ';
+            if(btn) btn.innerText = 'WATCH VIDEO';
         }
 
         // --- Chatbot Logic ---
@@ -486,10 +508,10 @@
             
             if (isOpen) {
                 win.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
-                win.classList.add('opacity-0', 'pointer-events-none', 'translate-y-10');
+                win.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
             } else {
                 win.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
-                win.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-10');
+                win.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
                 setTimeout(() => document.getElementById('chatInput').focus(), 100);
             }
         };
@@ -518,8 +540,8 @@
                 }
             } catch (err) {
                 setTimeout(() => {
-                    let reply = "ขออภัยครับ ระบบออฟไลน์ชั่วคราว";
-                    if(text.includes('สวัสดี')) reply = "สวัสดีครับ มีอะไรให้ช่วยไหมครับ?";
+                    let reply = "ระบบออฟไลน์อยู่ครับ (Offline Mode)";
+                    if(text.includes('สวัสดี')) reply = "สวัสดีครับ ต้องการเรียนรู้คำศัพท์ไหนพิมพ์ถามได้เลยครับ";
                     addChatBubble(reply, 'ai');
                 }, 600);
             }
@@ -534,10 +556,10 @@
             const div = document.createElement('div');
             div.className = "flex gap-2 " + (type === 'user' ? "flex-row-reverse" : "");
             
-            const bgClass = type === 'user' ? 'bg-sky-600 text-white' : 'bg-slate-100 text-slate-700 border border-slate-200';
+            const bgClass = type === 'user' ? 'bg-slate-800 text-white' : 'bg-white text-slate-700 border border-slate-200';
 
             div.innerHTML = `
-                <div class="${bgClass} px-3 py-2 rounded-xl max-w-[85%] text-sm shadow-sm">
+                <div class="${bgClass} px-3 py-2 rounded-lg max-w-[85%] text-sm shadow-sm">
                     ${text}
                 </div>
             `;

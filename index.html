@@ -18,7 +18,6 @@
         body {
             font-family: 'Prompt', sans-serif;
             background-color: var(--bg-color);
-            /* Tech Grid Pattern: เบาเครื่องมาก แต่ดู Tech */
             background-image: radial-gradient(var(--grid-color) 1.5px, transparent 1.5px);
             background-size: 20px 20px;
             color: #0f172a;
@@ -26,7 +25,6 @@
             overflow-x: hidden;
         }
 
-        /* Clean Interface Utilities */
         .glass-panel {
             background: rgba(255, 255, 255, 0.95);
             border-bottom: 1px solid #e2e8f0;
@@ -39,7 +37,6 @@
         .custom-scroll::-webkit-scrollbar-track { background: transparent; }
         .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
 
-        /* Card Interaction: เน้นความไว และเส้นขอบ */
         .tech-card { 
             transition: transform 0.1s ease, border-color 0.1s ease, box-shadow 0.1s ease;
             will-change: transform;
@@ -49,7 +46,6 @@
             transform: scale(0.98);
             border-color: #2563eb;
         }
-        /* Desktop Hover */
         @media (min-width: 768px) {
             .tech-card:hover {
                 transform: translateY(-2px);
@@ -58,12 +54,11 @@
             }
         }
 
-        /* Modal Transitions */
         .modal-backdrop {
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.2s ease-out;
-            background: rgba(15, 23, 42, 0.6); /* Darker, more serious overlay */
+            background: rgba(15, 23, 42, 0.6);
         }
         .modal-backdrop.active {
             opacity: 1;
@@ -102,25 +97,47 @@
             0%, 100% { opacity: 1; }
             50% { opacity: .6; }
         }
+        
+        /* ปุ่มหัวใจบนการ์ดไม่ให้โดน hover ของการ์ดกวน */
+        .fav-btn-overlay {
+            z-index: 10;
+        }
     </style>
 </head>
 <body class="h-screen flex flex-col overflow-hidden text-slate-800">
 
     <!-- Header: Clean & Professional -->
     <header class="glass-panel z-30 flex-none bg-white">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-2 md:gap-4">
+            
+            <!-- Logo -->
             <div class="flex items-center gap-3">
                 <div class="bg-slate-900 p-2 rounded text-white shadow-sm">
-                    <i data-lucide="cpu" class="w-5 h-5"></i>
+                    <i data-lucide="cpu" class="w-4 h-4 md:w-5 md:h-5"></i>
                 </div>
-                <div class="leading-none">
-                    <h1 class="text-lg font-bold text-slate-900 tracking-tight">AI SIGN LAB</h1>
-                    <p class="text-[9px] text-slate-500 font-medium tracking-[0.2em] uppercase mt-0.5">Education Platform</p>
+                <div class="leading-none hidden sm:block">
+                    <h1 class="text-base md:text-lg font-bold text-slate-900 tracking-tight">AI SIGN LAB</h1>
+                    <p class="text-[9px] text-slate-500 font-medium tracking-[0.2em] uppercase mt-0.5">Education</p>
                 </div>
             </div>
 
+            <!-- New Action Buttons -->
+            <div class="hidden md:flex items-center gap-2 ml-auto">
+                <!-- หนังสือเรียน Button (เปิด Dialog แทน) -->
+                <button onclick="openBooks()" class="flex items-center justify-center gap-1.5 px-2.5 py-1.5 md:px-3 md:py-2 text-sm font-medium text-indigo-600 hover:text-indigo-700 bg-indigo-50 hover:bg-indigo-100 rounded-md transition-colors border border-indigo-100">
+                    <i data-lucide="book-open" class="w-4 h-4"></i>
+                    <span class="hidden md:inline">หนังสือเรียน</span>
+                </button>
+
+                <!-- รายการโปรด Button -->
+                <button onclick="openFavorites()" class="flex items-center justify-center gap-1.5 px-2.5 py-1.5 md:px-3 md:py-2 text-sm font-medium text-rose-600 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 rounded-md transition-colors border border-rose-100">
+                    <i data-lucide="heart" class="w-4 h-4 fill-current"></i>
+                    <span class="hidden md:inline">รายการโปรด</span>
+                </button>
+            </div>
+
             <!-- Desktop Search -->
-            <div class="hidden md:block flex-1 max-w-sm relative group">
+            <div class="hidden md:block flex-1 max-w-xs relative group">
                 <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-slate-400">
                     <i data-lucide="search" class="w-4 h-4"></i>
                 </div>
@@ -130,7 +147,7 @@
             </div>
 
             <!-- Mobile Search Toggle -->
-            <button onclick="document.getElementById('mobileSearchPanel').classList.toggle('hidden')" class="md:hidden p-2 text-slate-600 active:bg-slate-100 rounded">
+            <button onclick="document.getElementById('mobileSearchPanel').classList.toggle('hidden')" class="md:hidden p-2 text-slate-600 hover:bg-slate-50 active:bg-slate-100 rounded">
                 <i data-lucide="search" class="w-5 h-5"></i>
             </button>
         </div>
@@ -177,7 +194,7 @@
             </div>
 
             <!-- Content Grid -->
-            <div id="contentGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4 pb-24">
+            <div id="contentGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4 pb-32 md:pb-24">
                 <!-- Skeletons injected by JS -->
             </div>
 
@@ -191,14 +208,14 @@
     </main>
 
     <!-- Chatbot Button: Sleek Circle -->
-    <div class="fixed bottom-6 right-6 z-50">
+    <div class="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-50">
         <button onclick="toggleChat()" class="bg-slate-900 text-white w-14 h-14 rounded-full shadow-lg hover:bg-slate-800 hover:scale-105 active:scale-95 transition-all flex items-center justify-center border border-slate-700">
             <i data-lucide="message-square" class="w-6 h-6"></i>
         </button>
     </div>
 
     <!-- Chatbot Window: Clean & Boxy -->
-    <div id="chatbotWindow" class="fixed bottom-24 right-4 md:right-6 w-[92vw] md:w-80 h-[50vh] md:h-[450px] bg-white border border-slate-200 rounded-lg shadow-xl flex flex-col translate-y-4 opacity-0 pointer-events-none transition-all duration-200 z-40 origin-bottom-right">
+    <div id="chatbotWindow" class="fixed bottom-[5.5rem] md:bottom-24 right-4 md:right-6 w-[92vw] md:w-80 h-[50vh] md:h-[450px] bg-white border border-slate-200 rounded-lg shadow-xl flex flex-col translate-y-4 opacity-0 pointer-events-none transition-all duration-200 z-40 origin-bottom-right">
         <div class="p-3 border-b border-slate-100 flex justify-between items-center bg-white rounded-t-lg">
             <div class="flex items-center gap-2">
                 <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
@@ -228,7 +245,84 @@
         </div>
     </div>
 
-    <!-- MODERN DIALOG: Clean Sheet -->
+    <!-- FAVORITES DIALOG -->
+    <div id="favoritesModal" class="fixed inset-0 z-[100] modal-backdrop flex items-end md:items-center justify-center">
+        <!-- Overlay -->
+        <div class="absolute inset-0" onclick="closeFavorites()"></div>
+        
+        <!-- Content -->
+        <div class="modal-content relative w-full md:w-[600px] bg-white md:rounded-lg rounded-t-xl shadow-2xl flex flex-col max-h-[85vh] h-[85vh] md:h-[70vh] overflow-hidden">
+            
+            <!-- Mobile Drag Handle -->
+            <div class="md:hidden w-full flex justify-center pt-3 pb-1 bg-white border-b border-slate-50" onclick="closeFavorites()">
+                <div class="w-12 h-1 bg-slate-200 rounded-full"></div>
+            </div>
+
+            <!-- Header -->
+            <div class="px-5 py-4 border-b border-slate-100 flex justify-between items-center bg-white z-10 sticky top-0">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded bg-rose-50 flex items-center justify-center">
+                        <i data-lucide="heart" class="w-4 h-4 text-rose-500 fill-current"></i>
+                    </div>
+                    <h2 class="text-lg font-bold text-slate-900 leading-none">รายการโปรด</h2>
+                </div>
+                <button onclick="closeFavorites()" class="p-2 hover:bg-slate-50 rounded text-slate-400 hover:text-red-500 transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Scroll Area -->
+            <div class="overflow-y-auto custom-scroll p-4 bg-slate-50 flex-1">
+                <div id="favoritesGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <!-- Fav items will be generated here -->
+                </div>
+                
+                <!-- Empty State -->
+                <div id="emptyFavorites" class="hidden flex-col items-center justify-center py-16 text-center opacity-60 h-full">
+                    <i data-lucide="heart-crack" class="w-12 h-12 text-slate-300 mb-3"></i>
+                    <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wide">ยังไม่มีรายการโปรด</h3>
+                    <p class="text-xs text-slate-400 mt-1">กดไอคอนหัวใจที่การ์ดคำศัพท์เพื่อบันทึก</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOKS DIALOG (รายการหนังสือเรียน) -->
+    <div id="booksModal" class="fixed inset-0 z-[100] modal-backdrop flex items-end md:items-center justify-center">
+        <!-- Overlay -->
+        <div class="absolute inset-0" onclick="closeBooks()"></div>
+        
+        <!-- Content -->
+        <div class="modal-content relative w-full md:w-[600px] bg-white md:rounded-lg rounded-t-xl shadow-2xl flex flex-col max-h-[85vh] h-[85vh] md:h-[70vh] overflow-hidden">
+            
+            <!-- Mobile Drag Handle -->
+            <div class="md:hidden w-full flex justify-center pt-3 pb-1 bg-white border-b border-slate-50" onclick="closeBooks()">
+                <div class="w-12 h-1 bg-slate-200 rounded-full"></div>
+            </div>
+
+            <!-- Header -->
+            <div class="px-5 py-4 border-b border-slate-100 flex justify-between items-center bg-white z-10 sticky top-0">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded bg-indigo-50 flex items-center justify-center">
+                        <i data-lucide="book-open" class="w-4 h-4 text-indigo-600"></i>
+                    </div>
+                    <h2 class="text-lg font-bold text-slate-900 leading-none">หนังสือเรียน</h2>
+                </div>
+                <button onclick="closeBooks()" class="p-2 hover:bg-slate-50 rounded text-slate-400 hover:text-red-500 transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Scroll Area -->
+            <div class="overflow-y-auto custom-scroll p-4 bg-slate-50 flex-1">
+                <div id="booksGrid" class="flex flex-col gap-3">
+                    <!-- Book items will be generated here by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODERN DIALOG: Detail Mode -->
     <div id="detailModal" class="fixed inset-0 z-[100] modal-backdrop flex items-end md:items-center justify-center">
         <!-- Overlay -->
         <div class="absolute inset-0" onclick="closeModal()"></div>
@@ -248,9 +342,15 @@
                     <h2 id="mWord" class="text-2xl font-bold text-slate-900 mt-2 leading-none">Word</h2>
                     <p id="mWordEn" class="text-sm text-slate-400 font-mono mt-0.5">English Translation</p>
                 </div>
-                <button onclick="closeModal()" class="p-2 hover:bg-slate-50 rounded text-slate-400 hover:text-red-500 transition-colors">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
+                <div class="flex items-center gap-1">
+                    <!-- Added Favorite toggle in detail view too -->
+                    <button id="modalFavBtn" onclick="toggleFavoriteFromModal()" class="p-2 hover:bg-rose-50 rounded text-slate-400 transition-colors">
+                        <i id="modalFavIcon" data-lucide="heart" class="w-5 h-5"></i>
+                    </button>
+                    <button onclick="closeModal()" class="p-2 hover:bg-slate-50 rounded text-slate-400 hover:text-slate-800 transition-colors">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
             </div>
 
             <!-- Scroll Area -->
@@ -289,6 +389,22 @@
         </div>
     </div>
 
+    <!-- Mobile Bottom Navigation -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 z-[60] flex justify-around items-center pt-2 px-2 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]" style="padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));">
+        <button onclick="goHome()" id="navHome" class="flex flex-col items-center p-2 w-16 text-indigo-600 transition-colors">
+            <i data-lucide="home" class="w-5 h-5 mb-1"></i>
+            <span class="text-[10px] font-bold">หน้าแรก</span>
+        </button>
+        <button onclick="openBooks()" id="navBook" class="flex flex-col items-center p-2 w-16 text-slate-500 hover:text-indigo-600 transition-colors">
+            <i data-lucide="book-open" class="w-5 h-5 mb-1"></i>
+            <span class="text-[10px] font-bold">หนังสือ</span>
+        </button>
+        <button onclick="openFavorites()" id="navFav" class="flex flex-col items-center p-2 w-16 text-slate-500 hover:text-rose-600 transition-colors">
+            <i data-lucide="heart" class="w-5 h-5 mb-1"></i>
+            <span class="text-[10px] font-bold">รายการโปรด</span>
+        </button>
+    </nav>
+
     <script>
         const DATA_URL = './signs500.json'; 
         const BACKEND_URL = 'https://quiet-scene-f18b.tontakankeawpang321.workers.dev';
@@ -300,12 +416,23 @@
             activeCategory: 'ทั้งหมด',
             searchTerm: '',
             isVideoMode: false,
-            currentVideoId: null
+            currentVideoId: null,
+            currentDetailWord: null // Track word for modal favorite btn
         };
 
         const MOCK_DATA = [
             { word: 'ก ไก่', word_en: 'Ko Kai', category: 'หมวด ก-ฮ', description: 'กำมือขวาชูขึ้น ระดับไหล่ หันฝ่ามือไปทางซ้าย ขยับนิ้วชี้และนิ้วกลางลงมาชนนิ้วโป้ง 2 ครั้ง (เลียนแบบปากไก่)', imageUrl: 'https://placehold.co/600x400/f8fafc/334155?text=ก+ไก่', youtubeUrl: 'https://www.youtube.com/watch?v=VIDEO_ID' },
-            { word: 'ข ไข่', word_en: 'Kho Khai', category: 'หมวด ก-ฮ', description: 'กำมือขวา วาดเป็นวงกลมในอากาศ เหมือนรูปไข่', imageUrl: 'https://placehold.co/600x400/f8fafc/334155?text=ข+ไข่', youtubeUrl: '' }
+            { word: 'ข ไข่', word_en: 'Kho Khai', category: 'หมวด ก-ฮ', description: 'กำมือขวา วาดเป็นวงกลมในอากาศ เหมือนรูปไข่', imageUrl: 'https://placehold.co/600x400/f8fafc/334155?text=ข+ไข่', youtubeUrl: '' },
+            { word: 'สวัสดี', word_en: 'Hello', category: 'ทั่วไป', description: 'พนมมือที่ระดับอก', imageUrl: 'https://placehold.co/600x400/f8fafc/334155?text=สวัสดี', youtubeUrl: '' }
+        ];
+
+        // ข้อมูลรายการหนังสือเรียน 5 รายการ
+        const BOOKS_DATA = [
+            { title: 'หนังสือเรียนภาษามือ เล่ม 1', desc: 'พื้นฐานพยัญชนะและสระ', url: 'https://tontakankeawpang321-glitch.github.io/pasahand.github.io/hand1/index.html' },
+            { title: 'หนังสือเรียนภาษามือ เล่ม 2', desc: 'คำศัพท์ในชีวิตประจำวัน', url: 'https://tontakankeawpang321-glitch.github.io/pasahand.github.io/hand2/index.html' },
+            { title: 'หนังสือเรียนภาษามือ เล่ม 3', desc: 'การสร้างประโยคเบื้องต้น', url: 'https://tontakankeawpang321-glitch.github.io/pasahand.github.io/hand3/index.html' },
+            { title: 'หนังสือเรียนภาษามือ เล่ม 4', desc: 'คำศัพท์หมวดครอบครัวและอาชีพ', url: 'https://tontakankeawpang321-glitch.github.io/pasahand.github.io/hand4/index.html' },
+            { title: 'หนังสือเรียนภาษามือ เล่ม 5', desc: 'ไวยากรณ์และระดับภาษา', url: 'https://tontakankeawpang321-glitch.github.io/pasahand.github.io/hand5/index.html' }
         ];
 
         document.addEventListener('DOMContentLoaded', async () => {
@@ -369,6 +496,64 @@
             `).join('');
         }
 
+        // --- Local Storage Favorites Logic ---
+        function getSafeClass(word) {
+            // สร้าง class name ที่ปลอดภัยจากตัวอักษรพิเศษ
+            return 'fav-' + word.replace(/[^a-zA-Z0-9ก-๙]/g, '_');
+        }
+
+        function getFavorites() {
+            try {
+                return JSON.parse(localStorage.getItem('signLabFavorites')) || [];
+            } catch {
+                return [];
+            }
+        }
+
+        function isFavorite(word) {
+            return getFavorites().includes(word);
+        }
+
+        window.toggleFavorite = (word, event) => {
+            if(event) event.stopPropagation(); // กันไม่ให้กดแล้วไปเปิด Detail Modal
+            
+            let favs = getFavorites();
+            const isAdding = !favs.includes(word);
+            
+            if (isAdding) {
+                favs.push(word);
+            } else {
+                favs = favs.filter(w => w !== word);
+            }
+            localStorage.setItem('signLabFavorites', JSON.stringify(favs));
+
+            // อัพเดท UI ของปุ่มหัวใจในหน้าหลัก โดยไม่ต้อง render ใหม่ทั้งหมด
+            const safeClass = getSafeClass(word);
+            const icons = document.querySelectorAll(`.${safeClass}`);
+            
+            icons.forEach(icon => {
+                if (isAdding) {
+                    icon.classList.remove('text-slate-400');
+                    icon.classList.add('text-rose-500', 'fill-current');
+                } else {
+                    icon.classList.remove('text-rose-500', 'fill-current');
+                    icon.classList.add('text-slate-400');
+                }
+            });
+
+            // อัพเดทปุ่มใน Detail Modal ถ้าเปิดอยู่
+            if(state.currentDetailWord === word) {
+                updateModalFavBtnUI(isAdding);
+            }
+
+            // ถ้ารายการโปรดเปิดอยู่ ให้ re-render รายการใหม่
+            if(document.getElementById('favoritesModal').classList.contains('active')) {
+                renderFavoritesList();
+            }
+        };
+
+        // -------------------------------------
+
         function renderGrid() {
             const grid = document.getElementById('contentGrid');
             const empty = document.getElementById('emptyState');
@@ -380,7 +565,14 @@
             }
             empty.classList.add('hidden');
 
-            grid.innerHTML = state.filtered.map((item, index) => `
+            const favs = getFavorites();
+
+            grid.innerHTML = state.filtered.map((item, index) => {
+                const isFav = favs.includes(item.word);
+                const heartClass = isFav ? 'text-rose-500 fill-current' : 'text-slate-400';
+                const safeClass = getSafeClass(item.word);
+
+                return `
                 <div onclick="openDetail(${index})" class="group tech-card bg-white rounded overflow-hidden cursor-pointer relative">
                     <div class="h-32 md:h-40 overflow-hidden bg-slate-50 relative border-b border-slate-100">
                         <img src="${item.imageUrl}" 
@@ -389,9 +581,15 @@
                              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                              onerror="this.src='https://placehold.co/400x300/f8fafc/cbd5e1?text=No+Image'">
                         
+                        <!-- Category Badge -->
                         <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-[2px] px-1.5 py-0.5 rounded text-[9px] font-bold text-slate-500 border border-slate-200 uppercase tracking-wide">
                             ${item.category || 'GEN'}
                         </div>
+
+                        <!-- Favorite Button on Card -->
+                        <button onclick="toggleFavorite('${item.word}', event)" class="fav-btn-overlay absolute top-2 left-2 p-1.5 bg-white/90 backdrop-blur-[2px] border border-slate-100 rounded-full shadow-sm hover:scale-110 active:scale-95 transition-all">
+                            <i data-lucide="heart" class="w-4 h-4 transition-colors ${heartClass} ${safeClass}"></i>
+                        </button>
                     </div>
                     
                     <div class="p-3 bg-white h-full">
@@ -399,7 +597,7 @@
                         <p class="text-[10px] text-slate-400 font-mono truncate">${item.word_en || 'NO DATA'}</p>
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
             
             lucide.createIcons();
         }
@@ -428,17 +626,157 @@
             document.getElementById('searchInputMobile').addEventListener('input', debouncedSearch);
         }
 
-        // --- Simplified Modal Logic ---
-        window.openDetail = (index) => {
-            const item = state.filtered[index];
-            const modal = document.getElementById('detailModal');
+        // --- Favorites Modal Logic ---
+        window.openFavorites = () => {
+            renderFavoritesList();
+            document.getElementById('favoritesModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            updateBottomNav('fav');
+        };
+
+        window.closeFavorites = () => {
+            document.getElementById('favoritesModal').classList.remove('active');
+            document.body.style.overflow = '';
+            updateBottomNav('home');
+        };
+
+        // --- Books Modal Logic ---
+        window.openBooks = () => {
+            renderBooksList();
+            document.getElementById('booksModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            updateBottomNav('book');
+        };
+
+        window.closeBooks = () => {
+            document.getElementById('booksModal').classList.remove('active');
+            document.body.style.overflow = '';
+            updateBottomNav('home');
+        };
+
+        function renderBooksList() {
+            const grid = document.getElementById('booksGrid');
+            grid.innerHTML = BOOKS_DATA.map(book => `
+                <a href="${book.url}" target="_blank" class="bg-white rounded-lg border border-slate-200 p-3 md:p-4 flex gap-4 items-center shadow-sm hover:shadow-md hover:border-indigo-300 transition-all group cursor-pointer">
+                    <div class="w-12 h-12 md:w-14 md:h-14 shrink-0 rounded bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-500 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <i data-lucide="book" class="w-6 h-6 md:w-7 md:h-7"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-sm md:text-base text-slate-800 truncate group-hover:text-indigo-600 transition-colors">${book.title}</h4>
+                        <p class="text-[11px] md:text-xs text-slate-500 mt-0.5">${book.desc}</p>
+                    </div>
+                    <div class="shrink-0 p-2 text-slate-300 group-hover:text-indigo-500 transition-colors">
+                        <i data-lucide="external-link" class="w-5 h-5"></i>
+                    </div>
+                </a>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function updateBottomNav(activeTab) {
+            const home = document.getElementById('navHome');
+            const fav = document.getElementById('navFav');
+            const book = document.getElementById('navBook');
             
+            if(home && fav && book) {
+                // Reset styles
+                home.className = 'flex flex-col items-center p-2 w-16 text-slate-500 hover:text-indigo-600 transition-colors';
+                fav.className = 'flex flex-col items-center p-2 w-16 text-slate-500 hover:text-rose-600 transition-colors';
+                book.className = 'flex flex-col items-center p-2 w-16 text-slate-500 hover:text-indigo-600 transition-colors';
+                
+                // Set active style
+                if (activeTab === 'home') {
+                    home.classList.replace('text-slate-500', 'text-indigo-600');
+                    home.classList.remove('hover:text-indigo-600');
+                } else if (activeTab === 'fav') {
+                    fav.classList.replace('text-slate-500', 'text-rose-600');
+                    fav.classList.remove('hover:text-rose-600');
+                } else if (activeTab === 'book') {
+                    book.classList.replace('text-slate-500', 'text-indigo-600');
+                    book.classList.remove('hover:text-indigo-600');
+                }
+            }
+        }
+
+        window.goHome = () => {
+            document.getElementById('searchInputMobile').value = '';
+            document.getElementById('searchInputDesktop').value = '';
+            state.searchTerm = '';
+            selectCategory('ทั้งหมด');
+            closeFavorites();
+            closeBooks();
+            closeModal();
+            updateBottomNav('home');
+            
+            // เลื่อนกลับขึ้นด้านบนสุด
+            const scrollArea = document.getElementById('mainScroll');
+            if(scrollArea) scrollArea.scrollTo({top: 0, behavior: 'smooth'});
+        };
+
+        function renderFavoritesList() {
+            const favs = getFavorites();
+            const grid = document.getElementById('favoritesGrid');
+            const empty = document.getElementById('emptyFavorites');
+
+            if (favs.length === 0) {
+                grid.innerHTML = '';
+                empty.classList.remove('hidden');
+                empty.classList.add('flex');
+                return;
+            }
+
+            empty.classList.add('hidden');
+            empty.classList.remove('flex');
+
+            // Find items from global data based on saved favorite words
+            const favItems = state.data.filter(item => favs.includes(item.word));
+
+            grid.innerHTML = favItems.map(item => `
+                <div class="bg-white rounded-lg border border-slate-200 p-2.5 flex gap-3 items-center shadow-sm relative group hover:border-blue-200 transition-colors">
+                    <div class="w-16 h-16 shrink-0 rounded overflow-hidden bg-slate-100 border border-slate-100 cursor-pointer" onclick="openDetailByWord('${item.word}')">
+                        <img src="${item.imageUrl}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100?text=No+Img'">
+                    </div>
+                    
+                    <div class="flex-1 min-w-0 cursor-pointer" onclick="openDetailByWord('${item.word}')">
+                        <h4 class="font-bold text-sm text-slate-800 truncate group-hover:text-blue-600">${item.word}</h4>
+                        <p class="text-[10px] text-slate-400 font-mono truncate">${item.category || 'General'}</p>
+                    </div>
+                    
+                    <button onclick="toggleFavorite('${item.word}')" class="p-2 text-slate-300 hover:text-rose-500 hover:bg-rose-50 rounded-full transition-all shrink-0">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            `).join('');
+            
+            lucide.createIcons();
+        }
+
+        window.openDetailByWord = (word) => {
+            const item = state.data.find(i => i.word === word);
+            if(item) {
+                closeFavorites();
+                // หน่วงเวลาเล็กน้อยเพื่อให้ Favorites modal ปิดก่อนเปิดอันใหม่
+                setTimeout(() => {
+                    populateDetailModal(item);
+                    document.getElementById('detailModal').classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }, 100);
+            }
+        };
+
+        // --- Detail Modal Logic ---
+        function populateDetailModal(item) {
+            state.currentDetailWord = item.word;
+
             document.getElementById('mCategory').innerText = item.category || 'GENERAL';
             document.getElementById('mWord').innerText = item.word;
             document.getElementById('mWordEn').innerText = item.word_en || '';
-            document.getElementById('mDesc').innerText = item.description || 'No instruction available.';
+            document.getElementById('mDesc').innerText = item.description || 'ไม่มีคำอธิบายสำหรับคำนี้';
             document.getElementById('mImage').src = item.imageUrl;
             
+            // Set favorite button state
+            updateModalFavBtnUI(isFavorite(item.word));
+
             state.currentVideoId = null;
             if (item.youtubeUrl) {
                 const match = item.youtubeUrl.match(/(?:v=|\/embed\/|youtu\.be\/)([^&?#]+)/);
@@ -446,7 +784,6 @@
             }
 
             const toggleBtn = document.getElementById('viewToggleBtn');
-            const btnSpan = toggleBtn.querySelector('span');
             if(state.currentVideoId) {
                 toggleBtn.classList.remove('hidden');
                 toggleBtn.classList.add('flex');
@@ -456,6 +793,29 @@
             }
 
             resetMediaView();
+        }
+
+        function updateModalFavBtnUI(isFav) {
+            const icon = document.getElementById('modalFavIcon');
+            if(isFav) {
+                icon.classList.add('text-rose-500', 'fill-current');
+                icon.classList.remove('text-slate-400');
+            } else {
+                icon.classList.add('text-slate-400');
+                icon.classList.remove('text-rose-500', 'fill-current');
+            }
+        }
+
+        window.toggleFavoriteFromModal = () => {
+            if(state.currentDetailWord) {
+                toggleFavorite(state.currentDetailWord);
+            }
+        }
+
+        window.openDetail = (index) => {
+            const item = state.filtered[index];
+            populateDetailModal(item);
+            const modal = document.getElementById('detailModal');
             modal.classList.add('active');
             document.body.style.overflow = 'hidden'; 
         };
@@ -465,6 +825,7 @@
             modal.classList.remove('active');
             document.getElementById('mYoutube').src = "";
             document.body.style.overflow = '';
+            state.currentDetailWord = null;
         };
 
         window.toggleMediaView = () => {
@@ -472,7 +833,6 @@
             const vidContainer = document.getElementById('mVideoContainer');
             const iframe = document.getElementById('mYoutube');
             const btnSpan = document.querySelector('#viewToggleBtn span');
-            const btnIcon = document.querySelector('#viewToggleBtn svg');
 
             state.isVideoMode = !state.isVideoMode;
 
@@ -481,7 +841,6 @@
                 vidContainer.classList.remove('hidden');
                 iframe.src = `https://www.youtube.com/embed/${state.currentVideoId}?autoplay=1&rel=0`;
                 btnSpan.innerText = 'SHOW IMAGE';
-                // Note: Keeping icon logic simple for performance
             } else {
                 img.classList.remove('opacity-0');
                 vidContainer.classList.add('hidden');

@@ -495,7 +495,7 @@
     "word": "1 (หนึ่ง)",
     "category": "number",
     "description": "ชูนิ้วชี้ 1 นิ้ว",
-    "imageUrl": "https://lh3.googleusercontent.com/d/",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1XUbKB-VLMcqBeX3u5Vr074oW2BAQJpbU",
       "youtubeUrl": "https://www.youtube.com/watch?v=T-0m-ST_Gpg",
     "word_en": "Number 1",
     "description_en": "Raise only the index finger to show the number one."
@@ -505,7 +505,7 @@
     "word": "2 (สอง)",
     "category": "number",
     "description": "ชูนิ้วชี้และนิ้วกลาง (สู้ๆ)",
-    "imageUrl": "https://lh3.googleusercontent.com/d/",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1XUbKB-VLMcqBeX3u5Vr074oW2BAQJpbU",
       "youtubeUrl": "https://www.youtube.com/watch?v=T-0m-ST_Gpg",
     "word_en": "Number 2",
     "description_en": "Raise the index and middle fingers, similar to a V sign."
@@ -515,7 +515,7 @@
     "word": "3 (สาม)",
     "category": "number",
     "description": "ชู 3 นิ้ว",
-    "imageUrl": "https://lh3.googleusercontent.com/d/",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1XUbKB-VLMcqBeX3u5Vr074oW2BAQJpbU",
       "youtubeUrl": "https://www.youtube.com/watch?v=T-0m-ST_Gpg",
     "word_en": "Number 3",
     "description_en": "Raise three fingers to show the number three."
@@ -525,7 +525,7 @@
     "word": "4 (สี่)",
     "category": "number",
     "description": "ชู 4 นิ้ว",
-    "imageUrl": "https://lh3.googleusercontent.com/d/",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1XUbKB-VLMcqBeX3u5Vr074oW2BAQJpbU",
       "youtubeUrl": "https://www.youtube.com/watch?v=T-0m-ST_Gpg",
     "word_en": "Number 4",
     "description_en": "Raise four fingers leaving the thumb folded."
@@ -535,7 +535,7 @@
     "word": "5 (ห้า)",
     "category": "number",
     "description": "ชู 5 นิ้ว",
-    "imageUrl": "https://lh3.googleusercontent.com/d/",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1XUbKB-VLMcqBeX3u5Vr074oW2BAQJpbU",
       "youtubeUrl": "https://www.youtube.com/watch?v=T-0m-ST_Gpg",
     "word_en": "Number 5",
     "description_en": "Open the hand and extend all five fingers."
@@ -1208,3 +1208,4 @@
     "description_en": "Raise the index finger and trace the letter Z in the air."
   }
 ,
+]

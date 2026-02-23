@@ -1207,4 +1207,116 @@
     "word_en": "Z",
     "description_en": "Raise the index finger and trace the letter Z in the air."
   }
+  ,[
+  {
+    "id": "t01",
+    "word": "เวลา",
+    "category": "time",
+    "description": "ใช้นิ้วชี้แตะบริเวณข้อมืออีกข้างเหมือนดูนาฬิกา",
+    "tip": "แตะตำแหน่งข้อมือให้ชัดเจน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/17i0MrubFmQ67gHWM3LTPHFR-z86I1wVj",
+    "youtubeUrl": "https://www.youtube.com/watch?v=wykgg5PWvOk",
+    "word_en": "time",
+    "description_en": "Point to the wrist as if indicating a watch."
+  },
+  {
+    "id": "t02",
+    "word": "บ่าย",
+    "category": "time",
+    "description": "ยกมือขึ้นระดับหน้าแล้วเคลื่อนลงเล็กน้อยตามลูกศร",
+    "tip": "เคลื่อนมือลงช้า ๆ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1QehRLXCpddKRpLiSkoJeXWTZxsyfxyRO",
+    "youtubeUrl": "https://www.youtube.com/watch?v=wykgg5PWvOk",
+    "word_en": "afternoon",
+    "description_en": "Raise the hand and move it slightly downward to indicate afternoon."
+  },
+  {
+    "id": "t03",
+    "word": "เย็น",
+    "category": "time",
+    "description": "วางมือหนึ่งระดับล่าง อีกมือเคลื่อนลงช้า ๆ เหมือนพระอาทิตย์ตก",
+    "tip": "เคลื่อนมือเป็นเส้นโค้งลง",
+    "imageUrl": "https://lh3.googleusercontent.com/d/12vLN6rtMoC7Gbmaq9uaOE1gALE3PTD-h",
+    "youtubeUrl": "https://www.youtube.com/watch?v=wykgg5PWvOk",
+    "word_en": "evening",
+    "description_en": "Move one hand downward over the other to represent sunset."
+  },
+  {
+    "id": "t04",
+    "word": "เช้า",
+    "category": "time",
+    "description": "มือหนึ่งวางราบ อีกมือเคลื่อนขึ้นเหมือนพระอาทิตย์ขึ้น",
+    "tip": "เคลื่อนมือขึ้นตามแนวโค้ง",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1AzOsXH1ic34VZToTQxdeyCjgFqGdYd-X",
+    "youtubeUrl": "https://www.youtube.com/watch?v=wykgg5PWvOk",
+    "word_en": "morning",
+    "description_en": "Move one hand upward from the other to represent sunrise."
+  },
+  {
+    "id": "t05",
+    "word": "กลางวัน / เที่ยงวัน",
+    "category": "time",
+    "description": "ยกนิ้วชี้และนิ้วกลางตั้งตรงบริเวณขมับ",
+    "tip": "สองนิ้วต้องชิดกัน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1AmM3ihvhQugh0IbNTYlRpn9HqMMXkuL2",
+    "youtubeUrl": "https://www.youtube.com/watch?v=wykgg5PWvOk",
+    "word_en": "midday",
+    "description_en": "Raise the index and middle fingers upright near the temple."
+  },
+  {
+    "id": "t06",
+    "word": "ค่ำ",
+    "category": "time",
+    "description": "ยกมือโค้งเหนือหน้าผากเล็กน้อย",
+    "tip": "ทำท่าคลุมแสงเหนือศีรษะ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1XO1f3YrUI6p9pdStKhCCQ3zfVfG4Bk8a",
+    "youtubeUrl": "https://www.youtube.com/watch?v=wykgg5PWvOk",
+    "word_en": "twilight",
+    "description_en": "Curve the hand above the forehead to indicate twilight."
+  },
+  {
+    "id": "t07",
+    "word": "กลางคืน / มืด",
+    "category": "time",
+    "description": "ยกมือบังบริเวณดวงตาเหมือนความมืดปกคลุม",
+    "tip": "ทำท่าปิดแสงให้ชัด",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1i7qYr30vwjAK_4Ualzs7JfCWpYoX7iAs",
+    "youtubeUrl": "https://www.youtube.com/watch?v=wykgg5PWvOk",
+    "word_en": "night / dark",
+    "description_en": "Place the hand over the eye area to indicate darkness."
+  },
+  {
+    "id": "t08",
+    "word": "เที่ยงคืน",
+    "category": "time",
+    "description": "แตะนิ้วบริเวณปาก แล้วชูสองนิ้วขึ้นด้านข้างใบหน้า",
+    "tip": "ทำสองจังหวะชัดเจน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1ZMETk6MTHGiVb-rumiBVVCvLgG1Wf-Pg",
+    "youtubeUrl": "https://www.youtube.com/watch?v=wykgg5PWvOk",
+    "word_en": "midnight",
+    "description_en": "Touch near the mouth and then raise two fingers beside the face."
+  },
+  {
+    "id": "t09",
+    "word": "ตลอดคืน / ทั้งวัน ทั้งคืน",
+    "category": "time",
+    "description": "ทำท่ากลางคืนแล้วหมุนมือเป็นวงแสดงความต่อเนื่อง",
+    "tip": "หมุนมือช้า ๆ เป็นวง",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1pqhcih8qRCFUNOlzNrRrDMcSiVtJlUvd",
+    "youtubeUrl": "https://www.youtube.com/watch?v=wykgg5PWvOk",
+    "word_en": "all night / all day and night",
+    "description_en": "Sign night and rotate the hand in a circular motion to show continuity."
+  },
+  {
+    "id": "t10",
+    "word": "24 ชั่วโมง / ตลอด 24 ชั่วโมง",
+    "category": "time",
+    "description": "แสดงเลข 2 และ 4 ตามลำดับ แล้วทำท่าต่อเนื่อง",
+    "tip": "เรียงลำดับตัวเลขให้ถูกต้อง",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1_5SQMBGCAQng6e3DiW7RzEUwiSxPokpS",
+    "youtubeUrl": "https://www.youtube.com/watch?v=wykgg5PWvOk",
+    "word_en": "24 hours",
+    "description_en": "Show the number 2 and 4 sequentially to represent 24 hours."
+  }
+]
 ]

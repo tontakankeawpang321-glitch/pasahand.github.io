@@ -1207,7 +1207,7 @@
     "word_en": "Z",
     "description_en": "Raise the index finger and trace the letter Z in the air."
   }
-  ,[
+  ,
   {
     "id": "t01",
     "word": "เวลา",
@@ -1318,5 +1318,369 @@
     "word_en": "24 hours",
     "description_en": "Show the number 2 and 4 sequentially to represent 24 hours."
   }
-]
+,
+  {
+     "id": "g00",
+    "word": "สวัสดี",
+    "category": "greeting",
+    "description": "พนมมือไหว้ระดับอกหรือใบหน้า",
+    "tip": "ใช้กับผู้ใหญ่หรือผู้ที่เคารพ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/16AotbSGjREbqO-LAqlJXzeMp0UFff5dk",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "hello",
+    "description_en": "Place palms together in a respectful wai gesture."
+  },
+   {
+    "id": "g01",
+    "word": "สวัสดี",
+    "category": "greeting",
+    "description": "พนมมือไหว้ระดับอกหรือใบหน้า",
+    "tip": "ใช้กับผู้มีอายุ้ท่ากันหรือเพื่อน หรือต่ำกว่า",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1C188-qPvN5-aZEYEU_9TxUOeZ2rxN938",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "hello",
+    "description_en": "respected"
+  },
+   {
+    "id": "g02",
+    "word": "ขอบคุณ",
+    "category": "greeting",
+    "description": "พนมมือไหว้เล็กน้อยเพื่อแสดงความขอบคุณ",
+    "tip": "ใช้กับผู้ใหญ่หรือบุคคลที่เคารพ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1-x2oF0b_Ay0j3AsAARdtXc0ZUsf_4Dop",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "thank you",
+    "description_en": "Make a wai gesture to express gratitude."
+  },
+   {
+    "id": "g21",
+    "word": "ขอบคุณ",
+    "category": "greeting",
+    "description": "มือพักออกไป",
+    "tip": "ใช้กับผู้มีอายุเท่ากันเพื่อน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1BTppZf3PbGz8Xp2qLkhrXFaFeT6ow7LZ",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "thank you",
+    "description_en": "Make a wai gesture to express gratitude."
+  },
+  {
+    "id": "g03",
+    "word": "ขอโทษ",
+    "category": "greeting",
+    "description": "พนมมือไหว้เพื่อแสดงการขอโทษ",
+    "tip": "แสดงสีหน้าสุภาพ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1Vul62l7vFe-38IvhXYYqK_sbHoesVsT1",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "sorry",
+    "description_en": "Place palms together to apologize respectfully."
+  },
+   {
+    "id": "g031",
+    "word": "ขอโทษ",
+    "category": "greeting",
+    "description": "ใช้มือขวหรือซ้ายถูบนฝ่ามือ",
+    "tip": "แสดงสีหน้าสุภาพ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1iC_NA0jMT4VrzEDlfawRgXl8ecRKRAQ1",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "sorry",
+    "description_en": "Place palms together to apologize respectfully."
+  },
+  {
+    "id": "g04",
+    "word": "สนุก",
+    "category": "feeling",
+    "description": "ยกมือทั้งสองขึ้นบริเวณหน้าอกและขยับขึ้นลง",
+    "tip": "ขยับมือพร้อมกัน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1sFwOqSgIdrV2BTBDFODmzEhLl3KFP-Vr",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "fun",
+    "description_en": "Move both hands up and down near the chest."
+  },
+  {
+    "id": "g05",
+    "word": "สบาย / สบายดี / สบายใจ",
+    "category": "feeling",
+    "description": "ยกมือทั้งสองขึ้นจากอกออกด้านข้าง",
+    "tip": "เคลื่อนไหวออกด้านนอกเบา ๆ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/18byMqVGWTf3Ie9URKeCsiBmLgrtgXXpX",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "fine / happy",
+    "description_en": "Move both hands outward from the chest."
+  },
+  {
+    "id": "g06",
+    "word": "ไม่สบายใจ",
+    "category": "feeling",
+    "description": "ปัดมือออกจากอกลงด้านล่าง",
+    "tip": "สีหน้าควรแสดงความไม่สบายใจ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1_w_9UnWTZny570WV02GCAscr-fr9Gws5",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "not happy",
+    "description_en": "Move hands downward from the chest to indicate unhappiness."
+  },
+  {
+    "id": "g07",
+    "word": "ไม่สบาย (ป่วย)",
+    "category": "feeling",
+    "description": "ยกมือแตะหน้าผากแสดงอาการป่วย",
+    "tip": "แสดงสีหน้าอ่อนแรง",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1ysNcZ98aE27a71pAU-tK4Qw99RSzvTeQ",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "sick",
+    "description_en": "Touch the forehead to indicate sickness."
+  },
+  {
+    "id": "g08",
+    "word": "ชื่อ",
+    "category": "basic",
+    "description": "ใช้นิ้วแตะกันบริเวณหน้าอก",
+    "tip": "แตะเบา ๆ ชัดเจน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1zm88n8vZNfEKJS-wv_bYtJ6S9Os3G5yg",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "name",
+    "description_en": "Touch fingers together near the chest."
+  },
+  {
+    "id": "g09",
+    "word": "นามสกุล",
+    "category": "basic",
+    "description": "ทำสัญลักษณ์ชื่อแล้วตามด้วยเลข 2",
+    "tip": "ทำสองจังหวะ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1pPH1Dr0QS-CEKQ2A95a8Js_voZcApVqj",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "surname",
+    "description_en": "Sign name followed by a second movement to indicate surname."
+  },
+  {
+    "id": "g10",
+    "word": "ภาษามือ",
+    "category": "basic",
+    "description": "หมุนมือทั้งสองรอบกันตามภาพ",
+    "tip": "เคลื่อนไหวเป็นวงต่อเนื่อง",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1R4E6OnDwRr6smFxWmMlVbaSPI_0UO3rt",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "sign language",
+    "description_en": "Rotate both hands around each other."
+  },
+  {
+    "id": "g11",
+    "word": "ชื่อภาษามือ",
+    "category": "basic",
+    "description": "ทำสัญลักษณ์ชื่อแล้วหมุนมือบริเวณแก้ม",
+    "tip": "แสดงสองขั้นตอนชัดเจน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1wBHCmHaowPsgP0IGjQ2B0fTI7rJx2fqi",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "sign name",
+    "description_en": "Sign name and then gesture near the cheek."
+  },
+  {
+    "id": "g12",
+    "word": "ชื่อสะกดนิ้วมืออักษรไทย",
+    "category": "basic",
+    "description": "สะกดชื่อด้วยนิ้วมือทีละตัวอักษร",
+    "tip": "ทำตามลำดับตัวอักษร",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1wBHCmHaowPsgP0IGjQ2B0fTI7rJx2fqi",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "finger spelling name",
+    "description_en": "Spell the name using fingerspelling."
+  },
+  {
+    "id": "g13",
+    "word": "คนหูหนวก",
+    "category": "person",
+    "description": "ชี้ที่หูแล้วชี้ออกด้านหน้า",
+    "tip": "ทำสองจังหวะ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1cKiGsAZLLkVI-3uKPzMXDjvCOeepdDuB",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "deaf",
+    "description_en": "Point to the ear and then outward."
+  },
+  {
+    "id": "g14",
+    "word": "คนหูตึง",
+    "category": "person",
+    "description": "แตะหูแล้วทำท่าฟัง",
+    "tip": "เคลื่อนไหวช้า ๆ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1f_Nb0TD64aotLiVJbAEG683nunLDHYYP",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "hard of hearing",
+    "description_en": "Touch the ear and gesture listening."
+  },
+  {
+    "id": "g15",
+    "word": "คนปกติ (คนหูดี)",
+    "category": "person",
+    "description": "ชี้บริเวณหูแล้วเคลื่อนมือเล็กน้อย",
+    "tip": "ทำชัดเจนไม่เร็วเกินไป",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1v8X6hiz_Q5vZQYjg5MMqas3euxiL4-mi",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "hearing",
+    "description_en": "Point to the ear to indicate hearing."
+  },
+  {
+    "id": "g16",
+    "word": "ใช่",
+    "category": "basic",
+    "description": "กำมือแล้วขยับขึ้นลง",
+    "tip": "ขยับสั้น ๆ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1tD22nNhOYjH9Uy71JuAKvPJ1naPsnia5",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "yes",
+    "description_en": "Make a fist and nod it up and down."
+  },
+  {
+    "id": "g17",
+    "word": "ไม่ / ไม่ใช่",
+    "category": "basic",
+    "description": "ยกมือขึ้นแล้วส่ายซ้ายขวา",
+    "tip": "เคลื่อนไหวสั้น ๆ ชัดเจน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1WTvsdKbOJSp9CjosO0OtlSby86PEqKte",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "no",
+    "description_en": "Raise the hand and move it side to side."
+  }
+  ,
+   {
+    "id": "v01",
+    "word": "เรียน",
+    "category": "verb",
+    "description": "ใช้มือหนึ่งวางราบ อีกมือแตะที่มือด้านล่างแล้วเคลื่อนขึ้นไปแตะหน้าผาก",
+    "tip": "เคลื่อนไหวจากล่างขึ้นบนชัดเจน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1KqRfgOf11rdxbi4WY9R_eKqykdQW4CWW",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "learn",
+    "description_en": "Move the hand from the palm upward to the forehead."
+  },
+  {
+    "id": "v02",
+    "word": "จำ / จดจำ",
+    "category": "verb",
+    "description": "แตะหน้าผากแล้วเคลื่อนมือลงแตะอีกมือหนึ่งด้านล่าง",
+    "tip": "ทำสองจังหวะ: หน้าผาก → มือ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1OJMAMHIEL_ByG6pFKZqr5jNK-86vo42i",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "remember",
+    "description_en": "Touch the forehead and move the hand downward to the other hand."
+  },
+  {
+    "id": "v03",
+    "word": "พบ",
+    "category": "verb",
+    "description": "ยกมือทั้งสองขึ้นระดับอกแล้วเลื่อนเข้าหากัน",
+    "tip": "เลื่อนเข้าหากันพร้อมกัน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1piWzf9yHb0N77dCeXDSgdPKTwcu0GNFK",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "meet",
+    "description_en": "Bring both hands toward each other at chest level."
+  },
+   {
+    "id": "c01",
+    "word": "พบกันใหม่",
+    "category": "conversation",
+    "description": "ชี้ที่ตาแล้วหมุนมือเล็กน้อย จากนั้นชี้ออกด้านหน้า แสดงความหมายว่าจะได้พบกันอีก",
+    "tip": "ทำสองจังหวะชัดเจน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1y1Lq8RzfG4Fcq6646IO960YLeIQzxDKy",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "see you again",
+    "description_en": "Point to the eye and then gesture outward to indicate seeing each other again."
+  },
+  {
+    "id": "c02",
+    "word": "โชคดี",
+    "category": "conversation",
+    "description": "ทำมือเป็นวง (คล้าย OK) แล้วยกขึ้นเล็กน้อย",
+    "tip": "ยกมือขึ้นเบา ๆ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1xFvYsbr3ZrGJ7BvIbRaR7eCMJzIER3ts",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "good luck",
+    "description_en": "Form an OK handshape and lift slightly."
+  },
+  {
+    "id": "c03",
+    "word": "ไม่เป็นไร",
+    "category": "conversation",
+    "description": "วางมือที่อกแล้วปัดออกด้านข้างทั้งสองมือ",
+    "tip": "เคลื่อนไหวออกด้านนอกพร้อมกัน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1RwWwtvVTxEIK4nVgNHeznfOQ_jqB5oqr",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "you're welcome",
+    "description_en": "Move both hands outward from the chest."
+  },
+  {
+    "id": "c04",
+    "word": "สวัสดีครับ / ค่ะ",
+    "category": "conversation",
+    "description": "ยกมือไหว้หรือยกมือทักทายตามภาพ",
+    "tip": "ใช้ตามบริบทความสุภาพ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1CwJDu4aqynMV9tYtyhMJFSHdVb-aXQP8",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "hello",
+    "description_en": "Raise the hand in greeting or perform a polite wai gesture."
+  },
+  {
+    "id": "c05",
+    "word": "คุณสบายดีหรือ",
+    "category": "conversation",
+    "description": "ทำสัญลักษณ์สบายแล้วแสดงท่าคำถามด้วยสีหน้า",
+    "tip": "ยกคิ้วเล็กน้อยเพื่อแสดงคำถาม",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1DOXFuuydzb3mlvuwz_disrA9zOo4jEYl",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "how are you?",
+    "description_en": "Sign fine and add a questioning facial expression."
+  },
+  {
+    "id": "c06",
+    "word": "ผม / ฉัน สบายดีครับ / ค่ะ",
+    "category": "conversation",
+    "description": "ชี้ที่ตนเองแล้วทำสัญลักษณ์สบาย",
+    "tip": "ทำสองจังหวะ: ตัวเอง + สบาย",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1gGbaYP7DKENprnERI4xtnfvpmjM9u0To",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "I am fine.",
+    "description_en": "Point to yourself and then sign fine."
+  },
+  {
+    "id": "c07",
+    "word": "คุณชื่อภาษามืออะไร",
+    "category": "conversation",
+    "description": "ชี้คู่สนทนาแล้วทำสัญลักษณ์ชื่อภาษามือ",
+    "tip": "ลำดับ: คุณ + ชื่อ + ภาษามือ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1p31eBvFJtE9fTcuMOgeSbra64J4UTiFf",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "What is your name sign?",
+    "description_en": "Point to the person and sign name sign."
+  },
+  {
+    "id": "c08",
+    "word": "ผมชื่อพิรุณ",
+    "category": "conversation",
+    "description": "ชี้ตัวเองแล้วทำสัญลักษณ์ชื่อเฉพาะ",
+    "tip": "แสดงชื่อเฉพาะชัดเจน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1p31eBvFJtE9fTcuMOgeSbra64J4UTiFf",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "My name is Piroon.",
+    "description_en": "Point to yourself and sign the specific name."
+  },
+  {
+    "id": "c09",
+    "word": "แล้วคุณล่ะชื่อภาษามืออะไร",
+    "category": "conversation",
+    "description": "ชี้กลับไปยังคู่สนทนาแล้วทำสัญลักษณ์ชื่อภาษามือ",
+    "tip": "สลับทิศทางมือไปยังอีกฝ่าย",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1qYqNfXxYeohPW42a9IWuE5yCLzFL-teJ",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "And you, what is your name sign?",
+    "description_en": "Point back to the other person and sign name sign."
+  },
+  {
+    "id": "c10",
+    "word": "ผมชื่ออภิวิชญ์",
+    "category": "conversation",
+    "description": "ชี้ตัวเองแล้วทำสัญลักษณ์ชื่อเฉพาะตามภาพ",
+    "tip": "แสดงชื่อสองจังหวะชัดเจน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1qYqNfXxYeohPW42a9IWuE5yCLzFL-teJ",
+    "youtubeUrl": "https://www.youtube.com/watch?v=KEadstkqF9c",
+    "word_en": "My name is Aphiwat.",
+    "description_en": "Point to yourself and sign the specific name."
+  }
 ]

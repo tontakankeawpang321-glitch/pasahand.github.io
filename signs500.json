@@ -2039,5 +2039,139 @@
     "word_en": "marry",
     "description_en": "Place one hand over the other and press slightly."
   }
+  ,
+  {
+    "id": "q01",
+    "word": "อะไร",
+    "category": "question",
+    "description": "แบมือหงายแล้วงอนิ้วเล็กน้อยพร้อมสีหน้าสงสัย",
+    "tip": "แสดงสีหน้าคำถามชัดเจน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1zZPts5lpe5CglRAYjpi4tX8fZnW68Oia",
+    "youtubeUrl": "https://www.youtube.com/watch?v=JlVQj7NfvT0",
+    "word_en": "what",
+    "description_en": "Open palm upward and slightly wiggle the fingers with a questioning facial expression."
+  },
+  {
+    "id": "q02",
+    "word": "ใคร",
+    "category": "question",
+    "description": "ชี้นิ้วบริเวณแก้มแล้วหมุนเล็กน้อย",
+    "tip": "หมุนใกล้ใบหน้า",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1jAzO33SVNgAApPHv0lDanB_iX14yO3je",
+    "youtubeUrl": "https://www.youtube.com/watch?v=JlVQj7NfvT0",
+    "word_en": "who",
+    "description_en": "Point near the cheek and make a small circular motion."
+  },
+  {
+    "id": "q03",
+    "word": "ทำไม",
+    "category": "question",
+    "description": "แตะบริเวณหน้าผากแล้วงอนิ้วลง",
+    "tip": "สีหน้าฉงน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1FUjugnM-cVlF8u3qRyICvu1IN2mEvyk7",
+    "youtubeUrl": "https://www.youtube.com/watch?v=JlVQj7NfvT0",
+    "word_en": "why",
+    "description_en": "Touch the forehead and bend the fingers downward with a puzzled expression."
+  },
+  {
+    "id": "q04",
+    "word": "ไหน / ที่ไหน",
+    "category": "question",
+    "description": "ชูนิ้วชี้แล้วส่ายไปซ้ายขวาเล็กน้อย",
+    "tip": "เคลื่อนนิ้วสั้น ๆ",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1m_kJOycbB_Ksn5AGGFFWjlyxGJyuLVpA",
+    "youtubeUrl": "https://www.youtube.com/watch?v=JlVQj7NfvT0",
+    "word_en": "where",
+    "description_en": "Raise the index finger and move it side to side."
+  },
+  {
+    "id": "q05",
+    "word": "เท่าไร",
+    "category": "question",
+    "description": "แบมือหนึ่งแล้วใช้อีกมือแตะหรือปัดบนฝ่ามือ",
+    "tip": "ทำจังหวะเดียวชัดเจน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1gxZf6Vgdx19q9rRU6ElyDeUWG4snfpp2",
+    "youtubeUrl": "https://www.youtube.com/watch?v=JlVQj7NfvT0",
+    "word_en": "how many / how much",
+    "description_en": "Open one palm and brush or tap it with the other hand."
+  },
+  {
+    "id": "q06",
+    "word": "อย่างไร",
+    "category": "question",
+    "description": "หมุนมือหนึ่งบนอีกมือหนึ่งเป็นวง",
+    "tip": "หมุนต่อเนื่องลื่นไหล",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1eGnRP-YSjyM4HWZT6zFnvyTaekTe3bGu",
+    "youtubeUrl": "https://www.youtube.com/watch?v=JlVQj7NfvT0",
+    "word_en": "how",
+    "description_en": "Rotate one hand over the other in a circular motion."
+  },
+  {
+    "id": "t01",
+    "word": "เมื่อไร (สิ่งที่ยังไม่เกิดขึ้น)",
+    "category": "time",
+    "description": "ทำท่าคำถามแล้วเคลื่อนมือไปด้านหน้า",
+    "tip": "สื่อถึงอนาคต",
+    "imageUrl": "https://lh3.googleusercontent.com/d/120Hp5MPU7BA83-11BOe8bz200bScW4A3",
+    "youtubeUrl": "https://www.youtube.com/watch?v=JlVQj7NfvT0",
+    "word_en": "when (in the future)",
+    "description_en": "Make the question sign and move the hand forward to indicate future time."
+  },
+  {
+    "id": "t02",
+    "word": "เมื่อไร (สิ่งที่เกิดขึ้นแล้ว)",
+    "category": "time",
+    "description": "ทำท่าคำถามแล้วเคลื่อนมือไปด้านหลัง",
+    "tip": "สื่อถึงอดีต",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1r1CEtsJ3-tSPypr_L4lZWeHf6RJe_yes",
+    "youtubeUrl": "https://www.youtube.com/watch?v=JlVQj7NfvT0",
+    "word_en": "when (in the past)",
+    "description_en": "Make the question sign and move the hand backward to indicate past time."
+  },
+  {
+    "id": "s01",
+    "word": "วันนี้วันอะไร",
+    "category": "sentence",
+    "description": "ทำสัญลักษณ์วันนี้ แล้วตามด้วย อะไร",
+    "tip": "สีหน้าคำถาม",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1NEYYIxYWm_Cgd4FB13acVooricvt9ueL",
+    "youtubeUrl": "https://www.youtube.com/watch?v=JlVQj7NfvT0",
+    "word_en": "Today is what?",
+    "description_en": "Sign today followed by what with a questioning expression."
+  },
+  {
+    "id": "s02",
+    "word": "วันนี้วันอังคาร",
+    "category": "sentence",
+    "description": "ทำสัญลักษณ์วันนี้ แล้วตามด้วย วันอังคาร",
+    "tip": "จังหวะชัดเจนสองส่วน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1NEYYIxYWm_Cgd4FB13acVooricvt9ueL",
+    "youtubeUrl": "https://www.youtube.com/watch?v=JlVQj7NfvT0",
+    "word_en": "Today is Tuesday.",
+    "description_en": "Sign today followed by Tuesday."
+  },
+  {
+    "id": "s03",
+    "word": "คุณเรียนภาษามือวันอะไร",
+    "category": "sentence",
+    "description": "ชี้คุณ + เรียน + ภาษามือ + วันอะไร",
+    "tip": "เรียงลำดับชัดเจน",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1GxMaunCOs-BQ3W7uSNKwvti1noRvK0Gr",
+    "youtubeUrl": "https://www.youtube.com/watch?v=JlVQj7NfvT0",
+    "word_en": "What day do you learn Thai Sign Language?",
+    "description_en": "Point to you + learn + sign language + what day."
+  },
+  {
+    "id": "s04",
+    "word": "วันมะรืนนี้",
+    "category": "time",
+    "description": "ทำสัญลักษณ์วัน แล้วเคลื่อนมือไปข้างหน้าสองจังหวะ",
+    "tip": "ขยับสองครั้ง",
+    "imageUrl": "https://lh3.googleusercontent.com/d/1GxMaunCOs-BQ3W7uSNKwvti1noRvK0Gr",
+    "youtubeUrl": "https://www.youtube.com/watch?v=JlVQj7NfvT0",
+    "word_en": "The day after tomorrow",
+    "description_en": "Sign day and move the hand forward twice."
+  }
+
 ]
 

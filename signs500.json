@@ -2171,7 +2171,160 @@
     "youtubeUrl": "https://www.youtube.com/watch?v=JlVQj7NfvT0",
     "word_en": "The day after tomorrow",
     "description_en": "Sign day and move the hand forward twice."
+  },
+{
+    "id": "p01",
+    "word": "คน / บุคคล",
+    "category": "person",
+    "description": "วางมือทั้งสองข้างตั้งตรงแล้วเลื่อนลงด้านล่างพร้อมกัน",
+    "tip": "ขยับลงพร้อมกันสองข้าง",
+    "imageUrl": "https://drive.google.com/file/d/1E1E4MS-ePLvlt5vpCd9dqpRRjpYMtFyI/view?usp=drive_link",
+    "youtubeUrl": "https://www.youtube.com/watch?v=Y2fB8ranVPs",
+    "word_en": "person",
+    "description_en": "Place both hands upright and move them downward together."
+  },
+  {
+    "id": "p02",
+    "word": "ผู้ใหญ่",
+    "category": "age",
+    "description": "วางมือราบเหนือศีรษะแล้วขยับขึ้นเล็กน้อย",
+    "tip": "สื่อถึงความสูง/โต",
+    "imageUrl": "https://drive.google.com/file/d/14fOIm2uI7xQjRVjUNEeRSVRdP9obTlk9/view?usp=drive_link",
+    "youtubeUrl": "https://www.youtube.com/watch?v=Y2fB8ranVPs",
+    "word_en": "adult",
+    "description_en": "Place a flat hand above the head and move slightly upward to indicate grown."
+  },
+  {
+    "id": "p03",
+    "word": "ผู้ชาย",
+    "category": "person",
+    "description": "แตะบริเวณขมับหรือแก้มเบา ๆ",
+    "tip": "แตะครั้งเดียวชัดเจน",
+    "imageUrl": "https://drive.google.com/file/d/14SLkSV46Y0hrpFLC0B7idYFsqxYzBBgX/view?usp=drive_link",
+    "youtubeUrl": "https://www.youtube.com/watch?v=Y2fB8ranVPs",
+    "word_en": "man",
+    "description_en": "Touch the temple or cheek area once clearly."
+  },
+  {
+    "id": "p04",
+    "word": "ผู้หญิง",
+    "category": "person",
+    "description": "แตะบริเวณแก้มแล้วหมุนเล็กน้อย",
+    "tip": "หมุนสั้น ๆ ใกล้ใบหน้า",
+    "imageUrl": "https://drive.google.com/file/d/1AXwsub9Pc_hbt8sNySypwb-mCNbdlMP6/view?usp=drive_link",
+    "youtubeUrl": "https://www.youtube.com/watch?v=Y2fB8ranVPs",
+    "word_en": "woman",
+    "description_en": "Touch the cheek and make a small circular motion."
+  },
+  {
+    "id": "p05",
+    "word": "เด็ก",
+    "category": "age",
+    "description": "วางมือระดับเอวแล้วขยับเล็กน้อย",
+    "tip": "สื่อถึงความสูงที่ต่ำกว่า",
+    "imageUrl": "https://drive.google.com/file/d/1FnGAz8-9XhNpVcZZx-QLD0yLnq-eKz9b/view?usp=drive_link",
+    "youtubeUrl": "https://www.youtube.com/watch?v=Y2fB8ranVPs",
+    "word_en": "child",
+    "description_en": "Hold the hand at waist level to indicate shorter height."
+  },
+  {
+    "id": "p06",
+    "word": "เด็กทารก",
+    "category": "age",
+    "description": "ทำมือเหมือนอุ้มทารกแล้วโยกเบา ๆ",
+    "tip": "โยกสองจังหวะ",
+    "imageUrl": "https://drive.google.com/file/d/1LNmIXG3gzmDpZlLUJ1P1I37yhTN9VJgC/view?usp=drive_link",
+    "youtubeUrl": "https://www.youtube.com/watch?v=Y2fB8ranVPs",
+    "word_en": "baby",
+    "description_en": "Cradle the arms as if holding a baby and gently rock."
+  },
+  {
+    "id": "p07",
+    "word": "วัยรุ่น / เยาวชน",
+    "category": "age",
+    "description": "กำมือทั้งสองแล้วขยับขึ้นลงเล็กน้อย",
+    "tip": "เคลื่อนไหวพร้อมกัน",
+    "imageUrl": "https://drive.google.com/file/d/1olJgDgZ5EX-fAL_cPzaCPkIw7piApASY/view?usp=drive_link",
+    "youtubeUrl": "https://www.youtube.com/watch?v=Y2fB8ranVPs",
+    "word_en": "teenager / youth",
+    "description_en": "Make fists with both hands and move slightly up and down."
+  },
+  {
+    "id": "p08",
+    "word": "หนุ่ม / สาว",
+    "category": "age",
+    "description": "กำมือระดับอกแล้วขยับลงเล็กน้อย",
+    "tip": "ทำจังหวะสั้น",
+    "imageUrl": "https://drive.google.com/file/d/125I5ehfC80mwlFNKTQyHfFoegtGDIz9s/view?usp=drive_link",
+    "youtubeUrl": "https://www.youtube.com/watch?v=Y2fB8ranVPs",
+    "word_en": "young (man / woman)",
+    "description_en": "Hold fists at chest level and move slightly downward."
+  },
+  {
+    "id": "p09",
+    "word": "ชรา / คนชรา / คนแก่",
+    "category": "age",
+    "description": "ทำมือบริเวณคางแล้วขยับลงช้า ๆ",
+    "tip": "เคลื่อนไหวช้า สื่อถึงสูงวัย",
+    "imageUrl": "https://drive.google.com/file/d/1d0AfDeqztkse3LzYa6sgr8jft2MVsm1H/view?usp=drive_link",
+    "youtubeUrl": "https://www.youtube.com/watch?v=Y2fB8ranVPs",
+    "word_en": "elderly",
+    "description_en": "Move the hand downward slowly near the chin to indicate elderly."
+  },
+  {
+    "id": "p10",
+    "word": "ฉัน / ดิฉัน / ผม",
+    "category": "pronoun",
+    "description": "ชี้นิ้วเข้าหาตัวเอง",
+    "tip": "แตะหน้าอกเบา ๆ",
+    "imageUrl": "https://drive.google.com/file/d/18xQRqKhc2OYoKKO6aa8uPz_SftUkZR5w/view?usp=drive_link",
+    "youtubeUrl": "https://www.youtube.com/watch?v=Y2fB8ranVPs",
+    "word_en": "I",
+    "description_en": "Point to yourself."
+  },
+  {
+    "id": "p11",
+    "word": "คุณ / เธอ",
+    "category": "pronoun",
+    "description": "ชี้นิ้วไปด้านหน้าหาคู่สนทนา",
+    "tip": "ชี้ตรงชัดเจน",
+    "imageUrl": "https://drive.google.com/file/d/1NA9fr0NoN7VuDW6WZoXBHIXUJoWnMeIg/view?usp=drive_link",
+    "youtubeUrl": "https://www.youtube.com/watch?v=Y2fB8ranVPs",
+    "word_en": "you",
+    "description_en": "Point directly toward the other person."
+  },
+  {
+    "id": "p12",
+    "word": "เขา",
+    "category": "pronoun",
+    "description": "ชี้นิ้วไปด้านข้างหรือบุคคลที่สาม",
+    "tip": "ชี้ออกจากตัว",
+    "imageUrl": "https://drive.google.com/file/d/1te0kLQIVR8bAcxM-2mcjFzyKo0yzq1gt/view?usp=drive_link",
+    "youtubeUrl": "https://www.youtube.com/watch?v=Y2fB8ranVPs",
+    "word_en": "he / she",
+    "description_en": "Point to a third person away from yourself."
+  },
+  {
+    "id": "p13",
+    "word": "พวกเรา",
+    "category": "pronoun",
+    "description": "หมุนมือเป็นวงบริเวณด้านหน้าตัวเอง",
+    "tip": "วงเล็กครอบกลุ่มตัวเอง",
+    "imageUrl": "https://drive.google.com/file/d/1e7jJk83UefOTrQ2jv24FADj9IocOfEsT/view?usp=drive_link",
+    "youtubeUrl": "https://www.youtube.com/watch?v=Y2fB8ranVPs",
+    "word_en": "we",
+    "description_en": "Make a circular motion in front of yourself to include your group."
+  },
+  {
+    "id": "p14",
+    "word": "พวกเขา",
+    "category": "pronoun",
+    "description": "หมุนมือเป็นวงด้านหน้าพร้อมชี้ออกไปด้านนอก",
+    "tip": "วงครอบกลุ่มอื่น",
+    "imageUrl": "https://drive.google.com/file/d/1SMeOOZBDDDhfSOaar6xUZM5sKF07VoR_/view?usp=drive_link",
+    "youtubeUrl": "https://www.youtube.com/watch?v=Y2fB8ranVPs",
+    "word_en": "they",
+    "description_en": "Make a circular motion outward to indicate a group of others."
   }
-
 ]
 

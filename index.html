@@ -98,7 +98,6 @@
             50% { opacity: .6; }
         }
         
-        /* ปุ่มหัวใจบนการ์ดไม่ให้โดน hover ของการ์ดกวน */
         .fav-btn-overlay {
             z-index: 10;
         }
@@ -106,10 +105,9 @@
 </head>
 <body class="h-screen flex flex-col overflow-hidden text-slate-800">
 
-    <!-- Header: Clean & Professional -->
+    <!-- Header -->
     <header class="glass-panel z-30 flex-none bg-white">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-2 md:gap-4">
-            
             <!-- Logo -->
             <div class="flex items-center gap-3">
                 <div class="bg-slate-900 p-2 rounded text-white shadow-sm">
@@ -121,15 +119,13 @@
                 </div>
             </div>
 
-            <!-- New Action Buttons -->
+            <!-- Action Buttons -->
             <div class="hidden md:flex items-center gap-2 ml-auto">
-                <!-- หนังสือเรียน Button (เปิด Dialog แทน) -->
                 <button onclick="openBooks()" class="flex items-center justify-center gap-1.5 px-2.5 py-1.5 md:px-3 md:py-2 text-sm font-medium text-indigo-600 hover:text-indigo-700 bg-indigo-50 hover:bg-indigo-100 rounded-md transition-colors border border-indigo-100">
                     <i data-lucide="book-open" class="w-4 h-4"></i>
                     <span class="hidden md:inline">หนังสือเรียน</span>
                 </button>
 
-                <!-- รายการโปรด Button -->
                 <button onclick="openFavorites()" class="flex items-center justify-center gap-1.5 px-2.5 py-1.5 md:px-3 md:py-2 text-sm font-medium text-rose-600 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 rounded-md transition-colors border border-rose-100">
                     <i data-lucide="heart" class="w-4 h-4 fill-current"></i>
                     <span class="hidden md:inline">รายการโปรด</span>
@@ -168,12 +164,11 @@
     <!-- Main Content Area -->
     <main class="flex-1 overflow-hidden relative flex flex-col md:flex-row max-w-7xl mx-auto w-full">
         
-        <!-- Category Sidebar: Clean List -->
+        <!-- Category Sidebar -->
         <aside class="w-full md:w-60 md:h-full flex-none bg-white md:bg-transparent border-b md:border-b-0 md:border-r border-slate-200 z-20">
             <div class="p-3 md:p-6 h-full flex md:flex-col overflow-x-auto md:overflow-y-auto no-scrollbar gap-2 md:gap-1 snap-x">
                 <div class="md:px-2 md:pb-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest hidden md:block">Filter Data</div>
                 <div id="categoryContainer" class="flex md:flex-col gap-1.5">
-                    <!-- Skeletons -->
                     <div class="h-8 w-24 md:w-full rounded bg-slate-100 animate-pulse shrink-0"></div>
                     <div class="h-8 w-24 md:w-full rounded bg-slate-100 animate-pulse shrink-0"></div>
                 </div>
@@ -182,7 +177,7 @@
 
         <!-- Grid Content -->
         <div class="flex-1 overflow-y-auto custom-scroll p-4 md:p-6" id="mainScroll">
-            <!-- Banner: Tech Style -->
+            <!-- Banner -->
             <div class="mb-6 p-6 rounded-lg bg-slate-900 text-white shadow-sm hidden md:flex justify-between items-center border border-slate-800">
                 <div>
                     <h2 class="text-xl font-bold mb-1 tracking-tight">System Ready</h2>
@@ -194,9 +189,7 @@
             </div>
 
             <!-- Content Grid -->
-            <div id="contentGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4 pb-32 md:pb-24">
-                <!-- Skeletons injected by JS -->
-            </div>
+            <div id="contentGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4 pb-32 md:pb-24"></div>
 
             <!-- Empty State -->
             <div id="emptyState" class="hidden flex flex-col items-center justify-center py-20 text-center opacity-60">
@@ -204,17 +197,9 @@
                 <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wide">No Results Found</h3>
             </div>
         </div>
-
     </main>
 
-    <!-- Chatbot Button: Sleek Circle -->
-    <div class="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-50">
-        <button onclick="toggleChat()" class="bg-slate-900 text-white w-14 h-14 rounded-full shadow-lg hover:bg-slate-800 hover:scale-105 active:scale-95 transition-all flex items-center justify-center border border-slate-700">
-            <i data-lucide="message-square" class="w-6 h-6"></i>
-        </button>
-    </div>
-
-    <!-- Chatbot Window: Clean & Boxy -->
+    <!-- Chatbot Window -->
     <div id="chatbotWindow" class="fixed bottom-[5.5rem] md:bottom-24 right-4 md:right-6 w-[92vw] md:w-80 h-[50vh] md:h-[450px] bg-white border border-slate-200 rounded-lg shadow-xl flex flex-col translate-y-4 opacity-0 pointer-events-none transition-all duration-200 z-40 origin-bottom-right">
         <div class="p-3 border-b border-slate-100 flex justify-between items-center bg-white rounded-t-lg">
             <div class="flex items-center gap-2">
@@ -225,7 +210,6 @@
                 <i data-lucide="minus" class="w-4 h-4"></i>
             </button>
         </div>
-
         <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-3 text-sm custom-scroll bg-slate-50/50">
             <div class="flex gap-2">
                 <div class="bg-white p-3 rounded-lg rounded-tl-none border border-slate-200 shadow-sm max-w-[90%] text-slate-700">
@@ -234,7 +218,6 @@
                 </div>
             </div>
         </div>
-
         <div class="p-2 border-t border-slate-100 bg-white rounded-b-lg">
             <div class="flex gap-2">
                 <input type="text" id="chatInput" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded focus:outline-none focus:border-slate-400 text-sm font-medium text-slate-700" placeholder="Type a message...">
@@ -245,20 +228,20 @@
         </div>
     </div>
 
-    <!-- FAVORITES DIALOG -->
+    <!-- Chatbot Toggle -->
+    <div class="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-50">
+        <button onclick="toggleChat()" class="bg-slate-900 text-white w-14 h-14 rounded-full shadow-lg hover:bg-slate-800 hover:scale-105 active:scale-95 transition-all flex items-center justify-center border border-slate-700">
+            <i data-lucide="message-square" class="w-6 h-6"></i>
+        </button>
+    </div>
+
+    <!-- FAVORITES MODAL -->
     <div id="favoritesModal" class="fixed inset-0 z-[100] modal-backdrop flex items-end md:items-center justify-center">
-        <!-- Overlay -->
         <div class="absolute inset-0" onclick="closeFavorites()"></div>
-        
-        <!-- Content -->
         <div class="modal-content relative w-full md:w-[600px] bg-white md:rounded-lg rounded-t-xl shadow-2xl flex flex-col max-h-[85vh] h-[85vh] md:h-[70vh] overflow-hidden">
-            
-            <!-- Mobile Drag Handle -->
             <div class="md:hidden w-full flex justify-center pt-3 pb-1 bg-white border-b border-slate-50" onclick="closeFavorites()">
                 <div class="w-12 h-1 bg-slate-200 rounded-full"></div>
             </div>
-
-            <!-- Header -->
             <div class="px-5 py-4 border-b border-slate-100 flex justify-between items-center bg-white z-10 sticky top-0">
                 <div class="flex items-center gap-2">
                     <div class="w-8 h-8 rounded bg-rose-50 flex items-center justify-center">
@@ -270,37 +253,23 @@
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
-
-            <!-- Scroll Area -->
             <div class="overflow-y-auto custom-scroll p-4 bg-slate-50 flex-1">
-                <div id="favoritesGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <!-- Fav items will be generated here -->
-                </div>
-                
-                <!-- Empty State -->
+                <div id="favoritesGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
                 <div id="emptyFavorites" class="hidden flex-col items-center justify-center py-16 text-center opacity-60 h-full">
                     <i data-lucide="heart-crack" class="w-12 h-12 text-slate-300 mb-3"></i>
                     <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wide">ยังไม่มีรายการโปรด</h3>
-                    <p class="text-xs text-slate-400 mt-1">กดไอคอนหัวใจที่การ์ดคำศัพท์เพื่อบันทึก</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- BOOKS DIALOG (รายการหนังสือเรียน) -->
+    <!-- BOOKS MODAL -->
     <div id="booksModal" class="fixed inset-0 z-[100] modal-backdrop flex items-end md:items-center justify-center">
-        <!-- Overlay -->
         <div class="absolute inset-0" onclick="closeBooks()"></div>
-        
-        <!-- Content -->
         <div class="modal-content relative w-full md:w-[600px] bg-white md:rounded-lg rounded-t-xl shadow-2xl flex flex-col max-h-[85vh] h-[85vh] md:h-[70vh] overflow-hidden">
-            
-            <!-- Mobile Drag Handle -->
             <div class="md:hidden w-full flex justify-center pt-3 pb-1 bg-white border-b border-slate-50" onclick="closeBooks()">
                 <div class="w-12 h-1 bg-slate-200 rounded-full"></div>
             </div>
-
-            <!-- Header -->
             <div class="px-5 py-4 border-b border-slate-100 flex justify-between items-center bg-white z-10 sticky top-0">
                 <div class="flex items-center gap-2">
                     <div class="w-8 h-8 rounded bg-indigo-50 flex items-center justify-center">
@@ -312,38 +281,26 @@
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
-
-            <!-- Scroll Area -->
             <div class="overflow-y-auto custom-scroll p-4 bg-slate-50 flex-1">
-                <div id="booksGrid" class="flex flex-col gap-3">
-                    <!-- Book items will be generated here by JS -->
-                </div>
+                <div id="booksGrid" class="flex flex-col gap-3"></div>
             </div>
         </div>
     </div>
 
-    <!-- MODERN DIALOG: Detail Mode -->
+    <!-- DETAIL MODAL -->
     <div id="detailModal" class="fixed inset-0 z-[100] modal-backdrop flex items-end md:items-center justify-center">
-        <!-- Overlay -->
         <div class="absolute inset-0" onclick="closeModal()"></div>
-        
-        <!-- Content -->
         <div class="modal-content relative w-full md:w-[550px] bg-white md:rounded-lg rounded-t-xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
-            
-            <!-- Mobile Drag Handle -->
             <div class="md:hidden w-full flex justify-center pt-3 pb-1 bg-white border-b border-slate-50" onclick="closeModal()">
                 <div class="w-12 h-1 bg-slate-200 rounded-full"></div>
             </div>
-
-            <!-- Header -->
             <div class="px-5 py-4 border-b border-slate-100 flex justify-between items-start bg-white z-10 sticky top-0">
                 <div>
                     <span id="mCategory" class="text-[9px] font-bold text-slate-500 border border-slate-200 px-1.5 py-0.5 rounded uppercase tracking-wider bg-slate-50">Category</span>
                     <h2 id="mWord" class="text-2xl font-bold text-slate-900 mt-2 leading-none">Word</h2>
-                    <p id="mWordEn" class="text-sm text-slate-400 font-mono mt-0.5">English Translation</p>
+                    <p id="mWordEn" class="text-sm text-slate-400 font-mono mt-0.5">English</p>
                 </div>
                 <div class="flex items-center gap-1">
-                    <!-- Added Favorite toggle in detail view too -->
                     <button id="modalFavBtn" onclick="toggleFavoriteFromModal()" class="p-2 hover:bg-rose-50 rounded text-slate-400 transition-colors">
                         <i id="modalFavIcon" data-lucide="heart" class="w-5 h-5"></i>
                     </button>
@@ -352,26 +309,20 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Scroll Area -->
             <div class="overflow-y-auto custom-scroll p-0 pb-6 bg-white">
-                
-                <!-- Media Display -->
-                <div class="relative w-full aspect-video bg-slate-50 border-b border-slate-100 group">
+                <div class="relative w-full aspect-video bg-slate-50 border-b border-slate-100">
                     <img id="mImage" src="" class="w-full h-full object-contain p-4 transition-opacity duration-200">
-                    
                     <div id="mVideoContainer" class="absolute inset-0 hidden bg-black">
-                        <iframe id="mYoutube" class="w-full h-full" src="" frameborder="0" allowfullscreen></iframe>
+                        <!-- Updated iframe with proper fullscreen permissions -->
+                        <iframe id="mYoutube" class="w-full h-full" src="" frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen></iframe>
                     </div>
-
-                    <!-- Modern Toggle Button -->
                     <button id="viewToggleBtn" onclick="toggleMediaView()" class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 px-3 py-1.5 rounded border border-slate-200 shadow-sm text-xs font-bold flex items-center gap-2 hover:bg-white hover:shadow transition-all">
                         <i data-lucide="play" class="w-3 h-3 fill-current"></i>
                         <span>WATCH VIDEO</span>
                     </button>
                 </div>
-
-                <!-- Info Section -->
                 <div class="p-6">
                     <div class="flex items-start gap-3">
                         <div class="mt-1">
@@ -381,7 +332,7 @@
                         </div>
                         <div>
                             <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wide mb-1">Instruction</h3>
-                            <p id="mDesc" class="text-slate-600 leading-relaxed text-sm">Description text will appear here.</p>
+                            <p id="mDesc" class="text-slate-600 leading-relaxed text-sm">Description text.</p>
                         </div>
                     </div>
                 </div>
@@ -391,15 +342,15 @@
 
     <!-- Mobile Bottom Navigation -->
     <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 z-[60] flex justify-around items-center pt-2 px-2 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]" style="padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));">
-        <button onclick="goHome()" id="navHome" class="flex flex-col items-center p-2 w-16 text-indigo-600 transition-colors">
+        <button onclick="goHome()" id="navHome" class="flex flex-col items-center p-2 w-16 text-indigo-600">
             <i data-lucide="home" class="w-5 h-5 mb-1"></i>
             <span class="text-[10px] font-bold">หน้าแรก</span>
         </button>
-        <button onclick="openBooks()" id="navBook" class="flex flex-col items-center p-2 w-16 text-slate-500 hover:text-indigo-600 transition-colors">
+        <button onclick="openBooks()" id="navBook" class="flex flex-col items-center p-2 w-16 text-slate-500">
             <i data-lucide="book-open" class="w-5 h-5 mb-1"></i>
             <span class="text-[10px] font-bold">หนังสือ</span>
         </button>
-        <button onclick="openFavorites()" id="navFav" class="flex flex-col items-center p-2 w-16 text-slate-500 hover:text-rose-600 transition-colors">
+        <button onclick="openFavorites()" id="navFav" class="flex flex-col items-center p-2 w-16 text-slate-500">
             <i data-lucide="heart" class="w-5 h-5 mb-1"></i>
             <span class="text-[10px] font-bold">รายการโปรด</span>
         </button>
@@ -417,7 +368,7 @@
             searchTerm: '',
             isVideoMode: false,
             currentVideoId: null,
-            currentDetailWord: null // Track word for modal favorite btn
+            currentDetailWord: null
         };
 
         const MOCK_DATA = [
@@ -426,7 +377,6 @@
             { word: 'สวัสดี', word_en: 'Hello', category: 'ทั่วไป', description: 'พนมมือที่ระดับอก', imageUrl: 'https://placehold.co/600x400/f8fafc/334155?text=สวัสดี', youtubeUrl: '' }
         ];
 
-        // ข้อมูลรายการหนังสือเรียน 5 รายการ
         const BOOKS_DATA = [
             { title: 'หนังสือเรียนภาษามือ เล่ม 1', desc: 'พื้นฐานพยัญชนะและสระ', url: 'https://tontakankeawpang321-glitch.github.io/pasahand.github.io/hand1/index.html' },
             { title: 'หนังสือเรียนภาษามือ เล่ม 2', desc: 'คำศัพท์ในชีวิตประจำวัน', url: 'https://tontakankeawpang321-glitch.github.io/pasahand.github.io/hand2/index.html' },
@@ -475,9 +425,9 @@
             const grid = document.getElementById('contentGrid');
             grid.innerHTML = Array(10).fill(0).map(() => `
                 <div class="bg-white rounded overflow-hidden border border-slate-200 h-48 flex flex-col">
-                    <div class="h-32 skeleton w-full bg-slate-100"></div>
+                    <div class="h-32 skeleton w-full"></div>
                     <div class="p-3 space-y-2 flex-1">
-                        <div class="h-4 w-3/4 skeleton rounded bg-slate-100"></div>
+                        <div class="h-4 w-3/4 skeleton rounded"></div>
                     </div>
                 </div>
             `).join('');
@@ -496,18 +446,14 @@
             `).join('');
         }
 
-        // --- Local Storage Favorites Logic ---
         function getSafeClass(word) {
-            // สร้าง class name ที่ปลอดภัยจากตัวอักษรพิเศษ
             return 'fav-' + word.replace(/[^a-zA-Z0-9ก-๙]/g, '_');
         }
 
         function getFavorites() {
             try {
                 return JSON.parse(localStorage.getItem('signLabFavorites')) || [];
-            } catch {
-                return [];
-            }
+            } catch { return []; }
         }
 
         function isFavorite(word) {
@@ -515,22 +461,15 @@
         }
 
         window.toggleFavorite = (word, event) => {
-            if(event) event.stopPropagation(); // กันไม่ให้กดแล้วไปเปิด Detail Modal
-            
+            if(event) event.stopPropagation();
             let favs = getFavorites();
             const isAdding = !favs.includes(word);
-            
-            if (isAdding) {
-                favs.push(word);
-            } else {
-                favs = favs.filter(w => w !== word);
-            }
+            if (isAdding) favs.push(word);
+            else favs = favs.filter(w => w !== word);
             localStorage.setItem('signLabFavorites', JSON.stringify(favs));
 
-            // อัพเดท UI ของปุ่มหัวใจในหน้าหลัก โดยไม่ต้อง render ใหม่ทั้งหมด
             const safeClass = getSafeClass(word);
             const icons = document.querySelectorAll(`.${safeClass}`);
-            
             icons.forEach(icon => {
                 if (isAdding) {
                     icon.classList.remove('text-slate-400');
@@ -541,30 +480,19 @@
                 }
             });
 
-            // อัพเดทปุ่มใน Detail Modal ถ้าเปิดอยู่
-            if(state.currentDetailWord === word) {
-                updateModalFavBtnUI(isAdding);
-            }
-
-            // ถ้ารายการโปรดเปิดอยู่ ให้ re-render รายการใหม่
-            if(document.getElementById('favoritesModal').classList.contains('active')) {
-                renderFavoritesList();
-            }
+            if(state.currentDetailWord === word) updateModalFavBtnUI(isAdding);
+            if(document.getElementById('favoritesModal').classList.contains('active')) renderFavoritesList();
         };
-
-        // -------------------------------------
 
         function renderGrid() {
             const grid = document.getElementById('contentGrid');
             const empty = document.getElementById('emptyState');
-            
             if (state.filtered.length === 0) {
                 grid.innerHTML = '';
                 empty.classList.remove('hidden');
                 return;
             }
             empty.classList.add('hidden');
-
             const favs = getFavorites();
 
             grid.innerHTML = state.filtered.map((item, index) => {
@@ -575,30 +503,22 @@
                 return `
                 <div onclick="openDetail(${index})" class="group tech-card bg-white rounded overflow-hidden cursor-pointer relative">
                     <div class="h-32 md:h-40 overflow-hidden bg-slate-50 relative border-b border-slate-100">
-                        <img src="${item.imageUrl}" 
-                             alt="${item.word}" 
-                             loading="lazy"
-                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                        <img src="${item.imageUrl}" alt="${item.word}" loading="lazy"
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90"
                              onerror="this.src='https://placehold.co/400x300/f8fafc/cbd5e1?text=No+Image'">
-                        
-                        <!-- Category Badge -->
-                        <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-[2px] px-1.5 py-0.5 rounded text-[9px] font-bold text-slate-500 border border-slate-200 uppercase tracking-wide">
+                        <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-[2px] px-1.5 py-0.5 rounded text-[9px] font-bold text-slate-500 border border-slate-200 uppercase">
                             ${item.category || 'GEN'}
                         </div>
-
-                        <!-- Favorite Button on Card -->
-                        <button onclick="toggleFavorite('${item.word}', event)" class="fav-btn-overlay absolute top-2 left-2 p-1.5 bg-white/90 backdrop-blur-[2px] border border-slate-100 rounded-full shadow-sm hover:scale-110 active:scale-95 transition-all">
+                        <button onclick="toggleFavorite('${item.word}', event)" class="fav-btn-overlay absolute top-2 left-2 p-1.5 bg-white/90 backdrop-blur-[2px] border border-slate-100 rounded-full shadow-sm hover:scale-110">
                             <i data-lucide="heart" class="w-4 h-4 transition-colors ${heartClass} ${safeClass}"></i>
                         </button>
                     </div>
-                    
-                    <div class="p-3 bg-white h-full">
-                        <h3 class="font-bold text-slate-800 text-sm md:text-base leading-tight mb-0.5 truncate group-hover:text-blue-600 transition-colors">${item.word}</h3>
-                        <p class="text-[10px] text-slate-400 font-mono truncate">${item.word_en || 'NO DATA'}</p>
+                    <div class="p-3 bg-white">
+                        <h3 class="font-bold text-slate-800 text-sm md:text-base leading-tight truncate group-hover:text-blue-600">${item.word}</h3>
+                        <p class="text-[10px] text-slate-400 font-mono truncate">${item.word_en || ''}</p>
                     </div>
                 </div>
             `}).join('');
-            
             lucide.createIcons();
         }
 
@@ -606,9 +526,7 @@
             state.activeCategory = cat;
             renderCategories();
             filterData();
-            if(window.innerWidth < 768) {
-                document.getElementById('contentGrid').scrollIntoView({behavior: 'smooth', block: 'start'});
-            }
+            if(window.innerWidth < 768) document.getElementById('contentGrid').scrollIntoView({behavior: 'smooth', block: 'start'});
         };
 
         function initSearch() {
@@ -621,12 +539,10 @@
                 clearTimeout(timeout);
                 timeout = setTimeout(() => handleSearch(e), 300);
             };
-
             document.getElementById('searchInputDesktop').addEventListener('input', debouncedSearch);
             document.getElementById('searchInputMobile').addEventListener('input', debouncedSearch);
         }
 
-        // --- Favorites Modal Logic ---
         window.openFavorites = () => {
             renderFavoritesList();
             document.getElementById('favoritesModal').classList.add('active');
@@ -640,7 +556,6 @@
             updateBottomNav('home');
         };
 
-        // --- Books Modal Logic ---
         window.openBooks = () => {
             renderBooksList();
             document.getElementById('booksModal').classList.add('active');
@@ -657,15 +572,15 @@
         function renderBooksList() {
             const grid = document.getElementById('booksGrid');
             grid.innerHTML = BOOKS_DATA.map(book => `
-                <a href="${book.url}" target="_blank" class="bg-white rounded-lg border border-slate-200 p-3 md:p-4 flex gap-4 items-center shadow-sm hover:shadow-md hover:border-indigo-300 transition-all group cursor-pointer">
-                    <div class="w-12 h-12 md:w-14 md:h-14 shrink-0 rounded bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-500 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                <a href="${book.url}" target="_blank" class="bg-white rounded-lg border border-slate-200 p-3 md:p-4 flex gap-4 items-center shadow-sm hover:border-indigo-300 transition-all group">
+                    <div class="w-12 h-12 md:w-14 md:h-14 shrink-0 rounded bg-indigo-50 flex items-center justify-center text-indigo-500 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                         <i data-lucide="book" class="w-6 h-6 md:w-7 md:h-7"></i>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <h4 class="font-bold text-sm md:text-base text-slate-800 truncate group-hover:text-indigo-600 transition-colors">${book.title}</h4>
+                        <h4 class="font-bold text-sm md:text-base text-slate-800 truncate group-hover:text-indigo-600">${book.title}</h4>
                         <p class="text-[11px] md:text-xs text-slate-500 mt-0.5">${book.desc}</p>
                     </div>
-                    <div class="shrink-0 p-2 text-slate-300 group-hover:text-indigo-500 transition-colors">
+                    <div class="shrink-0 p-2 text-slate-300 group-hover:text-indigo-500">
                         <i data-lucide="external-link" class="w-5 h-5"></i>
                     </div>
                 </a>
@@ -677,24 +592,13 @@
             const home = document.getElementById('navHome');
             const fav = document.getElementById('navFav');
             const book = document.getElementById('navBook');
-            
             if(home && fav && book) {
-                // Reset styles
-                home.className = 'flex flex-col items-center p-2 w-16 text-slate-500 hover:text-indigo-600 transition-colors';
-                fav.className = 'flex flex-col items-center p-2 w-16 text-slate-500 hover:text-rose-600 transition-colors';
-                book.className = 'flex flex-col items-center p-2 w-16 text-slate-500 hover:text-indigo-600 transition-colors';
-                
-                // Set active style
-                if (activeTab === 'home') {
-                    home.classList.replace('text-slate-500', 'text-indigo-600');
-                    home.classList.remove('hover:text-indigo-600');
-                } else if (activeTab === 'fav') {
-                    fav.classList.replace('text-slate-500', 'text-rose-600');
-                    fav.classList.remove('hover:text-rose-600');
-                } else if (activeTab === 'book') {
-                    book.classList.replace('text-slate-500', 'text-indigo-600');
-                    book.classList.remove('hover:text-indigo-600');
-                }
+                home.className = 'flex flex-col items-center p-2 w-16 text-slate-500';
+                fav.className = 'flex flex-col items-center p-2 w-16 text-slate-500';
+                book.className = 'flex flex-col items-center p-2 w-16 text-slate-500';
+                if (activeTab === 'home') home.classList.replace('text-slate-500', 'text-indigo-600');
+                else if (activeTab === 'fav') fav.classList.replace('text-slate-500', 'text-rose-600');
+                else if (activeTab === 'book') book.classList.replace('text-slate-500', 'text-indigo-600');
             }
         }
 
@@ -703,12 +607,8 @@
             document.getElementById('searchInputDesktop').value = '';
             state.searchTerm = '';
             selectCategory('ทั้งหมด');
-            closeFavorites();
-            closeBooks();
-            closeModal();
+            closeFavorites(); closeBooks(); closeModal();
             updateBottomNav('home');
-            
-            // เลื่อนกลับขึ้นด้านบนสุด
             const scrollArea = document.getElementById('mainScroll');
             if(scrollArea) scrollArea.scrollTo({top: 0, behavior: 'smooth'});
         };
@@ -717,37 +617,30 @@
             const favs = getFavorites();
             const grid = document.getElementById('favoritesGrid');
             const empty = document.getElementById('emptyFavorites');
-
             if (favs.length === 0) {
                 grid.innerHTML = '';
                 empty.classList.remove('hidden');
                 empty.classList.add('flex');
                 return;
             }
-
             empty.classList.add('hidden');
             empty.classList.remove('flex');
-
-            // Find items from global data based on saved favorite words
             const favItems = state.data.filter(item => favs.includes(item.word));
 
             grid.innerHTML = favItems.map(item => `
-                <div class="bg-white rounded-lg border border-slate-200 p-2.5 flex gap-3 items-center shadow-sm relative group hover:border-blue-200 transition-colors">
-                    <div class="w-16 h-16 shrink-0 rounded overflow-hidden bg-slate-100 border border-slate-100 cursor-pointer" onclick="openDetailByWord('${item.word}')">
-                        <img src="${item.imageUrl}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100?text=No+Img'">
+                <div class="bg-white rounded-lg border border-slate-200 p-2.5 flex gap-3 items-center shadow-sm relative group">
+                    <div class="w-16 h-16 shrink-0 rounded overflow-hidden bg-slate-100 cursor-pointer" onclick="openDetailByWord('${item.word}')">
+                        <img src="${item.imageUrl}" class="w-full h-full object-cover">
                     </div>
-                    
                     <div class="flex-1 min-w-0 cursor-pointer" onclick="openDetailByWord('${item.word}')">
                         <h4 class="font-bold text-sm text-slate-800 truncate group-hover:text-blue-600">${item.word}</h4>
-                        <p class="text-[10px] text-slate-400 font-mono truncate">${item.category || 'General'}</p>
+                        <p class="text-[10px] text-slate-400 font-mono truncate">${item.category || ''}</p>
                     </div>
-                    
-                    <button onclick="toggleFavorite('${item.word}')" class="p-2 text-slate-300 hover:text-rose-500 hover:bg-rose-50 rounded-full transition-all shrink-0">
+                    <button onclick="toggleFavorite('${item.word}')" class="p-2 text-slate-300 hover:text-rose-500 hover:bg-rose-50 rounded-full">
                         <i data-lucide="trash-2" class="w-4 h-4"></i>
                     </button>
                 </div>
             `).join('');
-            
             lucide.createIcons();
         }
 
@@ -755,7 +648,6 @@
             const item = state.data.find(i => i.word === word);
             if(item) {
                 closeFavorites();
-                // หน่วงเวลาเล็กน้อยเพื่อให้ Favorites modal ปิดก่อนเปิดอันใหม่
                 setTimeout(() => {
                     populateDetailModal(item);
                     document.getElementById('detailModal').classList.add('active');
@@ -764,25 +656,19 @@
             }
         };
 
-        // --- Detail Modal Logic ---
         function populateDetailModal(item) {
             state.currentDetailWord = item.word;
-
             document.getElementById('mCategory').innerText = item.category || 'GENERAL';
             document.getElementById('mWord').innerText = item.word;
             document.getElementById('mWordEn').innerText = item.word_en || '';
             document.getElementById('mDesc').innerText = item.description || 'ไม่มีคำอธิบายสำหรับคำนี้';
             document.getElementById('mImage').src = item.imageUrl;
-            
-            // Set favorite button state
             updateModalFavBtnUI(isFavorite(item.word));
-
             state.currentVideoId = null;
             if (item.youtubeUrl) {
                 const match = item.youtubeUrl.match(/(?:v=|\/embed\/|youtu\.be\/)([^&?#]+)/);
                 if (match) state.currentVideoId = match[1];
             }
-
             const toggleBtn = document.getElementById('viewToggleBtn');
             if(state.currentVideoId) {
                 toggleBtn.classList.remove('hidden');
@@ -791,7 +677,6 @@
                 toggleBtn.classList.add('hidden');
                 toggleBtn.classList.remove('flex');
             }
-
             resetMediaView();
         }
 
@@ -807,22 +692,18 @@
         }
 
         window.toggleFavoriteFromModal = () => {
-            if(state.currentDetailWord) {
-                toggleFavorite(state.currentDetailWord);
-            }
+            if(state.currentDetailWord) toggleFavorite(state.currentDetailWord);
         }
 
         window.openDetail = (index) => {
             const item = state.filtered[index];
             populateDetailModal(item);
-            const modal = document.getElementById('detailModal');
-            modal.classList.add('active');
+            document.getElementById('detailModal').classList.add('active');
             document.body.style.overflow = 'hidden'; 
         };
 
         window.closeModal = () => {
-            const modal = document.getElementById('detailModal');
-            modal.classList.remove('active');
+            document.getElementById('detailModal').classList.remove('active');
             document.getElementById('mYoutube').src = "";
             document.body.style.overflow = '';
             state.currentDetailWord = null;
@@ -833,13 +714,11 @@
             const vidContainer = document.getElementById('mVideoContainer');
             const iframe = document.getElementById('mYoutube');
             const btnSpan = document.querySelector('#viewToggleBtn span');
-
             state.isVideoMode = !state.isVideoMode;
-
             if (state.isVideoMode) {
                 img.classList.add('opacity-0');
                 vidContainer.classList.remove('hidden');
-                iframe.src = `https://www.youtube.com/embed/${state.currentVideoId}?autoplay=1&rel=0`;
+                iframe.src = `https://www.youtube.com/embed/${state.currentVideoId}?autoplay=1&rel=0&enablejsapi=1`;
                 btnSpan.innerText = 'SHOW IMAGE';
             } else {
                 img.classList.remove('opacity-0');
@@ -858,13 +737,9 @@
             if(btn) btn.innerText = 'WATCH VIDEO';
         }
 
-        // --- Chatbot Logic ---
-        let chatHistory = [];
-        
         window.toggleChat = () => {
             const win = document.getElementById('chatbotWindow');
             const isOpen = win.classList.contains('opacity-100');
-            
             if (isOpen) {
                 win.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
                 win.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
@@ -879,30 +754,20 @@
             const input = document.getElementById('chatInput');
             const text = input.value.trim();
             if (!text) return;
-
             addChatBubble(text, 'user');
             input.value = '';
-            
             try {
                 const res = await fetch(BACKEND_URL, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ history: [...chatHistory, {role: "user", parts: [{text: text}]}] })
+                    body: JSON.stringify({ history: [{role: "user", parts: [{text: text}]}] })
                 });
-                
                 if (res.ok) {
                     const data = await res.json();
                     addChatBubble(data.reply, 'ai');
-                    chatHistory.push({role: "user", parts: [{text}]}, {role: "model", parts: [{text: data.reply}]});
-                } else {
-                    throw new Error("Backend failed");
-                }
+                } else throw new Error();
             } catch (err) {
-                setTimeout(() => {
-                    let reply = "ระบบออฟไลน์อยู่ครับ (Offline Mode)";
-                    if(text.includes('สวัสดี')) reply = "สวัสดีครับ ต้องการเรียนรู้คำศัพท์ไหนพิมพ์ถามได้เลยครับ";
-                    addChatBubble(reply, 'ai');
-                }, 600);
+                setTimeout(() => addChatBubble("ระบบแจ้งเตือน: กำลังพัฒนาระบบ AI ขั้นสูงเพื่อให้บริการเร็วๆ นี้ครับ", 'ai'), 600);
             }
         };
 
@@ -914,19 +779,11 @@
             const container = document.getElementById('chatMessages');
             const div = document.createElement('div');
             div.className = "flex gap-2 " + (type === 'user' ? "flex-row-reverse" : "");
-            
             const bgClass = type === 'user' ? 'bg-slate-800 text-white' : 'bg-white text-slate-700 border border-slate-200';
-
-            div.innerHTML = `
-                <div class="${bgClass} px-3 py-2 rounded-lg max-w-[85%] text-sm shadow-sm">
-                    ${text}
-                </div>
-            `;
-            
+            div.innerHTML = `<div class="${bgClass} px-3 py-2 rounded-lg max-w-[85%] text-sm shadow-sm">${text}</div>`;
             container.appendChild(div);
             container.scrollTop = container.scrollHeight;
         }
-
     </script>
 </body>
 </html>
